@@ -1,0 +1,10 @@
+C:\Users\Andres\Source\Repos\UriBrane\tpAutomotriz\TpAutomotriz\bin\Debug\TpAutomotriz.exe.config
+C:\Users\Andres\Source\Repos\UriBrane\tpAutomotriz\TpAutomotriz\bin\Debug\TpAutomotriz.exe
+C:\Users\Andres\Source\Repos\UriBrane\tpAutomotriz\TpAutomotriz\bin\Debug\TpAutomotriz.pdb
+C:\Users\Andres\Source\Repos\UriBrane\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.csproj.AssemblyReference.cache
+C:\Users\Andres\Source\Repos\UriBrane\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.FrmMenuPrincipal.resources
+C:\Users\Andres\Source\Repos\UriBrane\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.Properties.Resources.resources
+C:\Users\Andres\Source\Repos\UriBrane\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.csproj.GenerateResource.cache
+C:\Users\Andres\Source\Repos\UriBrane\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.csproj.CoreCompileInputs.cache
+C:\Users\Andres\Source\Repos\UriBrane\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.exe
+C:\Users\Andres\Source\Repos\UriBrane\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.pdb

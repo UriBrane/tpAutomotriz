@@ -10,17 +10,16 @@ using System.Windows.Forms;
 
 namespace TpAutomotriz
 {
-    public partial class Form1 : Form
+    public partial class FrmMenuPrincipal : Form
     {
         public int num;
-        public Form1()
+        public FrmMenuPrincipal()
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
-           
+
         }
     }
 }
