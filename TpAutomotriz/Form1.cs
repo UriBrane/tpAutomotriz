@@ -12,6 +12,7 @@ namespace TpAutomotriz
 {
     public partial class Form1 : Form
     {
+        public int num;
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +20,7 @@ namespace TpAutomotriz
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            123
+           
         }
     }
 }
