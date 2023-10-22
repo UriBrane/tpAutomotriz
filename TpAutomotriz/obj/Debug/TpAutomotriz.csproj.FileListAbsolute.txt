@@ -8,3 +8,15 @@ C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotr
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.csproj.CoreCompileInputs.cache
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.exe
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.pdb
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\bin\Debug\TpAutomotriz.exe.config
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\bin\Debug\TpAutomotriz.exe
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\bin\Debug\TpAutomotriz.pdb
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.csproj.AssemblyReference.cache
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.csproj.SuggestedBindingRedirects.cache
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.Presentacion.FrmDetalleFactura.resources
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.FrmMenuPrincipal.resources
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.Properties.Resources.resources
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.csproj.GenerateResource.cache
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.csproj.CoreCompileInputs.cache
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.exe
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.pdb

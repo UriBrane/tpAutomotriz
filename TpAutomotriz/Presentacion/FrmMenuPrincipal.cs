@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TpAutomotriz.Presentacion;
 
 namespace TpAutomotriz
 {
@@ -20,6 +21,13 @@ namespace TpAutomotriz
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
            
+        }
+
+        private void facturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmDetalleFactura frmDetalleFactura= new FrmDetalleFactura();
+            frmDetalleFactura.ShowDialog();
+
         }
     }
 }

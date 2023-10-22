@@ -36,6 +36,8 @@
             this.vendedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.automobilesMásVendidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,8 +45,6 @@
             this.porcentajeDeComprasPorTipoDeClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vehículosEntregadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockProducidoDeAutopartesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mStpPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +56,8 @@
             this.verToolStripMenuItem});
             this.mStpPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mStpPrincipal.Name = "mStpPrincipal";
-            this.mStpPrincipal.Size = new System.Drawing.Size(1062, 29);
+            this.mStpPrincipal.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.mStpPrincipal.Size = new System.Drawing.Size(796, 24);
             this.mStpPrincipal.TabIndex = 0;
             this.mStpPrincipal.Text = "Menu";
             // 
@@ -66,7 +67,7 @@
             this.nuevoToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(77, 25);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // nuevoToolStripMenuItem
@@ -76,31 +77,32 @@
             this.clienteToolStripMenuItem,
             this.vendedorToolStripMenuItem});
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             // 
             // facturaToolStripMenuItem
             // 
             this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
-            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
+            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.facturaToolStripMenuItem.Text = "Factura";
+            this.facturaToolStripMenuItem.Click += new System.EventHandler(this.facturaToolStripMenuItem_Click);
             // 
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
             // 
             // vendedorToolStripMenuItem
             // 
             this.vendedorToolStripMenuItem.Name = "vendedorToolStripMenuItem";
-            this.vendedorToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
+            this.vendedorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.vendedorToolStripMenuItem.Text = "Vendedor";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
             // verToolStripMenuItem
@@ -109,8 +111,22 @@
             this.consultarToolStripMenuItem,
             this.reporteToolStripMenuItem});
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(47, 25);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.verToolStripMenuItem.Text = "Ver";
+            // 
+            // consultarToolStripMenuItem
+            // 
+            this.consultarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.facturaToolStripMenuItem1});
+            this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem.Text = "Consultar";
+            // 
+            // facturaToolStripMenuItem1
+            // 
+            this.facturaToolStripMenuItem1.Name = "facturaToolStripMenuItem1";
+            this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.facturaToolStripMenuItem1.Text = "Factura";
             // 
             // reporteToolStripMenuItem
             // 
@@ -122,66 +138,53 @@
             this.vehículosEntregadosToolStripMenuItem,
             this.stockProducidoDeAutopartesToolStripMenuItem});
             this.reporteToolStripMenuItem.Name = "reporteToolStripMenuItem";
-            this.reporteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.reporteToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.reporteToolStripMenuItem.Text = "Reportes";
             // 
             // stockProductosToolStripMenuItem
             // 
             this.stockProductosToolStripMenuItem.Name = "stockProductosToolStripMenuItem";
-            this.stockProductosToolStripMenuItem.Size = new System.Drawing.Size(336, 26);
+            this.stockProductosToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.stockProductosToolStripMenuItem.Text = "Totales y Promedios de Facturacion";
             // 
             // automobilesMásVendidosToolStripMenuItem
             // 
             this.automobilesMásVendidosToolStripMenuItem.Name = "automobilesMásVendidosToolStripMenuItem";
-            this.automobilesMásVendidosToolStripMenuItem.Size = new System.Drawing.Size(336, 26);
+            this.automobilesMásVendidosToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.automobilesMásVendidosToolStripMenuItem.Text = "Automobiles más vendidos";
             // 
             // automóvilesQueNuncaSeVendieronToolStripMenuItem
             // 
             this.automóvilesQueNuncaSeVendieronToolStripMenuItem.Name = "automóvilesQueNuncaSeVendieronToolStripMenuItem";
-            this.automóvilesQueNuncaSeVendieronToolStripMenuItem.Size = new System.Drawing.Size(380, 26);
+            this.automóvilesQueNuncaSeVendieronToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.automóvilesQueNuncaSeVendieronToolStripMenuItem.Text = "Automóviles que nunca se vendieron";
             // 
             // porcentajeDeComprasPorTipoDeClienteToolStripMenuItem
             // 
             this.porcentajeDeComprasPorTipoDeClienteToolStripMenuItem.Name = "porcentajeDeComprasPorTipoDeClienteToolStripMenuItem";
-            this.porcentajeDeComprasPorTipoDeClienteToolStripMenuItem.Size = new System.Drawing.Size(380, 26);
+            this.porcentajeDeComprasPorTipoDeClienteToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.porcentajeDeComprasPorTipoDeClienteToolStripMenuItem.Text = "Porcentaje de compras por tipo de cliente";
             // 
             // vehículosEntregadosToolStripMenuItem
             // 
             this.vehículosEntregadosToolStripMenuItem.Name = "vehículosEntregadosToolStripMenuItem";
-            this.vehículosEntregadosToolStripMenuItem.Size = new System.Drawing.Size(380, 26);
+            this.vehículosEntregadosToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.vehículosEntregadosToolStripMenuItem.Text = "Vehículos entregados";
             // 
             // stockProducidoDeAutopartesToolStripMenuItem
             // 
             this.stockProducidoDeAutopartesToolStripMenuItem.Name = "stockProducidoDeAutopartesToolStripMenuItem";
-            this.stockProducidoDeAutopartesToolStripMenuItem.Size = new System.Drawing.Size(380, 26);
+            this.stockProducidoDeAutopartesToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.stockProducidoDeAutopartesToolStripMenuItem.Text = "Stock producido de autopartes";
-            // 
-            // consultarToolStripMenuItem
-            // 
-            this.consultarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.facturaToolStripMenuItem1});
-            this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.consultarToolStripMenuItem.Text = "Consultar";
-            // 
-            // facturaToolStripMenuItem1
-            // 
-            this.facturaToolStripMenuItem1.Name = "facturaToolStripMenuItem1";
-            this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.facturaToolStripMenuItem1.Text = "Factura";
             // 
             // FrmMenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1062, 673);
+            this.ClientSize = new System.Drawing.Size(796, 547);
             this.Controls.Add(this.mStpPrincipal);
             this.MainMenuStrip = this.mStpPrincipal;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
