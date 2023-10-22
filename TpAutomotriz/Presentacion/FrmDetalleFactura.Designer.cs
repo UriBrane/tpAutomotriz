@@ -45,15 +45,27 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblDatosCliente = new System.Windows.Forms.Label();
+            this.dgvDescripción = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvElimnar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDetalle
             // 
             this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDescripción,
+            this.dgvCantidad,
+            this.dgvSubTotal,
+            this.dgvDescuento,
+            this.dgvElimnar});
             this.dgvDetalle.Location = new System.Drawing.Point(94, 193);
             this.dgvDetalle.Name = "dgvDetalle";
-            this.dgvDetalle.Size = new System.Drawing.Size(605, 245);
+            this.dgvDetalle.Size = new System.Drawing.Size(605, 204);
             this.dgvDetalle.TabIndex = 0;
             // 
             // cmbCliente
@@ -207,6 +219,43 @@
             this.lblDatosCliente.TabIndex = 31;
             this.lblDatosCliente.Text = "CUIT:\r\nDOMICILIO:\r\nTELEFONO:\r\nMAIL:";
             // 
+            // dgvDescripción
+            // 
+            this.dgvDescripción.HeaderText = "Descripción";
+            this.dgvDescripción.Name = "dgvDescripción";
+            // 
+            // dgvCantidad
+            // 
+            this.dgvCantidad.HeaderText = "Cantidad";
+            this.dgvCantidad.Name = "dgvCantidad";
+            // 
+            // dgvSubTotal
+            // 
+            this.dgvSubTotal.HeaderText = "Sub Total";
+            this.dgvSubTotal.Name = "dgvSubTotal";
+            // 
+            // dgvDescuento
+            // 
+            this.dgvDescuento.HeaderText = "Descuento";
+            this.dgvDescuento.Name = "dgvDescuento";
+            // 
+            // dgvElimnar
+            // 
+            this.dgvElimnar.HeaderText = "Eliminar";
+            this.dgvElimnar.Name = "dgvElimnar";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(573, 408);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(62, 23);
+            this.lblTotal.TabIndex = 32;
+            this.lblTotal.Text = "TOTAL";
+            // 
             // FrmDetalleFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,6 +264,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(991, 450);
+            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblDatosCliente);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -258,5 +308,11 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblDatosCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvDescripción;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSubTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvDescuento;
+        private System.Windows.Forms.DataGridViewButtonColumn dgvElimnar;
+        private System.Windows.Forms.Label lblTotal;
     }
 }
