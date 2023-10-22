@@ -12,7 +12,6 @@ namespace TpAutomotriz
 {
     public partial class FrmMenuPrincipal : Form
     {
-        public int num;
         public FrmMenuPrincipal()
         {
             InitializeComponent();
