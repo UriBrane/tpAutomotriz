@@ -15,14 +15,19 @@ namespace TpAutomotriz.Entidades
         private OrdenPedido ordenPedido;
         private int id_factura;
         private DateTime fecha;
+        private List <DetalleFactura> detFac;
 
         public Factura()
         {
             detalleFactura = null; vendedor= null; cliente= null;
             ordenPedido= null; id_factura= 0; fecha = DateTime.Today;
+            DetFac = new List<DetalleFactura>();
 
         }
-        public Factura(DetalleFactura detalleFactura, Vendedor vendedor, Cliente cliente, OrdenPedido ordenPedido, int id_factura, DateTime fecha)
+
+        
+
+        public Factura(DetalleFactura detalleFactura, Vendedor vendedor, Cliente cliente, OrdenPedido ordenPedido, int id_factura, DateTime fecha, List<DetalleFactura> detFac)
         {
             this.DetalleFactura = detalleFactura;
             this.Vendedor = vendedor;
@@ -30,6 +35,7 @@ namespace TpAutomotriz.Entidades
             this.OrdenPedido = ordenPedido;
             this.Id_factura = id_factura;
             this.Fecha = fecha;
+            this.DetFac = detFac;
         }
 
         public DetalleFactura DetalleFactura { get => detalleFactura; set => detalleFactura = value; }
@@ -38,5 +44,22 @@ namespace TpAutomotriz.Entidades
         public OrdenPedido OrdenPedido { get => ordenPedido; set => ordenPedido = value; }
         public int Id_factura { get => id_factura; set => id_factura = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }
+        public List<DetalleFactura> DetFac { get => detFac; set => detFac = value; }
+
+
+
+
+        public void AgregarDetalleFactura(DetalleFactura detalle)
+        {
+            detFac.Add(detalle);
+        }
+
+
+        public void QuitarDetalleFactura(int posicion)
+        {
+
+            detFac.RemoveAt(posicion);
+
+        }
     }
 }
