@@ -5,24 +5,25 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TpAutomotriz.Datos
 {
-    public class HelperDao
+    public class HelperDAO
     {
-        private static HelperDao instance;
+        private static HelperDAO instance;
         private SqlConnection cnn;
 
-        private HelperDao()
+        private HelperDAO()
         {
             cnn = new SqlConnection(Properties.Resources.CadenaConexion1);
         }
 
-        public static HelperDao GetInstance()
+        public static HelperDAO GetInstance()
         {
             if (instance == null)
             {
-                instance = new HelperDao();
+                instance = new HelperDAO();
             }
             return instance;
         }
@@ -66,9 +67,10 @@ namespace TpAutomotriz.Datos
                 filasAfectadas = cmd.ExecuteNonQuery();
                 t.Commit();
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
                 if (t != null) { t.Rollback(); }
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -79,7 +81,7 @@ namespace TpAutomotriz.Datos
             return filasAfectadas;
         }
 
-        public int EjecutarSQL(string spMaestro, string spDetalle, List<Parametro> lParamMaestro,List<Parametro> lParamDetalle)
+        public int EjecutarSQL(string spMaestro, string spDetalle, List<Parametro> lParamMaestro, List<Parametro> lParamDetalle)
         {// Ejecuta una transaccion Maestro-Detalle con los nombres de los sp como param de entrada y las listas de parametros, devuelve el numero de factura
             int nroFactura = 0;
             SqlTransaction t = null;
@@ -134,10 +136,10 @@ namespace TpAutomotriz.Datos
 
                 t.Commit();
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
                 if (t != null) { t.Rollback(); }
-                MessageBox.Show();
+                MessageBox.Show("Error: "+ ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
             {

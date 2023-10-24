@@ -29,6 +29,12 @@ namespace TpAutomotriz
             frmDetalleFactura.ShowDialog();
 
         }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmNuevaPersona frm = new FrmNuevaPersona();
+            frm.ShowDialog();
+        }
     }
 }
 
