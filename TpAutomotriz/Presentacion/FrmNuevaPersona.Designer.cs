@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.lblTipoPersona = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -41,70 +41,73 @@
             this.txtCuit = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.gbxCliente = new System.Windows.Forms.GroupBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
             this.gbxVendedor = new System.Windows.Forms.GroupBox();
+            this.dtpFecIngreso = new System.Windows.Forms.DateTimePicker();
             this.lblFecIngreso = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.gbxGeneral.SuspendLayout();
             this.gbxCliente.SuspendLayout();
             this.gbxVendedor.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnGuardar
             // 
-            this.button1.Location = new System.Drawing.Point(327, 504);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGuardar.Location = new System.Drawing.Point(354, 338);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
             // 
             // lblTipoPersona
             // 
             this.lblTipoPersona.AutoSize = true;
-            this.lblTipoPersona.Location = new System.Drawing.Point(58, 24);
+            this.lblTipoPersona.Location = new System.Drawing.Point(32, 33);
             this.lblTipoPersona.Name = "lblTipoPersona";
-            this.lblTipoPersona.Size = new System.Drawing.Size(35, 16);
+            this.lblTipoPersona.Size = new System.Drawing.Size(38, 16);
             this.lblTipoPersona.TabIndex = 1;
-            this.lblTipoPersona.Text = "Tipo";
+            this.lblTipoPersona.Text = "Tipo:";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(137, 66);
+            this.txtNombre.Location = new System.Drawing.Point(76, 78);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 22);
+            this.txtNombre.Size = new System.Drawing.Size(412, 22);
             this.txtNombre.TabIndex = 2;
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(37, 72);
+            this.lblNombre.Location = new System.Drawing.Point(11, 81);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(56, 16);
+            this.lblNombre.Size = new System.Drawing.Size(59, 16);
             this.lblNombre.TabIndex = 3;
-            this.lblNombre.Text = "Nombre";
+            this.lblNombre.Text = "Nombre:";
             // 
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
-            this.lblApellido.Location = new System.Drawing.Point(36, 120);
+            this.lblApellido.Location = new System.Drawing.Point(10, 129);
             this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(57, 16);
+            this.lblApellido.Size = new System.Drawing.Size(60, 16);
             this.lblApellido.TabIndex = 4;
-            this.lblApellido.Text = "Apellido";
+            this.lblApellido.Text = "Apellido:";
             // 
             // lblCuit
             // 
             this.lblCuit.AutoSize = true;
-            this.lblCuit.Location = new System.Drawing.Point(55, 168);
+            this.lblCuit.Location = new System.Drawing.Point(29, 177);
             this.lblCuit.Name = "lblCuit";
-            this.lblCuit.Size = new System.Drawing.Size(38, 16);
+            this.lblCuit.Size = new System.Drawing.Size(41, 16);
             this.lblCuit.TabIndex = 5;
-            this.lblCuit.Text = "CUIT";
+            this.lblCuit.Text = "CUIT:";
             // 
             // lblDireccion
             // 
             this.lblDireccion.AutoSize = true;
-            this.lblDireccion.Location = new System.Drawing.Point(35, 42);
+            this.lblDireccion.Location = new System.Drawing.Point(6, 33);
             this.lblDireccion.Name = "lblDireccion";
             this.lblDireccion.Size = new System.Drawing.Size(67, 16);
             this.lblDireccion.TabIndex = 6;
@@ -113,7 +116,7 @@
             // lblNumero
             // 
             this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(44, 100);
+            this.lblNumero.Location = new System.Drawing.Point(15, 81);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(58, 16);
             this.lblNumero.TabIndex = 7;
@@ -123,9 +126,9 @@
             // 
             this.cboTipoPersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoPersona.FormattingEnabled = true;
-            this.cboTipoPersona.Location = new System.Drawing.Point(137, 21);
+            this.cboTipoPersona.Location = new System.Drawing.Point(76, 29);
             this.cboTipoPersona.Name = "cboTipoPersona";
-            this.cboTipoPersona.Size = new System.Drawing.Size(121, 24);
+            this.cboTipoPersona.Size = new System.Drawing.Size(253, 24);
             this.cboTipoPersona.TabIndex = 8;
             // 
             // gbxGeneral
@@ -140,74 +143,99 @@
             this.gbxGeneral.Controls.Add(this.lblApellido);
             this.gbxGeneral.Location = new System.Drawing.Point(12, 12);
             this.gbxGeneral.Name = "gbxGeneral";
-            this.gbxGeneral.Size = new System.Drawing.Size(555, 456);
+            this.gbxGeneral.Size = new System.Drawing.Size(510, 300);
             this.gbxGeneral.TabIndex = 9;
             this.gbxGeneral.TabStop = false;
-            this.gbxGeneral.Text = "General";
+            this.gbxGeneral.Text = "Datos Generales";
             // 
             // txtCuit
             // 
-            this.txtCuit.Location = new System.Drawing.Point(137, 168);
+            this.txtCuit.Location = new System.Drawing.Point(76, 174);
             this.txtCuit.Name = "txtCuit";
-            this.txtCuit.Size = new System.Drawing.Size(100, 22);
+            this.txtCuit.Size = new System.Drawing.Size(253, 22);
             this.txtCuit.TabIndex = 10;
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(137, 120);
+            this.txtApellido.Location = new System.Drawing.Point(76, 126);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(100, 22);
+            this.txtApellido.Size = new System.Drawing.Size(412, 22);
             this.txtApellido.TabIndex = 9;
             // 
             // gbxCliente
             // 
+            this.gbxCliente.Controls.Add(this.txtNumero);
+            this.gbxCliente.Controls.Add(this.txtDireccion);
             this.gbxCliente.Controls.Add(this.lblDireccion);
             this.gbxCliente.Controls.Add(this.lblNumero);
-            this.gbxCliente.Location = new System.Drawing.Point(573, 12);
+            this.gbxCliente.Location = new System.Drawing.Point(528, 12);
             this.gbxCliente.Name = "gbxCliente";
-            this.gbxCliente.Size = new System.Drawing.Size(554, 233);
+            this.gbxCliente.Size = new System.Drawing.Size(391, 172);
             this.gbxCliente.TabIndex = 10;
             this.gbxCliente.TabStop = false;
-            this.gbxCliente.Text = "Cliente";
+            this.gbxCliente.Text = "Datos de Cliente";
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(79, 78);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(100, 22);
+            this.txtNumero.TabIndex = 14;
+            // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Location = new System.Drawing.Point(79, 30);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(301, 22);
+            this.txtDireccion.TabIndex = 13;
             // 
             // gbxVendedor
             // 
+            this.gbxVendedor.Controls.Add(this.dtpFecIngreso);
             this.gbxVendedor.Controls.Add(this.lblFecIngreso);
-            this.gbxVendedor.Location = new System.Drawing.Point(573, 251);
+            this.gbxVendedor.Location = new System.Drawing.Point(528, 190);
             this.gbxVendedor.Name = "gbxVendedor";
-            this.gbxVendedor.Size = new System.Drawing.Size(554, 217);
+            this.gbxVendedor.Size = new System.Drawing.Size(391, 122);
             this.gbxVendedor.TabIndex = 11;
             this.gbxVendedor.TabStop = false;
-            this.gbxVendedor.Text = "Vendedor";
+            this.gbxVendedor.Text = "Datos de Vendedor";
+            // 
+            // dtpFecIngreso
+            // 
+            this.dtpFecIngreso.Location = new System.Drawing.Point(127, 30);
+            this.dtpFecIngreso.Name = "dtpFecIngreso";
+            this.dtpFecIngreso.Size = new System.Drawing.Size(200, 22);
+            this.dtpFecIngreso.TabIndex = 15;
             // 
             // lblFecIngreso
             // 
             this.lblFecIngreso.AutoSize = true;
-            this.lblFecIngreso.Location = new System.Drawing.Point(58, 61);
+            this.lblFecIngreso.Location = new System.Drawing.Point(6, 33);
             this.lblFecIngreso.Name = "lblFecIngreso";
             this.lblFecIngreso.Size = new System.Drawing.Size(115, 16);
             this.lblFecIngreso.TabIndex = 12;
             this.lblFecIngreso.Text = "Fecha de Ingreso:";
             // 
-            // button2
+            // btnCancelar
             // 
-            this.button2.Location = new System.Drawing.Point(714, 504);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancelar.Location = new System.Drawing.Point(537, 338);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 12;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // FrmNuevaPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 576);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(931, 393);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.gbxVendedor);
             this.Controls.Add(this.gbxCliente);
             this.Controls.Add(this.gbxGeneral);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGuardar);
             this.Name = "FrmNuevaPersona";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Cliente/Vendedor";
@@ -223,7 +251,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label lblTipoPersona;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
@@ -238,6 +266,9 @@
         private System.Windows.Forms.TextBox txtCuit;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label lblFecIngreso;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.DateTimePicker dtpFecIngreso;
     }
 }

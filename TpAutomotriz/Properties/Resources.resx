@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CadenaConexion1" xml:space="preserve">
+  <data name="CadenaConexionAndres" xml:space="preserve">
     <value>Data Source=FRACTAL-PC\SQLEXPRESS;Initial Catalog=TP_Autos;Integrated Security=True</value>
     <comment>Cadena de conexion pc de Andres</comment>
   </data>
