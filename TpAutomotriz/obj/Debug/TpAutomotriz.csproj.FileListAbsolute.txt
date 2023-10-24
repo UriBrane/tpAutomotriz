@@ -20,3 +20,4 @@ C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz
 C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.csproj.CoreCompileInputs.cache
 C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.exe
 C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.pdb
+C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\obj\Debug\TpAutomotriz.Presentacion.FrmDetalleFactura.resources

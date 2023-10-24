@@ -50,8 +50,8 @@ namespace TpAutomotriz.Entidades
             double subtotal = 0;
             subtotal = cantidad * precio * descuento;
             return subtotal;
-    
-    }
+
+        }
 
     }
 }

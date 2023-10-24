@@ -19,13 +19,13 @@ namespace TpAutomotriz.Entidades
         {
             DetallePedido = null;
             id_orden = 0;
-            fechaEntrega =  DateTime.Today.AddDays(1);
+            fechaEntrega = DateTime.Today.AddDays(1);
             fechaPedido = DateTime.Today;
             DetPed = new List<DetallePedido>();
 
         }
 
-       
+
 
         public OrdenPedido(DetallePedido detallePedido, int id_orden, DateTime fechaEntrega, DateTime fechaPedido, List<DetallePedido> detPed)
         {

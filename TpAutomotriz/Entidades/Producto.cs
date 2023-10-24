@@ -18,12 +18,12 @@ namespace TpAutomotriz.Entidades
 
         public Producto()
         {
-            id_producto=0;
+            id_producto = 0;
             detalle = string.Empty;
             precio = 0;
             cantidad = 0;
-            cant_min_por_mayor= 0;
-            cantidad_min= 0;
+            cant_min_por_mayor = 0;
+            cantidad_min = 0;
 
         }
 
