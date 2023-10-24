@@ -440,3 +440,23 @@ INSERT INTO detalles_pedidos ([id_orden_pedido], [id_producto],[cantidad])
 		(3,3,45),
 		(4,4,63),
 		(5,5,80);
+
+-- SPs
+
+-- Insertar Clientes
+Create proc INSERT_CLIENTES
+@tipo int,
+@nombre varchar(200),
+@apellido varchar(200),
+@cuit varchar(20),
+@calle varchar(200),
+@nro int,
+@barrio int
+as 
+begin 
+
+	INSERT INTO Clientes (id_tipo_cliente,nombre,apellido,CUIT,dire_calle,dire_nro,id_barrio)
+		VALUES (@tipo,@nombre,@apellido,@cuit,@calle,@nro,@barrio);
+end;
+
+
