@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace TpAutomotriz.Entidades
 {
@@ -60,6 +62,21 @@ namespace TpAutomotriz.Entidades
 
             detFac.RemoveAt(posicion);
 
+        }
+
+        
+
+            public double CalcularTotal()
+            {
+                double total = 0;
+
+                foreach (DetalleFactura d in detFac)
+                {
+                    total += d.CalcularSubtotal();
+
+                }
+                return total;
+            }
         }
     }
 }
