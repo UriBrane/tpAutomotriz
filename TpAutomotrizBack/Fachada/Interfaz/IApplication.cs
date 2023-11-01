@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TpAutomotrizBack.Entidades;
 
-namespace TpAutomotrizBack.Datos.Interfaz
+namespace TpAutomotrizBack.Fachada.Interfaz
 {
-    public interface IClienteDAO
+    public interface IApplication
     {
-        List<Cliente> GetClientes();
         bool CrearCliente(Cliente c);
+        List<Cliente> GetClientes();
     }
 }

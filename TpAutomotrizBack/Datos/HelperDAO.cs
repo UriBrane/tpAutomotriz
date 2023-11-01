@@ -33,7 +33,7 @@ namespace TpAutomotrizBack.Datos
             return this.cnn;
         }
 
-        public DataTable ConsultarSp(string nombreSP)
+        public DataTable ConsultarTabla(string nombreSP)
         {// Consultar una tabla de la BD con el nombre de un SP
             cnn.Open();
             SqlCommand cmd = new SqlCommand(nombreSP, cnn);
@@ -44,10 +44,10 @@ namespace TpAutomotrizBack.Datos
             return dt;
         }
 
-        public int EjecutarSQL(string strSql, List<Parametro> lParametros)
+        public bool EjecutarSQL(string strSql, List<Parametro> lParametros)
         {// Ejecuta un SP con una lista de Parametros
             int filasAfectadas = 0;
-            SqlTransaction t = null;
+            SqlTransaction t;
 
             try
             {
@@ -78,13 +78,16 @@ namespace TpAutomotrizBack.Datos
                     cnn.Close();
             }
 
-            return filasAfectadas;
+            if (filasAfectadas != 0)
+                return true;
+            else
+                return false;
         }
 
-        public int EjecutarSQL(string spMaestro, string spDetalle, List<Parametro> lParamMaestro, List<Parametro> lParamDetalle)
+        public bool EjecutarSQL(string spMaestro, string spDetalle, List<Parametro> lParamMaestro, List<Parametro> lParamDetalle)
         {// Ejecuta una transaccion Maestro-Detalle con los nombres de los sp como param de entrada y las listas de parametros, devuelve el numero de factura
             int nroFactura = 0;
-            SqlTransaction t = null;
+            SqlTransaction t;
 
             try
             {
@@ -139,7 +142,7 @@ namespace TpAutomotrizBack.Datos
             catch (SqlException ex)
             {
                 if (t != null) { t.Rollback(); }
-                MessageBox.Show("Error: "+ ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -147,7 +150,10 @@ namespace TpAutomotrizBack.Datos
                     cnn.Close();
             }
 
-            return nroFactura;
+            if (filasAfectadas != 0)
+                return true;
+            else
+                return false;
         }
 
     }

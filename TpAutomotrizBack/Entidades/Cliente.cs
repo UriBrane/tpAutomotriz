@@ -12,14 +12,14 @@ namespace TpAutomotrizBack.Entidades
         public int CalleNro { get; set; }
         public int TipoCliente { get; set; }
         public int Barrio { get; set; }
-        public Cliente()
+        public Cliente() : base()
         {
             Calle = string.Empty;
             CalleNro = 0;
             TipoCliente = 0;
             Barrio = 0;
         }
-        public Cliente(string calle, int nro, int tipo, int barrio)
+        public Cliente(string nombre, string apellido, int cuit, string calle, int nro, int tipo, int barrio) : base(nombre, apellido, cuit)
         {
             Calle = calle;
             CalleNro = nro;

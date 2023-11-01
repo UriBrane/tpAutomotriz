@@ -12,16 +12,16 @@ namespace TpAutomotrizBack.Entidades
         public DateTime Fecha_ingreso { get; set; }
         public int Id_categoria { get; set; }
 
-        public Vendedor()
+        public Vendedor() : base()
         {
-            Id_vendedor = 0;        
+            Id_vendedor = 0;
             Fecha_ingreso = DateTime.MinValue;
             Id_categoria = 0;
         }
 
-        public Vendedor(int id_vent, DateTime fec, int cat)
+        public Vendedor(string nombre, string apellido, int cuit, int id_vent, DateTime fec, int cat) : base(nombre, apellido, cuit)
         {
-            Id_vendedor = id_vent;            
+            Id_vendedor = id_vent;
             Fecha_ingreso = fec;
             Id_categoria = cat;
         }
