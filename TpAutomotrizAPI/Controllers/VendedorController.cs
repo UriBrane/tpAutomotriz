@@ -8,21 +8,21 @@ namespace TpAutomotrizAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteController : ControllerBase
+    public class VendedorController : ControllerBase
     {
         private IApplication app;
-        public ClienteController()
+        public VendedorController()
         {
             app = new Application();
         }
 
-        [HttpGet("/cliente")]
-        public IActionResult GetClientes()
+        [HttpGet("/vendedor")]
+        public IActionResult GetVendedores()
         {
-            List<Cliente> lst = null;
+            List<Vendedor> lst = null;
             try
             {
-                lst = app.GetClientes();
+                lst = app.GetVendedores();
                 return Ok(lst);
             }
             catch (Exception ex)
@@ -30,6 +30,5 @@ namespace TpAutomotrizAPI.Controllers
                 return StatusCode(500, "Error !!! " + ex.Message);
             }
         }
-
     }
 }

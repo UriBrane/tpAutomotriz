@@ -30,20 +30,25 @@
         {
             mStpPrincipal = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
-            nuevoToolStripMenuItem = new ToolStripMenuItem();
-            facturaToolStripMenuItem = new ToolStripMenuItem();
-            clienteVendedorToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
-            verToolStripMenuItem = new ToolStripMenuItem();
-            consultarToolStripMenuItem = new ToolStripMenuItem();
-            facturaToolStripMenuItem1 = new ToolStripMenuItem();
-            reportesToolStripMenuItem = new ToolStripMenuItem();
-            totalesYPromediosDeFacturacionToolStripMenuItem = new ToolStripMenuItem();
-            automobilesMásVendidosToolStripMenuItem = new ToolStripMenuItem();
-            automóvilesQueNuncaSeVendieronToolStripMenuItem = new ToolStripMenuItem();
-            porcentajeDeComprasPorTipoDeClienteToolStripMenuItem = new ToolStripMenuItem();
-            vehículosEntregadosToolStripMenuItem = new ToolStripMenuItem();
-            stockProducidoDeAutopartesToolStripMenuItem = new ToolStripMenuItem();
+            transacciónToolStripMenuItem = new ToolStripMenuItem();
+            nuevaFacturaToolStripMenuItem = new ToolStripMenuItem();
+            nuevaToolStripMenuItem = new ToolStripMenuItem();
+            consultarToolStripMenuItem1 = new ToolStripMenuItem();
+            modificarToolStripMenuItem = new ToolStripMenuItem();
+            soporteToolStripMenuItem = new ToolStripMenuItem();
+            nuevoClienteVendedorToolStripMenuItem = new ToolStripMenuItem();
+            clienteVendedorToolStripMenuItem1 = new ToolStripMenuItem();
+            productoToolStripMenuItem = new ToolStripMenuItem();
+            reportesToolStripMenuItem1 = new ToolStripMenuItem();
+            totalesYPromediosDeFacturacionToolStripMenuItem1 = new ToolStripMenuItem();
+            automobilesMásVendidosToolStripMenuItem1 = new ToolStripMenuItem();
+            automóvilesQueNuncaSeVendieronToolStripMenuItem1 = new ToolStripMenuItem();
+            porcentajeDeComprasPorTipoDeClienteToolStripMenuItem1 = new ToolStripMenuItem();
+            vehículosEntregadosToolStripMenuItem1 = new ToolStripMenuItem();
+            stockProducidoDeAutopartesToolStripMenuItem1 = new ToolStripMenuItem();
+            acercaDeToolStripMenuItem = new ToolStripMenuItem();
+            informaciónToolStripMenuItem = new ToolStripMenuItem();
             lblContrasenia = new Label();
             lblUsuario = new Label();
             lblIngresar = new Label();
@@ -55,7 +60,7 @@
             // mStpPrincipal
             // 
             mStpPrincipal.ImageScalingSize = new Size(20, 20);
-            mStpPrincipal.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, verToolStripMenuItem });
+            mStpPrincipal.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, transacciónToolStripMenuItem, soporteToolStripMenuItem, reportesToolStripMenuItem1, acercaDeToolStripMenuItem });
             mStpPrincipal.Location = new Point(0, 0);
             mStpPrincipal.Name = "mStpPrincipal";
             mStpPrincipal.Size = new Size(1079, 29);
@@ -64,101 +69,133 @@
             // 
             // archivoToolStripMenuItem
             // 
-            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nuevoToolStripMenuItem, salirToolStripMenuItem });
+            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { salirToolStripMenuItem });
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             archivoToolStripMenuItem.Size = new Size(77, 25);
             archivoToolStripMenuItem.Text = "Archivo";
             // 
-            // nuevoToolStripMenuItem
-            // 
-            nuevoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { facturaToolStripMenuItem, clienteVendedorToolStripMenuItem });
-            nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            nuevoToolStripMenuItem.Size = new Size(140, 26);
-            nuevoToolStripMenuItem.Text = "Nuevo";
-            // 
-            // facturaToolStripMenuItem
-            // 
-            facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
-            facturaToolStripMenuItem.Size = new Size(215, 26);
-            facturaToolStripMenuItem.Text = "Factura";
-            facturaToolStripMenuItem.Click += facturaToolStripMenuItem_Click;
-            // 
-            // clienteVendedorToolStripMenuItem
-            // 
-            clienteVendedorToolStripMenuItem.Name = "clienteVendedorToolStripMenuItem";
-            clienteVendedorToolStripMenuItem.Size = new Size(215, 26);
-            clienteVendedorToolStripMenuItem.Text = "Cliente/Vendedor";
-            clienteVendedorToolStripMenuItem.Click += clienteVendedorToolStripMenuItem_Click;
-            // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(140, 26);
+            salirToolStripMenuItem.Size = new Size(224, 26);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
-            // verToolStripMenuItem
+            // transacciónToolStripMenuItem
             // 
-            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { consultarToolStripMenuItem, reportesToolStripMenuItem });
-            verToolStripMenuItem.Name = "verToolStripMenuItem";
-            verToolStripMenuItem.Size = new Size(47, 25);
-            verToolStripMenuItem.Text = "Ver";
+            transacciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nuevaFacturaToolStripMenuItem });
+            transacciónToolStripMenuItem.Name = "transacciónToolStripMenuItem";
+            transacciónToolStripMenuItem.Size = new Size(105, 25);
+            transacciónToolStripMenuItem.Text = "Transacción";
             // 
-            // consultarToolStripMenuItem
+            // nuevaFacturaToolStripMenuItem
             // 
-            consultarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { facturaToolStripMenuItem1 });
-            consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            consultarToolStripMenuItem.Size = new Size(161, 26);
-            consultarToolStripMenuItem.Text = "Consultar";
+            nuevaFacturaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nuevaToolStripMenuItem, consultarToolStripMenuItem1, modificarToolStripMenuItem });
+            nuevaFacturaToolStripMenuItem.Name = "nuevaFacturaToolStripMenuItem";
+            nuevaFacturaToolStripMenuItem.Size = new Size(224, 26);
+            nuevaFacturaToolStripMenuItem.Text = "Factura";
             // 
-            // facturaToolStripMenuItem1
+            // nuevaToolStripMenuItem
             // 
-            facturaToolStripMenuItem1.Name = "facturaToolStripMenuItem1";
-            facturaToolStripMenuItem1.Size = new Size(144, 26);
-            facturaToolStripMenuItem1.Text = "Factura";
+            nuevaToolStripMenuItem.Name = "nuevaToolStripMenuItem";
+            nuevaToolStripMenuItem.Size = new Size(224, 26);
+            nuevaToolStripMenuItem.Text = "Nueva";
+            nuevaToolStripMenuItem.Click += nuevaToolStripMenuItem_Click;
             // 
-            // reportesToolStripMenuItem
+            // consultarToolStripMenuItem1
             // 
-            reportesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { totalesYPromediosDeFacturacionToolStripMenuItem, automobilesMásVendidosToolStripMenuItem, automóvilesQueNuncaSeVendieronToolStripMenuItem, porcentajeDeComprasPorTipoDeClienteToolStripMenuItem, vehículosEntregadosToolStripMenuItem, stockProducidoDeAutopartesToolStripMenuItem });
-            reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            reportesToolStripMenuItem.Size = new Size(161, 26);
-            reportesToolStripMenuItem.Text = "Reportes";
+            consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
+            consultarToolStripMenuItem1.Size = new Size(224, 26);
+            consultarToolStripMenuItem1.Text = "Consultar";
             // 
-            // totalesYPromediosDeFacturacionToolStripMenuItem
+            // modificarToolStripMenuItem
             // 
-            totalesYPromediosDeFacturacionToolStripMenuItem.Name = "totalesYPromediosDeFacturacionToolStripMenuItem";
-            totalesYPromediosDeFacturacionToolStripMenuItem.Size = new Size(380, 26);
-            totalesYPromediosDeFacturacionToolStripMenuItem.Text = "Totales y Promedios de Facturacion";
+            modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
+            modificarToolStripMenuItem.Size = new Size(224, 26);
+            modificarToolStripMenuItem.Text = "Modificar";
             // 
-            // automobilesMásVendidosToolStripMenuItem
+            // soporteToolStripMenuItem
             // 
-            automobilesMásVendidosToolStripMenuItem.Name = "automobilesMásVendidosToolStripMenuItem";
-            automobilesMásVendidosToolStripMenuItem.Size = new Size(380, 26);
-            automobilesMásVendidosToolStripMenuItem.Text = "Automobiles más vendidos";
+            soporteToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nuevoClienteVendedorToolStripMenuItem });
+            soporteToolStripMenuItem.Name = "soporteToolStripMenuItem";
+            soporteToolStripMenuItem.Size = new Size(79, 25);
+            soporteToolStripMenuItem.Text = "Soporte";
             // 
-            // automóvilesQueNuncaSeVendieronToolStripMenuItem
+            // nuevoClienteVendedorToolStripMenuItem
             // 
-            automóvilesQueNuncaSeVendieronToolStripMenuItem.Name = "automóvilesQueNuncaSeVendieronToolStripMenuItem";
-            automóvilesQueNuncaSeVendieronToolStripMenuItem.Size = new Size(380, 26);
-            automóvilesQueNuncaSeVendieronToolStripMenuItem.Text = "Automóviles que nunca se vendieron";
+            nuevoClienteVendedorToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clienteVendedorToolStripMenuItem1, productoToolStripMenuItem });
+            nuevoClienteVendedorToolStripMenuItem.Name = "nuevoClienteVendedorToolStripMenuItem";
+            nuevoClienteVendedorToolStripMenuItem.Size = new Size(224, 26);
+            nuevoClienteVendedorToolStripMenuItem.Text = "Nuevo";
             // 
-            // porcentajeDeComprasPorTipoDeClienteToolStripMenuItem
+            // clienteVendedorToolStripMenuItem1
             // 
-            porcentajeDeComprasPorTipoDeClienteToolStripMenuItem.Name = "porcentajeDeComprasPorTipoDeClienteToolStripMenuItem";
-            porcentajeDeComprasPorTipoDeClienteToolStripMenuItem.Size = new Size(380, 26);
-            porcentajeDeComprasPorTipoDeClienteToolStripMenuItem.Text = "Porcentaje de compras por tipo de cliente";
+            clienteVendedorToolStripMenuItem1.Name = "clienteVendedorToolStripMenuItem1";
+            clienteVendedorToolStripMenuItem1.Size = new Size(224, 26);
+            clienteVendedorToolStripMenuItem1.Text = "Cliente/Vendedor";
+            clienteVendedorToolStripMenuItem1.Click += clienteVendedorToolStripMenuItem1_Click;
             // 
-            // vehículosEntregadosToolStripMenuItem
+            // productoToolStripMenuItem
             // 
-            vehículosEntregadosToolStripMenuItem.Name = "vehículosEntregadosToolStripMenuItem";
-            vehículosEntregadosToolStripMenuItem.Size = new Size(380, 26);
-            vehículosEntregadosToolStripMenuItem.Text = "Vehículos entregados";
+            productoToolStripMenuItem.Name = "productoToolStripMenuItem";
+            productoToolStripMenuItem.Size = new Size(224, 26);
+            productoToolStripMenuItem.Text = "Producto";
             // 
-            // stockProducidoDeAutopartesToolStripMenuItem
+            // reportesToolStripMenuItem1
             // 
-            stockProducidoDeAutopartesToolStripMenuItem.Name = "stockProducidoDeAutopartesToolStripMenuItem";
-            stockProducidoDeAutopartesToolStripMenuItem.Size = new Size(380, 26);
-            stockProducidoDeAutopartesToolStripMenuItem.Text = "Stock producido de autopartes";
+            reportesToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { totalesYPromediosDeFacturacionToolStripMenuItem1, automobilesMásVendidosToolStripMenuItem1, automóvilesQueNuncaSeVendieronToolStripMenuItem1, porcentajeDeComprasPorTipoDeClienteToolStripMenuItem1, vehículosEntregadosToolStripMenuItem1, stockProducidoDeAutopartesToolStripMenuItem1 });
+            reportesToolStripMenuItem1.Name = "reportesToolStripMenuItem1";
+            reportesToolStripMenuItem1.Size = new Size(86, 25);
+            reportesToolStripMenuItem1.Text = "Reportes";
+            // 
+            // totalesYPromediosDeFacturacionToolStripMenuItem1
+            // 
+            totalesYPromediosDeFacturacionToolStripMenuItem1.Name = "totalesYPromediosDeFacturacionToolStripMenuItem1";
+            totalesYPromediosDeFacturacionToolStripMenuItem1.Size = new Size(380, 26);
+            totalesYPromediosDeFacturacionToolStripMenuItem1.Text = "Totales y Promedios de Facturacion";
+            // 
+            // automobilesMásVendidosToolStripMenuItem1
+            // 
+            automobilesMásVendidosToolStripMenuItem1.Name = "automobilesMásVendidosToolStripMenuItem1";
+            automobilesMásVendidosToolStripMenuItem1.Size = new Size(380, 26);
+            automobilesMásVendidosToolStripMenuItem1.Text = "Automobiles más vendidos";
+            // 
+            // automóvilesQueNuncaSeVendieronToolStripMenuItem1
+            // 
+            automóvilesQueNuncaSeVendieronToolStripMenuItem1.Name = "automóvilesQueNuncaSeVendieronToolStripMenuItem1";
+            automóvilesQueNuncaSeVendieronToolStripMenuItem1.Size = new Size(380, 26);
+            automóvilesQueNuncaSeVendieronToolStripMenuItem1.Text = "Automóviles que nunca se vendieron";
+            // 
+            // porcentajeDeComprasPorTipoDeClienteToolStripMenuItem1
+            // 
+            porcentajeDeComprasPorTipoDeClienteToolStripMenuItem1.Name = "porcentajeDeComprasPorTipoDeClienteToolStripMenuItem1";
+            porcentajeDeComprasPorTipoDeClienteToolStripMenuItem1.Size = new Size(380, 26);
+            porcentajeDeComprasPorTipoDeClienteToolStripMenuItem1.Text = "Porcentaje de compras por tipo de cliente";
+            // 
+            // vehículosEntregadosToolStripMenuItem1
+            // 
+            vehículosEntregadosToolStripMenuItem1.Name = "vehículosEntregadosToolStripMenuItem1";
+            vehículosEntregadosToolStripMenuItem1.Size = new Size(380, 26);
+            vehículosEntregadosToolStripMenuItem1.Text = "Vehículos entregados";
+            // 
+            // stockProducidoDeAutopartesToolStripMenuItem1
+            // 
+            stockProducidoDeAutopartesToolStripMenuItem1.Name = "stockProducidoDeAutopartesToolStripMenuItem1";
+            stockProducidoDeAutopartesToolStripMenuItem1.Size = new Size(380, 26);
+            stockProducidoDeAutopartesToolStripMenuItem1.Text = "Stock producido de autopartes";
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            acercaDeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { informaciónToolStripMenuItem });
+            acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            acercaDeToolStripMenuItem.Size = new Size(91, 25);
+            acercaDeToolStripMenuItem.Text = "Acerca de";
+            // 
+            // informaciónToolStripMenuItem
+            // 
+            informaciónToolStripMenuItem.Name = "informaciónToolStripMenuItem";
+            informaciónToolStripMenuItem.Size = new Size(204, 26);
+            informaciónToolStripMenuItem.Text = "Desarrolladores";
             // 
             // lblContrasenia
             // 
@@ -216,6 +253,7 @@
             Name = "FrmMenuPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu Principal";
+            WindowState = FormWindowState.Maximized;
             Load += FrmMenuPrincipal_Load;
             mStpPrincipal.ResumeLayout(false);
             mStpPrincipal.PerformLayout();
@@ -227,24 +265,29 @@
 
         private MenuStrip mStpPrincipal;
         private ToolStripMenuItem archivoToolStripMenuItem;
-        private ToolStripMenuItem nuevoToolStripMenuItem;
         private ToolStripMenuItem salirToolStripMenuItem;
-        private ToolStripMenuItem facturaToolStripMenuItem;
-        private ToolStripMenuItem clienteVendedorToolStripMenuItem;
-        private ToolStripMenuItem verToolStripMenuItem;
-        private ToolStripMenuItem consultarToolStripMenuItem;
-        private ToolStripMenuItem facturaToolStripMenuItem1;
-        private ToolStripMenuItem reportesToolStripMenuItem;
-        private ToolStripMenuItem totalesYPromediosDeFacturacionToolStripMenuItem;
-        private ToolStripMenuItem automobilesMásVendidosToolStripMenuItem;
-        private ToolStripMenuItem porcentajeDeComprasPorTipoDeClienteToolStripMenuItem;
-        private ToolStripMenuItem vehículosEntregadosToolStripMenuItem;
-        private ToolStripMenuItem automóvilesQueNuncaSeVendieronToolStripMenuItem;
-        private ToolStripMenuItem stockProducidoDeAutopartesToolStripMenuItem;
         private Label lblContrasenia;
         private Label lblUsuario;
         private Label lblIngresar;
         private TextBox txtUsuario;
         private TextBox txtContrasenia;
+        private ToolStripMenuItem soporteToolStripMenuItem;
+        private ToolStripMenuItem transacciónToolStripMenuItem;
+        private ToolStripMenuItem reportesToolStripMenuItem1;
+        private ToolStripMenuItem acercaDeToolStripMenuItem;
+        private ToolStripMenuItem nuevaFacturaToolStripMenuItem;
+        private ToolStripMenuItem nuevaToolStripMenuItem;
+        private ToolStripMenuItem nuevoClienteVendedorToolStripMenuItem;
+        private ToolStripMenuItem consultarToolStripMenuItem1;
+        private ToolStripMenuItem modificarToolStripMenuItem;
+        private ToolStripMenuItem clienteVendedorToolStripMenuItem1;
+        private ToolStripMenuItem productoToolStripMenuItem;
+        private ToolStripMenuItem totalesYPromediosDeFacturacionToolStripMenuItem1;
+        private ToolStripMenuItem automobilesMásVendidosToolStripMenuItem1;
+        private ToolStripMenuItem automóvilesQueNuncaSeVendieronToolStripMenuItem1;
+        private ToolStripMenuItem porcentajeDeComprasPorTipoDeClienteToolStripMenuItem1;
+        private ToolStripMenuItem vehículosEntregadosToolStripMenuItem1;
+        private ToolStripMenuItem stockProducidoDeAutopartesToolStripMenuItem1;
+        private ToolStripMenuItem informaciónToolStripMenuItem;
     }
 }

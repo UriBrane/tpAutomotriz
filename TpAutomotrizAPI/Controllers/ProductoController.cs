@@ -8,21 +8,21 @@ namespace TpAutomotrizAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteController : ControllerBase
+    public class ProductoController : ControllerBase
     {
         private IApplication app;
-        public ClienteController()
+        public ProductoController()
         {
             app = new Application();
         }
 
-        [HttpGet("/cliente")]
-        public IActionResult GetClientes()
+        [HttpGet("/producto")]
+        public IActionResult GetProductos()
         {
-            List<Cliente> lst = null;
+            List<Producto> lst = null;
             try
             {
-                lst = app.GetClientes();
+                lst = app.GetProductos();
                 return Ok(lst);
             }
             catch (Exception ex)
