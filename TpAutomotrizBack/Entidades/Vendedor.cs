@@ -8,22 +8,22 @@ namespace TpAutomotrizBack.Entidades
 {
     public class Vendedor : Persona
     {
-        public int Id_vendedor { get; set; }
-        public DateTime Fecha_ingreso { get; set; }
-        public int Id_categoria { get; set; }
+        public int IdVendedor { get; set; }
+        public DateTime FechaIngreso { get; set; }
+        public int IdCategoria { get; set; }
 
         public Vendedor() : base()
         {
-            Id_vendedor = 0;
-            Fecha_ingreso = DateTime.MinValue;
-            Id_categoria = 0;
+            IdVendedor = 0;
+            FechaIngreso = DateTime.MinValue;
+            IdCategoria = 0;
         }
 
-        public Vendedor(string nombre, string apellido, int cuit, int id_vent, DateTime fec, int cat) : base(nombre, apellido, cuit)
+        public Vendedor(int idVend, string nombre, string apellido, string cuit, DateTime fec, int cat) : base(nombre, apellido, cuit)
         {
-            Id_vendedor = id_vent;
-            Fecha_ingreso = fec;
-            Id_categoria = cat;
+            IdVendedor = idVend;
+            FechaIngreso = fec;
+            IdCategoria = cat;
         }
 
         public override string ToString()

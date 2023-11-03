@@ -28,11 +28,6 @@ namespace TpAutomotrizBack.Datos
             return instance;
         }
 
-        public SqlConnection GetSqlConnection()
-        {
-            return this.cnn;
-        }
-
         public DataTable ConsultarTabla(string nombreSP)
         {// Consultar una tabla de la BD con el nombre de un SP
             cnn.Open();
@@ -47,7 +42,7 @@ namespace TpAutomotrizBack.Datos
         public bool EjecutarSQL(string strSql, List<Parametro> lParametros)
         {// Ejecuta un SP con una lista de Parametros
             int filasAfectadas = 0;
-            SqlTransaction t;
+            SqlTransaction? t = null;
 
             try
             {
@@ -87,7 +82,7 @@ namespace TpAutomotrizBack.Datos
         public bool EjecutarSQL(string spMaestro, string spDetalle, List<Parametro> lParamMaestro, List<Parametro> lParamDetalle)
         {// Ejecuta una transaccion Maestro-Detalle con los nombres de los sp como param de entrada y las listas de parametros, devuelve el numero de factura
             int nroFactura = 0;
-            SqlTransaction t;
+            SqlTransaction? t = null;
 
             try
             {
@@ -111,14 +106,11 @@ namespace TpAutomotrizBack.Datos
                 cmdMaestro.Parameters.Add(param);
 
                 cmdMaestro.ExecuteNonQuery();
-
                 nroFactura = Convert.ToInt32(param.Value);
 
-                cmdMaestro.ExecuteNonQuery();
-
                 int detallleNro = 1;
-
                 SqlCommand cmdDetalle;
+
                 if (lParamDetalle != null)
                 {
                     foreach (Parametro p in lParamDetalle)
@@ -143,17 +135,14 @@ namespace TpAutomotrizBack.Datos
             {
                 if (t != null) { t.Rollback(); }
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
             finally
             {
                 if (cnn != null && cnn.State == ConnectionState.Open)
                     cnn.Close();
             }
-
-            if (filasAfectadas != 0)
-                return true;
-            else
-                return false;
+            return true;               
         }
 
     }

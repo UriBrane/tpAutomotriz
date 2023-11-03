@@ -9,7 +9,19 @@ namespace TpAutomotrizBack.Fachada.Interfaz
 {
     public interface IApplication
     {
-        bool CrearCliente(Cliente c);
+        // CLIENTE
+
+        bool PostCliente(Cliente c);
         List<Cliente> GetClientes();
+
+        // VENDEDOR
+
+        bool PostVendedor(Vendedor v);
+        List<Vendedor> GetVendedores();
+
+        // PRODUCTO
+
+        bool PostProducto(Producto p);
+        List<Producto> GetProductos();
     }
 }

@@ -10,16 +10,16 @@ namespace TpAutomotrizBack.Entidades
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public int Cuit { get; set; }
+        public string Cuit { get; set; }
 
         public Persona()
         {
             Nombre = string.Empty;
             Apellido = string.Empty;
-            Cuit = 0;
+            Cuit = string.Empty;
         }
 
-        public Persona(string nom, string ape, int cuit)
+        public Persona(string nom, string ape, string cuit)
         {
             Nombre = nom;
             Apellido = ape;

@@ -12,20 +12,47 @@ namespace TpAutomotrizBack.Fachada.Implementacion
 {
     public class Application : IApplication
     {
-        private IClienteDAO clienteDao;
+        private IClienteDAO clienteDAO;
+        private IVendedorDAO vendedorDAO;
+        private IProductoDAO productoDAO;
         public Application()
         {
-            clienteDao = new ClienteDAO();
+            clienteDAO = new ClienteDAO();
+            vendedorDAO = new VendedorDAO();
+            productoDAO = new ProductoDAO();
         }
 
+        // CLIENTE
+
+        public bool PostCliente(Cliente c)
+        {
+            return clienteDAO.PostCliente(c);
+        }
         public List<Cliente> GetClientes()
         {
-            return clienteDao.GetClientes();
+            return clienteDAO.GetClientes();
         }
 
-        public bool CrearCliente(Cliente c)
+        // VENDEDOR
+
+        public bool PostVendedor(Vendedor v)
         {
-            return clienteDao.CrearCliente(c);
+            return vendedorDAO.PostVendedor(v);
+        }
+        public List<Vendedor> GetVendedores()
+        {
+            return vendedorDAO.GetVendedores();
+        }
+
+        // PRODUCTO
+
+        public bool PostProducto(Producto p)
+        {
+            return productoDAO.PostProducto(p);
+        }
+        public List <Producto> GetProductos()
+        {
+            return productoDAO.GetProductos();
         }
     }
 }

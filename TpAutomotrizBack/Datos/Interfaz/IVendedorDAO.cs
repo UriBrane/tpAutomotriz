@@ -7,9 +7,9 @@ using TpAutomotrizBack.Entidades;
 
 namespace TpAutomotrizBack.Datos.Interfaz
 {
-    public interface IClienteDAO
+    public interface IVendedorDAO
     {
-        List<Cliente> GetClientes();
-        bool PostCliente(Cliente c);
+        List<Vendedor> GetVendedores();
+        bool PostVendedor(Vendedor v);
     }
 }

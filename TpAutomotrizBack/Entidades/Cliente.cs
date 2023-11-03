@@ -8,23 +8,26 @@ namespace TpAutomotrizBack.Entidades
 {
     public class Cliente : Persona
     {
+        public int IdCliente { get; set; }
         public string Calle { get; set; }
         public int CalleNro { get; set; }
         public int TipoCliente { get; set; }
-        public int Barrio { get; set; }
+        public int IdBarrio { get; set; }
         public Cliente() : base()
         {
+            IdCliente = 0;
             Calle = string.Empty;
             CalleNro = 0;
             TipoCliente = 0;
-            Barrio = 0;
+            IdBarrio = 0;
         }
-        public Cliente(string nombre, string apellido, int cuit, string calle, int nro, int tipo, int barrio) : base(nombre, apellido, cuit)
+        public Cliente(int idCli, string nombre, string apellido, string cuit, string calle, int nro, int tipo, int idBarrio) : base(nombre, apellido, cuit)
         {
+            IdCliente = idCli;
             Calle = calle;
             CalleNro = nro;
             TipoCliente = tipo;
-            Barrio = barrio;
+            IdBarrio = idBarrio;
         }
         public override string ToString()
         {

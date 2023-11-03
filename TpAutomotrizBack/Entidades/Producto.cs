@@ -9,30 +9,33 @@ namespace TpAutomotrizBack.Entidades
     public class Producto
     {
         public int IdProducto { get; set; }
-        public string Detalle { get; set; }
+        public string Descripcion { get; set; }
         public double Precio { get; set; }
         public int Cantidad { get; set; }
         public int CantMinPorMayor { get; set; }
         public int CantidadMin { get; set; }
+        public int IdTipoProducto { get; set; }
 
         public Producto()
         {
             IdProducto = 0;
-            Detalle = string.Empty;
+            Descripcion = string.Empty;
             Precio = 0;
             Cantidad = 0;
             CantMinPorMayor = 0;
             CantidadMin = 0;
+            IdTipoProducto = 0;
         }
 
-        public Producto(int idProducto, string detalle, double precio, int cantidad, int cantMinPorMayor, int cantidadMin)
+        public Producto(int idProducto, string descripcion, double precio, int cantidad, int cantMinPorMayor, int cantidadMin, int idTipoProd)
         {
             this.IdProducto = idProducto;
-            this.Detalle = detalle;
+            this.Descripcion = descripcion;
             this.Precio = precio;
             this.Cantidad = cantidad;
             this.CantMinPorMayor = cantMinPorMayor;
             this.CantidadMin = cantidadMin;
+            this.IdTipoProducto = idTipoProd;
         }
 
         public void CalcularStock()
@@ -43,7 +46,7 @@ namespace TpAutomotrizBack.Entidades
 
         public override string ToString()
         {
-            return Detalle.ToString();
+            return Descripcion.ToString();
         }
 
     }

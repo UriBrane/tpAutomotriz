@@ -302,7 +302,7 @@ VALUES
     ('C�rdoba'),
     ('Santa Fe'),
     ('Mendoza'),
-����('Tucum�n');
+    ('Tucum�n');
 
 --INSERT PARA BARRIOS
 INSERT INTO Barrios ([descripcion], [id_provincia])
@@ -440,23 +440,76 @@ INSERT INTO detalles_pedidos ([id_orden_pedido], [id_producto],[cantidad])
 		(3,3,45),
 		(4,4,63),
 		(5,5,80);
+GO
 
 -- SPs
 
--- Insertar Clientes
-Create proc INSERT_CLIENTES
-@tipo int,
-@nombre varchar(200),
-@apellido varchar(200),
-@cuit varchar(20),
-@calle varchar(200),
-@nro int,
-@barrio int
-as 
-begin 
+-- INSERTAR VENDEDOR
 
-	INSERT INTO Clientes (id_tipo_cliente,nombre,apellido,CUIT,dire_calle,dire_nro,id_barrio)
-		VALUES (@tipo,@nombre,@apellido,@cuit,@calle,@nro,@barrio);
-end;
+CREATE PROCEDURE SP_INSERT_VENDEDOR
+    @id_categoria int,
+    @apellido varchar(100),
+    @nombre varchar(100),
+    @CUIT varchar(20),
+    @fecha_ingreso datetime
+AS
+BEGIN
+    INSERT INTO Vendedores(id_categoria, apellido, nombre, CUIT, fecha_ingreso)
+    VALUES (@id_categoria, @apellido, @nombre, @CUIT, @fecha_ingreso)
+END;
+GO
 
+-- INSERTAR VENDEDOR
+CREATE PROCEDURE SP_INSERT_CLIENTE
+    @id_tipo_cliente int,
+    @nombre varchar(200),
+    @apellido varchar(200),
+    @CUIT varchar(20),
+    @dire_calle varchar(200),
+    @dire_nro int,
+    @id_barrio int
+AS
+BEGIN
+    INSERT INTO Clientes(id_tipo_cliente, nombre, apellido, CUIT, dire_calle, dire_nro, id_barrio)
+    VALUES (@id_tipo_cliente, @nombre, @apellido, @CUIT, @dire_calle, @dire_nro, @id_barrio)
+END;
+GO
 
+-- INSERTAR PRODUCTO
+CREATE PROCEDURE SP_INSERT_PRODUCTO
+    @id_tipo_producto int,
+    @descripcion varchar(255),
+    @precio decimal(10,2),
+    @cant_min_por_mayor int,
+    @cantidad int,
+    @cantidad_min int
+AS
+BEGIN
+    INSERT INTO Productos(id_tipo_producto, descripcion, precio, cant_min_por_mayor, cantidad, cantidad_min)
+    VALUES (@id_tipo_producto, @descripcion, @precio, @cant_min_por_mayor, @cantidad, @cantidad_min)
+END;
+GO
+
+-- SELECT CLIENTES
+CREATE PROCEDURE SP_SELECT_CLIENTES
+AS
+BEGIN
+    SELECT * FROM Clientes
+END;
+GO
+
+-- SELECT VENDEDORES
+CREATE PROCEDURE SP_SELECT_VENDEDORES
+AS
+BEGIN
+    SELECT * FROM Vendedores
+END;
+GO
+
+-- SELECT PRODUCTOS
+CREATE PROCEDURE SP_SELECT_PRODUCTOS
+AS
+BEGIN
+    SELECT * FROM Productos
+END;
+GO
