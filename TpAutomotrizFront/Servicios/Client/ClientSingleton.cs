@@ -20,7 +20,7 @@ namespace TpAutomotrizFront.Servicios.Client
                 instance = new ClientSingleton();
             return instance;
         }
-
+        
         // CRUD
         public async Task<string> GetAsync(string url)
         {
