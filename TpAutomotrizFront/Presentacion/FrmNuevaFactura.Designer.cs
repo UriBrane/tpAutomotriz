@@ -58,7 +58,7 @@
             comboBox1.Margin = new Padding(4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(334, 29);
-            comboBox1.TabIndex = 0;
+            comboBox1.TabIndex = 4;
             // 
             // comboBox2
             // 
@@ -68,7 +68,7 @@
             comboBox2.Margin = new Padding(4);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(334, 29);
-            comboBox2.TabIndex = 1;
+            comboBox2.TabIndex = 5;
             // 
             // cboProducto
             // 
@@ -78,7 +78,7 @@
             cboProducto.Margin = new Padding(4);
             cboProducto.Name = "cboProducto";
             cboProducto.Size = new Size(367, 29);
-            cboProducto.TabIndex = 3;
+            cboProducto.TabIndex = 1;
             // 
             // nudCantidad
             // 
@@ -86,7 +86,7 @@
             nudCantidad.Margin = new Padding(4);
             nudCantidad.Name = "nudCantidad";
             nudCantidad.Size = new Size(95, 29);
-            nudCantidad.TabIndex = 4;
+            nudCantidad.TabIndex = 2;
             // 
             // dataGridView1
             // 
@@ -151,7 +151,7 @@
             btnAgregar.Margin = new Padding(4);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(121, 49);
-            btnAgregar.TabIndex = 6;
+            btnAgregar.TabIndex = 3;
             btnAgregar.Text = "AGREGAR";
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
@@ -162,7 +162,7 @@
             btnAceptar.Margin = new Padding(4);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(121, 49);
-            btnAceptar.TabIndex = 7;
+            btnAceptar.TabIndex = 6;
             btnAceptar.Text = "ACEPTAR";
             btnAceptar.UseVisualStyleBackColor = true;
             // 
@@ -172,7 +172,7 @@
             btnCancelar.Margin = new Padding(4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(121, 49);
-            btnCancelar.TabIndex = 8;
+            btnCancelar.TabIndex = 7;
             btnCancelar.Text = "CANCELAR";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -182,7 +182,7 @@
             dtpFecha.Margin = new Padding(4);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(367, 29);
-            dtpFecha.TabIndex = 9;
+            dtpFecha.TabIndex = 0;
             // 
             // lblNFactura
             // 

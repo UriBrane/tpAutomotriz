@@ -37,5 +37,11 @@ namespace TpAutomotrizFront
             FrmNuevaPersona frmNuevaPersona = new FrmNuevaPersona();
             frmNuevaPersona.ShowDialog();
         }
+
+        private void productoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmNuevoProducto frmNuevoProducto = new FrmNuevoProducto();
+            frmNuevoProducto.ShowDialog();
+        }
     }
 }

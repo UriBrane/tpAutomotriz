@@ -22,7 +22,7 @@ namespace TpAutomotrizBack.Datos.Implementacion
                 new Parametro( "@cantidad_min", p.CantidadMin),
                 new Parametro( "@id_tipo_producto", p.IdTipoProducto),
             };
-            return HelperDAO.GetInstance().EjecutarSQL("INSERT_PRODUCTO", parametros);
+            return HelperDAO.GetInstance().EjecutarSQL("SP_INSERT_PRODUCTO", parametros);
         }
         public List<Producto> GetProductos()
         {

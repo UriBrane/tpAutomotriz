@@ -51,9 +51,10 @@
             informaciónToolStripMenuItem = new ToolStripMenuItem();
             lblContrasenia = new Label();
             lblUsuario = new Label();
-            lblIngresar = new Label();
+            lblAcceder = new Label();
             txtUsuario = new TextBox();
             txtContrasenia = new TextBox();
+            btnIngresar = new Button();
             mStpPrincipal.SuspendLayout();
             SuspendLayout();
             // 
@@ -77,7 +78,7 @@
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(224, 26);
+            salirToolStripMenuItem.Size = new Size(125, 26);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
@@ -92,26 +93,26 @@
             // 
             nuevaFacturaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nuevaToolStripMenuItem, consultarToolStripMenuItem1, modificarToolStripMenuItem });
             nuevaFacturaToolStripMenuItem.Name = "nuevaFacturaToolStripMenuItem";
-            nuevaFacturaToolStripMenuItem.Size = new Size(224, 26);
+            nuevaFacturaToolStripMenuItem.Size = new Size(144, 26);
             nuevaFacturaToolStripMenuItem.Text = "Factura";
             // 
             // nuevaToolStripMenuItem
             // 
             nuevaToolStripMenuItem.Name = "nuevaToolStripMenuItem";
-            nuevaToolStripMenuItem.Size = new Size(224, 26);
+            nuevaToolStripMenuItem.Size = new Size(161, 26);
             nuevaToolStripMenuItem.Text = "Nueva";
             nuevaToolStripMenuItem.Click += nuevaToolStripMenuItem_Click;
             // 
             // consultarToolStripMenuItem1
             // 
             consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
-            consultarToolStripMenuItem1.Size = new Size(224, 26);
+            consultarToolStripMenuItem1.Size = new Size(161, 26);
             consultarToolStripMenuItem1.Text = "Consultar";
             // 
             // modificarToolStripMenuItem
             // 
             modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            modificarToolStripMenuItem.Size = new Size(224, 26);
+            modificarToolStripMenuItem.Size = new Size(161, 26);
             modificarToolStripMenuItem.Text = "Modificar";
             // 
             // soporteToolStripMenuItem
@@ -125,21 +126,22 @@
             // 
             nuevoClienteVendedorToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clienteVendedorToolStripMenuItem1, productoToolStripMenuItem });
             nuevoClienteVendedorToolStripMenuItem.Name = "nuevoClienteVendedorToolStripMenuItem";
-            nuevoClienteVendedorToolStripMenuItem.Size = new Size(224, 26);
+            nuevoClienteVendedorToolStripMenuItem.Size = new Size(140, 26);
             nuevoClienteVendedorToolStripMenuItem.Text = "Nuevo";
             // 
             // clienteVendedorToolStripMenuItem1
             // 
             clienteVendedorToolStripMenuItem1.Name = "clienteVendedorToolStripMenuItem1";
-            clienteVendedorToolStripMenuItem1.Size = new Size(224, 26);
+            clienteVendedorToolStripMenuItem1.Size = new Size(215, 26);
             clienteVendedorToolStripMenuItem1.Text = "Cliente/Vendedor";
             clienteVendedorToolStripMenuItem1.Click += clienteVendedorToolStripMenuItem1_Click;
             // 
             // productoToolStripMenuItem
             // 
             productoToolStripMenuItem.Name = "productoToolStripMenuItem";
-            productoToolStripMenuItem.Size = new Size(224, 26);
+            productoToolStripMenuItem.Size = new Size(215, 26);
             productoToolStripMenuItem.Text = "Producto";
+            productoToolStripMenuItem.Click += productoToolStripMenuItem_Click;
             // 
             // reportesToolStripMenuItem1
             // 
@@ -215,37 +217,47 @@
             lblUsuario.TabIndex = 2;
             lblUsuario.Text = "Usuario:";
             // 
-            // lblIngresar
+            // lblAcceder
             // 
-            lblIngresar.AutoSize = true;
-            lblIngresar.Location = new Point(526, 149);
-            lblIngresar.Name = "lblIngresar";
-            lblIngresar.Size = new Size(67, 21);
-            lblIngresar.TabIndex = 3;
-            lblIngresar.Text = "Ingresar";
+            lblAcceder.AutoSize = true;
+            lblAcceder.Location = new Point(526, 149);
+            lblAcceder.Name = "lblAcceder";
+            lblAcceder.Size = new Size(65, 21);
+            lblAcceder.TabIndex = 3;
+            lblAcceder.Text = "Acceder";
             // 
             // txtUsuario
             // 
             txtUsuario.Location = new Point(442, 236);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(263, 29);
-            txtUsuario.TabIndex = 4;
+            txtUsuario.TabIndex = 1;
             // 
             // txtContrasenia
             // 
             txtContrasenia.Location = new Point(442, 307);
             txtContrasenia.Name = "txtContrasenia";
             txtContrasenia.Size = new Size(263, 29);
-            txtContrasenia.TabIndex = 5;
+            txtContrasenia.TabIndex = 2;
+            // 
+            // btnIngresar
+            // 
+            btnIngresar.Location = new Point(581, 382);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new Size(94, 29);
+            btnIngresar.TabIndex = 4;
+            btnIngresar.Text = "Ingresar";
+            btnIngresar.UseVisualStyleBackColor = true;
             // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1079, 671);
+            Controls.Add(btnIngresar);
             Controls.Add(txtContrasenia);
             Controls.Add(txtUsuario);
-            Controls.Add(lblIngresar);
+            Controls.Add(lblAcceder);
             Controls.Add(lblUsuario);
             Controls.Add(lblContrasenia);
             Controls.Add(mStpPrincipal);
@@ -253,7 +265,6 @@
             Name = "FrmMenuPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu Principal";
-            WindowState = FormWindowState.Maximized;
             Load += FrmMenuPrincipal_Load;
             mStpPrincipal.ResumeLayout(false);
             mStpPrincipal.PerformLayout();
@@ -268,7 +279,7 @@
         private ToolStripMenuItem salirToolStripMenuItem;
         private Label lblContrasenia;
         private Label lblUsuario;
-        private Label lblIngresar;
+        private Label lblAcceder;
         private TextBox txtUsuario;
         private TextBox txtContrasenia;
         private ToolStripMenuItem soporteToolStripMenuItem;
@@ -289,5 +300,6 @@
         private ToolStripMenuItem vehículosEntregadosToolStripMenuItem1;
         private ToolStripMenuItem stockProducidoDeAutopartesToolStripMenuItem1;
         private ToolStripMenuItem informaciónToolStripMenuItem;
+        private Button btnIngresar;
     }
 }

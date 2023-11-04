@@ -28,7 +28,7 @@ namespace TpAutomotrizFront.Presentacion
         private async Task CargarComboProductosAsync()
         {
             // URL para el pc de Andres, cambia para cada pc
-            string url = "https://localhost:7106/producto"; 
+            string url = "https://localhost:7106/producto";
 
             var dataJson = await ClientSingleton.GetInstance().GetAsync(url);
 

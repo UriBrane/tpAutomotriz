@@ -30,5 +30,20 @@ namespace TpAutomotrizAPI.Controllers
                 return StatusCode(500, "Error !!! " + ex.Message);
             }
         }
+
+        [HttpPost("/vendedor")]
+        public IActionResult PostVendedor(Vendedor v)
+        {
+            try
+            {
+                if (v == null)
+                    return BadRequest("Vendedor Incorrecto!");
+                return Ok(app.PostVendedor(v));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
     }
 }

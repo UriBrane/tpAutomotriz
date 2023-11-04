@@ -31,5 +31,20 @@ namespace TpAutomotrizAPI.Controllers
             }
         }
 
+        [HttpPost("/producto")]
+        public IActionResult PostProducto(Producto p)
+        {
+            try
+            {
+                if(p == null)
+                    return BadRequest("Producto Incorrecto!!");
+                return Ok(app.PostProducto(p));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
     }
 }

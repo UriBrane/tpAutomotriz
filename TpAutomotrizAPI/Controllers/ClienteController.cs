@@ -31,5 +31,20 @@ namespace TpAutomotrizAPI.Controllers
             }
         }
 
+        [HttpPost("/cliente")]
+        public IActionResult PostCliente(Cliente c)
+        {
+            try
+            {
+                if (c == null)
+                    return BadRequest("Cliente Incorrecto!!");
+                return Ok(app.PostCliente(c));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
     }
 }

@@ -26,16 +26,24 @@ namespace TpAutomotrizBack.Entidades
             CantidadMin = 0;
             IdTipoProducto = 0;
         }
-
+        public Producto(string descripcion, double precio, int cantidad, int cantMinPorMayor, int cantidadMin, int idTipoProd)
+        {
+            Descripcion = descripcion;
+            Precio = precio;
+            Cantidad = cantidad;
+            CantMinPorMayor = cantMinPorMayor;
+            CantidadMin = cantidadMin;
+            IdTipoProducto = idTipoProd;
+        }
         public Producto(int idProducto, string descripcion, double precio, int cantidad, int cantMinPorMayor, int cantidadMin, int idTipoProd)
         {
-            this.IdProducto = idProducto;
-            this.Descripcion = descripcion;
-            this.Precio = precio;
-            this.Cantidad = cantidad;
-            this.CantMinPorMayor = cantMinPorMayor;
-            this.CantidadMin = cantidadMin;
-            this.IdTipoProducto = idTipoProd;
+            IdProducto = idProducto;
+            Descripcion = descripcion;
+            Precio = precio;
+            Cantidad = cantidad;
+            CantMinPorMayor = cantMinPorMayor;
+            CantidadMin = cantidadMin;
+            IdTipoProducto = idTipoProd;
         }
 
         public void CalcularStock()

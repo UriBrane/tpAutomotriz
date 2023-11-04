@@ -5,13 +5,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace TpAutomotrizBack.Datos
 {
     public class HelperDAO
     {
-        private static HelperDAO instance;
+        private static HelperDAO? instance;
         private SqlConnection cnn;
 
         private HelperDAO()
@@ -65,7 +64,6 @@ namespace TpAutomotrizBack.Datos
             catch (SqlException ex)
             {
                 if (t != null) { t.Rollback(); }
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -73,7 +71,7 @@ namespace TpAutomotrizBack.Datos
                     cnn.Close();
             }
 
-            if (filasAfectadas != 0)
+            if (filasAfectadas > 0)
                 return true;
             else
                 return false;
@@ -134,7 +132,6 @@ namespace TpAutomotrizBack.Datos
             catch (SqlException ex)
             {
                 if (t != null) { t.Rollback(); }
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             finally

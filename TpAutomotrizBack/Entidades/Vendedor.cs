@@ -18,12 +18,17 @@ namespace TpAutomotrizBack.Entidades
             FechaIngreso = DateTime.MinValue;
             IdCategoria = 0;
         }
+        public Vendedor(string nombre, string apellido, string cuit, DateTime fec, int idCat) : base(nombre, apellido, cuit)
+        {
+            FechaIngreso = fec;
+            IdCategoria = idCat;
+        }
 
-        public Vendedor(int idVend, string nombre, string apellido, string cuit, DateTime fec, int cat) : base(nombre, apellido, cuit)
+        public Vendedor(int idVend, string nombre, string apellido, string cuit, DateTime fec, int idCat) : base(nombre, apellido, cuit)
         {
             IdVendedor = idVend;
             FechaIngreso = fec;
-            IdCategoria = cat;
+            IdCategoria = idCat;
         }
 
         public override string ToString()
