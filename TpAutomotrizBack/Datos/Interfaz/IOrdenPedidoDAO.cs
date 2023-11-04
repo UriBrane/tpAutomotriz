@@ -7,10 +7,10 @@ using TpAutomotrizBack.Entidades;
 
 namespace TpAutomotrizBack.Datos.Interfaz
 {
-    public interface IVendedorDAO
+    public interface IOrdenPedidoDAO
     {
-        Vendedor GetVendedor(int id);
-        List<Vendedor> GetVendedores();
-        bool PostVendedor(Vendedor v);
+        OrdenPedido GetOrdenPedido(int id);
+        List<OrdenPedido> GetOrdenesPedido();
+        bool PostOrdenPedido(OrdenPedido oP);
     }
 }

@@ -7,10 +7,9 @@ using TpAutomotrizBack.Entidades;
 
 namespace TpAutomotrizBack.Datos.Interfaz
 {
-    public interface IVendedorDAO
+    public interface IFacturaDAO
     {
-        Vendedor GetVendedor(int id);
-        List<Vendedor> GetVendedores();
-        bool PostVendedor(Vendedor v);
+        bool PostFactura(Factura f);
+        List<Factura> GetFacturas();
     }
 }

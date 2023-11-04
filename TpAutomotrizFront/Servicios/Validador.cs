@@ -11,9 +11,7 @@ namespace TpAutomotrizFront.Servicios
         // CLASE QUE SIRVE PARA VALIDAR EL CONTENIDO DE LOS CONTROLES
 
         public static Validador? instance;
-        private Validador()
-        {
-        }
+        private Validador() { }
         public static Validador GetInstance()
         {
             if (instance == null)

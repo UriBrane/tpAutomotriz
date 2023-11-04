@@ -8,37 +8,54 @@ namespace TpAutomotrizBack.Entidades
 {
     public class DetalleFactura
     {
-        public Producto Producto { get; set; }
         public int IdDetalle { get; set; }
+        public int IdTipoVenta { get; set; }
+        public int IdFactura { get; set; }
+        public Producto Producto { get; set; }
+        public int Cantidad { get; set; }
         public double Precio { get; set; }
-        public double Cantidad { get; set; }
-        public double Descuento { get; set; }
-        public string Entregado { get; set; }
+        public int IdDescuento { get; set; }
+        public string Entregado { get; set; } // ?? este campo no esta en la BD
 
         public DetalleFactura()
         {
-            Producto = new Producto();
             IdDetalle = 0;
-            Precio = 0;
+            IdTipoVenta = 0;
+            IdFactura = 0;
+            Producto = new Producto();
             Cantidad = 0;
-            Descuento = 0;
+            Precio = 0;
+            IdDescuento = 0;
             Entregado = string.Empty;
         }
-
-        public DetalleFactura(Producto producto, int idDetalle, double precio, double cantidad, double descuento, string entregado)
+        public DetalleFactura(int idTipoVenta, int idFactura, Producto producto, int cantidad
+                              , double precio, int idDescuento, string entregado)
         {
-            this.Producto = producto;
-            this.IdDetalle = idDetalle;
-            this.Precio = precio;
-            this.Cantidad = cantidad;
-            this.Descuento = descuento;
-            this.Entregado = entregado;
+            IdTipoVenta = idTipoVenta;
+            IdFactura = idFactura;
+            Producto = producto;
+            Cantidad = cantidad;
+            Precio = precio;
+            IdDescuento = idDescuento;
+            Entregado = entregado;
+        }
+        public DetalleFactura(int idDetalle, int idTipoVenta, int idFactura, Producto producto
+                              , int cantidad, double precio, int idDescuento, string entregado)
+        {
+            IdDetalle = idDetalle;
+            IdTipoVenta = idTipoVenta;
+            IdFactura = idFactura;
+            Producto = producto;
+            Cantidad = cantidad;
+            Precio = precio;
+            IdDescuento = idDescuento;
+            Entregado = entregado;
         }
 
         public double CalcularSubtotal()
         {
             double subtotal = 0;
-            subtotal = Cantidad * Precio * Descuento;
+            subtotal = Cantidad * Precio * IdDescuento;
             return subtotal;
         }
 

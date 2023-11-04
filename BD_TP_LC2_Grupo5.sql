@@ -444,8 +444,37 @@ GO
 
 -- SPs
 
--- INSERTAR VENDEDOR
+-- INSERTAR FACTURAS
+CREATE PROCEDURE SP_INSERT_FACTURA
+    @id_cliente int,
+    @fecha datetime,
+    @id_vendedor int,
+    @id_orden_pedido int,
+    @id_autoplan int,
+    @id_forma_pago int
+AS
+BEGIN
+    INSERT INTO Facturas(id_cliente, fecha, id_vendedor, id_orden_pedido, id_autoplan, id_forma_pago)
+    VALUES (@id_cliente, @fecha, @id_vendedor, @id_orden_pedido, @id_autoplan, @id_forma_pago);
+END;
+GO
 
+-- INSERTAR DETALLES_FACTURAS
+CREATE PROCEDURE SP_INSERT_DETALLES_FAC
+    @id_tipo_venta int,
+    @id_factura int,
+    @id_producto int,
+    @cantidad int,
+    @precio decimal(10,2),
+    @id_descuento int
+AS
+BEGIN
+    INSERT INTO Detalles_Facturas(id_tipo_venta, id_factura, id_producto, cantidad, precio, id_descuento)
+    VALUES (@id_tipo_venta, @id_factura, @id_producto, @cantidad, @precio, @id_descuento);
+END;
+GO
+
+-- INSERTAR VENDEDOR
 CREATE PROCEDURE SP_INSERT_VENDEDOR
     @id_categoria int,
     @apellido varchar(100),
@@ -545,3 +574,55 @@ BEGIN
     SELECT * FROM Tipos_Productos
 END;
 GO
+
+-- SELECT ORDENES PEDIDOS
+CREATE PROCEDURE SP_SELECT_ORDENES_PEDIDOS
+AS
+BEGIN
+    SELECT *
+    FROM Ordenes_Pedidos;
+END;
+GO
+
+-- CONSULTAR CLIENTE
+CREATE PROCEDURE SP_CONSULTAR_CLIENTE
+    @id int
+AS
+BEGIN
+    SELECT *
+    FROM Clientes
+    WHERE id_cliente = @id;
+END;
+GO
+
+-- CONSULTAR VENDEDOR
+CREATE PROCEDURE SP_CONSULTAR_VENDEDOR
+    @id int
+AS
+BEGIN
+    SELECT *
+    FROM Vendedores
+    WHERE id_vendedor = @id;
+END;
+GO
+
+-- CONSULTAR PRODUCTO
+CREATE PROCEDURE SP_CONSULTAR_PRODUCTO
+    @id int
+AS
+BEGIN
+    SELECT *
+    FROM Productos
+    WHERE id_producto = @id;
+END;
+GO
+
+-- CONSULTAR ORDEN PEDIDO
+CREATE PROCEDURE SP_CONSULTAR_ORDEN_PEDIDO
+    @id int
+AS
+BEGIN
+    SELECT *
+    FROM Ordenes_Pedidos
+    WHERE id_orden_pedido = @id;
+END;

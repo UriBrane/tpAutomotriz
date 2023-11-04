@@ -27,6 +27,18 @@ namespace TpAutomotrizBack.Datos
             return instance;
         }
 
+        public DataTable ConsultarObjeto(string nombreSP, int id)
+        {
+            cnn.Open();
+            SqlCommand cmd = new SqlCommand(nombreSP, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("id", id);
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return dt;
+        }
+
         public DataTable ConsultarTabla(string nombreSP)
         {// Consultar una tabla de la BD con el nombre de un SP
             cnn.Open();
@@ -77,7 +89,7 @@ namespace TpAutomotrizBack.Datos
                 return false;
         }
 
-        public bool EjecutarSQL(string spMaestro, string spDetalle, List<Parametro> lParamMaestro, List<Parametro> lParamDetalle)
+        public bool EjecutarSQL(string spMaestro, string spDetalle, List<Parametro> lParamMaestro, List<List<Parametro>> lParamDetalle)
         {// Ejecuta una transaccion Maestro-Detalle con los nombres de los sp como param de entrada y las listas de parametros, devuelve el numero de factura
             int nroFactura = 0;
             SqlTransaction? t = null;
@@ -106,30 +118,33 @@ namespace TpAutomotrizBack.Datos
                 cmdMaestro.ExecuteNonQuery();
                 nroFactura = Convert.ToInt32(param.Value);
 
-                int detallleNro = 1;
+                //int detallleNro = 1;
                 SqlCommand cmdDetalle;
 
                 if (lParamDetalle != null)
                 {
-                    foreach (Parametro p in lParamDetalle)
+                    foreach (List<Parametro> l in lParamDetalle)
                     {
-                        cmdDetalle = new SqlCommand(spDetalle, cnn, t);
-                        cmdDetalle.CommandType = CommandType.StoredProcedure;
+                        foreach (Parametro p in l)
+                        {
+                            cmdDetalle = new SqlCommand(spDetalle, cnn, t);
+                            cmdDetalle.CommandType = CommandType.StoredProcedure;
 
-                        cmdDetalle.Parameters.AddWithValue(p.Clave, p.Valor);
+                            cmdDetalle.Parameters.AddWithValue(p.Clave, p.Valor);
 
-                        cmdDetalle.Parameters.AddWithValue("@nro_fac", nroFactura);
-                        cmdDetalle.Parameters.AddWithValue("@detalle", detallleNro);
+                            cmdDetalle.Parameters.AddWithValue("@nro_fac", nroFactura);
+                            //cmdDetalle.Parameters.AddWithValue("@detalle", detallleNro);
 
-                        cmdDetalle.ExecuteNonQuery();
+                            cmdDetalle.ExecuteNonQuery();
 
-                        detallleNro++;
+                            //detallleNro++;
+                        }
                     }
                 }
 
                 t.Commit();
             }
-            catch (SqlException ex)
+            catch
             {
                 if (t != null) { t.Rollback(); }
                 return false;
@@ -139,7 +154,7 @@ namespace TpAutomotrizBack.Datos
                 if (cnn != null && cnn.State == ConnectionState.Open)
                     cnn.Close();
             }
-            return true;               
+            return true;
         }
 
     }

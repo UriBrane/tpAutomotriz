@@ -9,6 +9,7 @@ namespace TpAutomotrizBack.Datos.Interfaz
 {
     public interface IClienteDAO
     {
+        Cliente GetCliente(int id);
         List<Cliente> GetClientes();
         bool PostCliente(Cliente c);
     }

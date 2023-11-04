@@ -9,52 +9,64 @@ namespace TpAutomotrizBack.Entidades
 {
     public class Factura
     {
-        // public DetalleFactura DetalleFactura { get; set; }
-        public Vendedor Vendedor { get; set; }
-        public Cliente Cliente { get; set; }
-        public OrdenPedido OrdenPedido { get; set; }
         public int IdFactura { get; set; }
+        public Cliente Cliente { get; set; }
         public DateTime Fecha { get; set; }
-        public List<DetalleFactura> DetFac { get; set; }
+        public Vendedor Vendedor { get; set; }
+        public OrdenPedido OrdenPedido { get; set; }
+        public int IdAutoPlan { get; set; }
+        public int IdFormaPago { get; set; }
+        public List<DetalleFactura> DetallesFactura { get; set; }
 
         public Factura()
         {
-            // DetalleFactura = null;
-            Vendedor = new Vendedor();
-            Cliente = new Cliente();
-            OrdenPedido = new OrdenPedido();
             IdFactura = 0;
+            Cliente = new Cliente();
             Fecha = DateTime.Today;
-            DetFac = new List<DetalleFactura>();
-
+            Vendedor = new Vendedor();
+            OrdenPedido = new OrdenPedido();
+            IdAutoPlan = 0;
+            IdFormaPago = 0;
+            DetallesFactura = new List<DetalleFactura>();
         }
-
-        public Factura( // DetalleFactura detalleFactura, 
-            Vendedor vendedor, Cliente cliente, OrdenPedido ordenPedido, int idFactura, DateTime fecha, List<DetalleFactura> detFac)
+        public Factura(Cliente cliente, DateTime fecha, Vendedor vendedor, OrdenPedido ordenPedido
+                       , int idAutoPlan, int idFormaPago, List<DetalleFactura> detallesFac)
         {
-            //this.DetalleFactura = detalleFactura;
-            this.Vendedor = vendedor;
-            this.Cliente = cliente;
-            this.OrdenPedido = ordenPedido;
-            this.IdFactura = idFactura;
-            this.Fecha = fecha;
-            this.DetFac = detFac;
+            Cliente = cliente;
+            Fecha = fecha;
+            Vendedor = vendedor;
+            OrdenPedido = ordenPedido;
+            IdAutoPlan = idAutoPlan;
+            IdFormaPago = idFormaPago;
+            DetallesFactura = detallesFac;
+        }
+        public Factura(int idFactura, Cliente cliente, DateTime fecha, Vendedor vendedor, OrdenPedido ordenPedido
+                       , int idAutoPlan, int idFormaPago, List<DetalleFactura> detallesFac)
+        {
+            IdFactura = idFactura;
+            Cliente = cliente;
+            Fecha = fecha;
+            Vendedor = vendedor;
+            OrdenPedido = ordenPedido;
+            IdAutoPlan = idAutoPlan;
+            IdFormaPago = idFormaPago;
+            DetallesFactura = detallesFac;
         }
 
         public void AgregarDetalleFactura(DetalleFactura detalle)
         {
-            DetFac.Add(detalle);
+            DetallesFactura.Add(detalle);
         }
 
         public void QuitarDetalleFactura(int posicion)
         {
-            DetFac.RemoveAt(posicion);
+            DetallesFactura.RemoveAt(posicion);
         }
 
         public double CalcularTotal()
         {
             double total = 0;
-            foreach (DetalleFactura d in DetFac)
+            foreach (DetalleFactura d in DetallesFactura)
                 total += d.CalcularSubtotal();
             return total;
         }

@@ -9,31 +9,36 @@ namespace TpAutomotrizBack.Entidades
 {
     public class OrdenPedido
     {
-        // public DetallePedido DetallePedido { get; set; }
         public int IdOrden { get; set; }
+        public Cliente Cliente { get; set; }
         public DateTime FechaEntrega { get; set; }
         public DateTime FechaPedido { get; set; }
         public List<DetallePedido> DetallesPedido { get; set; }
 
         public OrdenPedido()
         {
-            // DetallePedido = null;
             IdOrden = 0;
+            Cliente = new Cliente();
             FechaEntrega = DateTime.Today.AddDays(1);
             FechaPedido = DateTime.Today;
             DetallesPedido = new List<DetallePedido>();
         }
-
-
-
-        public OrdenPedido( // DetallePedido detallePedido, 
-            int id_orden, DateTime fechaEntrega, DateTime fechaPedido, List<DetallePedido> detPed)
+        public OrdenPedido(Cliente cliente, DateTime fechaEntrega
+                          , DateTime fechaPedido, List<DetallePedido> detPed)
         {
-            //DetallePedido = detallePedido;
-            this.IdOrden = id_orden;
-            this.FechaEntrega = fechaEntrega;
-            this.FechaPedido = fechaPedido;
-            this.DetallesPedido = detPed;
+            Cliente = cliente;
+            FechaEntrega = fechaEntrega;
+            FechaPedido = fechaPedido;
+            DetallesPedido = detPed;
+        }
+        public OrdenPedido(int id_orden, Cliente cliente, DateTime fechaEntrega
+                          , DateTime fechaPedido, List<DetallePedido> detPed)
+        {
+            IdOrden = id_orden;
+            Cliente = cliente;
+            FechaEntrega = fechaEntrega;
+            FechaPedido = fechaPedido;
+            DetallesPedido = detPed;
         }
 
         //hacer consulta para ver que ordenes estan pendientes y modificar estado entregado o no

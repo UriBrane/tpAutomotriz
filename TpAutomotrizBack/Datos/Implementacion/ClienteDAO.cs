@@ -6,11 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using TpAutomotrizBack.Datos.Interfaz;
 using TpAutomotrizBack.Entidades;
+using TpAutomotrizBack.Servicios.Implementacion;
+using TpAutomotrizBack.Servicios.Interfaz;
 
 namespace TpAutomotrizBack.Datos.Implementacion
 {
     public class ClienteDAO : IClienteDAO
     {
+        private HelperDAO helper;
+        private IMapeador mapeo;
+
+        public ClienteDAO()
+        {
+            helper = HelperDAO.GetInstance();
+            mapeo = Mapeador.GetInstance();
+        }
         public bool PostCliente(Cliente c)
         {
             List<Parametro> parametros = new List<Parametro>
@@ -23,28 +33,21 @@ namespace TpAutomotrizBack.Datos.Implementacion
                 new Parametro( "@dire_nro", c.CalleNro),
                 new Parametro( "@id_barrio", c.IdBarrio)
             };
-            return HelperDAO.GetInstance().EjecutarSQL("SP_INSERT_CLIENTE", parametros);
+            return helper.EjecutarSQL("SP_INSERT_CLIENTE", parametros);
         }
 
         public List<Cliente> GetClientes()
         {
-            List<Cliente> l = new List<Cliente>();
-            DataTable dt = HelperDAO.GetInstance().ConsultarTabla("SP_SELECT_CLIENTES");
-            foreach (DataRow dr in dt.Rows)
-            {
-                int id = Convert.ToInt32(dr["id_cliente"]);
-                string nombre = dr["nombre"].ToString() ?? "";
-                string apellido = dr["apellido"].ToString() ?? "";
-                string cuit = (dr["CUIT"]).ToString() ?? "";
-                string calle = dr["dire_calle"].ToString() ?? "";
-                int calleNro = Convert.ToInt32(dr["dire_nro"]);
-                int tipoCli = Convert.ToInt32(dr["id_tipo_cliente"]);
-                int barrio = Convert.ToInt32(dr["id_barrio"]);
-
-                Cliente c = new Cliente(id, nombre, apellido, cuit, calle, calleNro, tipoCli, barrio);
-                l.Add(c);
-            }
+            DataTable dt = helper.ConsultarTabla("SP_SELECT_CLIENTES");
+            List<Cliente> l = mapeo.MapearClientes(dt);
             return l;
+        }
+
+        public Cliente GetCliente(int id)
+        {
+            DataTable dt = helper.ConsultarObjeto("SP_CONSULTAR_CLIENTE", id);
+            Cliente c = mapeo.MapearCliente(dt);
+            return c;
         }
     }
 }

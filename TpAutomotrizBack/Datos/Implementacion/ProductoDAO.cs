@@ -6,11 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using TpAutomotrizBack.Datos.Interfaz;
 using TpAutomotrizBack.Entidades;
+using TpAutomotrizBack.Servicios.Implementacion;
+using TpAutomotrizBack.Servicios.Interfaz;
 
 namespace TpAutomotrizBack.Datos.Implementacion
 {
     public class ProductoDAO : IProductoDAO
     {
+        private HelperDAO helper;
+        private IMapeador mapeo;
+
+        public ProductoDAO()
+        {
+            helper = HelperDAO.GetInstance();
+            mapeo= Mapeador.GetInstance();
+        }
         public bool PostProducto(Producto p)
         {
             List<Parametro> parametros = new List<Parametro>
@@ -22,27 +32,20 @@ namespace TpAutomotrizBack.Datos.Implementacion
                 new Parametro( "@cantidad_min", p.CantidadMin),
                 new Parametro( "@id_tipo_producto", p.IdTipoProducto),
             };
-            return HelperDAO.GetInstance().EjecutarSQL("SP_INSERT_PRODUCTO", parametros);
+            return helper.EjecutarSQL("SP_INSERT_PRODUCTO", parametros);
         }
         public List<Producto> GetProductos()
         {
-            List<Producto> l = new List<Producto>();
-            DataTable dt = HelperDAO.GetInstance().ConsultarTabla("SP_SELECT_PRODUCTOS");
-            foreach (DataRow dr in dt.Rows)
-            {
-                int id = Convert.ToInt32(dr["id_producto"]);
-                string desc = dr["descripcion"].ToString() ?? "";
-                double precio = Convert.ToDouble(dr["precio"]);
-                int cant = Convert.ToInt32(dr["cantidad"]);
-                int cantMayor = Convert.ToInt32(dr["cant_min_por_mayor"]);
-                int cantMin = Convert.ToInt32(dr["cantidad_min"]);
-                int idTipoProd = Convert.ToInt32(dr["id_tipo_producto"]);
-
-                Producto p = new Producto(id, desc, precio, cant, cantMayor, cantMin, idTipoProd);
-                l.Add(p);
-            }
+            DataTable dt = helper.ConsultarTabla("SP_SELECT_PRODUCTOS");
+            List<Producto> l = mapeo.MapearProductos(dt);
             return l;
         }
 
+        public Producto GetProducto(int id)
+        {
+            DataTable dt = helper.ConsultarTabla("SP_CONSULTAR_PRODUCTO");
+            Producto p = mapeo.MapearProducto(dt);
+            return p;
+        }
     }
 }
