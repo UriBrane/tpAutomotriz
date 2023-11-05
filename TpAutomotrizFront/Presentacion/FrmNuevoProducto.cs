@@ -94,5 +94,15 @@ namespace TpAutomotrizFront.Presentacion
 
             return dataJson.Equals("true");
         }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            // COMPLETAR...
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            // COMPLETAR...
+        }
     }
 }

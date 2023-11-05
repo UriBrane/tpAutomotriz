@@ -8,7 +8,7 @@ namespace TpAutomotrizBack.Entidades
 {
     public class DetalleFactura
     {
-        public int IdDetalle { get; set; }
+        public int IdDetalleFactura { get; set; }
         public int IdTipoVenta { get; set; }
         public int IdFactura { get; set; }
         public Producto Producto { get; set; }
@@ -19,7 +19,7 @@ namespace TpAutomotrizBack.Entidades
 
         public DetalleFactura()
         {
-            IdDetalle = 0;
+            IdDetalleFactura = 0;
             IdTipoVenta = 0;
             IdFactura = 0;
             Producto = new Producto();
@@ -42,7 +42,7 @@ namespace TpAutomotrizBack.Entidades
         public DetalleFactura(int idDetalle, int idTipoVenta, int idFactura, Producto producto
                               , int cantidad, double precio, int idDescuento, string entregado)
         {
-            IdDetalle = idDetalle;
+            IdDetalleFactura = idDetalle;
             IdTipoVenta = idTipoVenta;
             IdFactura = idFactura;
             Producto = producto;

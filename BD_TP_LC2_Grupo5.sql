@@ -519,6 +519,30 @@ BEGIN
 END;
 GO
 
+--  INSERTAR ORDEN PEDIDO
+CREATE PROCEDURE SP_INSERT_ORDEN_PEDIDO
+    @id_cliente int,
+    @fecha_entrega datetime,
+    @fecha_pedido datetime
+AS
+BEGIN
+    INSERT INTO Ordenes_Pedidos(id_cliente, fecha_entrega, fecha_pedido)
+    VALUES (@id_cliente, @fecha_entrega, @fecha_pedido)
+END;
+GO
+
+-- INSERTAR DETALLES PEDIDO
+CREATE PROCEDURE SP_INSERT_DETALLES_PED
+    @id_orden_pedido int,
+    @id_producto int,
+    @cantidad int
+AS
+BEGIN
+    INSERT INTO Detalles_Pedidos(id_orden_pedido, id_producto, cantidad)
+    VALUES (@id_orden_pedido, @id_producto, @cantidad)
+END;
+GO
+
 -- SELECT CLIENTES
 CREATE PROCEDURE SP_SELECT_CLIENTES
 AS
@@ -626,3 +650,22 @@ BEGIN
     FROM Ordenes_Pedidos
     WHERE id_orden_pedido = @id;
 END;
+GO
+
+-- CONSULTAR DETALLES PEDIDOS
+CREATE PROCEDURE SP_CONSULTAR_DETALLES_PEDIDO
+    @id_orden_pedido int
+AS
+BEGIN
+    SELECT * FROM Detalles_Pedidos WHERE id_orden_pedido = @id_orden_pedido
+END;
+GO
+
+-- CONSULTAR FACTURA
+CREATE PROCEDURE SP_CONSULTAR_FACTURA
+    @id_factura int
+AS
+BEGIN
+    SELECT * FROM Facturas WHERE id_factura = @id_factura
+END;
+GO

@@ -9,7 +9,7 @@ namespace TpAutomotrizBack.Entidades
 {
     public class OrdenPedido
     {
-        public int IdOrden { get; set; }
+        public int IdOrdenPedido { get; set; }
         public Cliente Cliente { get; set; }
         public DateTime FechaEntrega { get; set; }
         public DateTime FechaPedido { get; set; }
@@ -17,7 +17,7 @@ namespace TpAutomotrizBack.Entidades
 
         public OrdenPedido()
         {
-            IdOrden = 0;
+            IdOrdenPedido = 0;
             Cliente = new Cliente();
             FechaEntrega = DateTime.Today.AddDays(1);
             FechaPedido = DateTime.Today;
@@ -34,7 +34,7 @@ namespace TpAutomotrizBack.Entidades
         public OrdenPedido(int id_orden, Cliente cliente, DateTime fechaEntrega
                           , DateTime fechaPedido, List<DetallePedido> detPed)
         {
-            IdOrden = id_orden;
+            IdOrdenPedido = id_orden;
             Cliente = cliente;
             FechaEntrega = fechaEntrega;
             FechaPedido = fechaPedido;

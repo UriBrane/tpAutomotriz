@@ -15,24 +15,35 @@ namespace TpAutomotrizBack.Datos.Implementacion
     {
         private HelperDAO helper;
         private IMapeador mapeo;
-        private IClienteDAO clienteDAO;
 
         public OrdenPedidoDAO()
         {
             helper = HelperDAO.GetInstance();
             mapeo = Mapeador.GetInstance();
-            clienteDAO = new ClienteDAO();
         }
 
         public bool PostOrdenPedido(OrdenPedido oP)
         {
-            List<Parametro> lParamDetalles = new List<Parametro>
+            List<Parametro> lParamMaestro = new List<Parametro>
             {
-                new Parametro( "@", oP.Cliente.IdCliente),
-                new Parametro( "@", oP.FechaEntrega),
-                new Parametro( "@", oP.FechaPedido)
+                new Parametro( "@id_cliente", oP.Cliente.IdCliente),
+                new Parametro( "@fecha_entrega", oP.FechaEntrega),
+                new Parametro( "@fecha_pedido", oP.FechaPedido)
             };
 
+            List<List<Parametro>> lParamDetalles = new List<List<Parametro>>();
+
+            foreach (DetallePedido d in oP.DetallesPedido)
+            {
+                List<Parametro> l = new List<Parametro>
+                {
+                    new Parametro( "@id_orden_pedido", d.IdOrdenPedido),
+                    new Parametro( "@id_producto", d.Producto.IdProducto),
+                    new Parametro( "@cantidad", d.Cantidad)
+                };
+                lParamDetalles.Add(l);
+            }
+            return helper.EjecutarSQL("SP_INSERT_ORDEN_PEDIDO", "SP_INSERT_DETALLES_PED", lParamMaestro, lParamDetalles);
         }
 
         public List<OrdenPedido> GetOrdenesPedido()
@@ -44,7 +55,7 @@ namespace TpAutomotrizBack.Datos.Implementacion
 
         public OrdenPedido GetOrdenPedido(int id)
         {
-            DataTable dt = helper.ConsultarObjeto("SP_CONSULTAR_ORDEN_PEDIDO", id);
+            DataTable dt = helper.ConsultarTabla("SP_CONSULTAR_ORDEN_PEDIDO", "@id", id);
             OrdenPedido oP = mapeo.MapearOrdenPedido(dt);
             return oP;
         }

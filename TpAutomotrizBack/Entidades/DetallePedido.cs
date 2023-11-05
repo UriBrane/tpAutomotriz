@@ -8,8 +8,9 @@ namespace TpAutomotrizBack.Entidades
 {
     public class DetallePedido
     {
+        public int IdDetallePedido { get; set; }
         public Producto Producto { get; set; }
-        public int IdPedido { get; set; }
+        public int IdOrdenPedido { get; set; }
         public int Cantidad { get; set; }
 
         // UNA ORDEN PEDIDO TIENE QUE IR EN DETALLE COMO PRODUCTO COMPRADO, HAY QUE VER
@@ -18,21 +19,28 @@ namespace TpAutomotrizBack.Entidades
 
         public DetallePedido()
         {
+            IdDetallePedido = 0;
             Producto = new Producto();
-            IdPedido = 0;
+            IdOrdenPedido = 0;
             Cantidad = 0;
         }
-
-        public DetallePedido(Producto producto, int idPedido, int cantidad)
+        public DetallePedido(Producto producto, int idOrdenPedido, int cantidad)
         {
-            this.Producto = producto;
-            this.IdPedido = idPedido;
-            this.Cantidad = cantidad;
+            Producto = producto;
+            IdOrdenPedido = idOrdenPedido;
+            Cantidad = cantidad;
+        }
+        public DetallePedido(int idDetPed,Producto producto, int idOrdenPedido, int cantidad)
+        {
+            IdDetallePedido = idDetPed;
+            Producto = producto;
+            IdOrdenPedido = idOrdenPedido;
+            Cantidad = cantidad;
         }
 
         public override string ToString()
         {
-            return IdPedido.ToString();
+            return IdOrdenPedido.ToString();
         }
     }
 }

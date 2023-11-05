@@ -45,7 +45,7 @@ namespace TpAutomotrizBack.Datos.Implementacion
 
         public Cliente GetCliente(int id)
         {
-            DataTable dt = helper.ConsultarObjeto("SP_CONSULTAR_CLIENTE", id);
+            DataTable dt = helper.ConsultarTabla("SP_CONSULTAR_CLIENTE", "@id", id);
             Cliente c = mapeo.MapearCliente(dt);
             return c;
         }

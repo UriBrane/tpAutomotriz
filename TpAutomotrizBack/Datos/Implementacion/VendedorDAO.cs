@@ -42,7 +42,7 @@ namespace TpAutomotrizBack.Datos.Implementacion
 
         public Vendedor GetVendedor(int id)
         {
-            DataTable dt = helper.ConsultarObjeto("SP_CONSULTAR_VENDEDOR", id);            
+            DataTable dt = helper.ConsultarTabla ("SP_CONSULTAR_VENDEDOR", "@id", id);            
             Vendedor v = mapeo.MapearVendedor(dt);
             return v;
         }

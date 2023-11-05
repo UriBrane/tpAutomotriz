@@ -9,6 +9,7 @@ namespace TpAutomotrizBack.Datos.Interfaz
 {
     public interface IFacturaDAO
     {
+        Factura GetFactura(int id);
         bool PostFactura(Factura f);
         List<Factura> GetFacturas();
     }

@@ -27,12 +27,12 @@ namespace TpAutomotrizBack.Datos
             return instance;
         }
 
-        public DataTable ConsultarObjeto(string nombreSP, int id)
+        public DataTable ConsultarTabla(string nombreSP, string nomParam, int id)
         {
             cnn.Open();
             SqlCommand cmd = new SqlCommand(nombreSP, cnn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("id", id);
+            cmd.Parameters.AddWithValue(nomParam, id);
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());
             cnn.Close();
