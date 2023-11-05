@@ -57,7 +57,7 @@ namespace TpAutomotrizFront.Servicios
             }
             return aux;
         }
-        public bool ValidatCombo(ComboBox c)
+        public bool ValidarCombo(ComboBox c)
         {
             bool aux = true;
             if (c.SelectedIndex == -1)

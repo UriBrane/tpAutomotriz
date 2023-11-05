@@ -11,6 +11,7 @@ namespace TpAutomotrizBack.Entidades
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Cuit { get; set; }
+        public string NombreCompleto { get { return Apellido + ", " + Nombre; } } 
 
         public Persona()
         {

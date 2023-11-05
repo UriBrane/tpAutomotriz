@@ -86,3 +86,5 @@ C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotrizAPI\obj\Debug\net6.0\re
 C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotrizAPI\obj\Debug\net6.0\TpAutomotrizAPI.pdb
 C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotrizAPI\obj\Debug\net6.0\TpAutomotrizAPI.genruntimeconfig.cache
 C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotrizAPI\obj\Debug\net6.0\ref\TpAutomotrizAPI.dll
+C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizAPI\obj\Debug\net6.0\TpAutomotrizAPI.Properties.Resources.resources
+C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizAPI\obj\Debug\net6.0\TpAutomotrizAPI.csproj.GenerateResource.cache

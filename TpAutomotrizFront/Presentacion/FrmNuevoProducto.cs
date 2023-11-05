@@ -17,6 +17,7 @@ namespace TpAutomotrizFront.Presentacion
 {
     public partial class FrmNuevoProducto : Form
     {
+        string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
         private Validador val;
         public FrmNuevoProducto()
         {
@@ -53,7 +54,7 @@ namespace TpAutomotrizFront.Presentacion
             {
                 if (!val.ValidarString(txtDescripcion.Text, txtDescripcion)) break;
                 if (!val.ValidarDouble(txtPrecio.Text, txtPrecio)) break;
-                if (!val.ValidatCombo(cboTipoProductos)) break;
+                if (!val.ValidarCombo(cboTipoProductos)) break;
                 if (!val.ValidarInt(txtCantidad.Text, txtCantidad)) break;
                 if (!val.ValidarInt(txtCantMinPorMayor.Text, txtCantMinPorMayor)) break;
                 if (!val.ValidarInt(txtCantMin.Text, txtCantMin)) break;
@@ -86,11 +87,9 @@ namespace TpAutomotrizFront.Presentacion
 
         private async Task<bool> GrabarProducto(Producto p)
         {
-            string url = "https://localhost:7106/producto";
-
             string productoJson = JsonConvert.SerializeObject(p);
 
-            var dataJson = await ClientSingleton.GetInstance().PostAsync(url, productoJson);
+            var dataJson = await ClientSingleton.GetInstance().PostAsync(url + "/producto", productoJson);
 
             return dataJson.Equals("true");
         }

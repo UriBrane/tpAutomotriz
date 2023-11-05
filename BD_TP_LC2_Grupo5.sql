@@ -44,8 +44,6 @@ constraint fk_barrio_clien FOREIGN KEY (id_barrio)
 		references Barrios (id_barrio)
 );
 
-
-
 CREATE TABLE Tipos_Contactos
 (id_tipo_contacto int identity(1,1) not null,
 descripcion varchar(255)
@@ -605,6 +603,38 @@ AS
 BEGIN
     SELECT *
     FROM Ordenes_Pedidos;
+END;
+GO
+
+-- SELECT FORMAS PAGO
+CREATE PROCEDURE SP_SELECT_FORMAS_PAGO
+AS
+BEGIN
+    SELECT * FROM Formas_Pago;
+END;
+GO
+
+-- SELECT AUTOPLANES
+CREATE PROCEDURE SP_SELECT_AUTOPLANES
+AS
+BEGIN
+    SELECT * FROM Autoplanes;
+END;
+GO
+
+-- SELECT TARJETAS
+CREATE PROCEDURE SP_SELECT_TARJETAS
+AS
+BEGIN
+    SELECT * FROM Tarjetas_Credito;
+END;
+GO
+
+-- SELECT CUOTAS
+CREATE PROCEDURE SP_SELECT_CUOTAS
+AS
+BEGIN
+    SELECT * FROM Cuotas;
 END;
 GO
 

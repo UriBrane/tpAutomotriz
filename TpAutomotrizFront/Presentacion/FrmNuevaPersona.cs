@@ -17,13 +17,14 @@ namespace TpAutomotrizFront.Presentacion
 {
     public partial class FrmNuevaPersona : Form
     {
+        string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
         private Validador val;
         public FrmNuevaPersona()
         {
             InitializeComponent();
             val = Validador.GetInstance();
         }
-
+        
         private void FrmNuevaPersona_Load(object sender, EventArgs e)
         {
             CargarCboTipo();
@@ -97,7 +98,7 @@ namespace TpAutomotrizFront.Presentacion
                 if (!val.ValidarString(txtNombre.Text, txtNombre)) break;
                 if (!val.ValidarString(txtApellido.Text, txtApellido)) break;
                 if (!val.ValidarString(txtCuit.Text, txtCuit)) break;
-                if (!val.ValidatCombo(cboCategoria)) break;
+                if (!val.ValidarCombo(cboCategoria)) break;
                 // Si todas las validaciones pasan, rompe el ciclo
                 validado = true;
                 break;
@@ -114,7 +115,7 @@ namespace TpAutomotrizFront.Presentacion
 
                 v = new Vendedor(nombre, apellido, cuit, fecIngreso, idCat);
 
-                if (await GrabarPersona(v, "vendedor"))
+                if (await GrabarPersona(v, "/vendedor"))
                 {
                     MessageBox.Show("Se guardó con éxito el Vendedor...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Dispose();
@@ -137,8 +138,8 @@ namespace TpAutomotrizFront.Presentacion
                 if (!val.ValidarString(txtCuit.Text, txtCuit)) break;
                 if (!val.ValidarString(txtDireccion.Text, txtDireccion)) break;
                 if (!val.ValidarInt(txtNumero.Text, txtNumero)) break;
-                if (!val.ValidatCombo(cboTipoCliente)) break;
-                if (!val.ValidatCombo(cboBarrio)) break;
+                if (!val.ValidarCombo(cboTipoCliente)) break;
+                if (!val.ValidarCombo(cboBarrio)) break;
                 // Si todas las validaciones pasan, rompe el ciclo
                 validado = true;
                 break;
@@ -157,7 +158,7 @@ namespace TpAutomotrizFront.Presentacion
 
                 c = new Cliente(nombre, apellido, cuit, direccion, numero, idTipoCli, idBarrio);
 
-                if (await GrabarPersona(c, "cliente"))
+                if (await GrabarPersona(c, "/cliente"))
                 {
                     MessageBox.Show("Se guardó con éxito el Cliente...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Dispose();
@@ -168,13 +169,10 @@ namespace TpAutomotrizFront.Presentacion
         }
 
         private async Task<bool> GrabarPersona(Persona p, string decorador)
-        {
-            string url = "https://localhost:7106/" + decorador; // Usar el decorador del controlador de la API correspondiente
+        {// Usar el decorador del controlador de la API correspondiente
 
             string personaJson = JsonConvert.SerializeObject(p);
-
-            var dataJson = await ClientSingleton.GetInstance().PostAsync(url, personaJson);
-
+            var dataJson = await ClientSingleton.GetInstance().PostAsync(url + decorador, personaJson);
             return dataJson.Equals("true");
         }
 
