@@ -5,13 +5,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace TpAutomotrizBack.Datos
 {
     public class HelperDAO
     {
-        private static HelperDAO instance;
+        private static HelperDAO? instance;
         private SqlConnection cnn;
 
         private HelperDAO()
@@ -26,6 +25,18 @@ namespace TpAutomotrizBack.Datos
                 instance = new HelperDAO();
             }
             return instance;
+        }
+
+        public DataTable ConsultarTabla(string nombreSP, string nomParam, int id)
+        {
+            cnn.Open();
+            SqlCommand cmd = new SqlCommand(nombreSP, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue(nomParam, id);
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return dt;
         }
 
         public DataTable ConsultarTabla(string nombreSP)
@@ -65,7 +76,6 @@ namespace TpAutomotrizBack.Datos
             catch (SqlException ex)
             {
                 if (t != null) { t.Rollback(); }
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -73,13 +83,13 @@ namespace TpAutomotrizBack.Datos
                     cnn.Close();
             }
 
-            if (filasAfectadas != 0)
+            if (filasAfectadas > 0)
                 return true;
             else
                 return false;
         }
 
-        public bool EjecutarSQL(string spMaestro, string spDetalle, List<Parametro> lParamMaestro, List<Parametro> lParamDetalle)
+        public bool EjecutarSQL(string spMaestro, string spDetalle, List<Parametro> lParamMaestro, List<List<Parametro>> lParamDetalle)
         {// Ejecuta una transaccion Maestro-Detalle con los nombres de los sp como param de entrada y las listas de parametros, devuelve el numero de factura
             int nroFactura = 0;
             SqlTransaction? t = null;
@@ -108,33 +118,35 @@ namespace TpAutomotrizBack.Datos
                 cmdMaestro.ExecuteNonQuery();
                 nroFactura = Convert.ToInt32(param.Value);
 
-                int detallleNro = 1;
+                //int detallleNro = 1;
                 SqlCommand cmdDetalle;
 
                 if (lParamDetalle != null)
                 {
-                    foreach (Parametro p in lParamDetalle)
+                    foreach (List<Parametro> l in lParamDetalle)
                     {
-                        cmdDetalle = new SqlCommand(spDetalle, cnn, t);
-                        cmdDetalle.CommandType = CommandType.StoredProcedure;
+                        foreach (Parametro p in l)
+                        {
+                            cmdDetalle = new SqlCommand(spDetalle, cnn, t);
+                            cmdDetalle.CommandType = CommandType.StoredProcedure;
 
-                        cmdDetalle.Parameters.AddWithValue(p.Clave, p.Valor);
+                            cmdDetalle.Parameters.AddWithValue(p.Clave, p.Valor);
 
-                        cmdDetalle.Parameters.AddWithValue("@nro_fac", nroFactura);
-                        cmdDetalle.Parameters.AddWithValue("@detalle", detallleNro);
+                            cmdDetalle.Parameters.AddWithValue("@nro_fac", nroFactura);
+                            //cmdDetalle.Parameters.AddWithValue("@detalle", detallleNro);
 
-                        cmdDetalle.ExecuteNonQuery();
+                            cmdDetalle.ExecuteNonQuery();
 
-                        detallleNro++;
+                            //detallleNro++;
+                        }
                     }
                 }
 
                 t.Commit();
             }
-            catch (SqlException ex)
+            catch
             {
                 if (t != null) { t.Rollback(); }
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             finally
@@ -142,7 +154,7 @@ namespace TpAutomotrizBack.Datos
                 if (cnn != null && cnn.State == ConnectionState.Open)
                     cnn.Close();
             }
-            return true;               
+            return true;
         }
 
     }

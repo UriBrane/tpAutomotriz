@@ -21,19 +21,27 @@ namespace TpAutomotrizFront
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult r = MessageBox.Show("Seguro que desea salir de la aplicación?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (r == DialogResult.Yes)
+                this.Close();
         }
 
-        private void facturaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void nuevaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmNuevaFactura frmNuevaFactura = new FrmNuevaFactura();
             frmNuevaFactura.ShowDialog();
         }
 
-        private void clienteVendedorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void clienteVendedorToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmNuevaPersona frmNuevaPersona = new FrmNuevaPersona();
             frmNuevaPersona.ShowDialog();
+        }
+
+        private void productoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmNuevoProducto frmNuevoProducto = new FrmNuevoProducto();
+            frmNuevoProducto.ShowDialog();
         }
     }
 }

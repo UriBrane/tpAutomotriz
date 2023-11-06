@@ -9,6 +9,7 @@ namespace TpAutomotrizBack.Datos.Interfaz
 {
     public interface IVendedorDAO
     {
+        Vendedor GetVendedor(int id);
         List<Vendedor> GetVendedores();
         bool PostVendedor(Vendedor v);
     }

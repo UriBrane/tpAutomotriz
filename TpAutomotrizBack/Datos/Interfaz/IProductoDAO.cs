@@ -9,6 +9,7 @@ namespace TpAutomotrizBack.Datos.Interfaz
 {
     public interface IProductoDAO
     {
+        Producto GetProducto(int id);
         bool PostProducto(Producto p);
         List<Producto> GetProductos();
     }

@@ -6,11 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using TpAutomotrizBack.Datos.Interfaz;
 using TpAutomotrizBack.Entidades;
+using TpAutomotrizBack.Servicios.Implementacion;
+using TpAutomotrizBack.Servicios.Interfaz;
 
 namespace TpAutomotrizBack.Datos.Implementacion
 {
     public class VendedorDAO : IVendedorDAO
     {
+        private HelperDAO helper;
+        private IMapeador mapeo;
+
+        public VendedorDAO()
+        {
+            helper = HelperDAO.GetInstance();
+            mapeo = Mapeador.GetInstance();
+        }
         public bool PostVendedor(Vendedor v)
         {
             List<Parametro> parametros = new List<Parametro>
@@ -21,26 +31,20 @@ namespace TpAutomotrizBack.Datos.Implementacion
                 new Parametro( "@fecha_ingreso", v.FechaIngreso),
                 new Parametro( "@id_categoria", v.IdCategoria),
             };
-            return HelperDAO.GetInstance().EjecutarSQL("SP_INSERT_VENDEDOR", parametros);
+            return helper.EjecutarSQL("SP_INSERT_VENDEDOR", parametros);
         }
         public List<Vendedor> GetVendedores()
         {
-            List<Vendedor> l = new List<Vendedor>();
-            DataTable dt = HelperDAO.GetInstance().ConsultarTabla("SP_SELECT_VENDEDORES");
-            foreach (DataRow dr in dt.Rows)
-            {
-                int id = Convert.ToInt32(dr["id_vendedor"]);
-                string nombre = dr["nombre"].ToString() ?? "";
-                string apellido = dr["apellido"].ToString() ?? "";
-                string cuit = (dr["CUIT"]).ToString() ?? "";
-                DateTime fecIngr = Convert.ToDateTime(dr["fecha_ingreso"]);
-                int idCat = Convert.ToInt32(dr["id_categoria"]);
-
-                Vendedor v = new Vendedor(id, nombre, apellido, cuit, fecIngr, idCat);
-                l.Add(v);
-            }
+            DataTable dt = helper.ConsultarTabla("SP_SELECT_VENDEDORES");
+            List<Vendedor> l = mapeo.MapearVendedores(dt);
             return l;
         }
 
+        public Vendedor GetVendedor(int id)
+        {
+            DataTable dt = helper.ConsultarTabla ("SP_CONSULTAR_VENDEDOR", "@id", id);            
+            Vendedor v = mapeo.MapearVendedor(dt);
+            return v;
+        }
     }
 }

@@ -44,8 +44,6 @@ constraint fk_barrio_clien FOREIGN KEY (id_barrio)
 		references Barrios (id_barrio)
 );
 
-
-
 CREATE TABLE Tipos_Contactos
 (id_tipo_contacto int identity(1,1) not null,
 descripcion varchar(255)
@@ -444,8 +442,37 @@ GO
 
 -- SPs
 
--- INSERTAR VENDEDOR
+-- INSERTAR FACTURAS
+CREATE PROCEDURE SP_INSERT_FACTURA
+    @id_cliente int,
+    @fecha datetime,
+    @id_vendedor int,
+    @id_orden_pedido int,
+    @id_autoplan int,
+    @id_forma_pago int
+AS
+BEGIN
+    INSERT INTO Facturas(id_cliente, fecha, id_vendedor, id_orden_pedido, id_autoplan, id_forma_pago)
+    VALUES (@id_cliente, @fecha, @id_vendedor, @id_orden_pedido, @id_autoplan, @id_forma_pago);
+END;
+GO
 
+-- INSERTAR DETALLES_FACTURAS
+CREATE PROCEDURE SP_INSERT_DETALLES_FAC
+    @id_tipo_venta int,
+    @id_factura int,
+    @id_producto int,
+    @cantidad int,
+    @precio decimal(10,2),
+    @id_descuento int
+AS
+BEGIN
+    INSERT INTO Detalles_Facturas(id_tipo_venta, id_factura, id_producto, cantidad, precio, id_descuento)
+    VALUES (@id_tipo_venta, @id_factura, @id_producto, @cantidad, @precio, @id_descuento);
+END;
+GO
+
+-- INSERTAR VENDEDOR
 CREATE PROCEDURE SP_INSERT_VENDEDOR
     @id_categoria int,
     @apellido varchar(100),
@@ -490,6 +517,30 @@ BEGIN
 END;
 GO
 
+--  INSERTAR ORDEN PEDIDO
+CREATE PROCEDURE SP_INSERT_ORDEN_PEDIDO
+    @id_cliente int,
+    @fecha_entrega datetime,
+    @fecha_pedido datetime
+AS
+BEGIN
+    INSERT INTO Ordenes_Pedidos(id_cliente, fecha_entrega, fecha_pedido)
+    VALUES (@id_cliente, @fecha_entrega, @fecha_pedido)
+END;
+GO
+
+-- INSERTAR DETALLES PEDIDO
+CREATE PROCEDURE SP_INSERT_DETALLES_PED
+    @id_orden_pedido int,
+    @id_producto int,
+    @cantidad int
+AS
+BEGIN
+    INSERT INTO Detalles_Pedidos(id_orden_pedido, id_producto, cantidad)
+    VALUES (@id_orden_pedido, @id_producto, @cantidad)
+END;
+GO
+
 -- SELECT CLIENTES
 CREATE PROCEDURE SP_SELECT_CLIENTES
 AS
@@ -511,5 +562,140 @@ CREATE PROCEDURE SP_SELECT_PRODUCTOS
 AS
 BEGIN
     SELECT * FROM Productos
+END;
+GO
+
+-- SELECT TIPOS CLIENTES
+CREATE PROCEDURE SP_SELECT_TIPO_CLIENTES
+AS
+BEGIN
+    SELECT * FROM Tipos_Clientes
+END;
+GO
+
+-- SELECT BARRIOS
+CREATE PROCEDURE SP_SELECT_BARRIOS
+AS
+BEGIN
+    SELECT * FROM Barrios
+END;
+GO
+
+-- SELECT BARRIOS
+CREATE PROCEDURE SP_SELECT_CATEGORIAS
+AS
+BEGIN
+    SELECT * FROM Categorias
+END;
+GO
+
+-- SELECT BARRIOS
+CREATE PROCEDURE SP_SELECT_TIPO_PRODUCTOS
+AS
+BEGIN
+    SELECT * FROM Tipos_Productos
+END;
+GO
+
+-- SELECT ORDENES PEDIDOS
+CREATE PROCEDURE SP_SELECT_ORDENES_PEDIDOS
+AS
+BEGIN
+    SELECT *
+    FROM Ordenes_Pedidos;
+END;
+GO
+
+-- SELECT FORMAS PAGO
+CREATE PROCEDURE SP_SELECT_FORMAS_PAGO
+AS
+BEGIN
+    SELECT * FROM Formas_Pago;
+END;
+GO
+
+-- SELECT AUTOPLANES
+CREATE PROCEDURE SP_SELECT_AUTOPLANES
+AS
+BEGIN
+    SELECT * FROM Autoplanes;
+END;
+GO
+
+-- SELECT TARJETAS
+CREATE PROCEDURE SP_SELECT_TARJETAS
+AS
+BEGIN
+    SELECT * FROM Tarjetas_Credito;
+END;
+GO
+
+-- SELECT CUOTAS
+CREATE PROCEDURE SP_SELECT_CUOTAS
+AS
+BEGIN
+    SELECT * FROM Cuotas;
+END;
+GO
+
+-- CONSULTAR CLIENTE
+CREATE PROCEDURE SP_CONSULTAR_CLIENTE
+    @id int
+AS
+BEGIN
+    SELECT *
+    FROM Clientes
+    WHERE id_cliente = @id;
+END;
+GO
+
+-- CONSULTAR VENDEDOR
+CREATE PROCEDURE SP_CONSULTAR_VENDEDOR
+    @id int
+AS
+BEGIN
+    SELECT *
+    FROM Vendedores
+    WHERE id_vendedor = @id;
+END;
+GO
+
+-- CONSULTAR PRODUCTO
+CREATE PROCEDURE SP_CONSULTAR_PRODUCTO
+    @id int
+AS
+BEGIN
+    SELECT *
+    FROM Productos
+    WHERE id_producto = @id;
+END;
+GO
+
+-- CONSULTAR ORDEN PEDIDO
+CREATE PROCEDURE SP_CONSULTAR_ORDEN_PEDIDO
+    @id int
+AS
+BEGIN
+    SELECT *
+    FROM Ordenes_Pedidos
+    WHERE id_orden_pedido = @id;
+END;
+GO
+
+-- CONSULTAR DETALLES PEDIDOS
+CREATE PROCEDURE SP_CONSULTAR_DETALLES_PEDIDO
+    @id_orden_pedido int
+AS
+BEGIN
+    SELECT * FROM Detalles_Pedidos WHERE id_orden_pedido = @id_orden_pedido
+END;
+GO
+
+-- CONSULTAR FACTURA
+CREATE PROCEDURE SP_CONSULTAR_FACTURA
+    @id_factura int
+AS
+BEGIN
+    SELECT * FROM Facturas WHERE id_factura = @id_factura
 END;
 GO
