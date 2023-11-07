@@ -127,12 +127,11 @@ constraint pk_cuotas primary key (id_cuota)
 CREATE TABLE Tarjetas_Credito
 (id_tarjeta int identity (1,1) not null,
 descripcion varchar(255),
-id_cuota int
+
 
 constraint pk_tarj_cred primary key (id_tarjeta),
 
-constraint fk_tarj_cuo FOREIGN KEY (id_cuota)
-		references Cuotas (id_cuota)
+
 );
 
 CREATE TABLE Autoplanes
@@ -168,12 +167,15 @@ constraint fk_prod_hist FOREIGN KEY(id_producto)
 CREATE TABLE Formas_Pago
 (id_forma_pago int identity(1,1) not null,
 descripcion varchar(255),
-id_tarjeta int 
+id_tarjeta int,
+id_cuota int
 
 constraint pk_form_pag primary key (id_forma_pago),
 
 constraint fk_fomr_tarj FOREIGN KEY(id_tarjeta)
 			references Tarjetas_Credito(id_tarjeta)
+constraint fk_tarj_cuo FOREIGN KEY (id_cuota)
+		references Cuotas (id_cuota)
 );
 
 CREATE TABLE Ordenes_Pedidos
@@ -271,6 +273,8 @@ VALUES
     (1, 'L�pez', 'Carlos', '23-87654321-0', '2023-03-20'),
     (2, 'Rodr�guez', 'Ana', '20-34567890-1', '2020-12-05'),
     (3, 'Fern�ndez', 'Javier', '30-56789012-3', '2019-08-18');
+
+
 
 	
 
@@ -371,20 +375,20 @@ VALUES
     ('Venta al por menor');
 
 	--INSERT PARA TARJETAS_CREDITO
-INSERT INTO Tarjetas_credito(descripcion,id_cuota)
+INSERT INTO Tarjetas_credito(descripcion)
 VALUES 
-		('Bancor',1),
-		('Banco Nacion',2),
-		('Galicia',3),
-		('Sandander Rio',4),
-		('HSVC',5);
+		('Bancor'),
+		('Banco Nacion'),
+		('Galicia'),
+		('Sandander Rio'),
+		('HSVC');
 
 --INSERT PARA FORMAS_PAGO
-INSERT INTO Formas_Pago([descripcion], [id_tarjeta])
+INSERT INTO Formas_Pago([descripcion], [id_tarjeta], [id_cuota] )
 VALUES
     ('Efectivo', NULL),
-    ('Tarjeta de Cr�dito', 1),
-    ('Tarjeta de D�bito', 2),
+    ('Tarjeta de Cr�dito', 1, 3),
+    ('Tarjeta de D�bito', 2, 1),
     ('Transferencia Bancaria', null),
     ('Cheque', NULL);
 
@@ -454,6 +458,18 @@ AS
 BEGIN
     INSERT INTO Facturas(id_cliente, fecha, id_vendedor, id_orden_pedido, id_autoplan, id_forma_pago)
     VALUES (@id_cliente, @fecha, @id_vendedor, @id_orden_pedido, @id_autoplan, @id_forma_pago);
+END;
+GO
+	
+-- INSERTAR  FORMA DE PAGO
+CREATE PROCEDURE InsertarFormaPago
+    @descripcion varchar(255),
+    @id_tarjeta int,
+    @id_cuota int
+AS
+BEGIN
+    INSERT INTO Formas_Pago (descripcion, id_tarjeta, id_cuota)
+    VALUES (@descripcion, @id_tarjeta, @id_cuota);
 END;
 GO
 
