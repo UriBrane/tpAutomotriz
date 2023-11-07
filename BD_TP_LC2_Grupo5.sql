@@ -498,11 +498,12 @@ CREATE PROCEDURE SP_INSERT_VENDEDOR
     @apellido varchar(100),
     @nombre varchar(100),
     @CUIT varchar(20),
+    @contraseña varchar(64),
     @fecha_ingreso datetime
 AS
 BEGIN
-    INSERT INTO Vendedores(id_categoria, apellido, nombre, CUIT, fecha_ingreso)
-    VALUES (@id_categoria, @apellido, @nombre, @CUIT, @fecha_ingreso)
+    INSERT INTO Vendedores(id_categoria, apellido, nombre, CUIT, fecha_ingreso, contraseña)
+    VALUES (@id_categoria, @apellido, @nombre, @CUIT, @fecha_ingreso, @contraseña)
 END;
 GO
 
