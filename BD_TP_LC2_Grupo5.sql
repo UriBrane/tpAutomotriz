@@ -213,7 +213,7 @@ id_vendedor int,
 id_orden_pedido int,
 id_autoplan int,
 id_forma_pago int ,
-anulada bool,
+anulada bit,
 
 constraint pk_fac primary key (id_factura),
 
