@@ -88,10 +88,10 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { clm, clmCliente, clmFecha, clmMonto, clmEstado, clmConsultar, clmAnular });
-            dataGridView1.Location = new Point(37, 158);
+            dataGridView1.Location = new Point(17, 158);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(718, 280);
+            dataGridView1.Size = new Size(741, 280);
             dataGridView1.TabIndex = 20;
             // 
             // clm

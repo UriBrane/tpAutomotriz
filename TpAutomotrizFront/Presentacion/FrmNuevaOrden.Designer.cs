@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevaOrden));
             lblCliente = new Label();
             lblVendedor = new Label();
-            lblDetalleCliente = new Label();
             lblNOrden = new Label();
             dtpFecha = new DateTimePicker();
             btnCancelar = new Button();
@@ -71,22 +70,10 @@
             lblVendedor.TabIndex = 34;
             lblVendedor.Text = "Vendedor:";
             // 
-            // lblDetalleCliente
-            // 
-            lblDetalleCliente.AutoSize = true;
-            lblDetalleCliente.BackColor = Color.Transparent;
-            lblDetalleCliente.BorderStyle = BorderStyle.Fixed3D;
-            lblDetalleCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDetalleCliente.Location = new Point(323, 67);
-            lblDetalleCliente.Name = "lblDetalleCliente";
-            lblDetalleCliente.Size = new Size(100, 86);
-            lblDetalleCliente.TabIndex = 31;
-            lblDetalleCliente.Text = "CUIT:\r\nDOMICILIO:\r\nTELEFONO:\r\nMAIL:\r\n";
-            // 
             // lblNOrden
             // 
             lblNOrden.AutoSize = true;
-            lblNOrden.Location = new Point(212, 26);
+            lblNOrden.Location = new Point(426, 40);
             lblNOrden.Name = "lblNOrden";
             lblNOrden.Size = new Size(74, 15);
             lblNOrden.TabIndex = 30;
@@ -221,7 +208,6 @@
             ClientSize = new Size(644, 577);
             Controls.Add(lblCliente);
             Controls.Add(lblVendedor);
-            Controls.Add(lblDetalleCliente);
             Controls.Add(lblNOrden);
             Controls.Add(dtpFecha);
             Controls.Add(btnCancelar);
@@ -244,7 +230,6 @@
         #endregion
         private Label lblCliente;
         private Label lblVendedor;
-        private Label lblDetalleCliente;
         private Label lblNOrden;
         private DateTimePicker dtpFecha;
         private Button btnCancelar;
