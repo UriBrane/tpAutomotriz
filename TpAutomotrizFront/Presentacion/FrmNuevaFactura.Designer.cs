@@ -67,51 +67,49 @@
             // 
             cboVendedor.DropDownStyle = ComboBoxStyle.DropDownList;
             cboVendedor.FormattingEnabled = true;
-            cboVendedor.Location = new Point(110, 122);
-            cboVendedor.Margin = new Padding(4);
+            cboVendedor.Location = new Point(86, 87);
             cboVendedor.Name = "cboVendedor";
-            cboVendedor.Size = new Size(227, 29);
+            cboVendedor.Size = new Size(177, 23);
             cboVendedor.TabIndex = 4;
+            
             // 
             // cboCliente
             // 
             cboCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCliente.FormattingEnabled = true;
-            cboCliente.Location = new Point(110, 166);
-            cboCliente.Margin = new Padding(4);
+            cboCliente.Location = new Point(86, 119);
             cboCliente.Name = "cboCliente";
-            cboCliente.Size = new Size(227, 29);
+            cboCliente.Size = new Size(177, 23);
             cboCliente.TabIndex = 5;
+            cboCliente.SelectedIndexChanged += cboCliente_SelectedIndexChanged;
             // 
             // cboProducto
             // 
             cboProducto.DropDownStyle = ComboBoxStyle.DropDownList;
             cboProducto.FormattingEnabled = true;
-            cboProducto.Location = new Point(46, 256);
-            cboProducto.Margin = new Padding(4);
+            cboProducto.Location = new Point(36, 183);
             cboProducto.Name = "cboProducto";
-            cboProducto.Size = new Size(367, 29);
+            cboProducto.Size = new Size(286, 23);
             cboProducto.TabIndex = 1;
+            cboProducto.SelectedIndexChanged += cboProducto_SelectedIndexChanged;
             // 
             // nudCantidad
             // 
-            nudCantidad.Location = new Point(421, 256);
-            nudCantidad.Margin = new Padding(4);
+            nudCantidad.Location = new Point(327, 183);
             nudCantidad.Name = "nudCantidad";
-            nudCantidad.Size = new Size(95, 29);
+            nudCantidad.Size = new Size(74, 23);
             nudCantidad.TabIndex = 2;
             // 
             // dgvDetallesFac
             // 
             dgvDetallesFac.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDetallesFac.Columns.AddRange(new DataGridViewColumn[] { clmDescripcion, clmCantidad, clmSubtotal, clmDescuento, clmEliminar });
-            dgvDetallesFac.Location = new Point(46, 314);
-            dgvDetallesFac.Margin = new Padding(4);
+            dgvDetallesFac.Location = new Point(36, 224);
             dgvDetallesFac.Name = "dgvDetallesFac";
             dgvDetallesFac.ReadOnly = true;
             dgvDetallesFac.RowHeadersWidth = 51;
             dgvDetallesFac.RowTemplate.Height = 25;
-            dgvDetallesFac.Size = new Size(703, 417);
+            dgvDetallesFac.Size = new Size(547, 298);
             dgvDetallesFac.TabIndex = 5;
             // 
             // clmDescripcion
@@ -129,7 +127,7 @@
             clmCantidad.MinimumWidth = 6;
             clmCantidad.Name = "clmCantidad";
             clmCantidad.ReadOnly = true;
-            clmCantidad.Width = 101;
+            clmCantidad.Width = 80;
             // 
             // clmSubtotal
             // 
@@ -138,7 +136,7 @@
             clmSubtotal.MinimumWidth = 6;
             clmSubtotal.Name = "clmSubtotal";
             clmSubtotal.ReadOnly = true;
-            clmSubtotal.Width = 98;
+            clmSubtotal.Width = 77;
             // 
             // clmDescuento
             // 
@@ -147,7 +145,7 @@
             clmDescuento.MinimumWidth = 6;
             clmDescuento.Name = "clmDescuento";
             clmDescuento.ReadOnly = true;
-            clmDescuento.Width = 112;
+            clmDescuento.Width = 88;
             // 
             // clmEliminar
             // 
@@ -156,14 +154,13 @@
             clmEliminar.MinimumWidth = 6;
             clmEliminar.Name = "clmEliminar";
             clmEliminar.ReadOnly = true;
-            clmEliminar.Width = 73;
+            clmEliminar.Width = 56;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(861, 732);
-            btnGuardar.Margin = new Padding(4);
+            btnGuardar.Location = new Point(670, 523);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(121, 49);
+            btnGuardar.Size = new Size(94, 35);
             btnGuardar.TabIndex = 6;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -171,10 +168,9 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(990, 732);
-            btnCancelar.Margin = new Padding(4);
+            btnCancelar.Location = new Point(770, 523);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(121, 49);
+            btnCancelar.Size = new Size(94, 35);
             btnCancelar.TabIndex = 7;
             btnCancelar.Text = "CANCELAR";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -182,19 +178,17 @@
             // dtpFecha
             // 
             dtpFecha.Enabled = false;
-            dtpFecha.Location = new Point(46, 216);
-            dtpFecha.Margin = new Padding(4);
+            dtpFecha.Location = new Point(36, 154);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(199, 29);
+            dtpFecha.Size = new Size(156, 23);
             dtpFecha.TabIndex = 0;
             // 
             // lblNFactura
             // 
             lblNFactura.AutoSize = true;
-            lblNFactura.Location = new Point(299, 29);
-            lblNFactura.Margin = new Padding(4, 0, 4, 0);
+            lblNFactura.Location = new Point(233, 21);
             lblNFactura.Name = "lblNFactura";
-            lblNFactura.Size = new Size(114, 21);
+            lblNFactura.Size = new Size(85, 15);
             lblNFactura.TabIndex = 10;
             lblNFactura.Text = "FACTURA NRO";
             // 
@@ -204,28 +198,27 @@
             lblDetalleCliente.BackColor = Color.Transparent;
             lblDetalleCliente.BorderStyle = BorderStyle.Fixed3D;
             lblDetalleCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDetalleCliente.Location = new Point(393, 106);
-            lblDetalleCliente.Margin = new Padding(4, 0, 4, 0);
+            lblDetalleCliente.Location = new Point(306, 76);
             lblDetalleCliente.Name = "lblDetalleCliente";
-            lblDetalleCliente.Size = new Size(123, 114);
+            lblDetalleCliente.Size = new Size(100, 86);
             lblDetalleCliente.TabIndex = 11;
             lblDetalleCliente.Text = "CUIT:\r\nDOMICILIO:\r\nTELEFONO:\r\nMAIL:\r\n";
             // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(46, 735);
-            lblTotal.Margin = new Padding(4, 0, 4, 0);
+            lblTotal.Location = new Point(36, 525);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(53, 21);
+            lblTotal.Size = new Size(39, 15);
             lblTotal.TabIndex = 12;
             lblTotal.Text = "TOTAL";
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(523, 253);
+            btnAgregar.Location = new Point(407, 181);
+            btnAgregar.Margin = new Padding(2);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(75, 32);
+            btnAgregar.Size = new Size(58, 23);
             btnAgregar.TabIndex = 13;
             btnAgregar.Text = "Agregar";
             btnAgregar.Click += btnAgregar_Click;
@@ -233,27 +226,30 @@
             // lblVendedor
             // 
             lblVendedor.AutoSize = true;
-            lblVendedor.Location = new Point(23, 125);
+            lblVendedor.Location = new Point(18, 89);
+            lblVendedor.Margin = new Padding(2, 0, 2, 0);
             lblVendedor.Name = "lblVendedor";
-            lblVendedor.Size = new Size(80, 21);
+            lblVendedor.Size = new Size(60, 15);
             lblVendedor.TabIndex = 14;
             lblVendedor.Text = "Vendedor:";
             // 
             // lblCliente
             // 
             lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(42, 169);
+            lblCliente.Location = new Point(33, 121);
+            lblCliente.Margin = new Padding(2, 0, 2, 0);
             lblCliente.Name = "lblCliente";
-            lblCliente.Size = new Size(61, 21);
+            lblCliente.Size = new Size(47, 15);
             lblCliente.TabIndex = 15;
             lblCliente.Text = "Cliente:";
             // 
             // lblFormaPago
             // 
             lblFormaPago.AutoSize = true;
-            lblFormaPago.Location = new Point(770, 244);
+            lblFormaPago.Location = new Point(599, 174);
+            lblFormaPago.Margin = new Padding(2, 0, 2, 0);
             lblFormaPago.Name = "lblFormaPago";
-            lblFormaPago.Size = new Size(117, 21);
+            lblFormaPago.Size = new Size(90, 15);
             lblFormaPago.TabIndex = 16;
             lblFormaPago.Text = "Forma de Pago:";
             // 
@@ -261,9 +257,10 @@
             // 
             cboFormaPago.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFormaPago.FormattingEnabled = true;
-            cboFormaPago.Location = new Point(893, 241);
+            cboFormaPago.Location = new Point(695, 172);
+            cboFormaPago.Margin = new Padding(2);
             cboFormaPago.Name = "cboFormaPago";
-            cboFormaPago.Size = new Size(211, 29);
+            cboFormaPago.Size = new Size(165, 23);
             cboFormaPago.TabIndex = 18;
             // 
             // gbxAutoplan
@@ -274,9 +271,11 @@
             gbxAutoplan.Controls.Add(textBox1);
             gbxAutoplan.Controls.Add(lblInteres);
             gbxAutoplan.Controls.Add(lblCuotas);
-            gbxAutoplan.Location = new Point(770, 335);
+            gbxAutoplan.Location = new Point(599, 239);
+            gbxAutoplan.Margin = new Padding(2);
             gbxAutoplan.Name = "gbxAutoplan";
-            gbxAutoplan.Size = new Size(334, 216);
+            gbxAutoplan.Padding = new Padding(2);
+            gbxAutoplan.Size = new Size(260, 154);
             gbxAutoplan.TabIndex = 20;
             gbxAutoplan.TabStop = false;
             gbxAutoplan.Text = "Datos del AutoPlan";
@@ -285,71 +284,78 @@
             // 
             cboCuotas.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCuotas.FormattingEnabled = true;
-            cboCuotas.Location = new Point(73, 90);
+            cboCuotas.Location = new Point(57, 64);
+            cboCuotas.Margin = new Padding(2);
             cboCuotas.Name = "cboCuotas";
-            cboCuotas.Size = new Size(151, 29);
+            cboCuotas.Size = new Size(118, 23);
             cboCuotas.TabIndex = 23;
             // 
             // cboTargeta
             // 
             cboTargeta.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTargeta.FormattingEnabled = true;
-            cboTargeta.Location = new Point(73, 37);
+            cboTargeta.Location = new Point(57, 26);
+            cboTargeta.Margin = new Padding(2);
             cboTargeta.Name = "cboTargeta";
-            cboTargeta.Size = new Size(151, 29);
+            cboTargeta.Size = new Size(118, 23);
             cboTargeta.TabIndex = 26;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(9, 41);
+            label1.Location = new Point(7, 29);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(58, 21);
+            label1.Size = new Size(44, 15);
             label1.TabIndex = 25;
             label1.Text = "Tarjeta:";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(73, 143);
+            textBox1.Location = new Point(57, 102);
+            textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 29);
+            textBox1.Size = new Size(98, 23);
             textBox1.TabIndex = 22;
             // 
             // lblInteres
             // 
             lblInteres.AutoSize = true;
-            lblInteres.Location = new Point(7, 147);
+            lblInteres.Location = new Point(5, 105);
+            lblInteres.Margin = new Padding(2, 0, 2, 0);
             lblInteres.Name = "lblInteres";
-            lblInteres.Size = new Size(60, 21);
+            lblInteres.Size = new Size(45, 15);
             lblInteres.TabIndex = 24;
             lblInteres.Text = "Interes:";
             // 
             // lblCuotas
             // 
             lblCuotas.AutoSize = true;
-            lblCuotas.Location = new Point(6, 94);
+            lblCuotas.Location = new Point(5, 67);
+            lblCuotas.Margin = new Padding(2, 0, 2, 0);
             lblCuotas.Name = "lblCuotas";
-            lblCuotas.Size = new Size(61, 21);
+            lblCuotas.Size = new Size(47, 15);
             lblCuotas.TabIndex = 23;
             lblCuotas.Text = "Cuotas:";
             // 
             // cbxAutoplan
             // 
             cbxAutoplan.AutoSize = true;
-            cbxAutoplan.Location = new Point(770, 304);
+            cbxAutoplan.Location = new Point(599, 217);
+            cbxAutoplan.Margin = new Padding(2);
             cbxAutoplan.Name = "cbxAutoplan";
-            cbxAutoplan.Size = new Size(95, 25);
+            cbxAutoplan.Size = new Size(75, 19);
             cbxAutoplan.TabIndex = 21;
             cbxAutoplan.Text = "AutoPlan";
             cbxAutoplan.UseVisualStyleBackColor = true;
             // 
             // FrmNuevaFactura
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1121, 794);
+            ClientSize = new Size(872, 535);
             Controls.Add(cbxAutoplan);
             Controls.Add(gbxAutoplan);
             Controls.Add(cboFormaPago);
@@ -369,6 +375,7 @@
             Controls.Add(cboCliente);
             Controls.Add(cboVendedor);
             DoubleBuffered = true;
+            Margin = new Padding(2);
             Name = "FrmNuevaFactura";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Nueva Factura";

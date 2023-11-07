@@ -68,21 +68,33 @@ namespace TpAutomotrizFront.Presentacion
             while (true)
             {
                 if (!val.ValidarCombo(cboVendedor)) break;
-                if(!val.ValidarCombo(cboCliente)) break;
-                if(!val.ValidarCombo(cboProducto)) break;
-                if(!val.ValidarInt(nudCantidad.Value.ToString(),nudCantidad)) break;
-                
+                if (!val.ValidarCombo(cboCliente)) break;
+                if (!val.ValidarCombo(cboProducto)) break;
+                if (!val.ValidarInt(nudCantidad.Value.ToString(), nudCantidad)) break;
+
                 validado = true;
                 break;
             }
 
-            if(validado)
+            if (validado)
             {
                 Producto p = (Producto)cboProducto.SelectedItem;
                 int cant = Convert.ToInt32(nudCantidad.Value);
 
-                dgvDetallesFac.Rows.Add(new object[] {p.Descripcion, cant}); // COMPLETAR
+                dgvDetallesFac.Rows.Add(new object[] { p.Descripcion, cant }); // COMPLETAR
             }
+
+        }
+
+    
+
+        private void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }
