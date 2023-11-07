@@ -66,6 +66,7 @@ id_categoria int,
 apellido varchar(100),
 nombre varchar(100),
 CUIT varchar (20),
+contraseña varchar(64),
 fecha_ingreso Datetime null
 
 constraint pk_vend primary key (id_vendedor),
