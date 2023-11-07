@@ -121,4 +121,7 @@
     <value>Data Source=FRACTAL-PC\SQLEXPRESS;Initial Catalog=TP_Autos;Integrated Security=True</value>
     <comment>Cadena de conexion pc de Andres</comment>
   </data>
+  <data name="Pablo" xml:space="preserve">
+    <value>Data Source=pablo-mina;Initial Catalog=autos;Integrated Security=True</value>
+  </data>
 </root>

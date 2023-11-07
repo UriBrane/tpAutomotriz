@@ -66,7 +66,6 @@ id_categoria int,
 apellido varchar(100),
 nombre varchar(100),
 CUIT varchar (20),
-contraseña varchar(64),
 fecha_ingreso Datetime null
 
 constraint pk_vend primary key (id_vendedor),
@@ -498,12 +497,11 @@ CREATE PROCEDURE SP_INSERT_VENDEDOR
     @apellido varchar(100),
     @nombre varchar(100),
     @CUIT varchar(20),
-    @contraseña varchar(64),
     @fecha_ingreso datetime
 AS
 BEGIN
-    INSERT INTO Vendedores(id_categoria, apellido, nombre, CUIT, fecha_ingreso, contraseña)
-    VALUES (@id_categoria, @apellido, @nombre, @CUIT, @fecha_ingreso, @contraseña)
+    INSERT INTO Vendedores(id_categoria, apellido, nombre, CUIT, fecha_ingreso)
+    VALUES (@id_categoria, @apellido, @nombre, @CUIT, @fecha_ingreso)
 END;
 GO
 
@@ -720,24 +718,3 @@ BEGIN
     SELECT * FROM Facturas WHERE id_factura = @id_factura
 END;
 GO
-
---TRAER PROXIMA FACTURA
-CREATE PROCEDURE SP_PROXIMA_FACTURA
-@next int OUTPUT
-AS
-BEGIN
-	SET @next = (SELECT MAX(id_factura)+1
-	FROM Facturas)
-END
-GO
-
---TRAER PROXIMA ORDEN
-CREATE PROCEDURE SP_PROXIMA_ORDEN
-@next int OUTPUT
-AS
-BEGIN
-	SET @next = (SELECT MAX(id_orden_pedido)+1
-	FROM Ordenes_Pedidos)
-END
-GO
-

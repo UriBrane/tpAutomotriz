@@ -72,6 +72,15 @@ namespace TpAutomotrizAPI.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a .
         /// </summary>
+        public static string urlpablo {
+            get {
+                return ResourceManager.GetString("urlpablo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
         public static string UrlUri {
             get {
                 return ResourceManager.GetString("UrlUri", resourceCulture);
