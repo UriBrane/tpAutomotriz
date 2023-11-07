@@ -718,3 +718,24 @@ BEGIN
     SELECT * FROM Facturas WHERE id_factura = @id_factura
 END;
 GO
+
+--TRAER PROXIMA FACTURA
+CREATE PROCEDURE SP_PROXIMA_FACTURA
+@next int OUTPUT
+AS
+BEGIN
+	SET @next = (SELECT MAX(id_factura)+1
+	FROM Facturas)
+END
+GO
+
+--TRAER PROXIMA ORDEN
+CREATE PROCEDURE SP_PROXIMA_ORDEN
+@next int OUTPUT
+AS
+BEGIN
+	SET @next = (SELECT MAX(id_orden_pedido)+1
+	FROM Ordenes_Pedidos)
+END
+GO
+
