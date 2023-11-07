@@ -1,6 +1,8 @@
 CREATE DATABASE TP_Autos
+	go
 
 USE TP_Autos
+	go
 
 CREATE TABLE Provincias
 (id_provincia int IDENTITY(1,1) not null,
@@ -64,6 +66,7 @@ id_categoria int,
 apellido varchar(100),
 nombre varchar(100),
 CUIT varchar (20),
+contraseña varchar(64),
 fecha_ingreso Datetime null
 
 constraint pk_vend primary key (id_vendedor),
@@ -173,7 +176,7 @@ id_cuota int
 constraint pk_form_pag primary key (id_forma_pago),
 
 constraint fk_fomr_tarj FOREIGN KEY(id_tarjeta)
-			references Tarjetas_Credito(id_tarjeta)
+			references Tarjetas_Credito(id_tarjeta),
 constraint fk_tarj_cuo FOREIGN KEY (id_cuota)
 		references Cuotas (id_cuota)
 );
@@ -387,11 +390,11 @@ VALUES
 --INSERT PARA FORMAS_PAGO
 INSERT INTO Formas_Pago([descripcion], [id_tarjeta], [id_cuota] )
 VALUES
-    ('Efectivo', NULL),
+    ('Efectivo', NULL, null),
     ('Tarjeta de Cr�dito', 1, 3),
     ('Tarjeta de D�bito', 2, 1),
-    ('Transferencia Bancaria', null),
-    ('Cheque', NULL);
+    ('Transferencia Bancaria', null, null),
+    ('Cheque', NULL, null);
 
 --INSERT PARA HISTORIALES PRECIOS
 INSERT INTO Historiales_precios ([id_producto], [fecha], [precio])
@@ -716,3 +719,24 @@ BEGIN
     SELECT * FROM Facturas WHERE id_factura = @id_factura
 END;
 GO
+
+--TRAER PROXIMA FACTURA
+CREATE PROCEDURE SP_PROXIMA_FACTURA
+@next int OUTPUT
+AS
+BEGIN
+	SET @next = (SELECT MAX(id_factura)+1
+	FROM Facturas)
+END
+GO
+
+--TRAER PROXIMA ORDEN
+CREATE PROCEDURE SP_PROXIMA_ORDEN
+@next int OUTPUT
+AS
+BEGIN
+	SET @next = (SELECT MAX(id_orden_pedido)+1
+	FROM Ordenes_Pedidos)
+END
+GO
+
