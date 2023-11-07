@@ -212,7 +212,8 @@ fecha datetime,
 id_vendedor int,
 id_orden_pedido int,
 id_autoplan int,
-id_forma_pago int 
+id_forma_pago int ,
+anulada bool,
 
 constraint pk_fac primary key (id_factura),
 
@@ -418,13 +419,13 @@ INSERT INTO Ordenes_Pedidos([id_cliente],[fecha_entrega],[fecha_pedido])
 	(5,'23/04/2022','13/09/2020');
 
 --INSERT INTO FACTURAS
-INSERT INTO Facturas ([id_cliente],[fecha],[id_vendedor] ,[id_orden_pedido] ,[id_autoplan] ,[id_forma_pago])
+INSERT INTO Facturas ([id_cliente],[fecha],[id_vendedor] ,[id_orden_pedido] ,[id_autoplan] ,[id_forma_pago], [anulada])
 	VALUES 
-		(1,'02/05/2022',1,1,1,1),
-		(2,'09/04/2020',2,2,2,2),
-		(3,'10/04/2020',3,3,3,3),
-		(4,'23/05/2021',4,4,4,4),
-		(5,'20/06/2021',5,5,5,5);
+		(1,'02/05/2022',1,1,1,1,0),
+		(2,'09/04/2020',2,2,2,2,0),
+		(3,'10/04/2020',3,3,3,3,0),
+		(4,'23/05/2021',4,4,4,4,0),
+		(5,'20/06/2021',5,5,5,5,0);
 	
 --INSERT INTO DETALLE_FACTURAS
 INSERT INTO Detalles_Facturas([id_tipo_venta],[id_factura],[id_producto],[cantidad],[precio],[id_descuento])
