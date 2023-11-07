@@ -121,4 +121,7 @@
     <value>https://localhost:7106</value>
     <comment>Url del Pc de Andrés</comment>
   </data>
+  <data name="UrlUri" xml:space="preserve">
+    <value />
+  </data>
 </root>
