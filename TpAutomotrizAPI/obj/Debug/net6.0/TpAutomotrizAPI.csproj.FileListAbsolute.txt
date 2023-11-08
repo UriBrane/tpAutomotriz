@@ -125,3 +125,4 @@ C:\Users\pablo\OneDrive\Escritorio\tpAutomotriz-main\TpAutomotrizAPI\obj\Debug\n
 C:\Users\pablo\OneDrive\Escritorio\tpAutomotriz-main\TpAutomotrizAPI\obj\Debug\net6.0\TpAutomotrizAPI.genruntimeconfig.cache
 C:\Users\pablo\OneDrive\Escritorio\tpAutomotriz-main\TpAutomotrizAPI\obj\Debug\net6.0\ref\TpAutomotrizAPI.dll
 C:\Users\pablo\OneDrive\Escritorio\tpAutomotriz-main\TpAutomotrizAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotrizAPI\bin\Debug\net6.0\Newtonsoft.Json.dll

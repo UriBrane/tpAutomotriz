@@ -979,19 +979,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pablo\\.nuget\\packages\\": {}
+    "C:\\Users\\y0303\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pablo\\OneDrive\\Escritorio\\tpAutomotriz-main\\TpAutomotrizFront\\TpAutomotrizFront.csproj",
+      "projectUniqueName": "C:\\Users\\y0303\\Documents\\GitHub\\tpAutomotriz\\TpAutomotrizFront\\TpAutomotrizFront.csproj",
       "projectName": "TpAutomotrizFront",
-      "projectPath": "C:\\Users\\pablo\\OneDrive\\Escritorio\\tpAutomotriz-main\\TpAutomotrizFront\\TpAutomotrizFront.csproj",
-      "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pablo\\OneDrive\\Escritorio\\tpAutomotriz-main\\TpAutomotrizFront\\obj\\",
+      "projectPath": "C:\\Users\\y0303\\Documents\\GitHub\\tpAutomotriz\\TpAutomotrizFront\\TpAutomotrizFront.csproj",
+      "packagesPath": "C:\\Users\\y0303\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\y0303\\Documents\\GitHub\\tpAutomotriz\\TpAutomotrizFront\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\y0303\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -999,14 +1004,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\pablo\\OneDrive\\Escritorio\\tpAutomotriz-main\\TpAutomotrizAPI\\TpAutomotrizAPI.csproj": {
-              "projectPath": "C:\\Users\\pablo\\OneDrive\\Escritorio\\tpAutomotriz-main\\TpAutomotrizAPI\\TpAutomotrizAPI.csproj"
+            "C:\\Users\\y0303\\Documents\\GitHub\\tpAutomotriz\\TpAutomotrizAPI\\TpAutomotrizAPI.csproj": {
+              "projectPath": "C:\\Users\\y0303\\Documents\\GitHub\\tpAutomotriz\\TpAutomotrizAPI\\TpAutomotrizAPI.csproj"
             }
           }
         }
