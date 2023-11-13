@@ -66,6 +66,7 @@ id_categoria int,
 apellido varchar(100),
 nombre varchar(100),
 CUIT varchar (20),
+contrasenia varchar(64),
 fecha_ingreso Datetime null
 
 constraint pk_vend primary key (id_vendedor),
@@ -497,15 +498,16 @@ CREATE PROCEDURE SP_INSERT_VENDEDOR
     @apellido varchar(100),
     @nombre varchar(100),
     @CUIT varchar(20),
+    @contrasenia varchar(64),
     @fecha_ingreso datetime
 AS
 BEGIN
-    INSERT INTO Vendedores(id_categoria, apellido, nombre, CUIT, fecha_ingreso)
-    VALUES (@id_categoria, @apellido, @nombre, @CUIT, @fecha_ingreso)
+    INSERT INTO Vendedores(id_categoria, apellido, nombre, CUIT, fecha_ingreso, contrasenia)
+    VALUES (@id_categoria, @apellido, @nombre, @CUIT, @fecha_ingreso, @contrasenia)
 END;
 GO
 
--- INSERTAR VENDEDOR
+-- INSERTAR CLIENTE
 CREATE PROCEDURE SP_INSERT_CLIENTE
     @id_tipo_cliente int,
     @nombre varchar(200),
