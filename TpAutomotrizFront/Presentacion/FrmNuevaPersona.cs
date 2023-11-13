@@ -12,6 +12,7 @@ using TpAutomotrizBack.Datos;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizFront.Servicios;
 using TpAutomotrizFront.Servicios.Client;
+using System.Security.Cryptography;
 
 namespace TpAutomotrizFront.Presentacion
 {
@@ -24,7 +25,7 @@ namespace TpAutomotrizFront.Presentacion
             InitializeComponent();
             val = Validador.GetInstance();
         }
-        
+
         private void FrmNuevaPersona_Load(object sender, EventArgs e)
         {
             CargarCboTipo();
@@ -113,7 +114,9 @@ namespace TpAutomotrizFront.Presentacion
                 DateTime fecIngreso = dtpFecIngreso.Value;
                 int idCat = Convert.ToInt32(cboCategoria.SelectedValue);
 
-                v = new Vendedor(nombre, apellido, cuit, fecIngreso, idCat);
+                string contrasenia = HashPassword(txtContra.Text);
+
+                v = new Vendedor(nombre, apellido, cuit, fecIngreso, idCat, contrasenia);
 
                 if (await GrabarPersona(v, "/vendedor"))
                 {
@@ -122,6 +125,39 @@ namespace TpAutomotrizFront.Presentacion
                 }
                 else
                     MessageBox.Show("NO se pudo guardar el Vendedor...", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        static string HashPassword(string password)
+        {
+            string FixedSalt = "saltFijaParaTodasLasContraseñas"; // Sal fija
+            // Hashea la contraseña con SHA-256 y la sal fija
+            byte[] hashedPasswordBytes = HashPasswordWithSalt(password, Encoding.UTF8.GetBytes(FixedSalt));
+
+            // Convierte el resultado a una cadena hexadecimal
+            string hashedPassword = BitConverter.ToString(hashedPasswordBytes).Replace("-", "").ToLower();
+
+            return hashedPassword;
+        }
+
+        static byte[] HashPasswordWithSalt(string password, byte[] salt)
+        {
+            using (var sha256 = new SHA256Managed())
+            {
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                byte[] passwordWithSalt = new byte[passwordBytes.Length + salt.Length];
+
+                // Concatena la contraseña con la sal
+                for (int i = 0; i < passwordBytes.Length; i++)
+                {
+                    passwordWithSalt[i] = passwordBytes[i];
+                }
+                for (int i = 0; i < salt.Length; i++)
+                {
+                    passwordWithSalt[passwordBytes.Length + i] = salt[i];
+                }
+
+                return sha256.ComputeHash(passwordWithSalt);
             }
         }
 

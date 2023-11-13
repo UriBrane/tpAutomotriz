@@ -30,6 +30,7 @@ namespace TpAutomotrizBack.Datos.Implementacion
                 new Parametro( "@CUIT", v.Cuit),
                 new Parametro( "@fecha_ingreso", v.FechaIngreso),
                 new Parametro( "@id_categoria", v.IdCategoria),
+                new Parametro( "contraseña", v.Contrasenia)
             };
             return helper.EjecutarSQL("SP_INSERT_VENDEDOR", parametros);
         }

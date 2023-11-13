@@ -9,7 +9,8 @@
       "TpAutomotrizFront/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
-          "TpAutomotrizAPI": "1.0.0"
+          "TpAutomotrizAPI": "1.0.0",
+          "TpAutomotrizBack": "1.0.0"
         },
         "runtime": {
           "TpAutomotrizFront.dll": {}

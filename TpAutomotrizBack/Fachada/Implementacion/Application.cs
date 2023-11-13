@@ -43,6 +43,10 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         {
             return vendedorDAO.GetVendedores();
         }
+        public Vendedor GetVendedor(int id)
+        {
+            return vendedorDAO.GetVendedor(id);
+        }
 
         // PRODUCTO
 

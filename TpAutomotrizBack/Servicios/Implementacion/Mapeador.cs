@@ -70,7 +70,8 @@ namespace TpAutomotrizBack.Servicios.Implementacion
             string cuit = (dr["CUIT"]).ToString() ?? "";
             DateTime fecIngr = Convert.ToDateTime(dr["fecha_ingreso"]);
             int idCat = Convert.ToInt32(dr["id_categoria"]);
-            Vendedor v = new Vendedor(id, nombre, apellido, cuit, fecIngr, idCat);
+            string contrasenia = dr["contraseña"].ToString() ?? "";
+            Vendedor v = new Vendedor(id, nombre, apellido, cuit, fecIngr, idCat, contrasenia);
             return v;
         }
         public Vendedor MapearVendedor(DataTable dt)

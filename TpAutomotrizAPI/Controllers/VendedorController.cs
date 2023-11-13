@@ -31,6 +31,20 @@ namespace TpAutomotrizAPI.Controllers
             }
         }
 
+        [HttpGet("/vendedor/{id}")]
+        public IActionResult GetVendedor(int id)
+        {
+            try
+            {
+                Vendedor v = app.GetVendedor(id);
+                return Ok(v);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
         [HttpPost("/vendedor")]
         public IActionResult PostVendedor(Vendedor v)
         {

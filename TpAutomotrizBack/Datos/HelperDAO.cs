@@ -15,7 +15,7 @@ namespace TpAutomotrizBack.Datos
 
         private HelperDAO()
         {
-            cnn = new SqlConnection(Properties.Resources.Pablo);
+            cnn = new SqlConnection(@"Data Source=DESKTOP-B5Q8CSC\SQLEXPRESS;Initial Catalog=TP_Autos_7_11;Integrated Security=True");
         }
 
         public static HelperDAO GetInstance()
