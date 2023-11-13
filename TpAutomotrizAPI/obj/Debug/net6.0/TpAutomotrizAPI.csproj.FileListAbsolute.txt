@@ -169,3 +169,4 @@ C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizAPI\obj\Debug\net6.0\scopedcss\b
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizAPI\obj\Debug\net6.0\TpAutomotrizAPI.csproj.CopyComplete
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizAPI\obj\Debug\net6.0\TpAutomotrizAPI.genruntimeconfig.cache
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizAPI\obj\Debug\net6.0\ref\TpAutomotrizAPI.dll
+C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizAPI\bin\Debug\net6.0\Newtonsoft.Json.dll

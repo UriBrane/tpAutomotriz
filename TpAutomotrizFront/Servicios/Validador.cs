@@ -45,6 +45,20 @@ namespace TpAutomotrizFront.Servicios
             }
             return aux;
         }
+        public bool ValidarLong(string s, Control c)
+        {
+            // Valida si el contenido de un control es LONG, y si no lo es, muestra un mensaje y hace focus en el control
+            bool aux = true;
+            if (!long.TryParse(s, out _))
+                aux = false;
+            if (!aux)
+            {
+                MessageBox.Show("El contenido a guardar no es valido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                c.Focus();
+            }
+            return aux;
+        }
+
         public bool ValidarDouble(string s, Control c)
         {
             bool aux = true;

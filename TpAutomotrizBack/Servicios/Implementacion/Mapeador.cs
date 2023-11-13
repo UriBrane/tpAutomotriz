@@ -32,7 +32,7 @@ namespace TpAutomotrizBack.Servicios.Implementacion
             int id = Convert.ToInt32(dr["id_cliente"]);
             string nombre = dr["nombre"].ToString() ?? "";
             string apellido = dr["apellido"].ToString() ?? "";
-            string cuit = (dr["CUIT"]).ToString() ?? "";
+            long cuit = Convert.ToInt64(dr["CUIT"]);
             string calle = dr["dire_calle"].ToString() ?? "";
             int calleNro = Convert.ToInt32(dr["dire_nro"]);
             int tipoCli = Convert.ToInt32(dr["id_tipo_cliente"]);
@@ -67,10 +67,10 @@ namespace TpAutomotrizBack.Servicios.Implementacion
             int id = Convert.ToInt32(dr["id_vendedor"]);
             string nombre = dr["nombre"].ToString() ?? "";
             string apellido = dr["apellido"].ToString() ?? "";
-            string cuit = (dr["CUIT"]).ToString() ?? "";
+            long cuit = Convert.ToInt64(dr["CUIT"]);
             DateTime fecIngr = Convert.ToDateTime(dr["fecha_ingreso"]);
             int idCat = Convert.ToInt32(dr["id_categoria"]);
-            string contrasenia = dr["contraseña"].ToString() ?? "";
+            string contrasenia = dr["contrasenia"].ToString() ?? "";
             Vendedor v = new Vendedor(id, nombre, apellido, cuit, fecIngr, idCat, contrasenia);
             return v;
         }

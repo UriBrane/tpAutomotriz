@@ -98,7 +98,7 @@ namespace TpAutomotrizFront.Presentacion
             {
                 if (!val.ValidarString(txtNombre.Text, txtNombre)) break;
                 if (!val.ValidarString(txtApellido.Text, txtApellido)) break;
-                if (!val.ValidarString(txtCuit.Text, txtCuit)) break;
+                if (!val.ValidarLong(txtCuit.Text, txtCuit)) break;
                 if (!val.ValidarCombo(cboCategoria)) break;
                 // Si todas las validaciones pasan, rompe el ciclo
                 validado = true;
@@ -110,7 +110,7 @@ namespace TpAutomotrizFront.Presentacion
             {
                 string nombre = txtNombre.Text;
                 string apellido = txtApellido.Text;
-                string cuit = txtCuit.Text;
+                long cuit = Convert.ToInt64(txtCuit.Text);
                 DateTime fecIngreso = dtpFecIngreso.Value;
                 int idCat = Convert.ToInt32(cboCategoria.SelectedValue);
 
@@ -125,6 +125,49 @@ namespace TpAutomotrizFront.Presentacion
                 }
                 else
                     MessageBox.Show("NO se pudo guardar el Vendedor...", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void GuardarCliente()
+        {
+            Cliente c;
+            bool validado = false;
+
+            // VALIDACION
+            while (true)
+            {
+                if (!val.ValidarString(txtNombre.Text, txtNombre)) break;
+                if (!val.ValidarString(txtApellido.Text, txtApellido)) break;
+                if (!val.ValidarLong(txtCuit.Text, txtCuit)) break;
+                if (!val.ValidarString(txtDireccion.Text, txtDireccion)) break;
+                if (!val.ValidarInt(txtNumero.Text, txtNumero)) break;
+                if (!val.ValidarCombo(cboTipoCliente)) break;
+                if (!val.ValidarCombo(cboBarrio)) break;
+                // Si todas las validaciones pasan, rompe el ciclo
+                validado = true;
+                break;
+            }
+
+            //MAPEO
+            if (validado)
+            {
+                string nombre = txtNombre.Text;
+                string apellido = txtApellido.Text;
+                long cuit = Convert.ToInt64(txtCuit.Text);
+                string direccion = txtDireccion.Text;
+                int numero = Convert.ToInt32(txtNumero.Text);
+                int idTipoCli = Convert.ToInt32(cboTipoCliente.SelectedValue);
+                int idBarrio = Convert.ToInt32(cboBarrio.SelectedValue);
+
+                c = new Cliente(nombre, apellido, cuit, direccion, numero, idTipoCli, idBarrio);
+
+                if (await GrabarPersona(c, "/cliente"))
+                {
+                    MessageBox.Show("Se guardó con éxito el Cliente...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Dispose();
+                }
+                else
+                    MessageBox.Show("NO se pudo guardar el Cliente...", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -158,49 +201,6 @@ namespace TpAutomotrizFront.Presentacion
                 }
 
                 return sha256.ComputeHash(passwordWithSalt);
-            }
-        }
-
-        private async void GuardarCliente()
-        {
-            Cliente c;
-            bool validado = false;
-
-            // VALIDACION
-            while (true)
-            {
-                if (!val.ValidarString(txtNombre.Text, txtNombre)) break;
-                if (!val.ValidarString(txtApellido.Text, txtApellido)) break;
-                if (!val.ValidarString(txtCuit.Text, txtCuit)) break;
-                if (!val.ValidarString(txtDireccion.Text, txtDireccion)) break;
-                if (!val.ValidarInt(txtNumero.Text, txtNumero)) break;
-                if (!val.ValidarCombo(cboTipoCliente)) break;
-                if (!val.ValidarCombo(cboBarrio)) break;
-                // Si todas las validaciones pasan, rompe el ciclo
-                validado = true;
-                break;
-            }
-
-            //MAPEO
-            if (validado)
-            {
-                string nombre = txtNombre.Text;
-                string apellido = txtApellido.Text;
-                string cuit = txtCuit.Text;
-                string direccion = txtDireccion.Text;
-                int numero = Convert.ToInt32(txtNumero.Text);
-                int idTipoCli = Convert.ToInt32(cboTipoCliente.SelectedValue);
-                int idBarrio = Convert.ToInt32(cboBarrio.SelectedValue);
-
-                c = new Cliente(nombre, apellido, cuit, direccion, numero, idTipoCli, idBarrio);
-
-                if (await GrabarPersona(c, "/cliente"))
-                {
-                    MessageBox.Show("Se guardó con éxito el Cliente...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Dispose();
-                }
-                else
-                    MessageBox.Show("NO se pudo guardar el Cliente...", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

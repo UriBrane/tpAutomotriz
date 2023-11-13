@@ -21,14 +21,14 @@ namespace TpAutomotrizBack.Entidades
             TipoCliente = 0;
             IdBarrio = 0;
         }
-        public Cliente(string nombre, string apellido, string cuit, string calle, int nro, int idTipo, int idBarrio) : base(nombre, apellido, cuit)
+        public Cliente(string nombre, string apellido, long cuit, string calle, int nro, int idTipo, int idBarrio) : base(nombre, apellido, cuit)
         {
             Calle = calle;
             CalleNro = nro;
             TipoCliente = idTipo;
             IdBarrio = idBarrio;
         }
-        public Cliente(int idCli, string nombre, string apellido, string cuit, string calle, int nro, int idTipo, int idBarrio) : base(nombre, apellido, cuit)
+        public Cliente(int idCli, string nombre, string apellido, long cuit, string calle, int nro, int idTipo, int idBarrio) : base(nombre, apellido, cuit)
         {
             IdCliente = idCli;
             Calle = calle;

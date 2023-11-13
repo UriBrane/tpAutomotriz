@@ -20,14 +20,14 @@ namespace TpAutomotrizBack.Entidades
             IdCategoria = 0;
             Contrasenia = string.Empty;
         }
-        public Vendedor(string nombre, string apellido, string cuit, DateTime fec, int idCat, string contrasenia) : base(nombre, apellido, cuit)
+        public Vendedor(string nombre, string apellido, long cuit, DateTime fec, int idCat, string contrasenia) : base(nombre, apellido, cuit)
         {
             FechaIngreso = fec;
             IdCategoria = idCat;
             Contrasenia = contrasenia;
         }
 
-        public Vendedor(int idVend, string nombre, string apellido, string cuit, DateTime fec, int idCat, string contrasenia) : base(nombre, apellido, cuit)
+        public Vendedor(int idVend, string nombre, string apellido, long cuit, DateTime fec, int idCat, string contrasenia) : base(nombre, apellido, cuit)
         {
             IdVendedor = idVend;
             FechaIngreso = fec;

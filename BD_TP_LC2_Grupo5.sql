@@ -34,7 +34,7 @@ CREATE TABLE Clientes
 id_tipo_cliente int null,
 nombre varchar(200) null,
 apellido varchar(200) null,
-CUIT varchar(20) null,
+CUIT bigint,
 dire_calle varchar(200) null,
 dire_nro int,
 id_barrio int 
@@ -65,7 +65,7 @@ CREATE TABLE Vendedores
 id_categoria int,
 apellido varchar(100),
 nombre varchar(100),
-CUIT varchar (20),
+CUIT bigint,
 contrasenia varchar(64),
 fecha_ingreso Datetime null
 
@@ -272,11 +272,11 @@ VALUES
 --INSERT PARA VENDEDORES
 INSERT INTO Vendedores([id_categoria], [apellido], [nombre], [CUIT], [fecha_ingreso])
 VALUES
-    (1, 'G�mez', 'Juan', '20-12345678-9', '2022-01-15'),
-    (2, 'Mart�nez', 'Mar�a', '27-98765432-1', '2021-05-10'),
-    (1, 'L�pez', 'Carlos', '23-87654321-0', '2023-03-20'),
-    (2, 'Rodr�guez', 'Ana', '20-34567890-1', '2020-12-05'),
-    (3, 'Fern�ndez', 'Javier', '30-56789012-3', '2019-08-18');
+    (1, 'G�mez', 'Juan', 20123456789, '2022-01-15'),
+    (2, 'Mart�nez', 'Mar�a', 27987654321, '2021-05-10'),
+    (1, 'L�pez', 'Carlos', 23876543210, '2023-03-20'),
+    (2, 'Rodr�guez', 'Ana', 20345678901, '2020-12-05'),
+    (3, 'Fern�ndez', 'Javier', 30567890123, '2019-08-18');
 
 
 
@@ -328,11 +328,11 @@ VALUES
 --INSERT PARA CLIENTES 
 INSERT INTO Clientes ([id_tipo_cliente], [nombre], [apellido], [CUIT], [dire_calle], [dire_nro], [id_barrio])
 VALUES
-    (1, 'Juan', 'Gonz�lez', '20-12345678-9', 'Av. Rivadavia', 1234, 2),
-    (1, 'Mar�a', 'L�pez', '27-98765432-1', 'Av. San Mart�n', 567, 2),
-    (2, 'Carlos', 'Mart�nez', '23-87654321-0', 'Av. Belgrano', 890, 3),
-    (1, 'Ana', 'Fern�ndez', '20-34567890-1', 'Av. Pueyrred�n', 456, 4),
-    (2, 'Javier', 'Rodr�guez', '30-56789012-3', 'Av. C�rdoba', 789, 5);
+    (1, 'Juan', 'Gonz�lez', 20123456789, 'Av. Rivadavia', 1234, 2),
+    (1, 'Mar�a', 'L�pez', 27987654321, 'Av. San Mart�n', 567, 2),
+    (2, 'Carlos', 'Mart�nez', 23876543210, 'Av. Belgrano', 890, 3),
+    (1, 'Ana', 'Fern�ndez', 20345678901, 'Av. Pueyrred�n', 456, 4),
+    (2, 'Javier', 'Rodr�guez', 30567890123, 'Av. C�rdoba', 789, 5);
 
 	--INSERT TIPOS CONTACTOS
 INSERT INTO Tipos_Contactos ([descripcion])
@@ -497,7 +497,7 @@ CREATE PROCEDURE SP_INSERT_VENDEDOR
     @id_categoria int,
     @apellido varchar(100),
     @nombre varchar(100),
-    @CUIT varchar(20),
+    @CUIT bigint,
     @contrasenia varchar(64),
     @fecha_ingreso datetime
 AS
@@ -512,7 +512,7 @@ CREATE PROCEDURE SP_INSERT_CLIENTE
     @id_tipo_cliente int,
     @nombre varchar(200),
     @apellido varchar(200),
-    @CUIT varchar(20),
+    @CUIT bigint,
     @dire_calle varchar(200),
     @dire_nro int,
     @id_barrio int
