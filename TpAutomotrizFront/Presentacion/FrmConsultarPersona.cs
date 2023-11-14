@@ -29,6 +29,7 @@ namespace TpAutomotrizFront.Presentacion
 
         private void CargarDgv()
         {
+            dgvPersonas.Rows.Clear();
             if (cboTipoPersona.SelectedIndex == 0)
             {
                 CargarDgvClientes();
@@ -50,7 +51,7 @@ namespace TpAutomotrizFront.Presentacion
             List<Vendedor> lst = await TraerLista<Vendedor>("/vendedor");
             foreach (Vendedor v in lst)
             {
-                dgvPersonas.Rows.Add(v.IdVendedor, v.NombreCompleto, v.Cuit, "Editar","v");
+                dgvPersonas.Rows.Add(v.IdVendedor, v.NombreCompleto, v.Cuit, "Editar", "v");
             }
         }
 
@@ -59,7 +60,7 @@ namespace TpAutomotrizFront.Presentacion
             List<Cliente> lst = await TraerLista<Cliente>("/cliente");
             foreach (Cliente c in lst)
             {
-                dgvPersonas.Rows.Add(c.IdCliente, c.NombreCompleto, c.Cuit, "Editar","c");
+                dgvPersonas.Rows.Add(c.IdCliente, c.NombreCompleto, c.Cuit, "Editar", "c");
             }
         }
 
@@ -71,7 +72,6 @@ namespace TpAutomotrizFront.Presentacion
 
         private void cboTipoPersona_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dgvPersonas.Rows.Clear();
             CargarDgv();
         }
 
@@ -84,6 +84,7 @@ namespace TpAutomotrizFront.Presentacion
                 FrmNuevaPersona frm = new FrmNuevaPersona(id, tipo);
                 frm.ShowDialog();
             }
+            CargarDgv();
         }
     }
 }

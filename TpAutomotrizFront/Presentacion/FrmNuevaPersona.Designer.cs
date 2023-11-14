@@ -342,7 +342,7 @@
             Controls.Add(btnGuardar);
             Name = "FrmNuevaPersona";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Nuevo Cliente/Vendedor";
+            Text = "Cliente/Vendedor";
             Load += FrmNuevaPersona_Load;
             gbxGeneral.ResumeLayout(false);
             gbxGeneral.PerformLayout();

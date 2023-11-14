@@ -59,5 +59,21 @@ namespace TpAutomotrizAPI.Controllers
                 return StatusCode(500, "Error !!! " + ex.Message);
             }
         }
+
+        [HttpPut("/vendedor")]
+        public IActionResult PutVendedor(Vendedor v)
+        {
+            try
+            {
+                if (v == null)
+                    return BadRequest("Vendedor Incorrecto!");
+                return Ok(app.PutVendedor(v));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
     }
 }

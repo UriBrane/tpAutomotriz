@@ -51,7 +51,7 @@
             dgvPersonas.ReadOnly = true;
             dgvPersonas.RowHeadersWidth = 51;
             dgvPersonas.RowTemplate.Height = 31;
-            dgvPersonas.Size = new Size(1013, 385);
+            dgvPersonas.Size = new Size(713, 385);
             dgvPersonas.TabIndex = 0;
             dgvPersonas.CellContentClick += dgvPersonas_CellContentClick;
             // 
@@ -98,7 +98,7 @@
             ColNombre.MinimumWidth = 6;
             ColNombre.Name = "ColNombre";
             ColNombre.ReadOnly = true;
-            ColNombre.Width = 125;
+            ColNombre.Width = 350;
             // 
             // ColCuit
             // 
@@ -106,7 +106,7 @@
             ColCuit.MinimumWidth = 6;
             ColCuit.Name = "ColCuit";
             ColCuit.ReadOnly = true;
-            ColCuit.Width = 125;
+            ColCuit.Width = 150;
             // 
             // ColEditar
             // 
@@ -129,7 +129,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1181, 618);
+            ClientSize = new Size(762, 618);
             Controls.Add(cboTipoPersona);
             Controls.Add(lblTipoPersona);
             Controls.Add(lblLista);

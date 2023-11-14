@@ -51,6 +51,10 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         {
             return vendedorDAO.GetVendedor(id);
         }
+        public bool PutVendedor(Vendedor v)
+        {
+            return vendedorDAO.PutVendedor(v);
+        }
 
         // PRODUCTO
 
@@ -66,5 +70,6 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         {
             return productoDAO.GetProducto(id);
         }
+
     }
 }

@@ -20,6 +20,7 @@ namespace TpAutomotrizBack.Fachada.Interfaz
         bool PostVendedor(Vendedor v);
         List<Vendedor> GetVendedores();
         Vendedor GetVendedor(int id);
+        bool PutVendedor(Vendedor v);
 
         // PRODUCTO
 

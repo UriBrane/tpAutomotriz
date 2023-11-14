@@ -8,6 +8,9 @@ namespace TpAutomotrizBack.Entidades
 {
     public class Vendedor : Persona
     {
+        private DateTime fecIngreso;
+        private int idCat;
+
         public int IdVendedor { get; set; }
         public DateTime FechaIngreso { get; set; }
         public int IdCategoria { get; set; }
@@ -33,6 +36,14 @@ namespace TpAutomotrizBack.Entidades
             FechaIngreso = fec;
             IdCategoria = idCat;
             Contrasenia = contrasenia;
+        }
+
+        public Vendedor(int id, string nom, string ape, long cuit, DateTime fecIngreso, int idCat) : base(nom, ape, cuit)
+        {
+            IdVendedor = id;
+            FechaIngreso = fecIngreso;
+            IdCategoria = idCat;
+            Contrasenia = "";
         }
 
         public override string ToString()

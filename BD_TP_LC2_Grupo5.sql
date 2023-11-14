@@ -720,8 +720,8 @@ BEGIN
     SELECT * FROM Facturas WHERE id_factura = @id_factura
 END;
 GO
-
-	//para ver quien hace mas descuentos
+-- REPORTES
+	-- para ver quien hace mas descuentos
 CREATE PROCEDURE SP_CONSULTA_DESCUENTOS_PROMEDIO
 AS
 BEGIN
@@ -777,7 +777,7 @@ END;
 
 go
 
-	//para ver quien vende mas
+	--para ver quien vende mas
 CREATE PROCEDURE SP_CONSULTA_VENTAS_TOTALES
 AS
 BEGIN
@@ -812,7 +812,7 @@ BEGIN
 END;
 go
 
-	//listado de productos, y si fueron vendidos o no
+	-- listado de productos, y si fueron vendidos o no
 CREATE PROCEDURE SP_CONSULTA_ESTADO_PRODUCTOS
 AS
 BEGIN
@@ -844,8 +844,7 @@ END;
 
 go
 
-//resumen cliente ultimos tres años
-
+-- resumen cliente ultimos tres años
 AS
 BEGIN
 SELECT
@@ -871,9 +870,24 @@ END
 	EXEC SP_CONSULTA_VENTAS_TOTALES;
 	EXEC SP_CONSULTA_ESTADO_PRODUCTOS;
 	EXEC SP_CONSULTA_ESTADISTICAS_VENDEDORES;
+GO
 
-
-
-
-
-
+-- UPDATES
+--
+CREATE PROCEDURE SP_UPDATE_VENDEDOR
+    @id_vendedor int,
+    @id_categoria int,
+    @apellido varchar(100),
+    @nombre varchar(100),
+    @CUIT bigint,
+    @fecha_ingreso datetime
+AS
+BEGIN
+    UPDATE Vendedores
+    SET id_categoria = @id_categoria,
+        apellido = @apellido,
+        nombre = @nombre,
+        CUIT = @CUIT,
+        fecha_ingreso = @fecha_ingreso
+    WHERE id_vendedor = @id_vendedor;
+END;

@@ -21,6 +21,7 @@ namespace TpAutomotrizBack.Datos.Implementacion
             helper = HelperDAO.GetInstance();
             mapeo = Mapeador.GetInstance();
         }
+
         public bool PostVendedor(Vendedor v)
         {
             List<Parametro> parametros = new List<Parametro>
@@ -34,6 +35,7 @@ namespace TpAutomotrizBack.Datos.Implementacion
             };
             return helper.EjecutarSQL("SP_INSERT_VENDEDOR", parametros);
         }
+
         public List<Vendedor> GetVendedores()
         {
             DataTable dt = helper.ConsultarTabla("SP_SELECT_VENDEDORES");
@@ -43,9 +45,24 @@ namespace TpAutomotrizBack.Datos.Implementacion
 
         public Vendedor GetVendedor(int id)
         {
-            DataTable dt = helper.ConsultarTabla ("SP_CONSULTAR_VENDEDOR", "@id", id);            
+            DataTable dt = helper.ConsultarTabla("SP_CONSULTAR_VENDEDOR", "@id", id);
             Vendedor v = mapeo.MapearVendedor(dt);
             return v;
         }
+
+        public bool PutVendedor(Vendedor v)
+        {
+            List<Parametro> parametros = new List<Parametro>
+            {
+                new Parametro( "@id_vendedor", v.IdVendedor),
+                new Parametro( "@nombre", v.Nombre),
+                new Parametro( "@apellido", v.Apellido),
+                new Parametro( "@CUIT", v.Cuit),
+                new Parametro( "@fecha_ingreso", v.FechaIngreso),
+                new Parametro( "@id_categoria", v.IdCategoria)
+            };
+            return helper.EjecutarSQL("SP_UPDATE_VENDEDOR", parametros);
+        }
+
     }
 }

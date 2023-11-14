@@ -12,5 +12,6 @@ namespace TpAutomotrizBack.Datos.Interfaz
         Vendedor GetVendedor(int id);
         List<Vendedor> GetVendedores();
         bool PostVendedor(Vendedor v);
+        bool PutVendedor(Vendedor v);
     }
 }
