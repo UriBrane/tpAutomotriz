@@ -720,3 +720,160 @@ BEGIN
     SELECT * FROM Facturas WHERE id_factura = @id_factura
 END;
 GO
+
+	//para ver quien hace mas descuentos
+CREATE PROCEDURE SP_CONSULTA_DESCUENTOS_PROMEDIO
+AS
+BEGIN
+    SELECT
+        c.id_cliente,
+        c.nombre + ', ' + c.apellido AS 'cliente',
+        v.nombre + ', ' + v.apellido AS 'vendedor',
+        DATEDIFF(YEAR, v.fecha_ingreso, GETDATE()) AS 'Antigüedad',
+        SUM(((p.cantidad * p.precio) / 100) * d.porcentaje) AS 'Descuento',
+        AVG(d.porcentaje) AS 'Promedio_Descuento',
+        cat.descripcion AS 'Categoria'
+    FROM
+        Clientes c
+    JOIN
+        Facturas f ON f.id_cliente = c.id_cliente
+    JOIN
+        Detalles_Facturas df ON f.id_factura = df.id_factura
+    JOIN
+        Vendedores v ON f.id_vendedor = v.id_vendedor
+    JOIN
+        Descuentos d ON d.id_descuento = df.id_descuento
+    JOIN
+        Formas_Pago fp ON f.id_forma_pago = fp.id_forma_pago
+    JOIN
+        Categorias cat ON v.id_categoria = cat.id_categoria
+    JOIN
+        Productos p ON p.id_producto = df.id_producto
+    WHERE
+        f.id_forma_pago IN (
+            SELECT
+                id_forma_pago
+            FROM
+                Facturas ff
+            JOIN
+                Vendedores vv ON ff.id_vendedor = vv.id_vendedor
+            WHERE
+                DATEDIFF(YEAR, vv.fecha_ingreso, GETDATE()) >= 1
+        )
+    GROUP BY
+        c.id_cliente,
+        c.nombre,
+        c.apellido,
+        v.nombre,
+        v.apellido,
+        v.fecha_ingreso,
+        cat.descripcion,
+        f.id_factura
+    HAVING
+        AVG(d.porcentaje) IS NOT NULL
+    ORDER BY
+        'Promedio_Descuento' ASC;
+END;
+
+go
+
+	//para ver quien vende mas
+CREATE PROCEDURE SP_CONSULTA_VENTAS_TOTALES
+AS
+BEGIN
+    SELECT
+        v.id_vendedor,
+        v.nombre + ', ' + v.apellido AS 'Vendedor',
+        SUM(df.cantidad * df.precio) AS 'VentasTotales'
+    FROM
+        Vendedores v
+    JOIN
+        Facturas f ON v.id_vendedor = f.id_vendedor
+    JOIN
+        Detalles_Facturas df ON f.id_factura = df.id_factura
+    GROUP BY
+        v.id_vendedor,
+        v.nombre,
+        v.apellido
+    HAVING
+        SUM(df.cantidad * df.precio) > (
+            SELECT AVG(VentasTotales)
+            FROM (
+                SELECT
+                    SUM(df1.cantidad * df1.precio) AS 'VentasTotales'
+                FROM
+                    Facturas f1
+                JOIN
+                    Detalles_Facturas df1 ON f1.id_factura = df1.id_factura
+                GROUP BY
+                    f1.id_vendedor
+            ) AS subconsulta
+        );
+END;
+go
+
+	//listado de productos, y si fueron vendidos o no
+CREATE PROCEDURE SP_CONSULTA_ESTADO_PRODUCTOS
+AS
+BEGIN
+    -- Productos vendidos
+    SELECT
+        p.id_producto,
+        p.descripcion,
+        'Vendido' AS estado
+    FROM
+        Detalles_Facturas df
+    JOIN
+        Productos p ON df.id_producto = p.id_producto
+
+    UNION
+
+    -- Productos no vendidos
+    SELECT
+        p.id_producto,
+        p.descripcion,
+        'No Vendido' AS estado
+    FROM
+        Productos p
+    WHERE
+        p.id_producto NOT IN (
+            SELECT DISTINCT id_producto
+            FROM Detalles_Facturas
+        );
+END;
+
+go
+
+//resumen cliente ultimos tres años
+
+AS
+BEGIN
+SELECT
+f.id_cliente Id,
+c.apellido + ', ' + c.nombre Nombre,
+COUNT(f.id_factura) 'Cantidad de Compras',
+SUM(df.Cantidad) 'Productos comprados',
+SUM(df.cantidad * df.precio) 'Total Facturado'
+FROM clientes c
+JOIN Facturas f
+ON f.id_cliente = c.id_cliente
+JOIN Detalles_Facturas df
+ON df.id_factura = f.id_factura
+WHERE DATEDIFF(YEAR, f.fecha, GETDATE()) <= 3
+GROUP BY f.id_cliente,
+c.apellido + ', ' + c.nombre
+HAVING SUM(df.cantidad * df.precio) > @total_facturado
+END
+
+	
+	EXEC SP_CLIENTES_COMPRAS 500000;
+	EXEC SP_CONSULTA_DESCUENTOS_PROMEDIO;
+	EXEC SP_CONSULTA_VENTAS_TOTALES;
+	EXEC SP_CONSULTA_ESTADO_PRODUCTOS;
+	EXEC SP_CONSULTA_ESTADISTICAS_VENDEDORES;
+
+
+
+
+
+
