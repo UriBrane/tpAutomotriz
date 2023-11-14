@@ -170,52 +170,11 @@ namespace TpAutomotrizFront.Presentacion
                 {
                     GuardarVendedorEditado();
                 }
-                else
+                if (tipoPersona == "c")
                 {
                     GuardarClienteEditado();
                 }
             }
-        }
-
-        private async void GuardarVendedorEditado()
-        {
-            Vendedor v;
-
-            // VALIDACION
-            if (ValidarVendedor())
-            {
-                // MAPEO
-                v = MapearVendedor();
-
-                // GRABAR
-                if (await GrabarPersonaEditada(v, "/vendedor"))
-                {
-                    MessageBox.Show("Se guardó con éxito el Vendedor...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Dispose();
-                }
-                else
-                    MessageBox.Show("NO se pudo guardar el Vendedor...", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private async Task<bool> GrabarPersonaEditada<T>(T t, string decorador)
-        {
-            string personaJson = JsonConvert.SerializeObject(t);
-            var dataJson = await ClientSingleton.GetInstance().PutAsync(url + decorador, personaJson);
-            return dataJson.Equals("true");
-        }
-
-        private async Task<bool> GrabarPersonaNueva<T>(T t, string decorador)
-        {// Usar el decorador del controlador de la API correspondiente
-
-            string personaJson = JsonConvert.SerializeObject(t);
-            var dataJson = await ClientSingleton.GetInstance().PostAsync(url + decorador, personaJson);
-            return dataJson.Equals("true");
-        }
-
-        private void GuardarClienteEditado()
-        {
-            throw new NotImplementedException();
         }
 
         private async void GuardarVendedorNuevo()
@@ -240,6 +199,71 @@ namespace TpAutomotrizFront.Presentacion
             }
         }
 
+        private async void GuardarClienteNuevo()
+        {
+            Cliente c;
+
+            // VALIDACION
+
+            if (ValidarCliente())
+            {
+                //MAPEO
+                c = MapearCliente();
+
+                // GRABAR
+                if (await GrabarPersonaNueva(c, "/cliente"))
+                {
+                    MessageBox.Show("Se guardó con éxito el Cliente...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Dispose();
+                }
+                else
+                    MessageBox.Show("NO se pudo guardar el Cliente...", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void GuardarVendedorEditado()
+        {
+            Vendedor v;
+
+            // VALIDACION
+            if (ValidarVendedor())
+            {
+                // MAPEO
+                v = MapearVendedor();
+
+                // GRABAR
+                if (await GrabarPersonaEditada(v, "/vendedor"))
+                {
+                    MessageBox.Show("Se guardó con éxito el Vendedor...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Dispose();
+                }
+                else
+                    MessageBox.Show("NO se pudo guardar el Vendedor...", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void GuardarClienteEditado()
+        {
+            Cliente c;
+
+            // VALIDACION
+            if (ValidarCliente())
+            {
+                // MAPEO
+                c = MapearCliente();
+
+                // GRABAR
+                if (await GrabarPersonaEditada(c, "/cliente"))
+                {
+                    MessageBox.Show("Se guardó con éxito el Cliente...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Dispose();
+                }
+                else
+                    MessageBox.Show("NO se pudo guardar el Cliente...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
         private Vendedor MapearVendedor()
         {
             int id = idPersona;
@@ -250,6 +274,20 @@ namespace TpAutomotrizFront.Presentacion
             int idCat = Convert.ToInt32(cboCategoria.SelectedValue);
             Vendedor v = new Vendedor(id, nombre, apellido, cuit, fecIngreso, idCat);
             return v;
+        }
+
+        private Cliente MapearCliente()
+        {
+            int id = idPersona;
+            string nombre = txtNombre.Text;
+            string apellido = txtApellido.Text;
+            long cuit = Convert.ToInt64(txtCuit.Text);
+            string direccion = txtDireccion.Text;
+            int numero = Convert.ToInt32(txtNumero.Text);
+            int idTipoCli = Convert.ToInt32(cboTipoCliente.SelectedValue);
+            int idBarrio = Convert.ToInt32(cboBarrio.SelectedValue);
+            Cliente c = new Cliente( id, nombre, apellido, cuit, direccion, numero, idTipoCli, idBarrio);
+            return c;
         }
 
         private bool ValidarVendedor()
@@ -268,12 +306,9 @@ namespace TpAutomotrizFront.Presentacion
             return validado;
         }
 
-        private async void GuardarClienteNuevo()
+        private bool ValidarCliente()
         {
-            Cliente c;
             bool validado = false;
-
-            // VALIDACION
             while (true)
             {
                 if (!val.ValidarString(txtNombre.Text, txtNombre)) break;
@@ -287,28 +322,22 @@ namespace TpAutomotrizFront.Presentacion
                 validado = true;
                 break;
             }
+            return validado;
+        }
 
-            //MAPEO
-            if (validado)
-            {
-                string nombre = txtNombre.Text;
-                string apellido = txtApellido.Text;
-                long cuit = Convert.ToInt64(txtCuit.Text);
-                string direccion = txtDireccion.Text;
-                int numero = Convert.ToInt32(txtNumero.Text);
-                int idTipoCli = Convert.ToInt32(cboTipoCliente.SelectedValue);
-                int idBarrio = Convert.ToInt32(cboBarrio.SelectedValue);
+        private async Task<bool> GrabarPersonaEditada<T>(T t, string decorador)
+        {
+            string personaJson = JsonConvert.SerializeObject(t);
+            var dataJson = await ClientSingleton.GetInstance().PutAsync(url + decorador, personaJson);
+            return dataJson.Equals("true");
+        }
 
-                c = new Cliente(nombre, apellido, cuit, direccion, numero, idTipoCli, idBarrio);
+        private async Task<bool> GrabarPersonaNueva<T>(T t, string decorador)
+        {// Usar el decorador del controlador de la API correspondiente
 
-                if (await GrabarPersonaNueva(c, "/cliente"))
-                {
-                    MessageBox.Show("Se guardó con éxito el Cliente...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Dispose();
-                }
-                else
-                    MessageBox.Show("NO se pudo guardar el Cliente...", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            string personaJson = JsonConvert.SerializeObject(t);
+            var dataJson = await ClientSingleton.GetInstance().PostAsync(url + decorador, personaJson);
+            return dataJson.Equals("true");
         }
 
         static string HashPassword(string password)

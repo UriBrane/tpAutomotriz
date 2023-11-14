@@ -139,5 +139,11 @@ namespace TpAutomotrizFront
             FrmConsultarPersona frmConsultarPersona = new FrmConsultarPersona();
             frmConsultarPersona.ShowDialog();
         }
+
+        private void nuevaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmNuevaOrden frmNuevaOrden = new FrmNuevaOrden();
+            frmNuevaOrden.ShowDialog();
+        }
     }
 }

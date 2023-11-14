@@ -49,5 +49,23 @@ namespace TpAutomotrizBack.Datos.Implementacion
             Cliente c = mapeo.MapearCliente(dt);
             return c;
         }
+
+        public bool PutCliente(Cliente c)
+        {
+            List<Parametro> parametros = new List<Parametro>
+            {
+                new Parametro( "@id_cliente", c.IdCliente),
+                new Parametro( "@nombre", c.Nombre),
+                new Parametro( "@apellido", c.Apellido),
+                new Parametro( "@CUIT", c.Cuit),
+                new Parametro( "@id_tipo_cliente", c.TipoCliente),
+                new Parametro( "@dire_calle", c.Calle),
+                new Parametro( "@dire_nro", c.CalleNro),
+                new Parametro( "@id_barrio", c.IdBarrio)
+            };
+            return helper.EjecutarSQL("SP_UPDATE_CLIENTE", parametros);
+        }
+       
+
     }
 }

@@ -19,8 +19,8 @@ namespace TpAutomotrizFront.Presentacion
 {
     public partial class FrmNuevaOrden : Form
     {
-        string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
-        Validador val;
+        private string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
+        private Validador val;
         public FrmNuevaOrden()
         {
             InitializeComponent();
@@ -41,12 +41,10 @@ namespace TpAutomotrizFront.Presentacion
             cbo.DisplayMember = displayMember;
             cbo.SelectedIndex = -1;
         }
-        private void lblNFactura_Click(object sender, EventArgs e)
+
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            // VALI
         }
-      
-
-        
     }
 }

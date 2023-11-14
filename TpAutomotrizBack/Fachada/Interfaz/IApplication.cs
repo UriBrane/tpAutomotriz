@@ -14,6 +14,7 @@ namespace TpAutomotrizBack.Fachada.Interfaz
         bool PostCliente(Cliente c);
         List<Cliente> GetClientes();
         Cliente GetCliente(int id);
+        bool PutCliente(Cliente c);
 
         // VENDEDOR
 
@@ -27,7 +28,5 @@ namespace TpAutomotrizBack.Fachada.Interfaz
         bool PostProducto(Producto p);
         List<Producto> GetProductos();
         Producto GetProducto(int id);
-
-
     }
 }

@@ -36,6 +36,10 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         {
             return clienteDAO.GetCliente(id);
         }
+        public bool PutCliente(Cliente c)
+        {
+            return clienteDAO.PutCliente(c);
+        }
 
         // VENDEDOR
 

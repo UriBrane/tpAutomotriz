@@ -12,5 +12,6 @@ namespace TpAutomotrizBack.Datos.Interfaz
         Cliente GetCliente(int id);
         List<Cliente> GetClientes();
         bool PostCliente(Cliente c);
+        bool PutCliente(Cliente c);
     }
 }

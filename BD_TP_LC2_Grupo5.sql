@@ -873,7 +873,8 @@ END
 GO
 
 -- UPDATES
---
+
+-- UPDATE VENDEDOR
 CREATE PROCEDURE SP_UPDATE_VENDEDOR
     @id_vendedor int,
     @id_categoria int,
@@ -891,3 +892,40 @@ BEGIN
         fecha_ingreso = @fecha_ingreso
     WHERE id_vendedor = @id_vendedor;
 END;
+GO
+
+-- UPDATE CLIENTE
+CREATE PROCEDURE SP_UPDATE_CLIENTE
+    @id_cliente int,
+    @id_tipo_cliente int,
+    @nombre varchar(200),
+    @apellido varchar(200),
+    @CUIT bigint,
+    @dire_calle varchar(200),
+    @dire_nro int,
+    @id_barrio int
+AS
+BEGIN
+    UPDATE Clientes
+    SET id_tipo_cliente = @id_tipo_cliente,
+        nombre = @nombre,
+        apellido = @apellido,
+        CUIT = @CUIT,
+        dire_calle = @dire_calle,
+        dire_nro = @dire_nro,
+        id_barrio = @id_barrio
+    WHERE id_cliente = @id_cliente;
+END;
+GO
+
+-- DELETE
+
+-- DELETE CLIENTE
+CREATE PROCEDURE SP_DELETE_CLIENTE
+    @id_cliente int
+AS
+BEGIN
+    DELETE FROM Clientes
+    WHERE id_cliente = @id_cliente;
+END;
+GO

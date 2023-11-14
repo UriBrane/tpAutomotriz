@@ -60,5 +60,21 @@ namespace TpAutomotrizAPI.Controllers
             }
         }
 
+        [HttpPut("/cliente")]
+        public IActionResult PutCliente(Cliente c)
+        {
+            try
+            {
+                if (c == null)
+                    return BadRequest("Cliente Incorrecto!!");
+                return Ok(app.PutCliente(c));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
+
     }
 }

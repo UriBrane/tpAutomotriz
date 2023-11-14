@@ -28,7 +28,7 @@ namespace TpAutomotrizFront.Servicios
                 aux = false;
             if (!aux)
             {
-                MessageBox.Show("El contenido a guardar no es valido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("El contenido no es valido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 c.Focus();
             }
             return aux;
@@ -40,7 +40,7 @@ namespace TpAutomotrizFront.Servicios
                 aux = false;
             if (!aux)
             {
-                MessageBox.Show("El contenido a guardar no es valido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("El contenido no es valido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 c.Focus();
             }
             return aux;
@@ -53,7 +53,7 @@ namespace TpAutomotrizFront.Servicios
                 aux = false;
             if (!aux)
             {
-                MessageBox.Show("El contenido a guardar no es valido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("El contenido no es valido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 c.Focus();
             }
             return aux;
@@ -66,7 +66,7 @@ namespace TpAutomotrizFront.Servicios
                 aux = false;
             if(!aux)
             {
-                MessageBox.Show("El contenido a guardar no es valido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("El contenido no es valido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 c.Focus();
             }
             return aux;
