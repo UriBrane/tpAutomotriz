@@ -17,7 +17,6 @@ namespace TpAutomotrizFront
         public FrmMenuPrincipal()
         {
             InitializeComponent();
-
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -133,6 +132,12 @@ namespace TpAutomotrizFront
 
                 return sha256.ComputeHash(passwordWithSalt);
             }
+        }
+
+        private void clienteVendedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultarPersona frmConsultarPersona = new FrmConsultarPersona();
+            frmConsultarPersona.ShowDialog();
         }
     }
 }

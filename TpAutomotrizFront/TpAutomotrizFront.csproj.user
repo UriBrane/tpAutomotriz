@@ -4,6 +4,9 @@
     <Compile Update="Presentacion\FrmBusqueda.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Presentacion\FrmConsultarPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Presentacion\FrmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>

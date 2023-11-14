@@ -31,6 +31,20 @@ namespace TpAutomotrizAPI.Controllers
             }
         }
 
+        [HttpGet("/cliente/{id}")]
+        public IActionResult GetCliente(int id)
+        {
+            try
+            {
+                Cliente c = app.GetCliente(id);
+                return Ok(c);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
         [HttpPost("/cliente")]
         public IActionResult PostCliente(Cliente c)
         {

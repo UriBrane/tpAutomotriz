@@ -32,6 +32,10 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         {
             return clienteDAO.GetClientes();
         }
+        public Cliente GetCliente(int id)
+        {
+            return clienteDAO.GetCliente(id);
+        }
 
         // VENDEDOR
 
@@ -58,8 +62,9 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         {
             return productoDAO.GetProductos();
         }
-
-
-
+        public Producto GetProducto(int id)
+        {
+            return productoDAO.GetProducto(id);
+        }
     }
 }

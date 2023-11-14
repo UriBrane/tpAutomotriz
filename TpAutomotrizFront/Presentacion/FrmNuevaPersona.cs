@@ -25,6 +25,73 @@ namespace TpAutomotrizFront.Presentacion
             InitializeComponent();
             val = Validador.GetInstance();
         }
+        public FrmNuevaPersona(int id, string tipo)
+        {
+            InitializeComponent();
+            val = Validador.GetInstance();
+            CargarControles(id, tipo);
+        }
+        private async Task<T> TraerPersona<T>(string decorador)
+        {
+            var dataJson = await ClientSingleton.GetInstance().GetAsync(url + decorador);
+            T p = JsonConvert.DeserializeObject<T>(dataJson);
+            return p;
+        }
+
+        private async void CargarControles(int id, string tipo)
+        {            
+            if (tipo == "v")
+            {
+                Vendedor v = await TraerPersona<Vendedor>("/vendedor/" + id);
+
+                cboTipoPersona.SelectedIndex = 1;
+                txtCuit.Text = v.Cuit.ToString();
+                txtNombre.Text = v.Nombre.ToString();
+                txtApellido.Text = v.Apellido.ToString();
+                dtpFecIngreso.Value = v.FechaIngreso;
+                cboCategoria.SelectedValue = v.IdCategoria;
+                txtContra.Text = "No se puede editar.";
+                HabilitarControlesVendedor(false);
+            }
+            else
+            {
+                Cliente c = await TraerPersona<Cliente>("/cliente/" + id);
+
+                cboTipoPersona.SelectedIndex = 0;
+                txtCuit.Text = c.Cuit.ToString();
+                txtNombre.Text= c.Nombre.ToString();
+                txtApellido.Text= c.Apellido.ToString();
+                txtDireccion.Text = c.Calle.ToString();
+                txtNumero.Text = c.CalleNro.ToString();
+                cboTipoCliente.SelectedValue = c.TipoCliente;
+                cboBarrio.SelectedValue = c.IdBarrio;
+                HabilitarControlesCliente(false);
+            }
+
+        }
+        public void HabilitarControlesCliente(bool e)
+        {
+            cboTipoPersona.Enabled = e;
+            txtCuit.Enabled = e;
+            txtNombre.Enabled = e;
+            txtApellido.Enabled = e;
+            txtDireccion.Enabled = e;
+            txtNumero.Enabled = e;
+            cboTipoCliente.Enabled = e;
+            cboBarrio.Enabled = e;
+        }
+
+        public void HabilitarControlesVendedor(bool e)
+        {
+            cboTipoPersona.Enabled = e;
+            txtCuit.Enabled = e;
+            txtNombre.Enabled = e;
+            txtApellido.Enabled = e;
+            dtpFecIngreso.Enabled = e;
+            cboCategoria.Enabled = e;
+            txtContra.Enabled = e;
+        }
+
 
         private void FrmNuevaPersona_Load(object sender, EventArgs e)
         {

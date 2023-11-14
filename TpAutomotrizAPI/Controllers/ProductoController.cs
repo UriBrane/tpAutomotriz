@@ -31,6 +31,20 @@ namespace TpAutomotrizAPI.Controllers
             }
         }
 
+        [HttpGet("/producto/{id}")]
+        public IActionResult GetProducto(int id)
+        {
+            try
+            {
+                Producto p = app.GetProducto(id);
+                return Ok(p);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
         [HttpPost("/producto")]
         public IActionResult PostProducto(Producto p)
         {
