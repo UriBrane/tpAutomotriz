@@ -102,6 +102,7 @@ namespace TpAutomotrizFront.Presentacion
         private void btnEditar_Click(object sender, EventArgs e)
         {
             // COMPLETAR...
+            if da
         }
     }
 }

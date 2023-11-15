@@ -175,3 +175,4 @@ C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\r
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmBusqueda.resources
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmNuevaOrden.resources
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsultarPersona.resources
+C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsultarPersona.resources

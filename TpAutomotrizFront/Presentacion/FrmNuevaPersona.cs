@@ -286,7 +286,7 @@ namespace TpAutomotrizFront.Presentacion
             int numero = Convert.ToInt32(txtNumero.Text);
             int idTipoCli = Convert.ToInt32(cboTipoCliente.SelectedValue);
             int idBarrio = Convert.ToInt32(cboBarrio.SelectedValue);
-            Cliente c = new Cliente( id, nombre, apellido, cuit, direccion, numero, idTipoCli, idBarrio);
+            Cliente c = new Cliente(id, nombre, apellido, cuit, direccion, numero, idTipoCli, idBarrio);
             return c;
         }
 
@@ -394,6 +394,11 @@ namespace TpAutomotrizFront.Presentacion
                 }
                 btnEditar.Enabled = false;
             }
+        }
+
+        private void gbxGeneral_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

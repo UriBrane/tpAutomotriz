@@ -145,5 +145,11 @@ namespace TpAutomotrizFront
             FrmNuevaOrden frmNuevaOrden = new FrmNuevaOrden();
             frmNuevaOrden.ShowDialog();
         }
+
+        private void productoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmConsultaProductos frmConsultaProductos = new FrmConsultaProductos();
+            frmConsultaProductos.ShowDialog();
+        }
     }
 }
