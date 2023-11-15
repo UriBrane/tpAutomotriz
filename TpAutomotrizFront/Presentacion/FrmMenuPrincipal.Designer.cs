@@ -99,7 +99,11 @@
             // 
             nuevaFacturaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nuevaToolStripMenuItem, consultarToolStripMenuItem1, modificarToolStripMenuItem });
             nuevaFacturaToolStripMenuItem.Name = "nuevaFacturaToolStripMenuItem";
+<<<<<<< HEAD
             nuevaFacturaToolStripMenuItem.Size = new Size(163, 22);
+=======
+            nuevaFacturaToolStripMenuItem.Size = new Size(180, 22);
+>>>>>>> a2c0a2deeffeca75b14fa124c22b1283e5560d0f
             nuevaFacturaToolStripMenuItem.Text = "Factura";
             // 
             // nuevaToolStripMenuItem
@@ -125,7 +129,11 @@
             // 
             ordenDePedidoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nuevaToolStripMenuItem1 });
             ordenDePedidoToolStripMenuItem.Name = "ordenDePedidoToolStripMenuItem";
+<<<<<<< HEAD
             ordenDePedidoToolStripMenuItem.Size = new Size(163, 22);
+=======
+            ordenDePedidoToolStripMenuItem.Size = new Size(180, 22);
+>>>>>>> a2c0a2deeffeca75b14fa124c22b1283e5560d0f
             ordenDePedidoToolStripMenuItem.Text = "Orden de Pedido";
             // 
             // nuevaToolStripMenuItem1
@@ -152,14 +160,22 @@
             // productoToolStripMenuItem
             // 
             productoToolStripMenuItem.Name = "productoToolStripMenuItem";
+<<<<<<< HEAD
             productoToolStripMenuItem.Size = new Size(166, 22);
+=======
+            productoToolStripMenuItem.Size = new Size(180, 22);
+>>>>>>> a2c0a2deeffeca75b14fa124c22b1283e5560d0f
             productoToolStripMenuItem.Text = "Producto";
             productoToolStripMenuItem.Click += productoToolStripMenuItem_Click;
             // 
             // clienteVendedorToolStripMenuItem1
             // 
             clienteVendedorToolStripMenuItem1.Name = "clienteVendedorToolStripMenuItem1";
+<<<<<<< HEAD
             clienteVendedorToolStripMenuItem1.Size = new Size(166, 22);
+=======
+            clienteVendedorToolStripMenuItem1.Size = new Size(180, 22);
+>>>>>>> a2c0a2deeffeca75b14fa124c22b1283e5560d0f
             clienteVendedorToolStripMenuItem1.Text = "Cliente/Vendedor";
             clienteVendedorToolStripMenuItem1.Click += clienteVendedorToolStripMenuItem1_Click;
             // 

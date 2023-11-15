@@ -14,6 +14,7 @@ using TpAutomotrizBack.Datos;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizFront.Servicios;
 using TpAutomotrizFront.Servicios.Client;
+using System.Runtime.Intrinsics.Arm;
 
 namespace TpAutomotrizFront.Presentacion
 {
@@ -68,9 +69,18 @@ namespace TpAutomotrizFront.Presentacion
                 DetallePedido dp = new DetallePedido(p, idOrdenPed, cant);
                 lDetallePed.Add(dp);
 
-                dgvDetallesPed.Rows.Add(dp.Producto.IdProducto, dp.Producto.Descripcion, dp.Cantidad
-                                        , dp.Producto.Cantidad, dp.Producto.CantidadMin, "Eliminar");
+                CargarDgvDetalles();
 
+            }
+        }
+
+        private void CargarDgvDetalles()
+        {
+            dgvDetallesPed.Rows.Clear();
+            foreach (DetallePedido dp in lDetallePed)
+            {
+                dgvDetallesPed.Rows.Add(dp.Producto.IdProducto, dp.Producto.Descripcion, dp.Cantidad
+                , dp.Producto.Cantidad, dp.Producto.CantidadMin, "Eliminar");
             }
         }
 
@@ -103,8 +113,14 @@ namespace TpAutomotrizFront.Presentacion
         {
             if (dgvDetallesPed.CurrentCell.ColumnIndex == 5)
             {
-
+                int id = (int)dgvDetallesPed.CurrentRow.Cells["ColID"].Value;
+                //lDetallePed.Remove(Producto.)
             }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
