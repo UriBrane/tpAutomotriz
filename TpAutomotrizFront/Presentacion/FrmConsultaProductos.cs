@@ -16,5 +16,11 @@ namespace TpAutomotrizFront.Presentacion
         {
             InitializeComponent();
         }
+
+        private void FrmConsultaProductos_Load(object sender, EventArgs e)
+        {
+            if (cboDescripcion.ValueMember < 1)
+
+        }
     }
 }

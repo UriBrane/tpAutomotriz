@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            comboBox1 = new ComboBox();
+            cboDescripcion = new ComboBox();
             lblDescripcion = new Label();
             txtCantMinPorMayor = new TextBox();
             txtCantidad = new TextBox();
@@ -47,13 +47,13 @@
             btnConsultar = new Button();
             SuspendLayout();
             // 
-            // comboBox1
+            // cboDescripcion
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(129, 41);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(358, 23);
-            comboBox1.TabIndex = 0;
+            cboDescripcion.FormattingEnabled = true;
+            cboDescripcion.Location = new Point(129, 41);
+            cboDescripcion.Name = "cboDescripcion";
+            cboDescripcion.Size = new Size(358, 23);
+            cboDescripcion.TabIndex = 0;
             // 
             // lblDescripcion
             // 
@@ -226,16 +226,17 @@
             Controls.Add(lblPrecio);
             Controls.Add(label1);
             Controls.Add(lblDescripcion);
-            Controls.Add(comboBox1);
+            Controls.Add(cboDescripcion);
             Name = "FrmConsultaProductos";
             Text = "FrmConsultaProductos";
+            Load += FrmConsultaProductos_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ComboBox comboBox1;
+        private ComboBox cboDescripcion;
         private Label lblDescripcion;
         private TextBox txtCantMinPorMayor;
         private TextBox txtCantidad;
