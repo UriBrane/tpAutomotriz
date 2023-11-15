@@ -21,7 +21,7 @@ namespace TpAutomotrizFront
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
-            EnableMenu(false);
+            //EnableMenu(false);
         }
         private void EnableMenu(bool estado) //Habilita ó deshabilita el menu principal, según si se logeo con exito o no
         {
@@ -144,6 +144,12 @@ namespace TpAutomotrizFront
         {
             FrmNuevaOrden frmNuevaOrden = new FrmNuevaOrden();
             frmNuevaOrden.ShowDialog();
+        }
+
+        private void productoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmConsultarProducto frmConsultarProducto = new FrmConsultarProducto();
+            frmConsultarProducto.ShowDialog();
         }
     }
 }

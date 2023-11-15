@@ -31,6 +31,20 @@ namespace TpAutomotrizAPI.Controllers
             }
         }
 
+        [HttpGet("/productos/{idTipo}")]
+        public IActionResult GetProductos(int idTipo)
+        {
+            try
+            {
+                List<Producto> p = app.GetProductos(idTipo);
+                return Ok(p);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
         [HttpGet("/producto/{id}")]
         public IActionResult GetProducto(int id)
         {
@@ -53,6 +67,21 @@ namespace TpAutomotrizAPI.Controllers
                 if(p == null)
                     return BadRequest("Producto Incorrecto!!");
                 return Ok(app.PostProducto(p));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
+        [HttpPut("/producto")]
+        public IActionResult PutVendedor(Producto p)
+        {
+            try
+            {
+                if (p == null)
+                    return BadRequest("Producto Incorrecto!");
+                return Ok(app.PutProducto(p));
             }
             catch (Exception ex)
             {

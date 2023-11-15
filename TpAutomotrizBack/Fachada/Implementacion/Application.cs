@@ -75,10 +75,19 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         {
             return productoDAO.GetProductos();
         }
+        public List<Producto> GetProductos(int idTipo)
+        {
+            return productoDAO.GetProductos(idTipo);
+        }
         public Producto GetProducto(int id)
         {
             return productoDAO.GetProducto(id);
         }
+        public bool PutProducto(Producto p)
+        {
+            return productoDAO.PutProducto(p);
+        }
+
 
     }
 }

@@ -28,7 +28,9 @@ namespace TpAutomotrizBack.Fachada.Interfaz
         // PRODUCTO
 
         bool PostProducto(Producto p);
+        bool PutProducto(Producto p);
         List<Producto> GetProductos();
+        List<Producto> GetProductos(int id);
         Producto GetProducto(int id);
     }
 }
