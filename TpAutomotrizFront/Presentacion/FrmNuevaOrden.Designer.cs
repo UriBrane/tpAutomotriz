@@ -109,6 +109,7 @@
             btnGuardar.TabIndex = 28;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnAgregar
             // 
