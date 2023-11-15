@@ -36,17 +36,18 @@
             btnCancelar = new Button();
             btnGuardar = new Button();
             btnAgregar = new Button();
-            dgvDetallesFac = new DataGridView();
-            clmDescripcion = new DataGridViewTextBoxColumn();
-            clmCantidad = new DataGridViewTextBoxColumn();
-            clmSActual = new DataGridViewTextBoxColumn();
-            clmSMinimo = new DataGridViewTextBoxColumn();
-            clmEliminar = new DataGridViewButtonColumn();
+            dgvDetallesPed = new DataGridView();
+            ColId = new DataGridViewTextBoxColumn();
+            ColDescripcion = new DataGridViewTextBoxColumn();
+            ColCantidad = new DataGridViewTextBoxColumn();
+            ColSActual = new DataGridViewTextBoxColumn();
+            ColSMinimo = new DataGridViewTextBoxColumn();
+            ColEliminar = new DataGridViewButtonColumn();
             nudCantidad = new NumericUpDown();
             cboProducto = new ComboBox();
             cboCliente = new ComboBox();
             cboVendedor = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dgvDetallesFac).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDetallesPed).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudCantidad).BeginInit();
             SuspendLayout();
             // 
@@ -73,11 +74,11 @@
             // lblNOrden
             // 
             lblNOrden.AutoSize = true;
-            lblNOrden.Location = new Point(548, 56);
+            lblNOrden.Location = new Point(267, 54);
             lblNOrden.Name = "lblNOrden";
-            lblNOrden.Size = new Size(101, 21);
+            lblNOrden.Size = new Size(104, 21);
             lblNOrden.TabIndex = 30;
-            lblNOrden.Text = "ORDEN NRO";
+            lblNOrden.Text = "ORDEN NRO:";
             // 
             // dtpFecha
             // 
@@ -97,6 +98,7 @@
             btnCancelar.TabIndex = 29;
             btnCancelar.Text = "CANCELAR";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnGuardar
             // 
@@ -118,60 +120,74 @@
             btnAgregar.Text = "Agregar";
             btnAgregar.Click += btnAgregar_Click;
             // 
-            // dgvDetallesFac
+            // dgvDetallesPed
             // 
-            dgvDetallesFac.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDetallesFac.Columns.AddRange(new DataGridViewColumn[] { clmDescripcion, clmCantidad, clmSActual, clmSMinimo, clmEliminar });
-            dgvDetallesFac.Location = new Point(42, 316);
-            dgvDetallesFac.Margin = new Padding(3, 4, 3, 4);
-            dgvDetallesFac.Name = "dgvDetallesFac";
-            dgvDetallesFac.ReadOnly = true;
-            dgvDetallesFac.RowHeadersWidth = 51;
-            dgvDetallesFac.RowTemplate.Height = 25;
-            dgvDetallesFac.Size = new Size(762, 417);
-            dgvDetallesFac.TabIndex = 26;
+            dgvDetallesPed.AllowUserToAddRows = false;
+            dgvDetallesPed.AllowUserToDeleteRows = false;
+            dgvDetallesPed.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDetallesPed.Columns.AddRange(new DataGridViewColumn[] { ColId, ColDescripcion, ColCantidad, ColSActual, ColSMinimo, ColEliminar });
+            dgvDetallesPed.Location = new Point(42, 316);
+            dgvDetallesPed.Margin = new Padding(3, 4, 3, 4);
+            dgvDetallesPed.Name = "dgvDetallesPed";
+            dgvDetallesPed.ReadOnly = true;
+            dgvDetallesPed.RowHeadersWidth = 51;
+            dgvDetallesPed.RowTemplate.Height = 25;
+            dgvDetallesPed.Size = new Size(762, 417);
+            dgvDetallesPed.TabIndex = 26;
+            dgvDetallesPed.CellContentClick += dgvDetallesPed_CellContentClick;
             // 
-            // clmDescripcion
+            // ColId
             // 
-            clmDescripcion.HeaderText = "Descripción";
-            clmDescripcion.MinimumWidth = 6;
-            clmDescripcion.Name = "clmDescripcion";
-            clmDescripcion.ReadOnly = true;
-            clmDescripcion.Width = 200;
+            ColId.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            ColId.HeaderText = "ID";
+            ColId.MinimumWidth = 6;
+            ColId.Name = "ColId";
+            ColId.ReadOnly = true;
+            ColId.Visible = false;
+            ColId.Width = 125;
             // 
-            // clmCantidad
+            // ColDescripcion
             // 
-            clmCantidad.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            clmCantidad.HeaderText = "Cantidad";
-            clmCantidad.MinimumWidth = 6;
-            clmCantidad.Name = "clmCantidad";
-            clmCantidad.ReadOnly = true;
-            clmCantidad.Width = 101;
+            ColDescripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            ColDescripcion.HeaderText = "Descripción";
+            ColDescripcion.MinimumWidth = 6;
+            ColDescripcion.Name = "ColDescripcion";
+            ColDescripcion.ReadOnly = true;
+            ColDescripcion.Width = 120;
             // 
-            // clmSActual
+            // ColCantidad
             // 
-            clmSActual.HeaderText = "Stock Actual";
-            clmSActual.MinimumWidth = 6;
-            clmSActual.Name = "clmSActual";
-            clmSActual.ReadOnly = true;
-            clmSActual.Width = 125;
+            ColCantidad.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ColCantidad.HeaderText = "Cantidad";
+            ColCantidad.MinimumWidth = 6;
+            ColCantidad.Name = "ColCantidad";
+            ColCantidad.ReadOnly = true;
+            ColCantidad.Width = 101;
             // 
-            // clmSMinimo
+            // ColSActual
             // 
-            clmSMinimo.HeaderText = "Stock Minimo";
-            clmSMinimo.MinimumWidth = 6;
-            clmSMinimo.Name = "clmSMinimo";
-            clmSMinimo.ReadOnly = true;
-            clmSMinimo.Width = 125;
+            ColSActual.HeaderText = "Stock Actual";
+            ColSActual.MinimumWidth = 6;
+            ColSActual.Name = "ColSActual";
+            ColSActual.ReadOnly = true;
+            ColSActual.Width = 125;
             // 
-            // clmEliminar
+            // ColSMinimo
             // 
-            clmEliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            clmEliminar.HeaderText = "Eliminar";
-            clmEliminar.MinimumWidth = 6;
-            clmEliminar.Name = "clmEliminar";
-            clmEliminar.ReadOnly = true;
-            clmEliminar.Width = 73;
+            ColSMinimo.HeaderText = "Stock Minimo";
+            ColSMinimo.MinimumWidth = 6;
+            ColSMinimo.Name = "ColSMinimo";
+            ColSMinimo.ReadOnly = true;
+            ColSMinimo.Width = 125;
+            // 
+            // ColEliminar
+            // 
+            ColEliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ColEliminar.HeaderText = "Eliminar";
+            ColEliminar.MinimumWidth = 6;
+            ColEliminar.Name = "ColEliminar";
+            ColEliminar.ReadOnly = true;
+            ColEliminar.Width = 73;
             // 
             // nudCantidad
             // 
@@ -225,7 +241,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
             Controls.Add(btnAgregar);
-            Controls.Add(dgvDetallesFac);
+            Controls.Add(dgvDetallesPed);
             Controls.Add(nudCantidad);
             Controls.Add(cboProducto);
             Controls.Add(cboCliente);
@@ -235,7 +251,7 @@
             Name = "FrmNuevaOrden";
             Text = "FrmNuevaOrden";
             Load += FrmNuevaOrden_LoadAsync;
-            ((System.ComponentModel.ISupportInitialize)dgvDetallesFac).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDetallesPed).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -249,15 +265,16 @@
         private Button btnCancelar;
         private Button btnGuardar;
         private Button btnAgregar;
-        private DataGridView dgvDetallesFac;
+        private DataGridView dgvDetallesPed;
         private NumericUpDown nudCantidad;
         private ComboBox cboProducto;
         private ComboBox cboCliente;
         private ComboBox cboVendedor;
-        private DataGridViewTextBoxColumn clmDescripcion;
-        private DataGridViewTextBoxColumn clmCantidad;
-        private DataGridViewTextBoxColumn clmSActual;
-        private DataGridViewTextBoxColumn clmSMinimo;
-        private DataGridViewButtonColumn clmEliminar;
+        private DataGridViewTextBoxColumn ColId;
+        private DataGridViewTextBoxColumn ColDescripcion;
+        private DataGridViewTextBoxColumn ColCantidad;
+        private DataGridViewTextBoxColumn ColSActual;
+        private DataGridViewTextBoxColumn ColSMinimo;
+        private DataGridViewButtonColumn ColEliminar;
     }
 }

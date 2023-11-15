@@ -157,5 +157,22 @@ namespace TpAutomotrizBack.Datos
             return true;
         }
 
+        public int ConsultarEscalar(string nombreSP, string nombreParamOut)
+        {
+            cnn.Open();
+            SqlCommand comando = new SqlCommand(nombreSP,cnn);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = nombreParamOut;
+            parametro.SqlDbType = SqlDbType.Int;
+            parametro.Direction = ParameterDirection.Output;
+
+            comando.Parameters.Add(parametro);
+            comando.ExecuteNonQuery();
+
+            cnn.Close();
+
+            return (int)parametro.Value;
+        }
     }
 }

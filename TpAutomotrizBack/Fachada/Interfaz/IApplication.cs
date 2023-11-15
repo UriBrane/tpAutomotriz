@@ -9,6 +9,8 @@ namespace TpAutomotrizBack.Fachada.Interfaz
 {
     public interface IApplication
     {
+        int ConsultarEscalar(string nombreSP, string nombreParamOut);
+        
         // CLIENTE
 
         bool PostCliente(Cliente c);
