@@ -683,12 +683,12 @@ GO
 
 -- CONSULTAR PRODUCTO
 CREATE PROCEDURE SP_CONSULTAR_PRODUCTO
-    @id int
+    @idTipo int
 AS
 BEGIN
     SELECT *
     FROM Productos
-    WHERE id_producto = @id;
+    WHERE id_tipo_producto = @idTipo;
 END;
 GO
 
