@@ -41,10 +41,7 @@
             txtCantidad = new TextBox();
             txtCantMinPorMayor = new TextBox();
             btnGuardar = new Button();
-<<<<<<< HEAD
             btnEditar = new Button();
-=======
->>>>>>> a2c0a2deeffeca75b14fa124c22b1283e5560d0f
             btnCancelar = new Button();
             SuspendLayout();
             // 
@@ -160,11 +157,7 @@
             // 
             // btnGuardar
             // 
-<<<<<<< HEAD
             btnGuardar.Location = new Point(248, 151);
-=======
-            btnGuardar.Location = new Point(482, 151);
->>>>>>> a2c0a2deeffeca75b14fa124c22b1283e5560d0f
             btnGuardar.Margin = new Padding(2, 2, 2, 2);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(73, 21);
@@ -173,7 +166,6 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
-<<<<<<< HEAD
             // btnEditar
             // 
             btnEditar.Location = new Point(353, 151);
@@ -188,11 +180,6 @@
             // btnCancelar
             // 
             btnCancelar.Location = new Point(457, 151);
-=======
-            // btnCancelar
-            // 
-            btnCancelar.Location = new Point(569, 151);
->>>>>>> a2c0a2deeffeca75b14fa124c22b1283e5560d0f
             btnCancelar.Margin = new Padding(2, 2, 2, 2);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(73, 21);
@@ -207,10 +194,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(672, 189);
             Controls.Add(btnCancelar);
-<<<<<<< HEAD
             Controls.Add(btnEditar);
-=======
->>>>>>> a2c0a2deeffeca75b14fa124c22b1283e5560d0f
             Controls.Add(btnGuardar);
             Controls.Add(txtCantMinPorMayor);
             Controls.Add(txtCantidad);
@@ -248,10 +232,7 @@
         private TextBox txtCantidad;
         private TextBox txtCantMinPorMayor;
         private Button btnGuardar;
-<<<<<<< HEAD
         private Button btnEditar;
-=======
->>>>>>> a2c0a2deeffeca75b14fa124c22b1283e5560d0f
         private Button btnCancelar;
     }
 }

@@ -177,12 +177,7 @@ namespace TpAutomotrizFront.Presentacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             Habilitar(true);
-=======
-            // COMPLETAR...
-            if da
->>>>>>> a2c0a2deeffeca75b14fa124c22b1283e5560d0f
         }
     }
 }

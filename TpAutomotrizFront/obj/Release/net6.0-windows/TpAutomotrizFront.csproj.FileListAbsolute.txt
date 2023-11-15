@@ -43,3 +43,5 @@ C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Release\net6.0-windows
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Release\net6.0-windows\TpAutomotrizFront.pdb
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Release\net6.0-windows\TpAutomotrizFront.genruntimeconfig.cache
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Release\net6.0-windows\ref\TpAutomotrizFront.dll
+C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Release\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsultaProductos.resources
+C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Release\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsultarFactura.resources

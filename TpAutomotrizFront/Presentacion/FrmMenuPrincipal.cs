@@ -148,13 +148,10 @@ namespace TpAutomotrizFront
 
         private void productoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             FrmConsultarProducto frmConsultarProducto = new FrmConsultarProducto();
             frmConsultarProducto.ShowDialog();
-=======
             FrmConsultaProductos frmConsultaProductos = new FrmConsultaProductos();
             frmConsultaProductos.ShowDialog();
->>>>>>> a2c0a2deeffeca75b14fa124c22b1283e5560d0f
         }
     }
 }
