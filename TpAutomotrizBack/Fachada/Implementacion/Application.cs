@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpAutomotrizBack.Datos;
 using TpAutomotrizBack.Datos.Implementacion;
 using TpAutomotrizBack.Datos.Interfaz;
 using TpAutomotrizBack.Entidades;
@@ -20,6 +21,10 @@ namespace TpAutomotrizBack.Fachada.Implementacion
             clienteDAO = new ClienteDAO();
             vendedorDAO = new VendedorDAO();
             productoDAO = new ProductoDAO();
+        }
+        public int ConsultarEscalar(string nombreSP, string nombreParamOut)
+        {
+            return HelperDAO.GetInstance().ConsultarEscalar(nombreSP,nombreParamOut);
         }
 
         // CLIENTE

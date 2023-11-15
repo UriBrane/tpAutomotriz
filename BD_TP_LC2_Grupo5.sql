@@ -953,6 +953,7 @@ BEGIN
     WHERE id_cliente = @id_cliente;
 END;
 GO
+
 	
 --DELETE VENDEDOR
 	
@@ -973,5 +974,14 @@ AS
 BEGIN
 	DELETE FROM Productos
 	WHERE id_producto = @id_producto
+END;
+GO
+
+
+CREATE PROCEDURE SP_GET_NEXT_ORDEN_PEDIDO
+    @next_orden_pedido int OUTPUT
+AS
+BEGIN
+    SELECT @next_orden_pedido = ISNULL(MAX(id_orden_pedido), 0) + 1 FROM Ordenes_Pedidos;
 END;
 GO

@@ -43,6 +43,18 @@ namespace TpAutomotrizFront.Presentacion
             nuevo = false;
             CargarControles(idPersona);
         }
+        
+        private void FrmNuevaPersona_Load(object sender, EventArgs e)
+        {
+            CargarCboTipo();
+            CargarCbo("SP_SELECT_CATEGORIAS", cboCategoria);
+            CargarCbo("SP_SELECT_TIPO_CLIENTES", cboTipoCliente);
+            CargarCbo("SP_SELECT_BARRIOS", cboBarrio);
+            gbxCliente.Enabled = false;
+            gbxVendedor.Enabled = false;
+            dtpFecIngreso.MaxDate = DateTime.Today;
+        }
+
         private async Task<T> TraerPersona<T>(string decorador)
         {
             var dataJson = await ClientSingleton.GetInstance().GetAsync(url + decorador);
@@ -99,18 +111,7 @@ namespace TpAutomotrizFront.Presentacion
             txtApellido.Enabled = e;
             dtpFecIngreso.Enabled = e;
             cboCategoria.Enabled = e;
-        }
-
-        private void FrmNuevaPersona_Load(object sender, EventArgs e)
-        {
-            CargarCboTipo();
-            CargarCbo("SP_SELECT_CATEGORIAS", cboCategoria);
-            CargarCbo("SP_SELECT_TIPO_CLIENTES", cboTipoCliente);
-            CargarCbo("SP_SELECT_BARRIOS", cboBarrio);
-            gbxCliente.Enabled = false;
-            gbxVendedor.Enabled = false;
-            dtpFecIngreso.MaxDate = DateTime.Today;
-        }
+        }        
 
         private void CargarCbo(string nombreSP, ComboBox combo)
         {
@@ -333,7 +334,7 @@ namespace TpAutomotrizFront.Presentacion
         }
 
         private async Task<bool> GrabarPersonaNueva<T>(T t, string decorador)
-        {// Usar el decorador del controlador de la API correspondiente
+        { // Usar el decorador del controlador de la API correspondiente
 
             string personaJson = JsonConvert.SerializeObject(t);
             var dataJson = await ClientSingleton.GetInstance().PostAsync(url + decorador, personaJson);
