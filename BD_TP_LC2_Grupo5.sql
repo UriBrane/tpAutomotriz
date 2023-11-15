@@ -918,6 +918,30 @@ BEGIN
 END;
 GO
 
+--UPDATE PRODUCTOS
+	
+CREATE PROCEDURE SP_UPDATE_PRODUCTOS
+    @IdProducto int,
+    @Descripcion varchar(100),
+    @precio double,
+    @cantidad int,
+    @CantMinPorMayor int,
+    @CantidadMin int,
+    @IdTipoProducto int
+AS
+BEGIN
+	UPDATE Productos
+	SET 
+	    id_tipo_producto = @IdTipoProducto,
+	    descripcion = @Descripcion,
+	    precio=@precio,
+	    cant_min_por_mayor =@CantMinPorMayor,
+	    cantidad = @cantidad,
+	    cantidad_min = @CantidadMin
+	WHERE id_producto = @IdProducto ;
+END;
+GO
+
 -- DELETE
 
 -- DELETE CLIENTE
@@ -927,5 +951,27 @@ AS
 BEGIN
     DELETE FROM Clientes
     WHERE id_cliente = @id_cliente;
+END;
+GO
+	
+--DELETE VENDEDOR
+	
+CREATE PROCEDURE SP_DELETE_VENDEDOR
+@id_vendedor int
+AS
+BEGIN
+	DELETE FROM Vendedores
+	WHERE id_vendedor = @id_vendedor
+END;
+GO
+
+--DELETE PRODUCTOS
+	
+CREATE PROCEDURE SP_DELETE_PRODUCTO
+@id_producto int
+AS
+BEGIN
+	DELETE FROM Productos
+	WHERE id_producto = @id_producto
 END;
 GO
