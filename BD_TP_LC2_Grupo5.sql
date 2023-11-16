@@ -852,35 +852,36 @@ BEGIN
             FROM Detalles_Facturas
         );
 END;
-
 go
 
+
 -- resumen cliente ultimos tres años
+CREATE PROCEDURE SP_CONSULTA_ESTADISTICAS_VENDEDORES
+    @total_facturado DECIMAL(25, 2)
 AS
 BEGIN
-SELECT
-f.id_cliente Id,
-c.apellido + ', ' + c.nombre Nombre,
-COUNT(f.id_factura) 'Cantidad de Compras',
-SUM(df.Cantidad) 'Productos comprados',
-SUM(df.cantidad * df.precio) 'Total Facturado'
-FROM clientes c
-JOIN Facturas f
-ON f.id_cliente = c.id_cliente
-JOIN Detalles_Facturas df
-ON df.id_factura = f.id_factura
-WHERE DATEDIFF(YEAR, f.fecha, GETDATE()) <= 3
-GROUP BY f.id_cliente,
-c.apellido + ', ' + c.nombre
-HAVING SUM(df.cantidad * df.precio) > @total_facturado
+    SELECT
+        f.id_cliente AS Id,
+        c.apellido + ', ' + c.nombre AS Nombre,
+        COUNT(f.id_factura) AS 'Cantidad de Compras',
+        SUM(df.Cantidad) AS 'Productos comprados',
+        SUM(df.cantidad * df.precio) AS 'Total Facturado'
+    FROM clientes c
+    JOIN Facturas f ON f.id_cliente = c.id_cliente
+    JOIN Detalles_Facturas df ON df.id_factura = f.id_factura
+    WHERE DATEDIFF(YEAR, f.fecha, GETDATE()) <= 3
+    GROUP BY f.id_cliente, c.apellido + ', ' + c.nombre
+    HAVING SUM(df.cantidad * df.precio) > @total_facturado;
 END
+GO
 
 	
-	EXEC SP_CLIENTES_COMPRAS 500000;
+	
 	EXEC SP_CONSULTA_DESCUENTOS_PROMEDIO;
 	EXEC SP_CONSULTA_VENTAS_TOTALES;
 	EXEC SP_CONSULTA_ESTADO_PRODUCTOS;
-	EXEC SP_CONSULTA_ESTADISTICAS_VENDEDORES;
+	EXEC SP_CONSULTA_ESTADISTICAS_VENDEDORES @total_facturado = 50000.00;
+
 GO
 
 -- UPDATES
@@ -996,3 +997,4 @@ BEGIN
     SELECT @next_orden_pedido = ISNULL(MAX(id_orden_pedido), 0) + 1 FROM Ordenes_Pedidos;
 END;
 GO
+
