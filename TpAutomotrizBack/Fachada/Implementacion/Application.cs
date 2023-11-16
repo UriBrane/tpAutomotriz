@@ -16,11 +16,13 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         private IClienteDAO clienteDAO;
         private IVendedorDAO vendedorDAO;
         private IProductoDAO productoDAO;
+        private IOrdenPedidoDAO ordenDAO;
         public Application()
         {
             clienteDAO = new ClienteDAO();
             vendedorDAO = new VendedorDAO();
             productoDAO = new ProductoDAO();
+            ordenDAO = new OrdenPedidoDAO();
         }
         public int ConsultarEscalar(string nombreSP, string nombreParamOut)
         {
@@ -88,6 +90,11 @@ namespace TpAutomotrizBack.Fachada.Implementacion
             return productoDAO.PutProducto(p);
         }
 
+        // ORDEN PEDIDO
 
+        public bool PostOrden(OrdenPedido op)
+        {
+            return ordenDAO.PostOrdenPedido(op);
+        }
     }
 }

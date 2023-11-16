@@ -89,9 +89,9 @@ namespace TpAutomotrizBack.Datos
                 return false;
         }
 
-        public bool EjecutarSQL(string spMaestro, string spDetalle, List<Parametro> lParamMaestro, List<List<Parametro>> lParamDetalle)
+        public bool EjecutarSQL(string spMaestro, string spDetalle, string spSiguienteNroMaestro, List<Parametro> lParamMaestro, List<List<Parametro>> lParamDetalle)
         {// Ejecuta una transaccion Maestro-Detalle con los nombres de los sp como param de entrada y las listas de parametros, devuelve el numero de factura
-            int nroFactura = 0;
+            int nroMaestro = 0;
             SqlTransaction? t = null;
 
             try
@@ -110,15 +110,15 @@ namespace TpAutomotrizBack.Datos
                 }
 
                 SqlParameter param = new SqlParameter();
-                param.ParameterName = "@nro";
+                param.ParameterName = spSiguienteNroMaestro;
                 param.SqlDbType = SqlDbType.Int;
                 param.Direction = ParameterDirection.Output;
                 cmdMaestro.Parameters.Add(param);
 
                 cmdMaestro.ExecuteNonQuery();
-                nroFactura = Convert.ToInt32(param.Value);
+                nroMaestro = Convert.ToInt32(param.Value);
 
-                //int detallleNro = 1;
+                int detallleNro = 1;
                 SqlCommand cmdDetalle;
 
                 if (lParamDetalle != null)
@@ -132,12 +132,12 @@ namespace TpAutomotrizBack.Datos
 
                             cmdDetalle.Parameters.AddWithValue(p.Clave, p.Valor);
 
-                            cmdDetalle.Parameters.AddWithValue("@nro_fac", nroFactura);
-                            //cmdDetalle.Parameters.AddWithValue("@detalle", detallleNro);
+                            cmdDetalle.Parameters.AddWithValue("@nro_maestro", nroMaestro);
+                            cmdDetalle.Parameters.AddWithValue("@detalle_nro", detallleNro);
 
                             cmdDetalle.ExecuteNonQuery();
 
-                            //detallleNro++;
+                            detallleNro++;
                         }
                     }
                 }

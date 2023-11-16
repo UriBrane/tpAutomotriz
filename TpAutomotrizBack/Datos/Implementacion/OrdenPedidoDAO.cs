@@ -43,7 +43,7 @@ namespace TpAutomotrizBack.Datos.Implementacion
                 };
                 lParamDetalles.Add(l);
             }
-            return helper.EjecutarSQL("SP_INSERT_ORDEN_PEDIDO", "SP_INSERT_DETALLES_PED", lParamMaestro, lParamDetalles);
+            return helper.EjecutarSQL("SP_INSERT_ORDEN_PEDIDO", "SP_INSERT_DETALLES_PED", "SP_GET_NEXT_ORDEN_PEDIDO", lParamMaestro, lParamDetalles);
         }
 
         public List<OrdenPedido> GetOrdenesPedido()

@@ -32,5 +32,8 @@ namespace TpAutomotrizBack.Fachada.Interfaz
         List<Producto> GetProductos();
         List<Producto> GetProductos(int id);
         Producto GetProducto(int id);
+
+        // ORDEN PEDIDO
+        bool PostOrden(OrdenPedido op);
     }
 }

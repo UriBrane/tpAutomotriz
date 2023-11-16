@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TpAutomotrizBack.Entidades;
 using TpAutomotrizBack.Fachada.Implementacion;
 using TpAutomotrizBack.Fachada.Interfaz;
 
@@ -28,5 +29,21 @@ namespace TpAutomotrizAPI.Controllers
                 return StatusCode(500, "Error !!! " + ex.Message);
             }
         }
+
+        [HttpPost("/orden_pedido")]
+        public IActionResult PostOrden(OrdenPedido op)
+        {
+            try
+            {
+                if (op == null)
+                    return BadRequest("Orden de Pedido Incorrecta!!");
+                return Ok(app.PostOrden(op));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
     }
 }

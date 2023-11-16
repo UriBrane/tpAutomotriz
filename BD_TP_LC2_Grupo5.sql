@@ -934,7 +934,7 @@ GO
 CREATE PROCEDURE SP_UPDATE_PRODUCTOS
     @IdProducto int,
     @Descripcion varchar(100),
-    @precio double,
+    @precio decimal(10,2),
     @cantidad int,
     @CantMinPorMayor int,
     @CantidadMin int,
@@ -988,7 +988,7 @@ BEGIN
 END;
 GO
 
-
+-- SP PARA OBTENER EL SIGUIENTE NUMERO DE ORDEN PEDIDO
 CREATE PROCEDURE SP_GET_NEXT_ORDEN_PEDIDO
     @next_orden_pedido int OUTPUT
 AS
