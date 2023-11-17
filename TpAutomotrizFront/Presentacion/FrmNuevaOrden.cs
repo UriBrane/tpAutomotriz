@@ -35,7 +35,7 @@ namespace TpAutomotrizFront.Presentacion
             await CargarComboAsync<Vendedor>(cboVendedor, url + "/vendedor", "IdVendedor", "NombreCompleto");
             await CargarComboAsync<Cliente>(cboCliente, url + "/cliente", "IdCliente", "NombreCompleto");
             await CargarComboAsync<Producto>(cboProducto, url + "/producto", "IdProducto", "Descripcion");
-            idOrdenPed = await SiguienteNroOrden("/orden_pedido/consultar_id");
+            idOrdenPed = await SiguienteNroOrden("/ordenpedido/consultarid");
             lblNOrden.Text = lblNOrden.Text + " " + idOrdenPed.ToString();
         }
         private async Task CargarComboAsync<T>(ComboBox cbo, string url, string valueMember, string displayMember)
@@ -155,7 +155,7 @@ namespace TpAutomotrizFront.Presentacion
         private async Task<bool> GrabarOrden(OrdenPedido orden)
         {
             string ordenJson = JsonConvert.SerializeObject(orden);
-            var dataJson = await ClientSingleton.GetInstance().PostAsync(url + "/orden_pedido", ordenJson);
+            var dataJson = await ClientSingleton.GetInstance().PostAsync(url + "/ordenpedido", ordenJson);
             return dataJson.Equals("true");
         }
 

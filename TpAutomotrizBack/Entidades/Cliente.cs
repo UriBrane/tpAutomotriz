@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,21 @@ namespace TpAutomotrizBack.Entidades
 {
     public class Cliente : Persona
     {
+        [JsonProperty("idCliente")]
         public int IdCliente { get; set; }
+
+        [JsonProperty("calle")]
         public string Calle { get; set; }
+
+        [JsonProperty("calleNro")]
         public int CalleNro { get; set; }
+
+        [JsonProperty("tipoCliente")]
         public int TipoCliente { get; set; }
+
+        [JsonProperty("idBarrio")]
         public int IdBarrio { get; set; }
+
         public Cliente() : base()
         {
             IdCliente = 0;

@@ -13,7 +13,7 @@ namespace TpAutomotrizAPI.Controllers
             app = new Application();
         }
 
-        [HttpGet("/orden_pedido/consultar_id")]
+        [HttpGet("/ordenpedido/consultarid")]
         public IActionResult ConsultarIdOrden()
         {
             try
@@ -30,7 +30,7 @@ namespace TpAutomotrizAPI.Controllers
             }
         }
 
-        [HttpPost("/orden_pedido")]
+        [HttpPost("/ordenpedido")]
         public IActionResult PostOrden(OrdenPedido op)
         {
             try
