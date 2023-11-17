@@ -153,7 +153,7 @@
             lblFecha.TabIndex = 22;
             lblFecha.Text = "Fecha";
             // 
-            // FrmBusqueda
+            // FrmConsultarFactura
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -168,8 +168,9 @@
             Controls.Add(cboCliente);
             Controls.Add(cboVendedor);
             DoubleBuffered = true;
-            Name = "FrmBusqueda";
+            Name = "FrmConsultarFactura";
             Text = "FrmBusqueda";
+            Load += FrmConsultarFactura_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

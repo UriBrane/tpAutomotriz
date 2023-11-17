@@ -15,7 +15,7 @@ namespace TpAutomotrizBack.Datos
 
         private HelperDAO()
         {
-            cnn = new SqlConnection(Properties.Resources.CadenaConexionAndres);
+            cnn = new SqlConnection(Properties.Resources.CadenaConexion);
         }
 
         public static HelperDAO GetInstance()
@@ -39,6 +39,21 @@ namespace TpAutomotrizBack.Datos
             return dt;
         }
 
+        public DataTable ConsultarTabla(string nombreSP, List<Parametro> lp)
+        {
+            cnn.Open();
+            SqlCommand cmd = new SqlCommand(nombreSP, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (Parametro p in lp)
+            {
+                cmd.Parameters.AddWithValue(p.Clave, p.Valor);
+            }
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return dt;
+        }
+
         public DataTable ConsultarTabla(string nombreSP)
         {// Consultar una tabla de la BD con el nombre de un SP
             cnn.Open();
@@ -48,6 +63,24 @@ namespace TpAutomotrizBack.Datos
             dt.Load(cmd.ExecuteReader());
             cnn.Close();
             return dt;
+        }
+
+        public int ConsultarEscalar(string nombreSP, string nombreParamOut)
+        {
+            cnn.Open();
+            SqlCommand comando = new SqlCommand(nombreSP, cnn);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = nombreParamOut;
+            parametro.SqlDbType = SqlDbType.Int;
+            parametro.Direction = ParameterDirection.Output;
+
+            comando.Parameters.Add(parametro);
+            comando.ExecuteNonQuery();
+
+            cnn.Close();
+
+            return (int)parametro.Value;
         }
 
         public bool EjecutarSQL(string strSql, List<Parametro> lParametros)
@@ -88,6 +121,8 @@ namespace TpAutomotrizBack.Datos
             else
                 return false;
         }
+
+
 
         public bool EjecutarSQL(string spMaestro, string spDetalle, string spSiguienteNroMaestro, List<Parametro> lParamMaestro, List<List<Parametro>> lParamDetalle)
         {// Ejecuta una transaccion Maestro-Detalle con los nombres de los sp como param de entrada y las listas de parametros, devuelve el numero de factura
@@ -155,24 +190,6 @@ namespace TpAutomotrizBack.Datos
                     cnn.Close();
             }
             return true;
-        }
-
-        public int ConsultarEscalar(string nombreSP, string nombreParamOut)
-        {
-            cnn.Open();
-            SqlCommand comando = new SqlCommand(nombreSP,cnn);
-            comando.CommandType = CommandType.StoredProcedure;
-            SqlParameter parametro = new SqlParameter();
-            parametro.ParameterName = nombreParamOut;
-            parametro.SqlDbType = SqlDbType.Int;
-            parametro.Direction = ParameterDirection.Output;
-
-            comando.Parameters.Add(parametro);
-            comando.ExecuteNonQuery();
-
-            cnn.Close();
-
-            return (int)parametro.Value;
         }
     }
 }

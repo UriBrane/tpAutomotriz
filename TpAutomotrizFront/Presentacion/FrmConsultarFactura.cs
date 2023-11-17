@@ -34,6 +34,11 @@ namespace TpAutomotrizFront.Presentacion
 
         }
 
+        private void FrmConsultarFactura_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private async Task CargarComboAsync<T>(ComboBox cbo, string url, string valueMember, string displayMember)
         {
             var dataJson = await ClientSingleton.GetInstance().GetAsync(url);

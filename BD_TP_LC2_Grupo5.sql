@@ -1,7 +1,6 @@
-CREATE DATABASE TP_Autos
-	go
 
-USE TP_Autos
+
+USE TP_Autos_16_11
 	go
 
 CREATE TABLE Provincias
