@@ -358,7 +358,9 @@ VALUES
     ('Filtros de Aceite'),
     ('Neum�ticos'),
     ('Frenos'),
-    ('Suspensi�n');
+    ('Suspensi�n'),
+ ('Automovil');
+
 
 	
 --INSERT PARA PRODUCTOS
@@ -368,7 +370,9 @@ VALUES
     (2, 'Filtro de Aceite', 15.0, 20, 200, 10),
     (3,'Neum�tico 225/55R17', 120.01, 5, 50, 2),
     (4, 'Pastillas de Freno', 25.0, 15, 150, 10),
-    (5, 'Amortiguador Trasero', 40.0, 8, 80, 4);
+    (5, 'Amortiguador Trasero', 40.0, 8, 80, 4),
+    (6, 'Uri Electrico', 9000000, null, 200, 50);
+
 
 	select * from  Vendedores
 
@@ -823,8 +827,10 @@ BEGIN
 END;
 go
 
-	-- listado de productos, y si fueron vendidos o no
-CREATE PROCEDURE SP_CONSULTA_ESTADO_PRODUCTOS
+	-- listado de productos, y si fueron vendidos o no por año pormes en int
+create PROCEDURE SP_CONSULTA_ESTADO_PRODUCTOS
+@año int,
+@mes int
 AS
 BEGIN
     -- Productos vendidos
@@ -836,6 +842,10 @@ BEGIN
         Detalles_Facturas df
     JOIN
         Productos p ON df.id_producto = p.id_producto
+	join
+	Facturas f on f.id_factura=df.id_factura
+	where
+	year(f.fecha)=@año and month(f.fecha)=@mes
 
     UNION
 
@@ -844,13 +854,18 @@ BEGIN
         p.id_producto,
         p.descripcion,
         'No Vendido' AS estado
-    FROM
-        Productos p
+     FROM
+        Detalles_Facturas df
+    JOIN
+        Productos p ON df.id_producto = p.id_producto
+	join
+	Facturas f on f.id_factura=df.id_factura
     WHERE
         p.id_producto NOT IN (
             SELECT DISTINCT id_producto
             FROM Detalles_Facturas
-        );
+			where year(f.fecha)=@año and month(f.fecha)=@mes
+        ) 
 END;
 go
 
@@ -879,7 +894,7 @@ GO
 	
 	EXEC SP_CONSULTA_DESCUENTOS_PROMEDIO;
 	EXEC SP_CONSULTA_VENTAS_TOTALES;
-	EXEC SP_CONSULTA_ESTADO_PRODUCTOS;
+	exec SP_CONSULTA_ESTADO_PRODUCTOS2 2022,05;
 	EXEC SP_CONSULTA_ESTADISTICAS_VENDEDORES @total_facturado = 50000.00;
 
 GO
