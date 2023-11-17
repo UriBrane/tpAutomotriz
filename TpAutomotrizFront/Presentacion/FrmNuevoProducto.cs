@@ -19,10 +19,67 @@ namespace TpAutomotrizFront.Presentacion
     {
         string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
         private Validador val;
+        TextBox txtId;
+        enum Tipo
+        {
+            Crear,
+            Editar
+        }
+
+        Tipo tipo;
+
         public FrmNuevoProducto()
         {
             InitializeComponent();
             val = Validador.GetInstance();
+            btnEditar.Enabled = false;
+            tipo = new Tipo();
+            tipo = Tipo.Crear;
+        }
+
+        public FrmNuevoProducto(int id)
+        {
+            InitializeComponent();
+            val = Validador.GetInstance();
+            Habilitar(false);
+            tipo = new Tipo();
+            tipo = Tipo.Editar;
+
+            txtId = new TextBox();
+            txtId.Visible = false;
+            cargarProducto(id);
+        }
+
+        private async void cargarProducto(int id)
+        {
+            Producto p = await TraerProducto<Producto>("/producto/" + id);
+
+            txtDescripcion.Text = p.Descripcion;
+            txtPrecio.Text = p.Precio.ToString();
+            txtCantidad.Text = p.Cantidad.ToString();
+            txtCantMin.Text = p.CantidadMin.ToString();
+            txtCantMinPorMayor.Text = p.CantMinPorMayor.ToString();
+            cboTipoProductos.SelectedValue = p.IdTipoProducto;
+            txtId.Text = p.IdProducto.ToString();
+        }
+
+        private async Task<T> TraerProducto<T>(string decorador)
+        {
+            var dataJson = await ClientSingleton.GetInstance().GetAsync(url + decorador);
+            T p = JsonConvert.DeserializeObject<T>(dataJson);
+            return p;
+        }
+
+        private void Habilitar(bool x)
+        {
+            btnGuardar.Enabled = x;
+            btnEditar.Enabled = !x;
+            txtCantidad.Enabled = x;
+            txtCantMin.Enabled = x;
+            txtCantMinPorMayor.Enabled = x;
+            txtDescripcion.Enabled = x;
+            txtPrecio.Enabled = x;
+            cboTipoProductos.Enabled = x;
         }
 
         private void FrmNuevoProducto_Load(object sender, EventArgs e)
@@ -72,16 +129,31 @@ namespace TpAutomotrizFront.Presentacion
                 int cantMinPorMayor = Convert.ToInt32(txtCantMinPorMayor.Text);
                 int cantMin = Convert.ToInt32(txtCantMin.Text);
                 int idTipoProd = Convert.ToInt32(cboTipoProductos.SelectedValue);
+                int id = Convert.ToInt32(txtId.Text);
 
-                p = new Producto(desc, precio, cantidad, cantMinPorMayor, cantMin, idTipoProd);
+                p = new Producto(id, desc, precio, cantidad, cantMinPorMayor, cantMin, idTipoProd);
 
-                if (await GrabarProducto(p))
+                if(tipo == Tipo.Crear)
                 {
-                    MessageBox.Show("Se guardó con éxito el Producto...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Dispose();
+                    if (await GrabarProducto(p))
+                    {
+                        MessageBox.Show("Se guardó con éxito el Producto...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Dispose();
+                    }
+                    else
+                        MessageBox.Show("NO se pudo guardar el Producto...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                    MessageBox.Show("NO se pudo guardar el Producto...", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (tipo == Tipo.Editar)
+                {
+                    if (await EditarProducto(p))
+                    {
+                        MessageBox.Show("Se actualizo con éxito el Producto...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Dispose();
+                    }
+                    else
+                        MessageBox.Show("NO se pudo actualizar el Producto...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
 
@@ -94,15 +166,18 @@ namespace TpAutomotrizFront.Presentacion
             return dataJson.Equals("true");
         }
 
-        private void btnConsultar_Click(object sender, EventArgs e)
+        private async Task<bool> EditarProducto(Producto p)
         {
-            // COMPLETAR...
+            string productoJson = JsonConvert.SerializeObject(p);
+
+            var dataJson = await ClientSingleton.GetInstance().PutAsync(url + "/producto", productoJson);
+
+            return dataJson.Equals("true");
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            // COMPLETAR...
-            if da
+            Habilitar(true);
         }
     }
 }

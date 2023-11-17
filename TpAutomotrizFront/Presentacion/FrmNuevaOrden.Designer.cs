@@ -109,6 +109,7 @@
             btnGuardar.TabIndex = 28;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnAgregar
             // 
@@ -193,9 +194,11 @@
             // 
             nudCantidad.Location = new Point(415, 264);
             nudCantidad.Margin = new Padding(3, 4, 3, 4);
+            nudCantidad.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             nudCantidad.Name = "nudCantidad";
             nudCantidad.Size = new Size(96, 29);
             nudCantidad.TabIndex = 24;
+            nudCantidad.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // cboProducto
             // 
@@ -249,6 +252,7 @@
             DoubleBuffered = true;
             Margin = new Padding(3, 4, 3, 4);
             Name = "FrmNuevaOrden";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmNuevaOrden";
             Load += FrmNuevaOrden_LoadAsync;
             ((System.ComponentModel.ISupportInitialize)dgvDetallesPed).EndInit();

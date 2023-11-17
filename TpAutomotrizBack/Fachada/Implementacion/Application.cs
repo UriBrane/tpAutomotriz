@@ -16,11 +16,13 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         private IClienteDAO clienteDAO;
         private IVendedorDAO vendedorDAO;
         private IProductoDAO productoDAO;
+        private IOrdenPedidoDAO ordenDAO;
         public Application()
         {
             clienteDAO = new ClienteDAO();
             vendedorDAO = new VendedorDAO();
             productoDAO = new ProductoDAO();
+            ordenDAO = new OrdenPedidoDAO();
         }
         public int ConsultarEscalar(string nombreSP, string nombreParamOut)
         {
@@ -75,10 +77,24 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         {
             return productoDAO.GetProductos();
         }
+        public List<Producto> GetProductos(int idTipo)
+        {
+            return productoDAO.GetProductos(idTipo);
+        }
         public Producto GetProducto(int id)
         {
             return productoDAO.GetProducto(id);
         }
+        public bool PutProducto(Producto p)
+        {
+            return productoDAO.PutProducto(p);
+        }
 
+        // ORDEN PEDIDO
+
+        public bool PostOrden(OrdenPedido op)
+        {
+            return ordenDAO.PostOrdenPedido(op);
+        }
     }
 }

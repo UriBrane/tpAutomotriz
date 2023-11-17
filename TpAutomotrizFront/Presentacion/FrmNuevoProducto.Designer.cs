@@ -41,6 +41,7 @@
             txtCantidad = new TextBox();
             txtCantMinPorMayor = new TextBox();
             btnGuardar = new Button();
+            btnEditar = new Button();
             btnCancelar = new Button();
             SuspendLayout();
             // 
@@ -156,7 +157,7 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(482, 151);
+            btnGuardar.Location = new Point(248, 151);
             btnGuardar.Margin = new Padding(2, 2, 2, 2);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(73, 21);
@@ -165,9 +166,20 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(353, 151);
+            btnEditar.Margin = new Padding(2, 2, 2, 2);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(73, 21);
+            btnEditar.TabIndex = 8;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
+            // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(569, 151);
+            btnCancelar.Location = new Point(457, 151);
             btnCancelar.Margin = new Padding(2, 2, 2, 2);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(73, 21);
@@ -182,6 +194,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(672, 189);
             Controls.Add(btnCancelar);
+            Controls.Add(btnEditar);
             Controls.Add(btnGuardar);
             Controls.Add(txtCantMinPorMayor);
             Controls.Add(txtCantidad);
@@ -219,6 +232,7 @@
         private TextBox txtCantidad;
         private TextBox txtCantMinPorMayor;
         private Button btnGuardar;
+        private Button btnEditar;
         private Button btnCancelar;
     }
 }

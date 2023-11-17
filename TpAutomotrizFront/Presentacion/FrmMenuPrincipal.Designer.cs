@@ -99,6 +99,7 @@
             // 
             nuevaFacturaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nuevaToolStripMenuItem, consultarToolStripMenuItem1, modificarToolStripMenuItem });
             nuevaFacturaToolStripMenuItem.Name = "nuevaFacturaToolStripMenuItem";
+            nuevaFacturaToolStripMenuItem.Size = new Size(163, 22);
             nuevaFacturaToolStripMenuItem.Size = new Size(180, 22);
             nuevaFacturaToolStripMenuItem.Text = "Factura";
             // 
@@ -125,6 +126,7 @@
             // 
             ordenDePedidoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nuevaToolStripMenuItem1 });
             ordenDePedidoToolStripMenuItem.Name = "ordenDePedidoToolStripMenuItem";
+            ordenDePedidoToolStripMenuItem.Size = new Size(163, 22);
             ordenDePedidoToolStripMenuItem.Size = new Size(180, 22);
             ordenDePedidoToolStripMenuItem.Text = "Orden de Pedido";
             // 
@@ -152,6 +154,7 @@
             // productoToolStripMenuItem
             // 
             productoToolStripMenuItem.Name = "productoToolStripMenuItem";
+            productoToolStripMenuItem.Size = new Size(166, 22);
             productoToolStripMenuItem.Size = new Size(180, 22);
             productoToolStripMenuItem.Text = "Producto";
             productoToolStripMenuItem.Click += productoToolStripMenuItem_Click;
@@ -159,6 +162,7 @@
             // clienteVendedorToolStripMenuItem1
             // 
             clienteVendedorToolStripMenuItem1.Name = "clienteVendedorToolStripMenuItem1";
+            clienteVendedorToolStripMenuItem1.Size = new Size(166, 22);
             clienteVendedorToolStripMenuItem1.Size = new Size(180, 22);
             clienteVendedorToolStripMenuItem1.Text = "Cliente/Vendedor";
             clienteVendedorToolStripMenuItem1.Click += clienteVendedorToolStripMenuItem1_Click;

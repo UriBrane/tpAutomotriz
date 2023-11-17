@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,16 @@ namespace TpAutomotrizBack.Entidades
 {
     public class Persona
     {
+        [JsonProperty("nombre")]
         public string Nombre { get; set; }
+
+        [JsonProperty("apellido")]
         public string Apellido { get; set; }
+
+        [JsonProperty("cuit")]
         public long Cuit { get; set; }
-        public string NombreCompleto { get { return Apellido + ", " + Nombre; } } 
+
+        public string NombreCompleto { get { return Apellido + ", " + Nombre; } }
 
         public Persona()
         {

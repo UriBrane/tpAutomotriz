@@ -9,11 +9,12 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using TpAutomotrizBack.Datos;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizFront.Servicios;
 using TpAutomotrizFront.Servicios.Client;
+using System.Runtime.Intrinsics.Arm;
+using System.Collections;
 
 namespace TpAutomotrizFront.Presentacion
 {
@@ -21,20 +22,20 @@ namespace TpAutomotrizFront.Presentacion
     {
         private string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
         private Validador val;
-        private List<DetallePedido> lDetallePed;
+        private OrdenPedido nuevaOrden;
         private int idOrdenPed;
         public FrmNuevaOrden()
         {
             InitializeComponent();
             val = Validador.GetInstance();
-            lDetallePed = new List<DetallePedido>();
+            nuevaOrden = new OrdenPedido();
         }
         private async void FrmNuevaOrden_LoadAsync(object sender, EventArgs e)
         {
             await CargarComboAsync<Vendedor>(cboVendedor, url + "/vendedor", "IdVendedor", "NombreCompleto");
             await CargarComboAsync<Cliente>(cboCliente, url + "/cliente", "IdCliente", "NombreCompleto");
             await CargarComboAsync<Producto>(cboProducto, url + "/producto", "IdProducto", "Descripcion");
-            int idOrdenPed = await SiguienteNroOrden("/orden_pedido/consultar_id");
+            idOrdenPed = await SiguienteNroOrden("/ordenpedido/consultarid");
             lblNOrden.Text = lblNOrden.Text + " " + idOrdenPed.ToString();
         }
         private async Task CargarComboAsync<T>(ComboBox cbo, string url, string valueMember, string displayMember)
@@ -47,7 +48,7 @@ namespace TpAutomotrizFront.Presentacion
             cbo.SelectedIndex = -1;
         }
 
-        private async void btnAgregar_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
             // VALIDACION
             if (ValidarProducto())
@@ -66,11 +67,20 @@ namespace TpAutomotrizFront.Presentacion
                 int cant = Convert.ToInt32(nudCantidad.Value);
 
                 DetallePedido dp = new DetallePedido(p, idOrdenPed, cant);
-                lDetallePed.Add(dp);
+                nuevaOrden.DetallesPedido.Add(dp);
 
+                CargarDgvDetalles();
+
+            }
+        }
+
+        private void CargarDgvDetalles()
+        {
+            dgvDetallesPed.Rows.Clear();
+            foreach (DetallePedido dp in nuevaOrden.DetallesPedido)
+            {
                 dgvDetallesPed.Rows.Add(dp.Producto.IdProducto, dp.Producto.Descripcion, dp.Cantidad
-                                        , dp.Producto.Cantidad, dp.Producto.CantidadMin, "Eliminar");
-
+                , dp.Producto.Cantidad, dp.Producto.CantidadMin, "Eliminar");
             }
         }
 
@@ -103,8 +113,70 @@ namespace TpAutomotrizFront.Presentacion
         {
             if (dgvDetallesPed.CurrentCell.ColumnIndex == 5)
             {
+                int id = (int)dgvDetallesPed.CurrentRow.Cells["ColID"].Value;
+                var item = nuevaOrden.DetallesPedido.FirstOrDefault(x => x.Producto.IdProducto == id);
+                if (item != null)
+                {
+                    nuevaOrden.DetallesPedido.Remove(item);
+                    CargarDgvDetalles();
+                }
 
             }
         }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            // VALIDACION
+            if (nuevaOrden.DetallesPedido.Count <= 0)
+            {
+                MessageBox.Show("Debe agregar al menos un Producto a la Orden...", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            MapearOrden();
+        }
+
+        private async void MapearOrden()
+        {
+            nuevaOrden.Cliente = (Cliente)cboCliente.SelectedItem;
+            nuevaOrden.FechaEntrega = AjustarDiaHabil(DateTime.Today.AddDays(90));
+            nuevaOrden.FechaPedido = DateTime.Today;
+            nuevaOrden.IdOrdenPedido = idOrdenPed;
+            if (await GrabarOrden(nuevaOrden))
+            {
+                MessageBox.Show("Se registró con éxito la Orden de Pedido.", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                nuevaOrden = new OrdenPedido();
+            }
+            else
+            {
+                MessageBox.Show("NO se pudo registrar la Orden de Pedido...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private async Task<bool> GrabarOrden(OrdenPedido orden)
+        {
+            string ordenJson = JsonConvert.SerializeObject(orden);
+            var dataJson = await ClientSingleton.GetInstance().PostAsync(url + "/ordenpedido", ordenJson);
+            return dataJson.Equals("true");
+        }
+
+        public DateTime AjustarDiaHabil(DateTime fecha)
+        {
+            // Si la fecha cae en sábado, se ajusta al próximo lunes.
+            if (fecha.DayOfWeek == DayOfWeek.Saturday)
+            {
+                return fecha.AddDays(2);
+            }
+            // Si la fecha cae en domingo, se ajusta al próximo lunes.
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday)
+            {
+                return fecha.AddDays(1);
+            }
+            // Si la fecha cae en un día de semana, se devuelve sin cambios.
+            else
+            {
+                return fecha;
+            }
+        }
+
     }
 }

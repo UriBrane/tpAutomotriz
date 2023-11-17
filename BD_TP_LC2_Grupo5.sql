@@ -1,7 +1,6 @@
-CREATE DATABASE TP_Autos
-	go
 
-USE TP_Autos
+
+USE TP_Autos_16_11
 	go
 
 CREATE TABLE Provincias
@@ -358,7 +357,9 @@ VALUES
     ('Filtros de Aceite'),
     ('Neum�ticos'),
     ('Frenos'),
-    ('Suspensi�n');
+    ('Suspensi�n'),
+ ('Automovil');
+
 
 	
 --INSERT PARA PRODUCTOS
@@ -368,7 +369,9 @@ VALUES
     (2, 'Filtro de Aceite', 15.0, 20, 200, 10),
     (3,'Neum�tico 225/55R17', 120.01, 5, 50, 2),
     (4, 'Pastillas de Freno', 25.0, 15, 150, 10),
-    (5, 'Amortiguador Trasero', 40.0, 8, 80, 4);
+    (5, 'Amortiguador Trasero', 40.0, 8, 80, 4),
+    (6, 'Uri Electrico', 9000000, null, 200, 50);
+
 
 	select * from  Vendedores
 
@@ -692,6 +695,17 @@ BEGIN
 END;
 GO
 
+-- CONSULTAR PRODUCTOS
+CREATE PROCEDURE SP_CONSULTAR_PRODUCTOS
+    @idTipo int
+AS
+BEGIN
+    SELECT *
+    FROM Productos
+    WHERE id_tipo_producto = @idTipo;
+END;
+go
+
 -- CONSULTAR ORDEN PEDIDO
 CREATE PROCEDURE SP_CONSULTAR_ORDEN_PEDIDO
     @id int
@@ -812,8 +826,10 @@ BEGIN
 END;
 go
 
-	-- listado de productos, y si fueron vendidos o no
-CREATE PROCEDURE SP_CONSULTA_ESTADO_PRODUCTOS
+	-- listado de productos, y si fueron vendidos o no por año pormes en int
+create PROCEDURE SP_CONSULTA_ESTADO_PRODUCTOS
+@año int,
+@mes int
 AS
 BEGIN
     -- Productos vendidos
@@ -825,6 +841,10 @@ BEGIN
         Detalles_Facturas df
     JOIN
         Productos p ON df.id_producto = p.id_producto
+	join
+	Facturas f on f.id_factura=df.id_factura
+	where
+	year(f.fecha)=@año and month(f.fecha)=@mes
 
     UNION
 
@@ -833,43 +853,49 @@ BEGIN
         p.id_producto,
         p.descripcion,
         'No Vendido' AS estado
-    FROM
-        Productos p
+     FROM
+        Detalles_Facturas df
+    JOIN
+        Productos p ON df.id_producto = p.id_producto
+	join
+	Facturas f on f.id_factura=df.id_factura
     WHERE
         p.id_producto NOT IN (
             SELECT DISTINCT id_producto
             FROM Detalles_Facturas
-        );
+			where year(f.fecha)=@año and month(f.fecha)=@mes
+        ) 
 END;
-
 go
 
+
 -- resumen cliente ultimos tres años
+CREATE PROCEDURE SP_CONSULTA_ESTADISTICAS_VENDEDORES
+    @total_facturado DECIMAL(25, 2)
 AS
 BEGIN
-SELECT
-f.id_cliente Id,
-c.apellido + ', ' + c.nombre Nombre,
-COUNT(f.id_factura) 'Cantidad de Compras',
-SUM(df.Cantidad) 'Productos comprados',
-SUM(df.cantidad * df.precio) 'Total Facturado'
-FROM clientes c
-JOIN Facturas f
-ON f.id_cliente = c.id_cliente
-JOIN Detalles_Facturas df
-ON df.id_factura = f.id_factura
-WHERE DATEDIFF(YEAR, f.fecha, GETDATE()) <= 3
-GROUP BY f.id_cliente,
-c.apellido + ', ' + c.nombre
-HAVING SUM(df.cantidad * df.precio) > @total_facturado
+    SELECT
+        f.id_cliente AS Id,
+        c.apellido + ', ' + c.nombre AS Nombre,
+        COUNT(f.id_factura) AS 'Cantidad de Compras',
+        SUM(df.Cantidad) AS 'Productos comprados',
+        SUM(df.cantidad * df.precio) AS 'Total Facturado'
+    FROM clientes c
+    JOIN Facturas f ON f.id_cliente = c.id_cliente
+    JOIN Detalles_Facturas df ON df.id_factura = f.id_factura
+    WHERE DATEDIFF(YEAR, f.fecha, GETDATE()) <= 3
+    GROUP BY f.id_cliente, c.apellido + ', ' + c.nombre
+    HAVING SUM(df.cantidad * df.precio) > @total_facturado;
 END
+GO
 
 	
-	EXEC SP_CLIENTES_COMPRAS 500000;
+	
 	EXEC SP_CONSULTA_DESCUENTOS_PROMEDIO;
 	EXEC SP_CONSULTA_VENTAS_TOTALES;
-	EXEC SP_CONSULTA_ESTADO_PRODUCTOS;
-	EXEC SP_CONSULTA_ESTADISTICAS_VENDEDORES;
+	exec SP_CONSULTA_ESTADO_PRODUCTOS2 2022,05;
+	EXEC SP_CONSULTA_ESTADISTICAS_VENDEDORES @total_facturado = 50000.00;
+
 GO
 
 -- UPDATES
@@ -923,7 +949,7 @@ GO
 CREATE PROCEDURE SP_UPDATE_PRODUCTOS
     @IdProducto int,
     @Descripcion varchar(100),
-    @precio double,
+    @precio decimal(10,2),
     @cantidad int,
     @CantMinPorMayor int,
     @CantidadMin int,
@@ -977,7 +1003,7 @@ BEGIN
 END;
 GO
 
-
+-- SP PARA OBTENER EL SIGUIENTE NUMERO DE ORDEN PEDIDO
 CREATE PROCEDURE SP_GET_NEXT_ORDEN_PEDIDO
     @next_orden_pedido int OUTPUT
 AS
@@ -985,3 +1011,4 @@ BEGIN
     SELECT @next_orden_pedido = ISNULL(MAX(id_orden_pedido), 0) + 1 FROM Ordenes_Pedidos;
 END;
 GO
+

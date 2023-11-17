@@ -64,7 +64,7 @@ namespace TpAutomotrizFront.Presentacion
         {
             Vendedor v = await TraerPersona<Vendedor>("/vendedor/" + id);
             if (v != null)
-                dgvPersonas.Rows.Add(v.IdVendedor, v.NombreCompleto, v.Cuit, "Ver", "Eliminar", "v");
+                dgvPersonas.Rows.Add(v.IdVendedor, v.NombreCompleto, v.Cuit, "Ver", "v");
             else
                 MessageBox.Show("EL ID no corresponde a un Vendedor.", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -73,7 +73,7 @@ namespace TpAutomotrizFront.Presentacion
         {
             Cliente c = await TraerPersona<Cliente>("/cliente/" + id);
             if (c != null)
-                dgvPersonas.Rows.Add(c.IdCliente, c.NombreCompleto, c.Cuit, "Ver", "Eliminar", "c");
+                dgvPersonas.Rows.Add(c.IdCliente, c.NombreCompleto, c.Cuit, "Ver", "c");
             else
                 MessageBox.Show("EL ID no corresponde a un Cliente.", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -97,7 +97,7 @@ namespace TpAutomotrizFront.Presentacion
             List<Vendedor> lst = await TraerLista<Vendedor>("/vendedor");
             foreach (Vendedor v in lst)
             {
-                dgvPersonas.Rows.Add(v.IdVendedor, v.NombreCompleto, v.Cuit, "Ver", "Eliminar", "v");
+                dgvPersonas.Rows.Add(v.IdVendedor, v.NombreCompleto, v.Cuit, "Ver", "v");
             }
         }
 
@@ -106,7 +106,7 @@ namespace TpAutomotrizFront.Presentacion
             List<Cliente> lst = await TraerLista<Cliente>("/cliente");
             foreach (Cliente c in lst)
             {
-                dgvPersonas.Rows.Add(c.IdCliente, c.NombreCompleto, c.Cuit, "Ver", "Eliminar", "c");
+                dgvPersonas.Rows.Add(c.IdCliente, c.NombreCompleto, c.Cuit, "Ver", "c");
             }
         }
 
