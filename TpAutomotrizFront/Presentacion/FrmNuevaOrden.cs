@@ -12,7 +12,6 @@ using System.Windows.Forms;
 using TpAutomotrizBack.Datos;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizFront.Servicios;
-using TpAutomotrizFront.Servicios.Client;
 using System.Runtime.Intrinsics.Arm;
 using System.Collections;
 
@@ -23,29 +22,22 @@ namespace TpAutomotrizFront.Presentacion
         private string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
         private Validador val;
         private OrdenPedido nuevaOrden;
+        private CargarCombo cargarCbo;
         private int idOrdenPed;
         public FrmNuevaOrden()
         {
             InitializeComponent();
-            val = Validador.GetInstance();
             nuevaOrden = new OrdenPedido();
         }
         private async void FrmNuevaOrden_LoadAsync(object sender, EventArgs e)
         {
-            await CargarComboAsync<Vendedor>(cboVendedor, url + "/vendedor", "IdVendedor", "NombreCompleto");
-            await CargarComboAsync<Cliente>(cboCliente, url + "/cliente", "IdCliente", "NombreCompleto");
-            await CargarComboAsync<Producto>(cboProducto, url + "/producto", "IdProducto", "Descripcion");
+            val = Validador.GetInstance();
+            cargarCbo = CargarCombo.GetInstance();
+            await cargarCbo.CargarComboAsync<Vendedor>(cboVendedor, url + "/vendedor", "IdVendedor", "NombreCompleto");
+            await cargarCbo.CargarComboAsync<Cliente>(cboCliente, url + "/cliente", "IdCliente", "NombreCompleto");
+            await cargarCbo.CargarComboAsync<Producto>(cboProducto, url + "/producto", "IdProducto", "Descripcion");
             idOrdenPed = await SiguienteNroOrden("/ordenpedido/consultarid");
             lblNOrden.Text = lblNOrden.Text + " " + idOrdenPed.ToString();
-        }
-        private async Task CargarComboAsync<T>(ComboBox cbo, string url, string valueMember, string displayMember)
-        {
-            var dataJson = await ClientSingleton.GetInstance().GetAsync(url);
-            List<T> lst = JsonConvert.DeserializeObject<List<T>>(dataJson);
-            cbo.DataSource = lst;
-            cbo.ValueMember = valueMember;
-            cbo.DisplayMember = displayMember;
-            cbo.SelectedIndex = -1;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)

@@ -24,7 +24,6 @@ C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\bin\Debug\net6.
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\bin\Debug\net6.0-windows\TpAutomotrizAPI.pdb
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\bin\Debug\net6.0-windows\TpAutomotrizBack.pdb
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.csproj.AssemblyReference.cache
-C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsultaProductos.resources
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsultarFactura.resources
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsultarPersona.resources
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsultarProducto.resources
@@ -94,3 +93,4 @@ C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\T
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.genruntimeconfig.cache
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\ref\TpAutomotrizFront.dll
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsulta.resources
+C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsultarOrden.resources

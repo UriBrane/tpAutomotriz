@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using TpAutomotrizBack.Datos;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizFront.Servicios;
-using TpAutomotrizFront.Servicios.Client;
 
 namespace TpAutomotrizFront.Presentacion
 {
@@ -19,6 +18,7 @@ namespace TpAutomotrizFront.Presentacion
     {
         string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
         private Validador val;
+        private CargarCombo cargarCbo;
         TextBox txtId;
         enum Tipo
         {
@@ -84,18 +84,10 @@ namespace TpAutomotrizFront.Presentacion
 
         private void FrmNuevoProducto_Load(object sender, EventArgs e)
         {
-            CargarCbo("SP_SELECT_TIPO_PRODUCTOS", cboTipoProductos);
+            cargarCbo = CargarCombo.GetInstance();
+            cargarCbo.CargarCbo("SP_SELECT_TIPO_PRODUCTOS", cboTipoProductos);
         }
-        private void CargarCbo(string nombreSP, ComboBox combo)
-        {
-            DataTable dt = HelperDAO.GetInstance().ConsultarTabla(nombreSP);
-
-            combo.DataSource = dt;
-            combo.ValueMember = dt.Columns[0].ColumnName;
-            combo.DisplayMember = dt.Columns[1].ColumnName;
-            combo.SelectedIndex = -1;
-        }
-
+        
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();

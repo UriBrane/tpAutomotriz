@@ -96,5 +96,15 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         {
             return ordenDAO.PostOrdenPedido(op);
         }
+
+        public OrdenPedido GetOrden(int id)
+        {
+            return ordenDAO.GetOrdenPedido(id);
+        }
+
+        public List<OrdenPedido> GetOrdenes()
+        {
+            return ordenDAO.GetOrdenesPedido();
+        }
     }
 }

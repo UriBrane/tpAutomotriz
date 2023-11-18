@@ -19,7 +19,7 @@ namespace TpAutomotrizAPI.Controllers
         [HttpGet("/vendedor")]
         public IActionResult GetVendedores()
         {
-            List<Vendedor> lst = null;
+            List<Vendedor> lst;
             try
             {
                 lst = app.GetVendedores();

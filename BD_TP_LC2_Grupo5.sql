@@ -1,7 +1,7 @@
-
-
-USE TP_Autos_16_11
-	go
+CREATE DATABASE TP_Autos
+GO
+USE TP_Autos
+GO
 
 CREATE TABLE Provincias
 (id_provincia int IDENTITY(1,1) not null,
@@ -109,9 +109,9 @@ CREATE TABLE Productos
 id_tipo_producto  int,
 descripcion varchar(255),
 precio decimal (10,2),
-cant_min_por_mayor int,
-cantidad int,
-cantidad_min int 
+cant_min_por_mayor int not null,
+cantidad int not null,
+cantidad_min int not null
 
 constraint pk_prod primary key (id_producto),
 
@@ -359,8 +359,6 @@ VALUES
     ('Frenos'),
     ('Suspensi�n'),
  ('Automovil');
-
-
 	
 --INSERT PARA PRODUCTOS
 INSERT INTO Productos ([id_tipo_producto], [descripcion], [precio], [cant_min_por_mayor], [cantidad], [cantidad_min])
@@ -370,10 +368,7 @@ VALUES
     (3,'Neum�tico 225/55R17', 120.01, 5, 50, 2),
     (4, 'Pastillas de Freno', 25.0, 15, 150, 10),
     (5, 'Amortiguador Trasero', 40.0, 8, 80, 4),
-    (6, 'Uri Electrico', 9000000, null, 200, 50);
-
-
-	select * from  Vendedores
+    (6, 'Uri Electrico', 9000000, 10, 200, 50);
 
 --INSERT TIPO_VENTAS
 INSERT INTO Tipos_Ventas ([descripcion])

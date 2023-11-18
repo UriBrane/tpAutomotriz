@@ -35,5 +35,7 @@ namespace TpAutomotrizBack.Fachada.Interfaz
 
         // ORDEN PEDIDO
         bool PostOrden(OrdenPedido op);
+        OrdenPedido GetOrden(int id);
+        List<OrdenPedido> GetOrdenes();
     }
 }

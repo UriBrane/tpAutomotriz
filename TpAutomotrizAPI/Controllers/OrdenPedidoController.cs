@@ -15,6 +15,35 @@ namespace TpAutomotrizAPI.Controllers
             app = new Application();
         }
 
+        [HttpGet("/ordenpedido")]
+        public IActionResult GetOrdenes()
+        {
+            List<OrdenPedido> lst;
+            try
+            {
+                lst = app.GetOrdenes();
+                return Ok(lst);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
+        [HttpGet("/ordenpedido/{id}")]
+        public IActionResult GetOrden(int id)
+        {
+            try
+            {
+                OrdenPedido op = app.GetOrden(id);
+                return Ok(op);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
         [HttpGet("/ordenpedido/consultarid")]
         public IActionResult ConsultarIdOrden()
         {
