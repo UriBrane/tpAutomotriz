@@ -27,8 +27,8 @@ namespace TpAutomotrizBack.Datos.Implementacion
             List<Parametro> lParamMaestro = new List<Parametro>
             {
                 new Parametro( "@id_cliente", oP.Cliente.IdCliente),
-                new Parametro( "@fecha_entrega", oP.FechaEntrega),
-                new Parametro( "@fecha_pedido", oP.FechaPedido)
+                new Parametro( "@fecha_entrega", oP.FechaEntrega.ToString("yyyy-MM-dd")),
+                new Parametro( "@fecha_pedido", oP.FechaPedido.ToString("yyyy-MM-dd"))
             };
 
             List<List<Parametro>> lParamDetalles = new List<List<Parametro>>();
@@ -37,13 +37,13 @@ namespace TpAutomotrizBack.Datos.Implementacion
             {
                 List<Parametro> l = new List<Parametro>
                 {
-                    new Parametro( "@id_orden_pedido", d.IdOrdenPedido),
+                    //new Parametro( "@nro", d.IdOrdenPedido),
                     new Parametro( "@id_producto", d.Producto.IdProducto),
                     new Parametro( "@cantidad", d.Cantidad)
                 };
                 lParamDetalles.Add(l);
             }
-            return helper.EjecutarSQL("SP_INSERT_ORDEN_PEDIDO", "SP_INSERT_DETALLES_PED", "SP_GET_NEXT_ORDEN_PEDIDO", lParamMaestro, lParamDetalles);
+            return helper.EjecutarSQL("SP_INSERT_ORDEN_PEDIDO", "SP_INSERT_DETALLES_PED", lParamMaestro, lParamDetalles);
         }
 
         public List<OrdenPedido> GetOrdenesPedido()

@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace TpAutomotrizFront.Presentacion
 {
-    public partial class FrmConsultaProductos : Form
+    public partial class FrmConsultarOrden : Form
     {
-        public FrmConsultaProductos()
+        public FrmConsultarOrden()
         {
             InitializeComponent();
-        }
-
-        private void FrmConsultaProductos_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

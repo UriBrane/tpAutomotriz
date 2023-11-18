@@ -49,7 +49,7 @@ namespace TpAutomotrizBack.Datos.Implementacion
                 lParamDetalles.Add(l);
             }
 
-            return helper.EjecutarSQL("SP_INSERT_FACTURA", "SP_INSERT_DETALLES_FAC", " crear sp ", lParamMaestro, lParamDetalles);
+            return helper.EjecutarSQL("SP_INSERT_FACTURA", "SP_INSERT_DETALLES_FAC", lParamMaestro, lParamDetalles);
         }
 
         public List<Factura> GetFacturas()

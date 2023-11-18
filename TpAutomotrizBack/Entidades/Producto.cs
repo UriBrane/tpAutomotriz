@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,25 @@ namespace TpAutomotrizBack.Entidades
 {
     public class Producto
     {
+        [JsonProperty("idProducto")]
         public int IdProducto { get; set; }
+
+        [JsonProperty("descripcion")]
         public string Descripcion { get; set; }
+
+        [JsonProperty("precio")]
         public double Precio { get; set; }
+
+        [JsonProperty("cantidad")]
         public int Cantidad { get; set; }
+
+        [JsonProperty("cantMinPorMayor")]
         public int CantMinPorMayor { get; set; }
+
+        [JsonProperty("cantidadMin")]
         public int CantidadMin { get; set; }
+
+        [JsonProperty("idTipoProducto")]
         public int IdTipoProducto { get; set; }
 
         public Producto()
@@ -26,6 +40,7 @@ namespace TpAutomotrizBack.Entidades
             CantidadMin = 0;
             IdTipoProducto = 0;
         }
+
         public Producto(string descripcion, double precio, int cantidad, int cantMinPorMayor, int cantidadMin, int idTipoProd)
         {
             Descripcion = descripcion;
@@ -35,7 +50,9 @@ namespace TpAutomotrizBack.Entidades
             CantidadMin = cantidadMin;
             IdTipoProducto = idTipoProd;
         }
-        public Producto(int idProducto, string descripcion, double precio, int cantidad, int cantMinPorMayor, int cantidadMin, int idTipoProd)
+
+        [JsonConstructor]
+        public Producto(int idProducto, string descripcion, double precio, int cantidad, int cantMinPorMayor, int cantidadMin, int idTipoProducto)
         {
             IdProducto = idProducto;
             Descripcion = descripcion;
@@ -43,13 +60,7 @@ namespace TpAutomotrizBack.Entidades
             Cantidad = cantidad;
             CantMinPorMayor = cantMinPorMayor;
             CantidadMin = cantidadMin;
-            IdTipoProducto = idTipoProd;
-        }
-
-        public void CalcularStock()
-        {
-
-
+            IdTipoProducto = idTipoProducto;
         }
 
         public override string ToString()

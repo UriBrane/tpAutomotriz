@@ -150,8 +150,12 @@ namespace TpAutomotrizFront
         {
             FrmConsultarProducto frmConsultarProducto = new FrmConsultarProducto();
             frmConsultarProducto.ShowDialog();
-            FrmConsultaProductos frmConsultaProductos = new FrmConsultaProductos();
-            frmConsultaProductos.ShowDialog();
+        }
+
+        private void consultarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmConsultarOrden frm = new FrmConsultarOrden();
+            frm.ShowDialog();
         }
     }
 }

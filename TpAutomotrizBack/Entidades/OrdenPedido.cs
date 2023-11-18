@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,11 +10,21 @@ namespace TpAutomotrizBack.Entidades
 {
     public class OrdenPedido
     {
+        [JsonProperty("idOrdenPedido")]
         public int IdOrdenPedido { get; set; }
+
+        [JsonProperty("cliente")]
         public Cliente Cliente { get; set; }
+
+        [JsonProperty("fechaEntrega")]
         public DateTime FechaEntrega { get; set; }
+
+        [JsonProperty("fechaPedido")]
         public DateTime FechaPedido { get; set; }
+
+        [JsonProperty("detallesPedido")]
         public List<DetallePedido> DetallesPedido { get; set; }
+
 
         public OrdenPedido()
         {
@@ -31,14 +42,16 @@ namespace TpAutomotrizBack.Entidades
             FechaPedido = fechaPedido;
             DetallesPedido = detPed;
         }
-        public OrdenPedido(int id_orden, Cliente cliente, DateTime fechaEntrega
-                          , DateTime fechaPedido, List<DetallePedido> detPed)
+
+        [JsonConstructor]
+        public OrdenPedido(int idOrdenPedido, Cliente cliente, DateTime fechaEntrega
+                          , DateTime fechaPedido, List<DetallePedido> detallesPedido)
         {
-            IdOrdenPedido = id_orden;
+            IdOrdenPedido = idOrdenPedido;
             Cliente = cliente;
             FechaEntrega = fechaEntrega;
             FechaPedido = fechaPedido;
-            DetallesPedido = detPed;
+            DetallesPedido = detallesPedido;
         }
 
         //hacer consulta para ver que ordenes estan pendientes y modificar estado entregado o no

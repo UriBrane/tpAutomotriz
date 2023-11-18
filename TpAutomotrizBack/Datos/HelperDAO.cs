@@ -15,7 +15,7 @@ namespace TpAutomotrizBack.Datos
 
         private HelperDAO()
         {
-            cnn = new SqlConnection(Properties.Resources.CadenaConexion);
+            cnn = new SqlConnection(Properties.Resources.CadenaConexionAndres);
         }
 
         public static HelperDAO GetInstance()
@@ -65,9 +65,32 @@ namespace TpAutomotrizBack.Datos
             return dt;
         }
 
+        public int ConsultarEscalar(string nombreSP, string nombreParamOut, SqlTransaction t)
+        {
+            //bool a = false;
+            //if (cnn.State == ConnectionState.Closed)
+            //    { cnn.Open(); a = true; }
+
+            SqlCommand comando = new SqlCommand(nombreSP, cnn, t);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = nombreParamOut;
+            parametro.SqlDbType = SqlDbType.Int;
+            parametro.Direction = ParameterDirection.Output;
+
+            comando.Parameters.Add(parametro);
+            comando.ExecuteNonQuery();
+
+            //if (a)
+            //    cnn.Close();
+
+            return (int)parametro.Value;
+        }
+
         public int ConsultarEscalar(string nombreSP, string nombreParamOut)
         {
             cnn.Open();
+
             SqlCommand comando = new SqlCommand(nombreSP, cnn);
             comando.CommandType = CommandType.StoredProcedure;
             SqlParameter parametro = new SqlParameter();
@@ -124,7 +147,7 @@ namespace TpAutomotrizBack.Datos
 
 
 
-        public bool EjecutarSQL(string spMaestro, string spDetalle, string spSiguienteNroMaestro, List<Parametro> lParamMaestro, List<List<Parametro>> lParamDetalle)
+        public bool EjecutarSQL(string spMaestro, string spDetalle, List<Parametro> lParamMaestro, List<List<Parametro>> lParamDetalle)
         {// Ejecuta una transaccion Maestro-Detalle con los nombres de los sp como param de entrada y las listas de parametros, devuelve el numero de factura
             int nroMaestro = 0;
             SqlTransaction? t = null;
@@ -145,35 +168,31 @@ namespace TpAutomotrizBack.Datos
                 }
 
                 SqlParameter param = new SqlParameter();
-                param.ParameterName = spSiguienteNroMaestro;
+                param.ParameterName = "@nro";
                 param.SqlDbType = SqlDbType.Int;
                 param.Direction = ParameterDirection.Output;
                 cmdMaestro.Parameters.Add(param);
 
                 cmdMaestro.ExecuteNonQuery();
+
                 nroMaestro = Convert.ToInt32(param.Value);
 
-                int detallleNro = 1;
                 SqlCommand cmdDetalle;
 
                 if (lParamDetalle != null)
                 {
                     foreach (List<Parametro> l in lParamDetalle)
                     {
+                        cmdDetalle = new SqlCommand(spDetalle, cnn, t);
+                        cmdDetalle.CommandType = CommandType.StoredProcedure;
+
+                        cmdDetalle.Parameters.AddWithValue("@nro", nroMaestro);
                         foreach (Parametro p in l)
                         {
-                            cmdDetalle = new SqlCommand(spDetalle, cnn, t);
-                            cmdDetalle.CommandType = CommandType.StoredProcedure;
-
                             cmdDetalle.Parameters.AddWithValue(p.Clave, p.Valor);
-
-                            cmdDetalle.Parameters.AddWithValue("@nro_maestro", nroMaestro);
-                            cmdDetalle.Parameters.AddWithValue("@detalle_nro", detallleNro);
-
-                            cmdDetalle.ExecuteNonQuery();
-
-                            detallleNro++;
                         }
+
+                        cmdDetalle.ExecuteNonQuery();
                     }
                 }
 

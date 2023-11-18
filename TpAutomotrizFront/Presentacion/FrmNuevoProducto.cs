@@ -133,7 +133,7 @@ namespace TpAutomotrizFront.Presentacion
 
                 p = new Producto(id, desc, precio, cantidad, cantMinPorMayor, cantMin, idTipoProd);
 
-                if(tipo == Tipo.Crear)
+                if (tipo == Tipo.Crear)
                 {
                     if (await GrabarProducto(p))
                     {

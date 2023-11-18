@@ -5,6 +5,8 @@ using TpAutomotrizBack.Fachada.Interfaz;
 
 namespace TpAutomotrizAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class OrdenPedidoController : Controller
     {
         private IApplication app;
@@ -19,7 +21,7 @@ namespace TpAutomotrizAPI.Controllers
             try
             {
                 int id = 0;
-                id = app.ConsultarEscalar("SP_GET_NEXT_ORDEN_PEDIDO", "@next_orden_pedido");
+                id = app.ConsultarEscalar("SP_GET_NEXT_ORDEN_PEDIDO", "@nro");
                 if (id == 0)
                     return NotFound();
                 return Ok(id);

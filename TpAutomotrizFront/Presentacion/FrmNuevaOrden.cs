@@ -124,7 +124,7 @@ namespace TpAutomotrizFront.Presentacion
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private async void btnGuardar_Click(object sender, EventArgs e)
         {
             // VALIDACION
             if (nuevaOrden.DetallesPedido.Count <= 0)
@@ -132,10 +132,10 @@ namespace TpAutomotrizFront.Presentacion
                 MessageBox.Show("Debe agregar al menos un Producto a la Orden...", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            MapearOrden();
+            await MapearOrden();
         }
 
-        private async void MapearOrden()
+        private async Task MapearOrden()
         {
             nuevaOrden.Cliente = (Cliente)cboCliente.SelectedItem;
             nuevaOrden.FechaEntrega = AjustarDiaHabil(DateTime.Today.AddDays(90));
@@ -143,8 +143,10 @@ namespace TpAutomotrizFront.Presentacion
             nuevaOrden.IdOrdenPedido = idOrdenPed;
             if (await GrabarOrden(nuevaOrden))
             {
-                MessageBox.Show("Se registró con éxito la Orden de Pedido.", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se registró con éxito la Orden de Pedido.\n    Fecha de Entrega: " + nuevaOrden.FechaEntrega.ToString("dd-MM-yyyy")
+                                , "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 nuevaOrden = new OrdenPedido();
+                this.Dispose();
             }
             else
             {

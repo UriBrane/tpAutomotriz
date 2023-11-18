@@ -460,30 +460,21 @@ CREATE PROCEDURE SP_INSERT_FACTURA
     @id_vendedor int,
     @id_orden_pedido int,
     @id_autoplan int,
-    @id_forma_pago int
+    @id_forma_pago int,
+    @nro int OUTPUT
 AS
 BEGIN
     INSERT INTO Facturas(id_cliente, fecha, id_vendedor, id_orden_pedido, id_autoplan, id_forma_pago)
     VALUES (@id_cliente, @fecha, @id_vendedor, @id_orden_pedido, @id_autoplan, @id_forma_pago);
-END;
-GO
-	
--- INSERTAR  FORMA DE PAGO
-CREATE PROCEDURE InsertarFormaPago
-    @descripcion varchar(255),
-    @id_tarjeta int,
-    @id_cuota int
-AS
-BEGIN
-    INSERT INTO Formas_Pago (descripcion, id_tarjeta, id_cuota)
-    VALUES (@descripcion, @id_tarjeta, @id_cuota);
+
+    SET @nro = SCOPE_IDENTITY();
 END;
 GO
 
 -- INSERTAR DETALLES_FACTURAS
 CREATE PROCEDURE SP_INSERT_DETALLES_FAC
     @id_tipo_venta int,
-    @id_factura int,
+    @nro int,
     @id_producto int,
     @cantidad int,
     @precio decimal(10,2),
@@ -491,7 +482,46 @@ CREATE PROCEDURE SP_INSERT_DETALLES_FAC
 AS
 BEGIN
     INSERT INTO Detalles_Facturas(id_tipo_venta, id_factura, id_producto, cantidad, precio, id_descuento)
-    VALUES (@id_tipo_venta, @id_factura, @id_producto, @cantidad, @precio, @id_descuento);
+    VALUES (@id_tipo_venta, @nro, @id_producto, @cantidad, @precio, @id_descuento);
+END;
+GO
+
+--  INSERTAR ORDEN PEDIDO
+CREATE PROCEDURE SP_INSERT_ORDEN_PEDIDO
+    @id_cliente INT,
+    @fecha_entrega DATETIME,
+    @fecha_pedido DATETIME,
+    @nro INT OUTPUT
+AS
+BEGIN
+    INSERT INTO Ordenes_Pedidos(id_cliente, fecha_entrega, fecha_pedido)
+    VALUES (@id_cliente, @fecha_entrega, @fecha_pedido);
+
+    SET @nro = SCOPE_IDENTITY();
+END;
+GO
+
+-- INSERTAR DETALLES PEDIDO
+CREATE PROCEDURE SP_INSERT_DETALLES_PED
+    @nro int,
+    @id_producto int,
+    @cantidad int
+AS
+BEGIN
+    INSERT INTO Detalles_Pedidos(id_orden_pedido, id_producto, cantidad)
+    VALUES (@nro, @id_producto, @cantidad)
+END;
+GO
+
+-- INSERTAR  FORMA DE PAGO
+CREATE PROCEDURE SP_INSERT_FORMA_PAGO
+    @descripcion varchar(255),
+    @id_tarjeta int,
+    @id_cuota int
+AS
+BEGIN
+    INSERT INTO Formas_Pago (descripcion, id_tarjeta, id_cuota)
+    VALUES (@descripcion, @id_tarjeta, @id_cuota);
 END;
 GO
 
@@ -538,30 +568,6 @@ AS
 BEGIN
     INSERT INTO Productos(id_tipo_producto, descripcion, precio, cant_min_por_mayor, cantidad, cantidad_min)
     VALUES (@id_tipo_producto, @descripcion, @precio, @cant_min_por_mayor, @cantidad, @cantidad_min)
-END;
-GO
-
---  INSERTAR ORDEN PEDIDO
-CREATE PROCEDURE SP_INSERT_ORDEN_PEDIDO
-    @id_cliente int,
-    @fecha_entrega datetime,
-    @fecha_pedido datetime
-AS
-BEGIN
-    INSERT INTO Ordenes_Pedidos(id_cliente, fecha_entrega, fecha_pedido)
-    VALUES (@id_cliente, @fecha_entrega, @fecha_pedido)
-END;
-GO
-
--- INSERTAR DETALLES PEDIDO
-CREATE PROCEDURE SP_INSERT_DETALLES_PED
-    @id_orden_pedido int,
-    @id_producto int,
-    @cantidad int
-AS
-BEGIN
-    INSERT INTO Detalles_Pedidos(id_orden_pedido, id_producto, cantidad)
-    VALUES (@id_orden_pedido, @id_producto, @cantidad)
 END;
 GO
 
@@ -891,10 +897,10 @@ GO
 
 	
 	
-	EXEC SP_CONSULTA_DESCUENTOS_PROMEDIO;
-	EXEC SP_CONSULTA_VENTAS_TOTALES;
-	exec SP_CONSULTA_ESTADO_PRODUCTOS2 2022,05;
-	EXEC SP_CONSULTA_ESTADISTICAS_VENDEDORES @total_facturado = 50000.00;
+	--EXEC SP_CONSULTA_DESCUENTOS_PROMEDIO;
+	--EXEC SP_CONSULTA_VENTAS_TOTALES;
+	--exec SP_CONSULTA_ESTADO_PRODUCTOS 2022,05;
+	--EXEC SP_CONSULTA_ESTADISTICAS_VENDEDORES @total_facturado = 50000.00;
 
 GO
 
@@ -1005,10 +1011,18 @@ GO
 
 -- SP PARA OBTENER EL SIGUIENTE NUMERO DE ORDEN PEDIDO
 CREATE PROCEDURE SP_GET_NEXT_ORDEN_PEDIDO
-    @next_orden_pedido int OUTPUT
+    @nro int OUTPUT
 AS
 BEGIN
-    SELECT @next_orden_pedido = ISNULL(MAX(id_orden_pedido), 0) + 1 FROM Ordenes_Pedidos;
+    SELECT @nro = ISNULL(MAX(id_orden_pedido), 0) + 1 FROM Ordenes_Pedidos;
 END;
 GO
 
+-- SP PARA OBTENER EL SIGUIENTE NUMERO DE FACTURA
+CREATE PROCEDURE SP_GET_NEXT_FACTURA
+    @nro int OUTPUT
+AS
+BEGIN
+    SELECT @nro = ISNULL(MAX(id_factura), 0) + 1 FROM Facturas;
+END;
+GO

@@ -45,7 +45,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(391, 78);
+            btnBuscar.Location = new Point(353, 22);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(94, 29);
             btnBuscar.TabIndex = 13;
@@ -57,7 +57,7 @@
             // 
             cboTipoProducto.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTipoProducto.FormattingEnabled = true;
-            cboTipoProducto.Location = new Point(185, 77);
+            cboTipoProducto.Location = new Point(147, 21);
             cboTipoProducto.Name = "cboTipoProducto";
             cboTipoProducto.Size = new Size(151, 29);
             cboTipoProducto.TabIndex = 10;
@@ -65,7 +65,7 @@
             // lblTipoPersona
             // 
             lblTipoPersona.AutoSize = true;
-            lblTipoPersona.Location = new Point(50, 83);
+            lblTipoPersona.Location = new Point(12, 27);
             lblTipoPersona.Name = "lblTipoPersona";
             lblTipoPersona.Size = new Size(131, 21);
             lblTipoPersona.TabIndex = 9;
@@ -77,7 +77,7 @@
             dgvProductos.AllowUserToDeleteRows = false;
             dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProductos.Columns.AddRange(new DataGridViewColumn[] { ColID, ColTipo, ColPrecio, ColNombre, ColCantMin, ColCant, ColCantMinMayor, ColVer });
-            dgvProductos.Location = new Point(50, 115);
+            dgvProductos.Location = new Point(12, 59);
             dgvProductos.Name = "dgvProductos";
             dgvProductos.ReadOnly = true;
             dgvProductos.RowHeadersWidth = 51;
@@ -154,15 +154,15 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1111, 553);
+            ClientSize = new Size(1020, 491);
             Controls.Add(btnBuscar);
             Controls.Add(cboTipoProducto);
             Controls.Add(lblTipoPersona);
             Controls.Add(dgvProductos);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "FrmConsultarProducto";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Consultar Producto";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgvProductos).EndInit();
             ResumeLayout(false);

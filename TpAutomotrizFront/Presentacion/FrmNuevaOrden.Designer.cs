@@ -54,7 +54,7 @@
             // lblCliente
             // 
             lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(72, 185);
+            lblCliente.Location = new Point(72, 200);
             lblCliente.Margin = new Padding(2, 0, 2, 0);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(61, 21);
@@ -64,7 +64,7 @@
             // lblVendedor
             // 
             lblVendedor.AutoSize = true;
-            lblVendedor.Location = new Point(53, 140);
+            lblVendedor.Location = new Point(53, 155);
             lblVendedor.Margin = new Padding(2, 0, 2, 0);
             lblVendedor.Name = "lblVendedor";
             lblVendedor.Size = new Size(80, 21);
@@ -74,7 +74,7 @@
             // lblNOrden
             // 
             lblNOrden.AutoSize = true;
-            lblNOrden.Location = new Point(267, 54);
+            lblNOrden.Location = new Point(29, 116);
             lblNOrden.Name = "lblNOrden";
             lblNOrden.Size = new Size(104, 21);
             lblNOrden.TabIndex = 30;
@@ -83,7 +83,7 @@
             // dtpFecha
             // 
             dtpFecha.Enabled = false;
-            dtpFecha.Location = new Point(42, 223);
+            dtpFecha.Location = new Point(42, 238);
             dtpFecha.Margin = new Padding(3, 4, 3, 4);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(200, 29);
@@ -113,7 +113,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(519, 262);
+            btnAgregar.Location = new Point(519, 277);
             btnAgregar.Margin = new Padding(2, 3, 2, 3);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(74, 33);
@@ -192,7 +192,7 @@
             // 
             // nudCantidad
             // 
-            nudCantidad.Location = new Point(415, 264);
+            nudCantidad.Location = new Point(415, 279);
             nudCantidad.Margin = new Padding(3, 4, 3, 4);
             nudCantidad.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             nudCantidad.Name = "nudCantidad";
@@ -204,7 +204,7 @@
             // 
             cboProducto.DropDownStyle = ComboBoxStyle.DropDownList;
             cboProducto.FormattingEnabled = true;
-            cboProducto.Location = new Point(42, 264);
+            cboProducto.Location = new Point(42, 279);
             cboProducto.Margin = new Padding(3, 4, 3, 4);
             cboProducto.Name = "cboProducto";
             cboProducto.Size = new Size(366, 29);
@@ -214,7 +214,7 @@
             // 
             cboCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCliente.FormattingEnabled = true;
-            cboCliente.Location = new Point(141, 182);
+            cboCliente.Location = new Point(141, 197);
             cboCliente.Margin = new Padding(3, 4, 3, 4);
             cboCliente.Name = "cboCliente";
             cboCliente.Size = new Size(227, 29);
@@ -224,7 +224,7 @@
             // 
             cboVendedor.DropDownStyle = ComboBoxStyle.DropDownList;
             cboVendedor.FormattingEnabled = true;
-            cboVendedor.Location = new Point(141, 138);
+            cboVendedor.Location = new Point(141, 153);
             cboVendedor.Margin = new Padding(3, 4, 3, 4);
             cboVendedor.Name = "cboVendedor";
             cboVendedor.Size = new Size(227, 29);
