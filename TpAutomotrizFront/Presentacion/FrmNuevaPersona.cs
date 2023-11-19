@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using TpAutomotrizBack.Datos;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizFront.Servicios;
 using System.Security.Cryptography;
@@ -24,17 +23,16 @@ namespace TpAutomotrizFront.Presentacion
         private bool nuevo;
         private string tipoPersona;
         private int idPersona = 0;
+
         public FrmNuevaPersona() // Constructor default
         {
             InitializeComponent();
-            val = Validador.GetInstance();
             nuevo = true;
             btnEditar.Enabled = false;
         }
         public FrmNuevaPersona(int id, string tipo) // Constructor para editar una persona
         {
             InitializeComponent();
-            val = Validador.GetInstance();
             idPersona = id;
             tipoPersona = tipo;
             btnGuardar.Enabled = false;
@@ -46,6 +44,7 @@ namespace TpAutomotrizFront.Presentacion
         
         private void FrmNuevaPersona_Load(object sender, EventArgs e)
         {
+            val = Validador.GetInstance();
             cargarCbo = CargarCombo.GetInstance();
             cargarCbo.CargarCboTipoPersona(cboTipoPersona);
             cargarCbo.CargarCbo("SP_SELECT_CATEGORIAS", cboCategoria);

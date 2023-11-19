@@ -9,7 +9,6 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpAutomotrizBack.Datos;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizFront.Servicios;
 using System.Runtime.Intrinsics.Arm;
@@ -20,15 +19,26 @@ namespace TpAutomotrizFront.Presentacion
     public partial class FrmNuevaOrden : Form
     {
         private string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
-        private Validador val;
-        private OrdenPedido nuevaOrden;
-        private CargarCombo cargarCbo;
+        private Validador? val;
+        private OrdenPedido? orden;
+        private CargarCombo? cargarCbo;
         private int idOrdenPed;
-        public FrmNuevaOrden()
+        bool nueva;
+
+        public FrmNuevaOrden() // Constructor default
         {
             InitializeComponent();
-            nuevaOrden = new OrdenPedido();
+            nueva = true;
+            orden = new OrdenPedido();
         }
+
+        public FrmNuevaOrden(int id) // Constructor para ver una orden
+        {
+            InitializeComponent();
+            nueva = false;
+            idOrdenPed = id;
+        }
+
         private async void FrmNuevaOrden_LoadAsync(object sender, EventArgs e)
         {
             val = Validador.GetInstance();
@@ -36,8 +46,55 @@ namespace TpAutomotrizFront.Presentacion
             await cargarCbo.CargarComboAsync<Vendedor>(cboVendedor, url + "/vendedor", "IdVendedor", "NombreCompleto");
             await cargarCbo.CargarComboAsync<Cliente>(cboCliente, url + "/cliente", "IdCliente", "NombreCompleto");
             await cargarCbo.CargarComboAsync<Producto>(cboProducto, url + "/producto", "IdProducto", "Descripcion");
-            idOrdenPed = await SiguienteNroOrden("/ordenpedido/consultarid");
-            lblNOrden.Text = lblNOrden.Text + " " + idOrdenPed.ToString();
+            if (!nueva)
+                CargarControles(idOrdenPed);
+            else
+                CargarNroOrden();
+        }
+
+        private async void CargarControles(int id)
+        {
+            orden = await TraerOrden("/ordenpedido/" + id);
+
+
+            lblNOrden.Text = lblNOrden.Text + " " + orden.IdOrdenPedido.ToString();
+            cboCliente.SelectedValue = orden.Cliente.IdCliente;
+            dtpFecha.Value = orden.FechaPedido;
+            cboProducto.Visible = false;
+            nudCantidad.Visible = false;
+            btnAgregar.Visible = false;
+            dgvDetallesPed.Columns["ColEliminar"].Visible = false;
+            CargarDgvDetalles();
+            HabilitarControles(false);
+        }
+
+        private void HabilitarControles(bool v)
+        {
+            cboVendedor.Enabled = v;
+            cboCliente.Enabled = v;
+            dtpFecha.Enabled = v;
+            cboProducto.Enabled = v;
+            nudCantidad.Enabled = v;
+            btnAgregar.Enabled = v;
+            dgvDetallesPed.Enabled = v;
+            btnGuardar.Enabled = v;
+        }
+
+        private async Task<OrdenPedido> TraerOrden(string decorador)
+        {
+            var dataJson = await ClientSingleton.GetInstance().GetAsync(url + decorador);
+            OrdenPedido o = JsonConvert.DeserializeObject<OrdenPedido>(dataJson);
+            return o;
+        }
+
+        private void CargarDgvDetalles()
+        {
+            dgvDetallesPed.Rows.Clear();
+            foreach (DetallePedido dp in orden.DetallesPedido)
+            {
+                dgvDetallesPed.Rows.Add(dp.Producto.IdProducto, dp.Producto.Descripcion, dp.Cantidad
+                , dp.Producto.Cantidad, dp.Producto.CantidadMin, "Eliminar");
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -59,21 +116,18 @@ namespace TpAutomotrizFront.Presentacion
                 int cant = Convert.ToInt32(nudCantidad.Value);
 
                 DetallePedido dp = new DetallePedido(p, idOrdenPed, cant);
-                nuevaOrden.DetallesPedido.Add(dp);
+                orden.DetallesPedido.Add(dp);
 
                 CargarDgvDetalles();
 
             }
         }
 
-        private void CargarDgvDetalles()
+
+        private async void CargarNroOrden()
         {
-            dgvDetallesPed.Rows.Clear();
-            foreach (DetallePedido dp in nuevaOrden.DetallesPedido)
-            {
-                dgvDetallesPed.Rows.Add(dp.Producto.IdProducto, dp.Producto.Descripcion, dp.Cantidad
-                , dp.Producto.Cantidad, dp.Producto.CantidadMin, "Eliminar");
-            }
+            idOrdenPed = await SiguienteNroOrden("/ordenpedido/consultarid");
+            lblNOrden.Text = lblNOrden.Text + " " + idOrdenPed.ToString();
         }
 
         private async Task<int> SiguienteNroOrden(string decorador)
@@ -106,10 +160,10 @@ namespace TpAutomotrizFront.Presentacion
             if (dgvDetallesPed.CurrentCell.ColumnIndex == 5)
             {
                 int id = (int)dgvDetallesPed.CurrentRow.Cells["ColID"].Value;
-                var item = nuevaOrden.DetallesPedido.FirstOrDefault(x => x.Producto.IdProducto == id);
+                var item = orden.DetallesPedido.FirstOrDefault(x => x.Producto.IdProducto == id);
                 if (item != null)
                 {
-                    nuevaOrden.DetallesPedido.Remove(item);
+                    orden.DetallesPedido.Remove(item);
                     CargarDgvDetalles();
                 }
 
@@ -119,7 +173,7 @@ namespace TpAutomotrizFront.Presentacion
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
             // VALIDACION
-            if (nuevaOrden.DetallesPedido.Count <= 0)
+            if (orden.DetallesPedido.Count <= 0)
             {
                 MessageBox.Show("Debe agregar al menos un Producto a la Orden...", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -129,15 +183,15 @@ namespace TpAutomotrizFront.Presentacion
 
         private async Task MapearOrden()
         {
-            nuevaOrden.Cliente = (Cliente)cboCliente.SelectedItem;
-            nuevaOrden.FechaEntrega = AjustarDiaHabil(DateTime.Today.AddDays(90));
-            nuevaOrden.FechaPedido = DateTime.Today;
-            nuevaOrden.IdOrdenPedido = idOrdenPed;
-            if (await GrabarOrden(nuevaOrden))
+            orden.Cliente = (Cliente)cboCliente.SelectedItem;
+            orden.FechaEntrega = AjustarDiaHabil(DateTime.Today.AddDays(90));
+            orden.FechaPedido = DateTime.Today;
+            orden.IdOrdenPedido = idOrdenPed;
+            if (await GrabarOrden(orden))
             {
-                MessageBox.Show("Se registró con éxito la Orden de Pedido.\n    Fecha de Entrega: " + nuevaOrden.FechaEntrega.ToString("dd-MM-yyyy")
+                MessageBox.Show("Se registró con éxito la Orden de Pedido.\n    Fecha de Entrega: " + orden.FechaEntrega.ToString("dd-MM-yyyy")
                                 , "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                nuevaOrden = new OrdenPedido();
+                orden = new OrdenPedido();
                 this.Dispose();
             }
             else

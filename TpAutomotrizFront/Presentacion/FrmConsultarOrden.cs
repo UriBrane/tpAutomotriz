@@ -63,6 +63,11 @@ namespace TpAutomotrizFront.Presentacion
             bool a = false;
             while (true)
             {
+                if (!rbtCliente.Checked && !rbtFec.Checked)
+                {
+                    MessageBox.Show("Debe seleccionar si Filtrar por Fecha o Cliente.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    break;
+                }
                 if (rbtCliente.Checked)
                 { if (!val.ValidarCombo(cboCliente)) break; }
                 if (rbtFec.Checked)
@@ -70,7 +75,6 @@ namespace TpAutomotrizFront.Presentacion
                     if (!rbtFecEntrega.Checked && !rbtFecPedido.Checked)
                     {
                         MessageBox.Show("Debe seleccionar Fecha de Entrega o de Pedido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        gbxFec.Focus();
                         break;
                     }
                 }
@@ -141,7 +145,7 @@ namespace TpAutomotrizFront.Presentacion
             if (dgvOrdenes.CurrentCell.ColumnIndex == 4)
             {
                 int id = Convert.ToInt32(dgvOrdenes.CurrentRow.Cells["ColId"].Value);
-               // FrmNuevaPersona frm = new FrmNuevaOrden(id);
+                FrmNuevaOrden frm = new FrmNuevaOrden(id);
                 frm.ShowDialog();
             }
             CargarDgv();
