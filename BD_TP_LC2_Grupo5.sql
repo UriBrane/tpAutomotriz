@@ -276,10 +276,17 @@ VALUES
     (1, 'L�pez', 'Carlos', 23876543210, '2023-03-20'),
     (2, 'Rodr�guez', 'Ana', 20345678901, '2020-12-05'),
     (3, 'Fern�ndez', 'Javier', 30567890123, '2019-08-18');
+    (1, 'Perez', 'Rodolfo', 27823456789, '2020/01/20'),
+    (2, 'Laguna', 'Rafael', 24587654321, '2023/03/10'),
+    (1, 'Diaz', 'Rosa', 21376543210, '2022/03/20'),
+    (2, 'Llanes', 'Mariela', 21345678901, '2020/03/05'),
+    (3, 'Arneudo', 'Fernando', 34567890123, '2019/05/18'),
+    (1, 'Martinez', 'Hugo', 24123456789, '2020-01-15'),
+    (2, 'Pozzi', 'Gustavo', 27987654321, '2022-05-10'),
+    (1, 'Roldan', 'Mairan Ines', 25876543210, '2022-03-20'),
+    (2, 'Arnaudo', 'Ana', 29834678901, '2023-12-05'),
+    (3, 'Raful', 'Javier', 323567890123, '2019-08-18');
 
-
-
-	
 
 --INSERT PARA DESCUENTOS
 	INSERT INTO Descuentos([descripcion], [porcentaje])
@@ -307,7 +314,17 @@ VALUES
     ('C�rdoba'),
     ('Santa Fe'),
     ('Mendoza'),
-    ('Tucum�n');
+    ('Tucum�n'),
+    ('Chaco'),
+    ('San Luis'),
+    ('Jujuy'),
+    ('Formosa'),
+    ('Rio Negro'),
+    ('Corrientes'),
+    ('La Rioja'),
+    ('Neuquen'),
+    ('Misiones'),
+    ('La Pampa');
 
 --INSERT PARA BARRIOS
 INSERT INTO Barrios ([descripcion], [id_provincia])
@@ -316,7 +333,17 @@ VALUES
     ('Nueva C�rdoba', 2),
     ('Centro', 3),
     ('Godoy Cruz', 4),
-    ('San Miguel de Tucum�n', 5);
+    ('San Miguel de Tucum�n', 5),
+    ('Lamadrid', 6),
+    ('Las Bervenas', 7),
+    ('Abra Pampa', 8),
+    ('El colorado', 9),
+    ('El Porvenir', 10),
+    ('Goya', 11),
+    ('San Vicente', 12),
+    ('Colona Nueva Esperanza', 13),
+    ('Olimpia', 14),
+    ('Santa Rosa', 15);
 
 --INSERT PARA TIPO_CLIENTES
 INSERT INTO Tipos_Clientes ([descripcion])
@@ -331,7 +358,17 @@ VALUES
     (1, 'Mar�a', 'L�pez', 27987654321, 'Av. San Mart�n', 567, 2),
     (2, 'Carlos', 'Mart�nez', 23876543210, 'Av. Belgrano', 890, 3),
     (1, 'Ana', 'Fern�ndez', 20345678901, 'Av. Pueyrred�n', 456, 4),
-    (2, 'Javier', 'Rodr�guez', 30567890123, 'Av. C�rdoba', 789, 5);
+    (2, 'Javier', 'Rodr�guez', 30567890123, 'Av. C�rdoba', 789, 5),
+    (1, 'Benjamin', 'Lopez', 21123456789, 'Av. Colonial', 1254, 6),
+    (1, 'Lautaro', 'Misso', 22987654321, 'Av. La Marinna', 557, 7),
+    (2, 'Morena', 'Ledezma', 23476543210, 'Av. Belgrano', 810, 8),
+    (1, 'Evangelina', 'Mundirran', 25345678901, 'Av. Sucre', 256, 9),
+    (2, 'Diego', 'Boaglio', 35667890123, 'Av. Caracas', 709, 10),
+    (1, 'Mirta', 'Gonzalez', 27823456789, 'Av. La Paz', 134, 11),
+    (1, 'Simon', 'Folco', 27987698321, 'Av. Echeverry', 967, 12),
+    (2, 'Joaquin', 'Brizio', 23854543210, 'Av. Amador', 890, 13),
+    (1, 'Julian', 'Fern�ndez', 20235678901, 'Av. Junin', 246, 14),
+    (2, 'Carlos', 'Rodr�guez', 30567800123, 'Av. Tejelo', 1009, 15);
 
 	--INSERT TIPOS CONTACTOS
 INSERT INTO Tipos_Contactos ([descripcion])
@@ -348,7 +385,17 @@ VALUES
     (2, 2, '555-1234567', 2),
     (3, 3, '011-9876543', 3),
     (4, 4, 'ana.fernandez@email.com', 4),
-    (4, 5, 'javier.rodriguez@email.com', 5);
+    (4, 5, 'javier.rodriguez@email.com', 5),
+    (1, 6, 'benj_lopez@email.com', 8),
+    (2, 7, '545-1234667', 9),
+    (3, 8, '011-9898543', 10),
+    (4, 9, 'evang@email.com', 11),
+    (4, 10, 'diego@email.com', 12),
+    (1, 11, 'mirta_098@email.com', 13),
+    (2, 12, '555-1454567', 14),
+    (3, 13, '011-9876093', 15),
+    (4, 14, 'julian@email.com', 16),
+    (4, 15, 'carlos._09@email.com', 17);
 
 --INSERT TIPOS_PRODUCT
 INSERT INTO Tipos_Productos ([descripcion])
@@ -368,7 +415,19 @@ VALUES
     (3,'Neum�tico 225/55R17', 120.01, 5, 50, 2),
     (4, 'Pastillas de Freno', 25.0, 15, 150, 10),
     (5, 'Amortiguador Trasero', 40.0, 8, 80, 4),
-    (6, 'Uri Electrico', 9000000, 10, 200, 50);
+    (6, 'Uri Electrico', 9000000, 10, 200, 50),
+    (1, 'Válvulas', 55.0, 10, 200, 5),
+    (2, 'Caja del filtro', 60.0, 10, 100, 10),
+    (3,' neumatico Michelin Pilot Sport 4', 180.01, 5, 150, 4),
+    (4, 'Cilindro maestro', 30.0, 10, 150, 5),
+    (5, 'Muelles de suspensión', 100.0, 8, 180, 4),
+    (6, 'Peugeot 308', 10000000, 10, 20, 2),
+    (1, 'Cigüeñal', 70.0, 15, 100, 5),
+    (2, 'Tapa superior', 10.0, 20, 50, 10),  
+    (3,'Neumatico Michelin CrossClimate+', 150.01, 5, 250, 4),
+    (4, 'Mangueras de freno', 33.0, 15, 50, 10),
+    (5, 'Amortiguador Trasero', 40.0, 8, 80, 4),
+    (6, 'Ford 2019', 8000000, 10, 15, 50);
 
 --INSERT TIPO_VENTAS
 INSERT INTO Tipos_Ventas ([descripcion])
@@ -406,7 +465,17 @@ VALUES
     (2, 6, 0.08),
     (3, 24, 0.15),
     (4, 12, 0.12),
-    (5, 18, 0.09);
+    (5, 18, 0.09),
+    (6, 12, 0.1),
+    (7, 6, 0.08),
+    (8, 24, 0.15),
+    (9, 12, 0.12),
+    (10, 18, 0.09),
+    (11, 12, 0.1),
+    (12, 6, 0.08),
+    (13, 24, 0.15),
+    (14, 12, 0.12),
+    (15, 18, 0.09);
 
 set dateformat dmy;
 
@@ -417,7 +486,17 @@ INSERT INTO Ordenes_Pedidos([id_cliente],[fecha_entrega],[fecha_pedido])
 	(2, '20/11/2020','06/04/2018'),
 	(3,'01/03/2023','17/12/2021'),
 	(4,'12/10/2019','03/02/2019'),
-	(5,'23/04/2022','13/09/2020');
+	(5,'23/04/2022','13/09/2020'),
+	(6,'12/06/2022','20/08/2021'),
+	(7,'15/05/2020','06/04/2019'),
+	(8,'01/02/2023','27/10/2022'),
+	(9,'21/01/2020','30/12/2021'),
+	(10,'24/05/2022','14/10/2020'),
+	(11,'03/06/2019','15/08/2018'),
+	(12, '21/12/2020','16/05/2019'),
+	(13,'01/04/2023','17/12/2022'),
+	(14,'25/10/2019','13/02/2019'),
+	(15,'11/03/2022','13/09/2021');
 
 --INSERT INTO FACTURAS
 INSERT INTO Facturas ([id_cliente],[fecha],[id_vendedor] ,[id_orden_pedido] ,[id_autoplan] ,[id_forma_pago], [anulada])
@@ -426,7 +505,17 @@ INSERT INTO Facturas ([id_cliente],[fecha],[id_vendedor] ,[id_orden_pedido] ,[id
 		(2,'09/04/2020',2,2,2,2,0),
 		(3,'10/04/2020',3,3,3,3,0),
 		(4,'23/05/2021',4,4,4,4,0),
-		(5,'20/06/2021',5,5,5,5,0);
+		(5,'20/06/2021',5,5,5,5,0),
+	        (6,'02/06/2022',8,7,6,1,0),
+		(7,'10/05/2020',9,8,7,2,0),
+		(8,'11/06/2021',10,9,8,3,0),
+		(9,'24/07/2021',11,10,9,4,0),
+		(10,'21/06/2021',12,11,10,5,0),
+		(11,'02/05/2022',13,11,11,1,0),
+		(12,'29/04/2020',14,13,12,2,0),
+		(13,'20/08/2020',15,14,13,3,0),
+		(14,'12/03/2021',16,15,14,4,0),
+		(15,'26/10/2021',17,16,15,5,0);	
 	
 --INSERT INTO DETALLE_FACTURAS
 INSERT INTO Detalles_Facturas([id_tipo_venta],[id_factura],[id_producto],[cantidad],[precio],[id_descuento])
@@ -435,7 +524,18 @@ VALUES
 		(2,2,1,50,2500.01,2),
 		(2,3,5,102,4120.20,3),
 		(1,4,3,20,5540.01,4),
-		(2,5,4,70,7990.50,5);
+		(2,5,4,70,7990.50,5),
+	        (1,6,7,100,50000.01,1),
+		(2,7,6,10,250000.01,2),
+		(2,8,9,102,5120.20,3),
+		(1,9,8,20,2540.01,4),
+		(2,10,11,50,8990.50,5),
+		(1,11,10,150,19015.01,1),
+		(2,12,12,50,25090.01,2),
+		(2,13,13,102,7120.20,3),
+		(1,14,15,20,551040.01,4),
+		(2,15,14,70,2990.50,5);
+
 
 --INSERT INTO DETALLES_PEDIDOS
 INSERT INTO detalles_pedidos ([id_orden_pedido], [id_producto],[cantidad])
@@ -443,7 +543,18 @@ INSERT INTO detalles_pedidos ([id_orden_pedido], [id_producto],[cantidad])
 		(2,2,27),
 		(3,3,45),
 		(4,4,63),
-		(5,5,80);
+		(5,5,80),
+	        (7,6,51), 
+		(8,7,22),
+		(9,8,35),
+		(10,9,23),
+		(11,10,90),
+		(12,11,40), 
+		(13,12,37),
+		(14,13,55),
+		(15,14,53),
+		(16,15,40);
+
 GO
 
 -- SPs
