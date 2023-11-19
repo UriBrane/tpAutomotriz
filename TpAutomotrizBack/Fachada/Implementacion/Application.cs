@@ -8,6 +8,7 @@ using TpAutomotrizBack.Datos.Implementacion;
 using TpAutomotrizBack.Datos.Interfaz;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizBack.Fachada.Interfaz;
+using TpAutomotrizBack.Servicios;
 
 namespace TpAutomotrizBack.Fachada.Implementacion
 {
@@ -17,12 +18,14 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         private IVendedorDAO vendedorDAO;
         private IProductoDAO productoDAO;
         private IOrdenPedidoDAO ordenDAO;
-        public Application()
+        private IFacturaDAO facturaDAO;
+        public Application(AbstractFactoryDAO factory)
         {
-            clienteDAO = new ClienteDAO();
-            vendedorDAO = new VendedorDAO();
-            productoDAO = new ProductoDAO();
-            ordenDAO = new OrdenPedidoDAO();
+            clienteDAO = factory.CrearClienteDAO();
+            vendedorDAO = factory.CrearVendedorDAO();
+            productoDAO = factory.CrearProductoDAO();
+            ordenDAO = factory.CrearOrdenPedidoDAO();
+            facturaDAO = factory.CrearFacturaDAO();
         }
         public int ConsultarEscalar(string nombreSP, string nombreParamOut)
         {

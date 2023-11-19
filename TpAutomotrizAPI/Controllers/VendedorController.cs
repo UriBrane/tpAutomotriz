@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizBack.Fachada.Implementacion;
 using TpAutomotrizBack.Fachada.Interfaz;
+using TpAutomotrizBack.Servicios;
 
 namespace TpAutomotrizAPI.Controllers
 {
@@ -11,9 +12,9 @@ namespace TpAutomotrizAPI.Controllers
     public class VendedorController : ControllerBase
     {
         private IApplication app;
-        public VendedorController()
+        public VendedorController(AbstractFactoryDAO factory)
         {
-            app = new Application();
+            app = new Application(factory);
         }
 
         [HttpGet("/vendedor")]

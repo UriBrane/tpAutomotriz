@@ -1,4 +1,9 @@
+using TpAutomotrizBack.Servicios;
+
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
+
+services.AddScoped<AbstractFactoryDAO, FactoryDAO>();
 
 // Add services to the container.
 

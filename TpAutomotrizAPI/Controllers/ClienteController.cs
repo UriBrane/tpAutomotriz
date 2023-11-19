@@ -2,6 +2,7 @@
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizBack.Fachada.Implementacion;
 using TpAutomotrizBack.Fachada.Interfaz;
+using TpAutomotrizBack.Servicios;
 
 namespace TpAutomotrizAPI.Controllers
 {
@@ -10,9 +11,9 @@ namespace TpAutomotrizAPI.Controllers
     public class ClienteController : ControllerBase
     {
         private IApplication app;
-        public ClienteController()
+        public ClienteController(AbstractFactoryDAO factory)
         {
-            app = new Application();
+            app = new Application(factory);
         }
 
         [HttpGet("/cliente")]

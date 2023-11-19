@@ -2,6 +2,7 @@
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizBack.Fachada.Implementacion;
 using TpAutomotrizBack.Fachada.Interfaz;
+using TpAutomotrizBack.Servicios;
 
 namespace TpAutomotrizAPI.Controllers
 {
@@ -10,9 +11,9 @@ namespace TpAutomotrizAPI.Controllers
     public class OrdenPedidoController : Controller
     {
         private IApplication app;
-        public OrdenPedidoController()
+        public OrdenPedidoController(AbstractFactoryDAO factory)
         {
-            app = new Application();
+            app = new Application(factory);
         }
 
         [HttpGet("/ordenpedido")]

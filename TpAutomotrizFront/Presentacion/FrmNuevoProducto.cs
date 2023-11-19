@@ -87,7 +87,7 @@ namespace TpAutomotrizFront.Presentacion
             cargarCbo = CargarCombo.GetInstance();
             cargarCbo.CargarCbo("SP_SELECT_TIPO_PRODUCTOS", cboTipoProductos);
         }
-        
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -121,9 +121,14 @@ namespace TpAutomotrizFront.Presentacion
                 int cantMinPorMayor = Convert.ToInt32(txtCantMinPorMayor.Text);
                 int cantMin = Convert.ToInt32(txtCantMin.Text);
                 int idTipoProd = Convert.ToInt32(cboTipoProductos.SelectedValue);
-                int id = Convert.ToInt32(txtId.Text);
-
-                p = new Producto(id, desc, precio, cantidad, cantMinPorMayor, cantMin, idTipoProd);
+                int id = 0;
+                if (tipo == Tipo.Editar)
+                {
+                    id = Convert.ToInt32(txtId.Text);
+                    p = new Producto(id, desc, precio, cantidad, cantMinPorMayor, cantMin, idTipoProd);
+                }
+                else
+                    p = new Producto(desc, precio, cantidad, cantMinPorMayor, cantMin, idTipoProd);
 
                 if (tipo == Tipo.Crear)
                 {
