@@ -18,7 +18,7 @@ namespace TpAutomotrizFront.Presentacion
     {
         private string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
         private Validador val;
-        private CargarCombo cargarCbo;
+        private CargarCombo? cargarCbo;
         public FrmConsultarPersona()
         {
             InitializeComponent();

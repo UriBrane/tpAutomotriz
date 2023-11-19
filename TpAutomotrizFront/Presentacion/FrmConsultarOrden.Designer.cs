@@ -28,56 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            dgvOrdenes = new DataGridView();
             ColId = new DataGridViewTextBoxColumn();
             ColCliente = new DataGridViewTextBoxColumn();
             ColFecEntrega = new DataGridViewTextBoxColumn();
             ColFecPedido = new DataGridViewTextBoxColumn();
             ColVer = new DataGridViewButtonColumn();
             rbtCliente = new RadioButton();
-            rbtFecPedido = new RadioButton();
+            rbtFec = new RadioButton();
             gbxCliente = new GroupBox();
-            lblCliente = new Label();
             cboCliente = new ComboBox();
-            gbxFecPedido = new GroupBox();
+            gbxFec = new GroupBox();
+            dtpFecha = new DateTimePicker();
+            rbtFecPedido = new RadioButton();
+            rbtFecEntrega = new RadioButton();
             lblFiltros = new Label();
             btnBuscar = new Button();
             btnAceptar = new Button();
             btnCancelar = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvOrdenes).BeginInit();
             gbxCliente.SuspendLayout();
+            gbxFec.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgvOrdenes
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColId, ColCliente, ColFecEntrega, ColFecPedido, ColVer });
-            dataGridView1.Location = new Point(12, 326);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 31;
-            dataGridView1.Size = new Size(841, 357);
-            dataGridView1.TabIndex = 0;
+            dgvOrdenes.AllowUserToAddRows = false;
+            dgvOrdenes.AllowUserToDeleteRows = false;
+            dgvOrdenes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvOrdenes.Columns.AddRange(new DataGridViewColumn[] { ColId, ColCliente, ColFecEntrega, ColFecPedido, ColVer });
+            dgvOrdenes.Location = new Point(12, 326);
+            dgvOrdenes.Name = "dgvOrdenes";
+            dgvOrdenes.ReadOnly = true;
+            dgvOrdenes.RowHeadersWidth = 51;
+            dgvOrdenes.RowTemplate.Height = 31;
+            dgvOrdenes.Size = new Size(841, 357);
+            dgvOrdenes.TabIndex = 0;
+            dgvOrdenes.CellContentClick += dgvOrdenes_CellContentClick;
             // 
             // ColId
             // 
-            ColId.HeaderText = "Id";
+            ColId.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            ColId.HeaderText = "Id Orden";
             ColId.MinimumWidth = 6;
             ColId.Name = "ColId";
             ColId.ReadOnly = true;
-            ColId.Visible = false;
-            ColId.Width = 125;
+            ColId.Width = 92;
             // 
             // ColCliente
             // 
+            ColCliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             ColCliente.HeaderText = "Cliente";
             ColCliente.MinimumWidth = 6;
             ColCliente.Name = "ColCliente";
             ColCliente.ReadOnly = true;
-            ColCliente.Width = 125;
+            ColCliente.Width = 87;
             // 
             // ColFecEntrega
             // 
@@ -101,12 +106,12 @@
             ColVer.MinimumWidth = 6;
             ColVer.Name = "ColVer";
             ColVer.ReadOnly = true;
-            ColVer.Width = 125;
+            ColVer.Width = 70;
             // 
             // rbtCliente
             // 
             rbtCliente.AutoSize = true;
-            rbtCliente.Location = new Point(12, 48);
+            rbtCliente.Location = new Point(12, 201);
             rbtCliente.Name = "rbtCliente";
             rbtCliente.Size = new Size(152, 25);
             rbtCliente.TabIndex = 1;
@@ -115,54 +120,79 @@
             rbtCliente.UseVisualStyleBackColor = true;
             rbtCliente.CheckedChanged += rbtCliente_CheckedChanged;
             // 
-            // rbtFecPedido
+            // rbtFec
             // 
-            rbtFecPedido.AutoSize = true;
-            rbtFecPedido.Location = new Point(12, 176);
-            rbtFecPedido.Name = "rbtFecPedido";
-            rbtFecPedido.Size = new Size(223, 25);
-            rbtFecPedido.TabIndex = 2;
-            rbtFecPedido.TabStop = true;
-            rbtFecPedido.Text = "Filtrar por Fecha del Pedido:";
-            rbtFecPedido.UseVisualStyleBackColor = true;
+            rbtFec.AutoSize = true;
+            rbtFec.Location = new Point(12, 44);
+            rbtFec.Name = "rbtFec";
+            rbtFec.Size = new Size(147, 25);
+            rbtFec.TabIndex = 2;
+            rbtFec.TabStop = true;
+            rbtFec.Text = "Filtrar por Fecha:";
+            rbtFec.UseVisualStyleBackColor = true;
+            rbtFec.CheckedChanged += rbtFec_CheckedChanged;
             // 
             // gbxCliente
             // 
-            gbxCliente.Controls.Add(lblCliente);
             gbxCliente.Controls.Add(cboCliente);
-            gbxCliente.Location = new Point(12, 79);
+            gbxCliente.Enabled = false;
+            gbxCliente.Location = new Point(12, 232);
             gbxCliente.Name = "gbxCliente";
-            gbxCliente.Size = new Size(841, 91);
+            gbxCliente.Size = new Size(289, 73);
             gbxCliente.TabIndex = 3;
             gbxCliente.TabStop = false;
-            gbxCliente.Text = "Filtros por Cliente:";
-            // 
-            // lblCliente
-            // 
-            lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(6, 31);
-            lblCliente.Name = "lblCliente";
-            lblCliente.Size = new Size(61, 21);
-            lblCliente.TabIndex = 9;
-            lblCliente.Text = "Cliente:";
+            gbxCliente.Text = "Cliente del Pedido:";
             // 
             // cboCliente
             // 
             cboCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCliente.FormattingEnabled = true;
-            cboCliente.Location = new Point(72, 28);
+            cboCliente.Location = new Point(6, 28);
             cboCliente.Name = "cboCliente";
-            cboCliente.Size = new Size(178, 29);
+            cboCliente.Size = new Size(263, 29);
             cboCliente.TabIndex = 8;
             // 
-            // gbxFecPedido
+            // gbxFec
             // 
-            gbxFecPedido.Location = new Point(12, 207);
-            gbxFecPedido.Name = "gbxFecPedido";
-            gbxFecPedido.Size = new Size(841, 78);
-            gbxFecPedido.TabIndex = 0;
-            gbxFecPedido.TabStop = false;
-            gbxFecPedido.Text = "Filtros por Fecha del Pedido:";
+            gbxFec.Controls.Add(dtpFecha);
+            gbxFec.Controls.Add(rbtFecPedido);
+            gbxFec.Controls.Add(rbtFecEntrega);
+            gbxFec.Enabled = false;
+            gbxFec.Location = new Point(12, 75);
+            gbxFec.Name = "gbxFec";
+            gbxFec.Size = new Size(449, 111);
+            gbxFec.TabIndex = 0;
+            gbxFec.TabStop = false;
+            gbxFec.Text = "Fecha a Filtrar:";
+            // 
+            // dtpFecha
+            // 
+            dtpFecha.Location = new Point(175, 49);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(250, 29);
+            dtpFecha.TabIndex = 2;
+            // 
+            // rbtFecPedido
+            // 
+            rbtFecPedido.AutoSize = true;
+            rbtFecPedido.Location = new Point(6, 64);
+            rbtFecPedido.Name = "rbtFecPedido";
+            rbtFecPedido.Size = new Size(146, 25);
+            rbtFecPedido.TabIndex = 1;
+            rbtFecPedido.TabStop = true;
+            rbtFecPedido.Text = "Fecha de Pedido:";
+            rbtFecPedido.UseVisualStyleBackColor = true;
+            // 
+            // rbtFecEntrega
+            // 
+            rbtFecEntrega.AutoSize = true;
+            rbtFecEntrega.Location = new Point(6, 33);
+            rbtFecEntrega.Name = "rbtFecEntrega";
+            rbtFecEntrega.Size = new Size(152, 25);
+            rbtFecEntrega.TabIndex = 0;
+            rbtFecEntrega.TabStop = true;
+            rbtFecEntrega.Text = "Fecha de Entrega:";
+            rbtFecEntrega.UseVisualStyleBackColor = true;
             // 
             // lblFiltros
             // 
@@ -175,12 +205,13 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(12, 291);
+            btnBuscar.Location = new Point(307, 259);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(94, 29);
             btnBuscar.TabIndex = 5;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // btnAceptar
             // 
@@ -209,39 +240,42 @@
             Controls.Add(btnAceptar);
             Controls.Add(btnBuscar);
             Controls.Add(lblFiltros);
-            Controls.Add(gbxFecPedido);
+            Controls.Add(gbxFec);
             Controls.Add(gbxCliente);
-            Controls.Add(rbtFecPedido);
+            Controls.Add(rbtFec);
             Controls.Add(rbtCliente);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvOrdenes);
             Name = "FrmConsultarOrden";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Consultar Orden";
             Load += FrmConsultarOrden_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvOrdenes).EndInit();
             gbxCliente.ResumeLayout(false);
-            gbxCliente.PerformLayout();
+            gbxFec.ResumeLayout(false);
+            gbxFec.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgvOrdenes;
+        private RadioButton rbtCliente;
+        private RadioButton rbtFec;
+        private GroupBox gbxCliente;
+        private GroupBox gbxFec;
+        private Label lblFiltros;
+        private Button btnBuscar;
+        private Button btnAceptar;
+        private Button btnCancelar;
+        private ComboBox cboCliente;
+        private RadioButton rbtFecPedido;
+        private RadioButton rbtFecEntrega;
         private DataGridViewTextBoxColumn ColId;
         private DataGridViewTextBoxColumn ColCliente;
         private DataGridViewTextBoxColumn ColFecEntrega;
         private DataGridViewTextBoxColumn ColFecPedido;
         private DataGridViewButtonColumn ColVer;
-        private RadioButton rbtCliente;
-        private RadioButton rbtFecPedido;
-        private GroupBox gbxCliente;
-        private GroupBox gbxFecPedido;
-        private Label lblFiltros;
-        private Button btnBuscar;
-        private Button btnAceptar;
-        private Button btnCancelar;
-        private Label lblCliente;
-        private ComboBox cboCliente;
+        private DateTimePicker dtpFecha;
     }
 }
