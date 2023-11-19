@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TpAutomotrizAPI", "..\TpAut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TpAutomotrizFront", "..\TpAutomotrizFront\TpAutomotrizFront.csproj", "{6658A5CC-AFA8-44E4-BE5F-C73A68224599}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports", "Reports\Reports.csproj", "{3D2884D8-93C6-4A65-81A3-81290658011B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55D3D110-5267-4E8B-A34B-98574999437B} = {55D3D110-5267-4E8B-A34B-98574999437B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +32,10 @@ Global
 		{6658A5CC-AFA8-44E4-BE5F-C73A68224599}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6658A5CC-AFA8-44E4-BE5F-C73A68224599}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6658A5CC-AFA8-44E4-BE5F-C73A68224599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D2884D8-93C6-4A65-81A3-81290658011B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D2884D8-93C6-4A65-81A3-81290658011B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D2884D8-93C6-4A65-81A3-81290658011B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D2884D8-93C6-4A65-81A3-81290658011B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
