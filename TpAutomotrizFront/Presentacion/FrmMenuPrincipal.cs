@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using System.Security.Policy;
 using System;
 using System.Windows.Forms;
+using Reports.Presentacion;
+using Reports;
 
 namespace TpAutomotrizFront
 {
@@ -158,6 +160,34 @@ namespace TpAutomotrizFront
         }
 
         private void informaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAcercaDe frm = new FrmAcercaDe();
+        }
+        private void descuentosPromedioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReporteDescuentos frm = new FrmReporteDescuentos();
+            frm.ShowDialog();
+        }
+
+        private void estadisticasDeVendedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReporteEstadisticasVendedores frm = new FrmReporteEstadisticasVendedores();
+            frm.ShowDialog();
+        }
+
+        private void estadoDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReporteEstadoProductos frm = new FrmReporteEstadoProductos();
+            frm.ShowDialog();
+        }
+
+        private void ventasTotalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReporteVentasTotales frm = new FrmReporteVentasTotales();
+            frm.ShowDialog();
+        }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmAcercaDe frm = new FrmAcercaDe();
             frm.ShowDialog();

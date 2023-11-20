@@ -14,6 +14,10 @@ namespace TpAutomotrizFront
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new FrmMenuPrincipal());
+
+            Application.Run(new FrmMenuPrincipal());
+
+            //Application.Run(new FrmNuevaFactura());
         }
     }
 }

@@ -275,7 +275,7 @@ VALUES
     (2, 'Martinez', 'Maria', 27987654321, '2021-05-10'),
     (1, 'Lopez', 'Carlos', 23876543210, '2023-03-20'),
     (2, 'Rodriguez', 'Ana', 20345678901, '2020-12-05'),
-    (3, 'Fernandez', 'Javier', 30567890123, '2019-08-18');
+    (3, 'Fernandez', 'Javier', 30567890123, '2019-08-18'),
     (1, 'Perez', 'Rodolfo', 27823456789, '2020/01/20'),
     (2, 'Laguna', 'Rafael', 24587654321, '2023/03/10'),
     (1, 'Diaz', 'Rosa', 21376543210, '2022/03/20'),
@@ -291,11 +291,12 @@ VALUES
 --INSERT PARA DESCUENTOS
 	INSERT INTO Descuentos([descripcion], [porcentaje])
 VALUES
-    ('Descuento A', 5.0),
-    ('Descuento B', 10.0),
-    ('Descuento C', 15.0),
-    ('Descuento D', 20.0),
-    ('Descuento E', 25.0);
+    ('Sin descuento', 0),
+    ('Descuento del 5', 5.0),
+    ('Descuento del 10', 10.0),
+    ('Descuento del 15', 15.0),
+    ('Descuento del 20', 20.0),
+    ('Descuento del 25', 25.0);
 
 
 --INSERT PARA CUOTAS
@@ -394,8 +395,8 @@ VALUES
     (1, 11, 'mirta_098@email.com', 13),
     (2, 12, '555-1454567', 14),
     (3, 13, '011-9876093', 15),
-    (4, 14, 'julian@email.com', 16),
-    (4, 15, 'carlos._09@email.com', 17);
+    (4, 14, 'julian@email.com', 7),
+    (4, 15, 'carlos._09@email.com', 6);
 
 --INSERT TIPOS_PRODUCT
 INSERT INTO Tipos_Productos ([descripcion])
@@ -514,8 +515,8 @@ INSERT INTO Facturas ([id_cliente],[fecha],[id_vendedor] ,[id_orden_pedido] ,[id
 		(11,'02/05/2022',13,11,11,1,0),
 		(12,'29/04/2020',14,13,12,2,0),
 		(13,'20/08/2020',15,14,13,3,0),
-		(14,'12/03/2021',16,15,14,4,0),
-		(15,'26/10/2021',17,16,15,5,0);	
+		(14,'12/03/2021',1,12,14,4,0),
+		(15,'26/10/2021',1,1,15,5,0);
 	
 --INSERT INTO DETALLE_FACTURAS
 INSERT INTO Detalles_Facturas([id_tipo_venta],[id_factura],[id_producto],[cantidad],[precio],[id_descuento])
@@ -544,7 +545,7 @@ INSERT INTO detalles_pedidos ([id_orden_pedido], [id_producto],[cantidad])
 		(3,3,45),
 		(4,4,63),
 		(5,5,80),
-	        (7,6,51), 
+	    (7,6,51), 
 		(8,7,22),
 		(9,8,35),
 		(10,9,23),
@@ -553,7 +554,7 @@ INSERT INTO detalles_pedidos ([id_orden_pedido], [id_producto],[cantidad])
 		(13,12,37),
 		(14,13,55),
 		(15,14,53),
-		(16,15,40);
+		(1,15,40);
 
 GO
 
@@ -684,6 +685,15 @@ BEGIN
     SELECT * FROM Clientes
 END;
 GO
+-- SELECT 1 DESCUENTO
+CREATE PROCEDURE SP_SELECT_DESCUENTO
+@id int
+AS
+BEGIN
+    SELECT * FROM Descuentos
+	where id_descuento = @id
+END;
+GO
 
 -- SELECT VENDEDORES
 CREATE PROCEDURE SP_SELECT_VENDEDORES
@@ -692,7 +702,22 @@ BEGIN
     SELECT * FROM Vendedores
 END;
 GO
-
+-- SELECT AUTOPLAN ID
+CREATE PROCEDURE SP_SELECT_AUTOPLAN
+@id int
+AS
+BEGIN
+    SELECT * FROM Autoplanes
+	WHERE id_autoplan=@id
+END;
+GO
+-- SELECT TIPO VENTA
+CREATE PROCEDURE SP_SELECT_TIPO_VENTA
+AS
+BEGIN
+    SELECT * FROM Tipos_Ventas
+END;
+GO
 -- SELECT PRODUCTOS
 CREATE PROCEDURE SP_SELECT_PRODUCTOS
 AS
@@ -722,6 +747,14 @@ CREATE PROCEDURE SP_SELECT_CATEGORIAS
 AS
 BEGIN
     SELECT * FROM Categorias
+END;
+GO
+
+-- SELECT DESCUENTOS
+CREATE PROCEDURE SP_SELECT_DESCUENTOS
+AS
+BEGIN
+    SELECT * FROM Descuentos
 END;
 GO
 
@@ -855,10 +888,10 @@ BEGIN
         c.id_cliente,
         c.nombre + ', ' + c.apellido AS 'cliente',
         v.nombre + ', ' + v.apellido AS 'vendedor',
-        DATEDIFF(YEAR, v.fecha_ingreso, GETDATE()) AS 'Antigüedad',
-        SUM(((p.cantidad * p.precio) / 100) * d.porcentaje) AS 'Descuento',
-        AVG(d.porcentaje) AS 'Promedio_Descuento',
-        cat.descripcion AS 'Categoria'
+        DATEDIFF(YEAR, v.fecha_ingreso, GETDATE()) AS 'antiguedad',
+        SUM(((p.cantidad * p.precio) / 100) * d.porcentaje) AS 'descuento',
+        AVG(d.porcentaje) AS 'promedio_descuento',
+        cat.descripcion AS 'categoria'
     FROM
         Clientes c
     JOIN
@@ -938,7 +971,7 @@ BEGIN
 END;
 go
 
-	-- listado de productos, y si fueron vendidos o no por año pormes en int
+	-- listado de productos, y si fueron vendidos o no por año por mes en int
 create PROCEDURE SP_CONSULTA_ESTADO_PRODUCTOS
 @año int,
 @mes int
@@ -978,7 +1011,7 @@ BEGIN
 			where year(f.fecha)=@año and month(f.fecha)=@mes
         ) 
 END;
-go
+GO
 
 
 -- resumen cliente ultimos tres años
@@ -989,16 +1022,16 @@ BEGIN
     SELECT
         f.id_cliente AS Id,
         c.apellido + ', ' + c.nombre AS Nombre,
-        COUNT(f.id_factura) AS 'Cantidad de Compras',
-        SUM(df.Cantidad) AS 'Productos comprados',
-        SUM(df.cantidad * df.precio) AS 'Total Facturado'
+        COUNT(f.id_factura) AS CantidaddeCompras,
+        SUM(df.Cantidad) AS Productoscomprados,
+        SUM(df.cantidad * df.precio) AS TotalFacturado
     FROM clientes c
     JOIN Facturas f ON f.id_cliente = c.id_cliente
     JOIN Detalles_Facturas df ON df.id_factura = f.id_factura
     WHERE DATEDIFF(YEAR, f.fecha, GETDATE()) <= 3
     GROUP BY f.id_cliente, c.apellido + ', ' + c.nombre
     HAVING SUM(df.cantidad * df.precio) > @total_facturado;
-END
+END;
 GO
 
 	
@@ -1008,7 +1041,8 @@ GO
 	--exec SP_CONSULTA_ESTADO_PRODUCTOS 2022,05;
 	--EXEC SP_CONSULTA_ESTADISTICAS_VENDEDORES @total_facturado = 50000.00;
 
-GO
+
+
 
 -- UPDATES
 
@@ -1112,6 +1146,15 @@ AS
 BEGIN
 	DELETE FROM Productos
 	WHERE id_producto = @id_producto
+END;
+GO
+
+	-- PROXIMO AUTOPLAN
+CREATE PROCEDURE SP_GET_NEXT_AUTOPLAN
+@nro int OUTPUT
+AS
+BEGIN
+    SELECT @nro = ISNULL(MAX(id_autoplan), 0) + 1 FROM Autoplanes;
 END;
 GO
 

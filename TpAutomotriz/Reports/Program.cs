@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reports.Presentacion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,10 @@ namespace Reports
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmReporteDescuentos());
+            //Application.Run(new FrmReporteVentasTotales());
+            //Application.Run(new FrmReporteDescuentos());
+            //Application.Run(new FrmReporteEstadoProductos());
+            //Application.Run(new FrmReporteEstadisticasVendedores());
         }
     }
 }

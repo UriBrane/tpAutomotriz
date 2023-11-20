@@ -182,6 +182,9 @@
               },
               "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj": {
                 "projectPath": "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj"
+              },
+              "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotriz\\Reports\\Reports.csproj": {
+                "projectPath": "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotriz\\Reports\\Reports.csproj"
               }
             }
           }
@@ -199,6 +202,94 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotriz\\Reports\\Reports.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotriz\\Reports\\Reports.csproj",
+        "projectName": "Reports",
+        "projectPath": "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotriz\\Reports\\Reports.csproj",
+        "packagesPath": "C:\\Users\\Benja\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotriz\\Reports\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Benja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {
+              "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj": {
+                "projectPath": "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.CSharp": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "ReportViewerCore.NETCore": {
+              "target": "Package",
+              "version": "[15.1.19, )"
+            },
+            "ReportViewerCore.WinForms": {
+              "target": "Package",
+              "version": "[15.1.19, )"
+            },
+            "System.Data.DataSetExtensions": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
             }
           },
           "imports": [

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TpAutomotrizBack.Datos;
 
 namespace Reports
 {
@@ -19,12 +20,11 @@ namespace Reports
 
         private void FrmReporteDescuentos_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'dSDescuentos.TDescuentos' Puede moverla o quitarla según sea necesario.
-            //this.tDescuentosTableAdapter.Fill(this.dSDescuentos.TDescuentos);
-            DataTable dt = HelperDAO.GetInstance().ConsultarSp("SP_CONSULTA_DESCUENTOS_PROMEDIO");
-            this.dTDescuentosBindingSource.DataSource = dt;
-            this.rpvDescuentos.RefreshReport();
+            DataTable dt = HelperDAO.GetInstance().ConsultarTabla("SP_CONSULTA_DESCUENTOS_PROMEDIO");
 
+            this.dTDescuentosBindingSource.DataSource = dt;
+
+            this.rpvDescuentos.RefreshReport();
         }
     }
 }
