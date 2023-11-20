@@ -21,5 +21,18 @@ namespace Reports.Presentacion
         {
 
         }
+
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            List<Parametro> lst = new List<Parametro>
+            {
+                new Parametro("@año",txtAnio.Text),
+                new Parametro("@mes", txtMes.Text)
+            };
+
+            DataTable dt = HelperDAO.GetInstance().ConsultarTabla("SP_CONSULTA_ESTADO_PRODUCTOS", lst);
+            this.dTEstadoProductosBindingSource.DataSource = dt;
+            this.rpvEstadoProductos.RefreshReport();
+        }
     }
 }

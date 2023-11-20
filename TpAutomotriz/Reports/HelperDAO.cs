@@ -41,5 +41,20 @@ namespace Reports
             return dt;
         }
 
+        public DataTable ConsultarTabla(string nombreSP, List<Parametro> lp)
+        {
+            cnn.Open();
+            SqlCommand cmd = new SqlCommand(nombreSP, cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (Parametro p in lp)
+            {
+                cmd.Parameters.AddWithValue(p.Clave, p.Valor);
+            }
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return dt;
+        }
+
     }
 }

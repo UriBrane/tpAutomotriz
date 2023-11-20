@@ -19,7 +19,8 @@ namespace Reports
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FrmReporteVentasTotales());
             //Application.Run(new FrmReporteDescuentos());
-            Application.Run(new FrmReporteEstadoProductos());
+            //Application.Run(new FrmReporteEstadoProductos());
+            Application.Run(new FrmReporteEstadisticasVendedores());
         }
     }
 }

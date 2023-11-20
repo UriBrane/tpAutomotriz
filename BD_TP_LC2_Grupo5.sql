@@ -1002,7 +1002,7 @@ BEGIN
 			where year(f.fecha)=@año and month(f.fecha)=@mes
         ) 
 END;
-go
+GO
 
 
 -- resumen cliente ultimos tres años
@@ -1013,16 +1013,16 @@ BEGIN
     SELECT
         f.id_cliente AS Id,
         c.apellido + ', ' + c.nombre AS Nombre,
-        COUNT(f.id_factura) AS 'Cantidad de Compras',
-        SUM(df.Cantidad) AS 'Productos comprados',
-        SUM(df.cantidad * df.precio) AS 'Total Facturado'
+        COUNT(f.id_factura) AS CantidaddeCompras,
+        SUM(df.Cantidad) AS Productoscomprados,
+        SUM(df.cantidad * df.precio) AS TotalFacturado
     FROM clientes c
     JOIN Facturas f ON f.id_cliente = c.id_cliente
     JOIN Detalles_Facturas df ON df.id_factura = f.id_factura
     WHERE DATEDIFF(YEAR, f.fecha, GETDATE()) <= 3
     GROUP BY f.id_cliente, c.apellido + ', ' + c.nombre
     HAVING SUM(df.cantidad * df.precio) > @total_facturado;
-END
+END;
 GO
 
 	
@@ -1032,7 +1032,8 @@ GO
 	--exec SP_CONSULTA_ESTADO_PRODUCTOS 2022,05;
 	--EXEC SP_CONSULTA_ESTADISTICAS_VENDEDORES @total_facturado = 50000.00;
 
-GO
+
+
 
 -- UPDATES
 

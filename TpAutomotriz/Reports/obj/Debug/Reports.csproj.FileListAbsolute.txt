@@ -126,3 +126,4 @@ C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.pdb
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.FrmReporteDescuentos.resources
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.Presentacion.FrmReporteVentasTotales.resources
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.Presentacion.FrmReporteEstadoProductos.resources
+C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.Presentacion.FrmReporteEstadisticasVendedores.resources
