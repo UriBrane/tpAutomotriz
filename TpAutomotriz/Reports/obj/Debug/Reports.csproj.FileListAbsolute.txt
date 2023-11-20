@@ -54,7 +54,6 @@ C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\bin\Debug\ru
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.csproj.AssemblyReference.cache
-C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.Form1.resources
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.Properties.Resources.resources
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.csproj.GenerateResource.cache
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.csproj.CoreCompileInputs.cache
@@ -124,3 +123,4 @@ C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.cspro
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.csproj.CopyComplete
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.exe
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.pdb
+C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.FrmReporteDescuentos.resources

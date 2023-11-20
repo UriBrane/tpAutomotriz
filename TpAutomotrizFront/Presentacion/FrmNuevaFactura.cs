@@ -23,30 +23,30 @@ namespace TpAutomotrizFront.Presentacion
         public FrmNuevaFactura()
         {
             InitializeComponent();
-            val = Validador.GetInstance();
-            fac = new Factura();
         }
 
         private async void FrmNuevaFactura_Load(object sender, EventArgs e)
         {
             cargarCbo = CargarCombo.GetInstance();
+            val = Validador.GetInstance();
+            fac = new Factura();
             await cargarCbo.CargarComboAsync<Producto>(cboProducto, url + "/producto", "IdProducto", "Descripcion");
             await cargarCbo.CargarComboAsync<Vendedor>(cboVendedor, url + "/vendedor", "IdVendedor", "NombreCompleto");
             await cargarCbo.CargarComboAsync<Cliente>(cboCliente, url + "/cliente", "IdCliente", "NombreCompleto");
             cargarCbo.CargarCbo("SP_SELECT_FORMAS_PAGO", cboFormaPago);
             cargarCbo.CargarCbo("SP_SELECT_TARJETAS", cboTargeta);
             cargarCbo.CargarCbo("SP_SELECT_CUOTAS", cboCuotas);
-            CargarNroOrden();
+            CargarNroFactura();
 
         }
 
-        private async void CargarNroOrden()
+        private async void CargarNroFactura()
         {
-            fac.IdFactura = await SiguienteNroOrden("/factura/consultarid");
+            fac.IdFactura = await SiguienteNroFactura("/factura/consultarid");
             lblNFactura.Text = lblNFactura.Text + " " + fac.IdFactura;
         }
 
-        private async Task<int> SiguienteNroOrden(string decorador)
+        private async Task<int> SiguienteNroFactura(string decorador)
         {
             var dataJson = await ClientSingleton.GetInstance().GetAsync(url + decorador);
             int id = JsonConvert.DeserializeObject<int>(dataJson);

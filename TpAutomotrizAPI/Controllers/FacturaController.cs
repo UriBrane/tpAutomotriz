@@ -68,7 +68,7 @@ namespace TpAutomotrizAPI.Controllers
             try
             {
                 if (fac == null)
-                    return BadRequest("Orden de Pedido Incorrecta!!");
+                    return BadRequest("Factura Incorrecta!!");
                 return Ok(app.PostFactura(fac));
             }
             catch (Exception ex)
