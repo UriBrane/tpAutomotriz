@@ -291,11 +291,12 @@ VALUES
 --INSERT PARA DESCUENTOS
 	INSERT INTO Descuentos([descripcion], [porcentaje])
 VALUES
-    ('Descuento A', 5.0),
-    ('Descuento B', 10.0),
-    ('Descuento C', 15.0),
-    ('Descuento D', 20.0),
-    ('Descuento E', 25.0);
+    ('Sin descuento', 0),
+    ('Descuento del 5', 5.0),
+    ('Descuento del 10', 10.0),
+    ('Descuento del 15', 15.0),
+    ('Descuento del 20', 20.0),
+    ('Descuento del 25', 25.0);
 
 
 --INSERT PARA CUOTAS
@@ -791,6 +792,13 @@ BEGIN
     WHERE id_cliente = @id;
 END;
 GO
+
+-- CONSULTAR DESCUENTOS
+CREATE PROCEDURE SP_SELECT_DESCUENTOS
+AS
+BEGIN
+    SELECT * FROM Descuentos
+END;
 
 -- CONSULTAR VENDEDOR
 CREATE PROCEDURE SP_CONSULTAR_VENDEDOR
