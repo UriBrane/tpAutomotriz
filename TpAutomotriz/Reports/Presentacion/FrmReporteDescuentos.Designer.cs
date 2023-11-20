@@ -29,36 +29,36 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.rpvDescuentos = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dSDescuentos = new Reports.DataSets.DSDescuentos();
+            this.dSReportes = new Reports.DataSets.DSReportes();
             this.dTDescuentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dSDescuentos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSReportes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTDescuentosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // rpvDescuentos
             // 
             this.rpvDescuentos.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Name = "dsDescuentos";
-            reportDataSource2.Value = this.dTDescuentosBindingSource;
-            this.rpvDescuentos.LocalReport.DataSources.Add(reportDataSource2);
-            this.rpvDescuentos.LocalReport.ReportEmbeddedResource = "Reports.Reportes.RptDescuentos.rdlc";
+            reportDataSource1.Name = "dsDescuento";
+            reportDataSource1.Value = this.dTDescuentosBindingSource;
+            this.rpvDescuentos.LocalReport.DataSources.Add(reportDataSource1);
+            this.rpvDescuentos.LocalReport.ReportEmbeddedResource = "Reports.Reportes.RptDescuentosTotales.rdlc";
             this.rpvDescuentos.Location = new System.Drawing.Point(0, 0);
             this.rpvDescuentos.Name = "rpvDescuentos";
             this.rpvDescuentos.ServerReport.BearerToken = null;
             this.rpvDescuentos.Size = new System.Drawing.Size(1538, 953);
             this.rpvDescuentos.TabIndex = 0;
             // 
-            // dSDescuentos
+            // dSReportes
             // 
-            this.dSDescuentos.DataSetName = "DSDescuentos";
-            this.dSDescuentos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dSReportes.DataSetName = "DSReportes";
+            this.dSReportes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dTDescuentosBindingSource
             // 
             this.dTDescuentosBindingSource.DataMember = "DTDescuentos";
-            this.dTDescuentosBindingSource.DataSource = this.dSDescuentos;
+            this.dTDescuentosBindingSource.DataSource = this.dSReportes;
             // 
             // FrmReporteDescuentos
             // 
@@ -70,7 +70,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Descuentos Promedio";
             this.Load += new System.EventHandler(this.FrmReporteDescuentos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dSDescuentos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSReportes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTDescuentosBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -80,7 +80,7 @@
 
         private Microsoft.Reporting.WinForms.ReportViewer rpvDescuentos;
         private System.Windows.Forms.BindingSource dTDescuentosBindingSource;
-        private DataSets.DSDescuentos dSDescuentos;
+        private DataSets.DSReportes dSReportes;
     }
 }
 

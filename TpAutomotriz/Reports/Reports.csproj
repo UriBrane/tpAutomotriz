@@ -64,8 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSets\DSDescuentos.cs">
-      <DependentUpon>DSDescuentos.xsd</DependentUpon>
+    <Compile Include="DataSets\DSReportes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSReportes.xsd</DependentUpon>
     </Compile>
     <Compile Include="HelperDAO.cs" />
     <Compile Include="Presentacion\FrmReporteDescuentos.cs">
@@ -74,16 +76,20 @@
     <Compile Include="Presentacion\FrmReporteDescuentos.Designer.cs">
       <DependentUpon>FrmReporteDescuentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\FrmReporteVentasTotales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FrmReporteVentasTotales.Designer.cs">
+      <DependentUpon>FrmReporteVentasTotales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataSets\DSDescuentos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DSDescuentos.xsd</DependentUpon>
-    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Presentacion\FrmReporteDescuentos.resx">
       <DependentUpon>FrmReporteDescuentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\FrmReporteVentasTotales.resx">
+      <DependentUpon>FrmReporteVentasTotales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,7 +101,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reportes\RptDescuentos.rdlc" />
+    <EmbeddedResource Include="Reportes\RptDescuentosTotales.rdlc" />
+    <EmbeddedResource Include="Reportes\RptVentasTotales.rdlc" />
+    <None Include="DataSets\DSReportes.xsc">
+      <DependentUpon>DSReportes.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DSReportes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSReportes.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\DSReportes.xss">
+      <DependentUpon>DSReportes.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -106,17 +124,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="DataSets\DSDescuentos.xsc">
-      <DependentUpon>DSDescuentos.xsd</DependentUpon>
-    </None>
-    <None Include="DataSets\DSDescuentos.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSDescuentos.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSets\DSDescuentos.xss">
-      <DependentUpon>DSDescuentos.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

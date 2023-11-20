@@ -124,3 +124,4 @@ C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.cspro
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.exe
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.pdb
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.FrmReporteDescuentos.resources
+C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotriz\Reports\obj\Debug\Reports.Presentacion.FrmReporteVentasTotales.resources

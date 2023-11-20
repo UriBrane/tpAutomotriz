@@ -275,7 +275,7 @@ VALUES
     (2, 'Martinez', 'Maria', 27987654321, '2021-05-10'),
     (1, 'Lopez', 'Carlos', 23876543210, '2023-03-20'),
     (2, 'Rodriguez', 'Ana', 20345678901, '2020-12-05'),
-    (3, 'Fernandez', 'Javier', 30567890123, '2019-08-18');
+    (3, 'Fernandez', 'Javier', 30567890123, '2019-08-18'),
     (1, 'Perez', 'Rodolfo', 27823456789, '2020/01/20'),
     (2, 'Laguna', 'Rafael', 24587654321, '2023/03/10'),
     (1, 'Diaz', 'Rosa', 21376543210, '2022/03/20'),
@@ -732,6 +732,7 @@ AS
 BEGIN
     SELECT * FROM Descuentos
 END;
+GO
 
 -- SELECT BARRIOS
 CREATE PROCEDURE SP_SELECT_TIPO_PRODUCTOS
@@ -792,13 +793,6 @@ BEGIN
     WHERE id_cliente = @id;
 END;
 GO
-
--- CONSULTAR DESCUENTOS
-CREATE PROCEDURE SP_SELECT_DESCUENTOS
-AS
-BEGIN
-    SELECT * FROM Descuentos
-END;
 
 -- CONSULTAR VENDEDOR
 CREATE PROCEDURE SP_CONSULTAR_VENDEDOR
@@ -953,7 +947,7 @@ BEGIN
 END;
 go
 
-	-- listado de productos, y si fueron vendidos o no por año pormes en int
+	-- listado de productos, y si fueron vendidos o no por año por mes en int
 create PROCEDURE SP_CONSULTA_ESTADO_PRODUCTOS
 @año int,
 @mes int
