@@ -34,6 +34,13 @@
             cboProducto = new ComboBox();
             nudCantidad = new NumericUpDown();
             dgvDetallesFac = new DataGridView();
+            ColID = new DataGridViewTextBoxColumn();
+            colDescripcion = new DataGridViewTextBoxColumn();
+            colCantidad = new DataGridViewTextBoxColumn();
+            colSubtotal = new DataGridViewTextBoxColumn();
+            colDescuento = new DataGridViewTextBoxColumn();
+            colTipoVenta = new DataGridViewTextBoxColumn();
+            colEliminar = new DataGridViewButtonColumn();
             btnGuardar = new Button();
             btnCancelar = new Button();
             dtpFecha = new DateTimePicker();
@@ -43,24 +50,17 @@
             btnAgregar = new Button();
             lblVendedor = new Label();
             lblCliente = new Label();
-            lblFormaPago = new Label();
-            cboFormaPago = new ComboBox();
+            cboDescuento = new ComboBox();
             gbxAutoplan = new GroupBox();
             cboCuotas = new ComboBox();
-            cboTargeta = new ComboBox();
-            label1 = new Label();
-            textBox1 = new TextBox();
+            txtInteres = new TextBox();
             lblInteres = new Label();
             lblCuotas = new Label();
             cbxAutoplan = new CheckBox();
             label2 = new Label();
-            txtDescuento = new TextBox();
-            colDescripcion = new DataGridViewTextBoxColumn();
-            ColID = new DataGridViewTextBoxColumn();
-            colCantidad = new DataGridViewTextBoxColumn();
-            colSubtotal = new DataGridViewTextBoxColumn();
-            colDescuento = new DataGridViewTextBoxColumn();
-            colEliminar = new DataGridViewButtonColumn();
+            cboFormaPago = new ComboBox();
+            label3 = new Label();
+            cboTipoVenta = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)nudCantidad).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDetallesFac).BeginInit();
             gbxAutoplan.SuspendLayout();
@@ -88,36 +88,95 @@
             // 
             cboProducto.DropDownStyle = ComboBoxStyle.DropDownList;
             cboProducto.FormattingEnabled = true;
-            cboProducto.Location = new Point(36, 183);
+            cboProducto.Location = new Point(36, 188);
             cboProducto.Name = "cboProducto";
-            cboProducto.Size = new Size(286, 23);
+            cboProducto.Size = new Size(208, 23);
             cboProducto.TabIndex = 1;
             // 
             // nudCantidad
             // 
-            nudCantidad.Location = new Point(327, 183);
-            nudCantidad.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nudCantidad.Location = new Point(250, 188);
             nudCantidad.Name = "nudCantidad";
             nudCantidad.Size = new Size(74, 23);
             nudCantidad.TabIndex = 2;
-            nudCantidad.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            nudCantidad.ValueChanged += nudCantidad_ValueChanged;
             // 
             // dgvDetallesFac
             // 
             dgvDetallesFac.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDetallesFac.Columns.AddRange(new DataGridViewColumn[] { colDescripcion, ColID, colCantidad, colSubtotal, colDescuento, colEliminar });
+            dgvDetallesFac.Columns.AddRange(new DataGridViewColumn[] { ColID, colDescripcion, colCantidad, colSubtotal, colDescuento, colTipoVenta, colEliminar });
             dgvDetallesFac.Location = new Point(36, 224);
             dgvDetallesFac.Name = "dgvDetallesFac";
             dgvDetallesFac.ReadOnly = true;
             dgvDetallesFac.RowHeadersWidth = 51;
             dgvDetallesFac.RowTemplate.Height = 25;
-            dgvDetallesFac.Size = new Size(547, 298);
+            dgvDetallesFac.Size = new Size(742, 298);
             dgvDetallesFac.TabIndex = 5;
             dgvDetallesFac.CellContentClick += dgvDetallesFac_CellContentClick;
             // 
+            // ColID
+            // 
+            ColID.FillWeight = 120F;
+            ColID.HeaderText = "id";
+            ColID.Name = "ColID";
+            ColID.ReadOnly = true;
+            ColID.Visible = false;
+            // 
+            // colDescripcion
+            // 
+            colDescripcion.HeaderText = "Descripción";
+            colDescripcion.MinimumWidth = 6;
+            colDescripcion.Name = "colDescripcion";
+            colDescripcion.ReadOnly = true;
+            colDescripcion.Width = 200;
+            // 
+            // colCantidad
+            // 
+            colCantidad.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            colCantidad.HeaderText = "Cantidad";
+            colCantidad.MinimumWidth = 6;
+            colCantidad.Name = "colCantidad";
+            colCantidad.ReadOnly = true;
+            colCantidad.Width = 80;
+            // 
+            // colSubtotal
+            // 
+            colSubtotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            colSubtotal.HeaderText = "SubTotal";
+            colSubtotal.MinimumWidth = 6;
+            colSubtotal.Name = "colSubtotal";
+            colSubtotal.ReadOnly = true;
+            colSubtotal.Width = 77;
+            // 
+            // colDescuento
+            // 
+            colDescuento.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            colDescuento.HeaderText = "Descuento";
+            colDescuento.MinimumWidth = 6;
+            colDescuento.Name = "colDescuento";
+            colDescuento.ReadOnly = true;
+            colDescuento.Width = 88;
+            // 
+            // colTipoVenta
+            // 
+            colTipoVenta.FillWeight = 150F;
+            colTipoVenta.HeaderText = "Tipo de Venta";
+            colTipoVenta.Name = "colTipoVenta";
+            colTipoVenta.ReadOnly = true;
+            colTipoVenta.Width = 150;
+            // 
+            // colEliminar
+            // 
+            colEliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            colEliminar.HeaderText = "Eliminar";
+            colEliminar.MinimumWidth = 6;
+            colEliminar.Name = "colEliminar";
+            colEliminar.ReadOnly = true;
+            colEliminar.Width = 56;
+            // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(670, 523);
+            btnGuardar.Location = new Point(832, 542);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(94, 35);
             btnGuardar.TabIndex = 6;
@@ -127,7 +186,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(770, 523);
+            btnCancelar.Location = new Point(947, 542);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 35);
             btnCancelar.TabIndex = 7;
@@ -174,10 +233,10 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(407, 181);
+            btnAgregar.Location = new Point(693, 188);
             btnAgregar.Margin = new Padding(2);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(58, 23);
+            btnAgregar.Size = new Size(74, 23);
             btnAgregar.TabIndex = 13;
             btnAgregar.Text = "Agregar";
             btnAgregar.Click += btnAgregar_Click;
@@ -202,39 +261,27 @@
             lblCliente.TabIndex = 15;
             lblCliente.Text = "Cliente:";
             // 
-            // lblFormaPago
+            // cboDescuento
             // 
-            lblFormaPago.AutoSize = true;
-            lblFormaPago.Location = new Point(599, 174);
-            lblFormaPago.Margin = new Padding(2, 0, 2, 0);
-            lblFormaPago.Name = "lblFormaPago";
-            lblFormaPago.Size = new Size(90, 15);
-            lblFormaPago.TabIndex = 16;
-            lblFormaPago.Text = "Forma de Pago:";
-            // 
-            // cboFormaPago
-            // 
-            cboFormaPago.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboFormaPago.FormattingEnabled = true;
-            cboFormaPago.Location = new Point(695, 172);
-            cboFormaPago.Margin = new Padding(2);
-            cboFormaPago.Name = "cboFormaPago";
-            cboFormaPago.Size = new Size(165, 23);
-            cboFormaPago.TabIndex = 18;
+            cboDescuento.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboDescuento.FormattingEnabled = true;
+            cboDescuento.Location = new Point(410, 188);
+            cboDescuento.Margin = new Padding(2);
+            cboDescuento.Name = "cboDescuento";
+            cboDescuento.Size = new Size(124, 23);
+            cboDescuento.TabIndex = 18;
             // 
             // gbxAutoplan
             // 
             gbxAutoplan.Controls.Add(cboCuotas);
-            gbxAutoplan.Controls.Add(cboTargeta);
-            gbxAutoplan.Controls.Add(label1);
-            gbxAutoplan.Controls.Add(textBox1);
+            gbxAutoplan.Controls.Add(txtInteres);
             gbxAutoplan.Controls.Add(lblInteres);
             gbxAutoplan.Controls.Add(lblCuotas);
-            gbxAutoplan.Location = new Point(599, 279);
+            gbxAutoplan.Location = new Point(814, 289);
             gbxAutoplan.Margin = new Padding(2);
             gbxAutoplan.Name = "gbxAutoplan";
             gbxAutoplan.Padding = new Padding(2);
-            gbxAutoplan.Size = new Size(260, 154);
+            gbxAutoplan.Size = new Size(260, 113);
             gbxAutoplan.TabIndex = 20;
             gbxAutoplan.TabStop = false;
             gbxAutoplan.Text = "Datos del AutoPlan";
@@ -243,44 +290,24 @@
             // 
             cboCuotas.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCuotas.FormattingEnabled = true;
-            cboCuotas.Location = new Point(57, 64);
+            cboCuotas.Location = new Point(66, 32);
             cboCuotas.Margin = new Padding(2);
             cboCuotas.Name = "cboCuotas";
             cboCuotas.Size = new Size(118, 23);
             cboCuotas.TabIndex = 23;
             // 
-            // cboTargeta
+            // txtInteres
             // 
-            cboTargeta.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTargeta.FormattingEnabled = true;
-            cboTargeta.Location = new Point(57, 26);
-            cboTargeta.Margin = new Padding(2);
-            cboTargeta.Name = "cboTargeta";
-            cboTargeta.Size = new Size(118, 23);
-            cboTargeta.TabIndex = 26;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(7, 29);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(44, 15);
-            label1.TabIndex = 25;
-            label1.Text = "Tarjeta:";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(57, 102);
-            textBox1.Margin = new Padding(2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(98, 23);
-            textBox1.TabIndex = 22;
+            txtInteres.Location = new Point(66, 70);
+            txtInteres.Margin = new Padding(2);
+            txtInteres.Name = "txtInteres";
+            txtInteres.Size = new Size(98, 23);
+            txtInteres.TabIndex = 22;
             // 
             // lblInteres
             // 
             lblInteres.AutoSize = true;
-            lblInteres.Location = new Point(5, 105);
+            lblInteres.Location = new Point(14, 73);
             lblInteres.Margin = new Padding(2, 0, 2, 0);
             lblInteres.Name = "lblInteres";
             lblInteres.Size = new Size(45, 15);
@@ -290,7 +317,7 @@
             // lblCuotas
             // 
             lblCuotas.AutoSize = true;
-            lblCuotas.Location = new Point(5, 67);
+            lblCuotas.Location = new Point(14, 35);
             lblCuotas.Margin = new Padding(2, 0, 2, 0);
             lblCuotas.Name = "lblCuotas";
             lblCuotas.Size = new Size(47, 15);
@@ -300,82 +327,54 @@
             // cbxAutoplan
             // 
             cbxAutoplan.AutoSize = true;
-            cbxAutoplan.Location = new Point(599, 257);
+            cbxAutoplan.Location = new Point(814, 267);
             cbxAutoplan.Margin = new Padding(2);
             cbxAutoplan.Name = "cbxAutoplan";
             cbxAutoplan.Size = new Size(75, 19);
             cbxAutoplan.TabIndex = 21;
             cbxAutoplan.Text = "AutoPlan";
             cbxAutoplan.UseVisualStyleBackColor = true;
+            cbxAutoplan.CheckedChanged += cbxAutoplan_CheckedChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(599, 220);
+            label2.Location = new Point(340, 192);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(66, 15);
             label2.TabIndex = 22;
             label2.Text = "Descuento:";
             // 
-            // txtDescuento
+            // cboFormaPago
             // 
-            txtDescuento.Location = new Point(676, 216);
-            txtDescuento.Margin = new Padding(2);
-            txtDescuento.Name = "txtDescuento";
-            txtDescuento.Size = new Size(98, 23);
-            txtDescuento.TabIndex = 27;
+            cboFormaPago.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboFormaPago.FormattingEnabled = true;
+            cboFormaPago.Location = new Point(910, 195);
+            cboFormaPago.Margin = new Padding(2);
+            cboFormaPago.Name = "cboFormaPago";
+            cboFormaPago.Size = new Size(165, 23);
+            cboFormaPago.TabIndex = 29;
             // 
-            // colDescripcion
+            // label3
             // 
-            colDescripcion.HeaderText = "Descripción";
-            colDescripcion.MinimumWidth = 6;
-            colDescripcion.Name = "colDescripcion";
-            colDescripcion.ReadOnly = true;
-            colDescripcion.Width = 200;
+            label3.AutoSize = true;
+            label3.Location = new Point(814, 199);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(90, 15);
+            label3.TabIndex = 28;
+            label3.Text = "Forma de Pago:";
             // 
-            // ColID
+            // cboTipoVenta
             // 
-            ColID.HeaderText = "id";
-            ColID.Name = "ColID";
-            ColID.ReadOnly = true;
-            ColID.Visible = false;
-            // 
-            // colCantidad
-            // 
-            colCantidad.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            colCantidad.HeaderText = "Cantidad";
-            colCantidad.MinimumWidth = 6;
-            colCantidad.Name = "colCantidad";
-            colCantidad.ReadOnly = true;
-            colCantidad.Width = 80;
-            // 
-            // colSubtotal
-            // 
-            colSubtotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            colSubtotal.HeaderText = "SubTotal";
-            colSubtotal.MinimumWidth = 6;
-            colSubtotal.Name = "colSubtotal";
-            colSubtotal.ReadOnly = true;
-            colSubtotal.Width = 77;
-            // 
-            // colDescuento
-            // 
-            colDescuento.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            colDescuento.HeaderText = "Descuento";
-            colDescuento.MinimumWidth = 6;
-            colDescuento.Name = "colDescuento";
-            colDescuento.ReadOnly = true;
-            colDescuento.Width = 88;
-            // 
-            // colEliminar
-            // 
-            colEliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            colEliminar.HeaderText = "Eliminar";
-            colEliminar.MinimumWidth = 6;
-            colEliminar.Name = "colEliminar";
-            colEliminar.ReadOnly = true;
-            colEliminar.Width = 56;
+            cboTipoVenta.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboTipoVenta.FormattingEnabled = true;
+            cboTipoVenta.Location = new Point(565, 188);
+            cboTipoVenta.Margin = new Padding(2);
+            cboTipoVenta.Name = "cboTipoVenta";
+            cboTipoVenta.Size = new Size(124, 23);
+            cboTipoVenta.TabIndex = 30;
             // 
             // FrmNuevaFactura
             // 
@@ -383,13 +382,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(872, 567);
-            Controls.Add(txtDescuento);
+            ClientSize = new Size(1076, 604);
+            Controls.Add(cboTipoVenta);
+            Controls.Add(cboFormaPago);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(cbxAutoplan);
             Controls.Add(gbxAutoplan);
-            Controls.Add(cboFormaPago);
-            Controls.Add(lblFormaPago);
+            Controls.Add(cboDescuento);
             Controls.Add(lblCliente);
             Controls.Add(lblVendedor);
             Controls.Add(lblTotal);
@@ -439,23 +439,23 @@
         private Button btnAgregar;
         private Label lblVendedor;
         private Label lblCliente;
-        private Label lblFormaPago;
-        private ComboBox cboFormaPago;
+        private ComboBox cboDescuento;
         private GroupBox gbxAutoplan;
         private Label lblInteres;
         private Label lblCuotas;
         private CheckBox cbxAutoplan;
-        private TextBox textBox1;
-        private ComboBox cboTargeta;
-        private Label label1;
+        private TextBox txtInteres;
         private ComboBox cboCuotas;
+        private Label label2;
+        private ComboBox cboFormaPago;
+        private Label label3;
+        private DataGridViewTextBoxColumn ColID;
         private DataGridViewTextBoxColumn colDescripcion;
         private DataGridViewTextBoxColumn colCantidad;
         private DataGridViewTextBoxColumn colSubtotal;
         private DataGridViewTextBoxColumn colDescuento;
+        private DataGridViewTextBoxColumn colTipoVenta;
         private DataGridViewButtonColumn colEliminar;
-        private Label label2;
-        private TextBox txtDescuento;
-        private DataGridViewTextBoxColumn ColID;
+        private ComboBox cboTipoVenta;
     }
 }

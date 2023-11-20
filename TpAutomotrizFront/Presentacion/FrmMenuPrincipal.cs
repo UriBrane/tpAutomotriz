@@ -156,5 +156,11 @@ namespace TpAutomotrizFront
             FrmConsultarOrden frm = new FrmConsultarOrden();
             frm.ShowDialog();
         }
+
+        private void informaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAcercaDe frm = new FrmAcercaDe();
+            frm.ShowDialog();
+        }
     }
 }

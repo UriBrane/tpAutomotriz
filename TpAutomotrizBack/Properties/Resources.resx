@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CadenaConexion" xml:space="preserve">
-    <value>Data Source=DESKTOP-B5Q8CSC\SQLEXPRESS;Initial Catalog=TP_Autos_19_11;Integrated Security=True</value>
+    <value>Data Source=DESKTOP-B5Q8CSC\SQLEXPRESS;Initial Catalog=TP_Autos_20_11_2;Integrated Security=True</value>
   </data>
   <data name="CadenaConexionAndres" xml:space="preserve">
     <value>Data Source=FRACTAL-PC\SQLEXPRESS;Initial Catalog=TP_Autos;Integrated Security=True</value>

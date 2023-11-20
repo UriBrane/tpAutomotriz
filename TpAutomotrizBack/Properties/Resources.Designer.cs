@@ -61,7 +61,7 @@ namespace TpAutomotrizBack.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Data Source=DESKTOP-B5Q8CSC\SQLEXPRESS;Initial Catalog=TP_Autos_19_11;Integrated Security=True.
+        ///   Busca una cadena traducida similar a Data Source=DESKTOP-B5Q8CSC\SQLEXPRESS;Initial Catalog=TP_Autos_20_11_2;Integrated Security=True.
         /// </summary>
         public static string CadenaConexion {
             get {

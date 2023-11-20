@@ -132,16 +132,28 @@ namespace TpAutomotrizBack.Servicios.Implementacion
         private DetalleFactura MapearDetalleFactura(DataRow dr)
         {
             int idDetalleFac = Convert.ToInt32(dr["id_detalle"]);
-            int idTipoVen = Convert.ToInt32(dr["id_tipo_venta"]);
+            TipoVenta tipoVenta;
+            if (Convert.ToInt32(dr["id_tipo_venta"]) == 1)
+            {
+                tipoVenta = new TipoVenta(1, "Venta al por mayor");
+            }
+            else {
+                tipoVenta = new TipoVenta(2, "Venta al por menor");
+                    
+                   }
+
             int idFac = Convert.ToInt32(dr["id_factura"]);
             int idProd = Convert.ToInt32(dr["id_producto"]);
             DataTable dt = helper.ConsultarTabla("SP_CONSULTAR_PRODUCTO", "id", idProd);
             Producto p = MapearProducto(dt);
             int cant = Convert.ToInt32(dr["cantidad"]);
             double pre = Convert.ToDouble(dr["precio"]);
-            int idDesc = Convert.ToInt32(dr["id_descuento"]);
+            DataTable dt2 = helper.ConsultarTabla("SP_CONSULTAR_DESCUENTO", "id", Convert.ToInt32(dr["id_descuento"]));
+            Descuento des = MapearDescuento(dt2);
             string ent = dr["entregado"].ToString() ?? "";
-            DetalleFactura dF = new DetalleFactura(idDetalleFac, idTipoVen, idFac, p, cant, pre, idDesc, ent);
+
+
+            DetalleFactura dF = new DetalleFactura(idDetalleFac, tipoVenta, idFac, p, cant, pre, des, ent);
             return dF;
         }
         public DetalleFactura MapearDetalleFactura(DataTable dt)
@@ -220,14 +232,33 @@ namespace TpAutomotrizBack.Servicios.Implementacion
             OrdenPedido oP = MapearOrdenPedido(dtOP);
 
             int idAutoPlan = Convert.ToInt32(dr["id_autoplan"]);
+            DataTable dtAP = helper.ConsultarTabla("SP_CONSULTAR_AUTOPLAN", "@id", idAutoPlan);
+            AutoPlan autoplan = MapearAutoplan(dtAP);
+
+
             int idFormaPago = Convert.ToInt32(dr["id_forma_pago"]);
 
             DataTable dtF = helper.ConsultarTabla("", "id_factura", idFac);
             List<DetalleFactura> lDetalles = MapearDetallesFactura(dtF);
 
-            Factura f = new Factura(idFac, c, fec, v, oP, idAutoPlan, idFormaPago, lDetalles);
+            Factura f = new Factura(idFac, c, fec, v, oP, autoplan, idFormaPago, lDetalles);
             return f;
         }
+
+        private AutoPlan MapearAutoplan(DataTable dt)
+        {
+            AutoPlan ap = new AutoPlan();
+            foreach (DataRow dr in dt.Rows)
+            {
+                ap.ID = Convert.ToInt32(dr["id_autoplan"]);
+                ap.Cliente.IdCliente = Convert.ToInt32(dr["id_cliente"]);
+                ap.Cuotas = Convert.ToInt32(dr["cant_coutas"]);
+                ap.Interes = Convert.ToInt32(dr["interes"]);
+            }
+
+            return ap;
+        }
+
         public Factura MapearFactura(DataTable dt)
         {
             Factura? f = null;
@@ -284,6 +315,18 @@ namespace TpAutomotrizBack.Servicios.Implementacion
                 l.Add(oP);
             }
             return l;
+        }
+
+        public Descuento MapearDescuento(DataTable dt)
+        {
+            Descuento descuento = new Descuento();
+            foreach (DataRow dr in dt.Rows)
+            {
+                descuento.ID = Convert.ToInt32(dr["id_descuento"]);
+                descuento.CantDescuento = Convert.ToInt32(dr["porcentaje"]);
+            }
+
+            return descuento;
         }
     }
 }

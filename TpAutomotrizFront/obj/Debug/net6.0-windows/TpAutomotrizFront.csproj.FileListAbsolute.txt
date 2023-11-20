@@ -94,3 +94,4 @@ C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\r
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsulta.resources
 C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsultarOrden.resources
 C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmConsultarOrden.resources
+C:\Users\Benja\Desktop\tpAutomotriz\TpAutomotrizFront\obj\Debug\net6.0-windows\TpAutomotrizFront.Presentacion.FrmAcercaDe.resources
