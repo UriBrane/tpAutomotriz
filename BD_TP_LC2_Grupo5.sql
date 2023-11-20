@@ -395,8 +395,8 @@ VALUES
     (1, 11, 'mirta_098@email.com', 13),
     (2, 12, '555-1454567', 14),
     (3, 13, '011-9876093', 15),
-    (4, 14, 'julian@email.com', 16),
-    (4, 15, 'carlos._09@email.com', 17);
+    (4, 14, 'julian@email.com', 7),
+    (4, 15, 'carlos._09@email.com', 6);
 
 --INSERT TIPOS_PRODUCT
 INSERT INTO Tipos_Productos ([descripcion])
@@ -515,8 +515,8 @@ INSERT INTO Facturas ([id_cliente],[fecha],[id_vendedor] ,[id_orden_pedido] ,[id
 		(11,'02/05/2022',13,11,11,1,0),
 		(12,'29/04/2020',14,13,12,2,0),
 		(13,'20/08/2020',15,14,13,3,0),
-		(14,'12/03/2021',16,15,14,4,0),
-		(15,'26/10/2021',17,16,15,5,0);	
+		(14,'12/03/2021',1,12,14,4,0),
+		(15,'26/10/2021',1,1,15,5,0);
 	
 --INSERT INTO DETALLE_FACTURAS
 INSERT INTO Detalles_Facturas([id_tipo_venta],[id_factura],[id_producto],[cantidad],[precio],[id_descuento])
@@ -545,7 +545,7 @@ INSERT INTO detalles_pedidos ([id_orden_pedido], [id_producto],[cantidad])
 		(3,3,45),
 		(4,4,63),
 		(5,5,80),
-	        (7,6,51), 
+	    (7,6,51), 
 		(8,7,22),
 		(9,8,35),
 		(10,9,23),
@@ -554,7 +554,7 @@ INSERT INTO detalles_pedidos ([id_orden_pedido], [id_producto],[cantidad])
 		(13,12,37),
 		(14,13,55),
 		(15,14,53),
-		(16,15,40);
+		(1,15,40);
 
 GO
 

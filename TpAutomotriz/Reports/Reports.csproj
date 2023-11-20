@@ -70,6 +70,12 @@
       <DependentUpon>DSReportes.xsd</DependentUpon>
     </Compile>
     <Compile Include="HelperDAO.cs" />
+    <Compile Include="Presentacion\FrmReporteEstadoProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FrmReporteEstadoProductos.Designer.cs">
+      <DependentUpon>FrmReporteEstadoProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\FrmReporteDescuentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Presentacion\FrmReporteEstadoProductos.resx">
+      <DependentUpon>FrmReporteEstadoProductos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FrmReporteDescuentos.resx">
       <DependentUpon>FrmReporteDescuentos.cs</DependentUpon>
     </EmbeddedResource>
