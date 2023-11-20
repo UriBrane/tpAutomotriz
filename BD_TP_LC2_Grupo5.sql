@@ -855,10 +855,10 @@ BEGIN
         c.id_cliente,
         c.nombre + ', ' + c.apellido AS 'cliente',
         v.nombre + ', ' + v.apellido AS 'vendedor',
-        DATEDIFF(YEAR, v.fecha_ingreso, GETDATE()) AS 'Antigüedad',
-        SUM(((p.cantidad * p.precio) / 100) * d.porcentaje) AS 'Descuento',
-        AVG(d.porcentaje) AS 'Promedio_Descuento',
-        cat.descripcion AS 'Categoria'
+        DATEDIFF(YEAR, v.fecha_ingreso, GETDATE()) AS 'antiguedad',
+        SUM(((p.cantidad * p.precio) / 100) * d.porcentaje) AS 'descuento',
+        AVG(d.porcentaje) AS 'promedio_descuento',
+        cat.descripcion AS 'categoria'
     FROM
         Clientes c
     JOIN
