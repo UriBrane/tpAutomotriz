@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TpAutomotrizAPI", "..\TpAutomotrizAPI\TpAutomotrizAPI.csproj", "{F32A568C-09DF-464E-A676-19AC3A78B74A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TpAutomotrizFront", "..\TpAutomotrizFront\TpAutomotrizFront.csproj", "{6658A5CC-AFA8-44E4-BE5F-C73A68224599}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D2884D8-93C6-4A65-81A3-81290658011B} = {3D2884D8-93C6-4A65-81A3-81290658011B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports", "Reports\Reports.csproj", "{3D2884D8-93C6-4A65-81A3-81290658011B}"
 	ProjectSection(ProjectDependencies) = postProject

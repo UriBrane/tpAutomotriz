@@ -20,7 +20,7 @@ namespace Reports
             //Application.Run(new FrmReporteVentasTotales());
             //Application.Run(new FrmReporteDescuentos());
             //Application.Run(new FrmReporteEstadoProductos());
-            Application.Run(new FrmReporteEstadisticasVendedores());
+            //Application.Run(new FrmReporteEstadisticasVendedores());
         }
     }
 }

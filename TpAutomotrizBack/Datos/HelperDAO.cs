@@ -15,7 +15,7 @@ namespace TpAutomotrizBack.Datos
 
         private HelperDAO()
         {
-            cnn = new SqlConnection(Properties.Resources.CadenaConexion);
+            cnn = new SqlConnection(Properties.Resources.CadenaConexionAndres);
         }
 
         public static HelperDAO GetInstance()
@@ -67,10 +67,6 @@ namespace TpAutomotrizBack.Datos
 
         public int ConsultarEscalar(string nombreSP, string nombreParamOut, SqlTransaction t)
         {
-            //bool a = false;
-            //if (cnn.State == ConnectionState.Closed)
-            //    { cnn.Open(); a = true; }
-
             SqlCommand comando = new SqlCommand(nombreSP, cnn, t);
             comando.CommandType = CommandType.StoredProcedure;
             SqlParameter parametro = new SqlParameter();
@@ -80,9 +76,6 @@ namespace TpAutomotrizBack.Datos
 
             comando.Parameters.Add(parametro);
             comando.ExecuteNonQuery();
-
-            //if (a)
-            //    cnn.Close();
 
             return (int)parametro.Value;
         }

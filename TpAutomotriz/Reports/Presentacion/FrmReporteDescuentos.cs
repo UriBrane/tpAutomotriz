@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TpAutomotrizBack.Datos;
 
 namespace Reports
 {
@@ -19,7 +20,7 @@ namespace Reports
 
         private void FrmReporteDescuentos_Load(object sender, EventArgs e)
         {
-            DataTable dt = HelperDAO.GetInstance().ConsultarSp("SP_CONSULTA_DESCUENTOS_PROMEDIO");
+            DataTable dt = HelperDAO.GetInstance().ConsultarTabla("SP_CONSULTA_DESCUENTOS_PROMEDIO");
 
             this.dTDescuentosBindingSource.DataSource = dt;
 
