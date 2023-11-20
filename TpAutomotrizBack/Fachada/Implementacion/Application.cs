@@ -109,5 +109,23 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         {
             return ordenDAO.GetOrdenesPedido();
         }
+
+        // Facturas
+
+        public bool PostFactura(Factura fac)
+        {
+            return facturaDAO.PostFactura(fac);
+        }
+
+        public Factura GetFactura(int id)
+        {
+            return facturaDAO.GetFactura(id);
+        }
+
+        public List<Factura> GetFacturas()
+        {
+            return facturaDAO.GetFacturas();
+        }
+
     }
 }
