@@ -271,11 +271,11 @@ VALUES
 --INSERT PARA VENDEDORES
 INSERT INTO Vendedores([id_categoria], [apellido], [nombre], [CUIT], [fecha_ingreso])
 VALUES
-    (1, 'G�mez', 'Juan', 20123456789, '2022-01-15'),
-    (2, 'Mart�nez', 'Mar�a', 27987654321, '2021-05-10'),
-    (1, 'L�pez', 'Carlos', 23876543210, '2023-03-20'),
-    (2, 'Rodr�guez', 'Ana', 20345678901, '2020-12-05'),
-    (3, 'Fern�ndez', 'Javier', 30567890123, '2019-08-18');
+    (1, 'Gomez', 'Juan', 20123456789, '2022-01-15'),
+    (2, 'Martinez', 'Maria', 27987654321, '2021-05-10'),
+    (1, 'Lopez', 'Carlos', 23876543210, '2023-03-20'),
+    (2, 'Rodriguez', 'Ana', 20345678901, '2020-12-05'),
+    (3, 'Fernandez', 'Javier', 30567890123, '2019-08-18');
     (1, 'Perez', 'Rodolfo', 27823456789, '2020/01/20'),
     (2, 'Laguna', 'Rafael', 24587654321, '2023/03/10'),
     (1, 'Diaz', 'Rosa', 21376543210, '2022/03/20'),
@@ -311,10 +311,10 @@ VALUES
 INSERT INTO Provincias ([descripcion])
 VALUES
     ('Buenos Aires'),
-    ('C�rdoba'),
+    ('Cordoba'),
     ('Santa Fe'),
     ('Mendoza'),
-    ('Tucum�n'),
+    ('Tucuman'),
     ('Chaco'),
     ('San Luis'),
     ('Jujuy'),
@@ -330,10 +330,10 @@ VALUES
 INSERT INTO Barrios ([descripcion], [id_provincia])
 VALUES
     ('Palermo', 1),
-    ('Nueva C�rdoba', 2),
+    ('Nueva Cordoba', 2),
     ('Centro', 3),
     ('Godoy Cruz', 4),
-    ('San Miguel de Tucum�n', 5),
+    ('San Miguel de Tucuman', 5),
     ('Lamadrid', 6),
     ('Las Bervenas', 7),
     ('Abra Pampa', 8),
@@ -354,11 +354,11 @@ VALUES
 --INSERT PARA CLIENTES 
 INSERT INTO Clientes ([id_tipo_cliente], [nombre], [apellido], [CUIT], [dire_calle], [dire_nro], [id_barrio])
 VALUES
-    (1, 'Juan', 'Gonz�lez', 20123456789, 'Av. Rivadavia', 1234, 2),
-    (1, 'Mar�a', 'L�pez', 27987654321, 'Av. San Mart�n', 567, 2),
-    (2, 'Carlos', 'Mart�nez', 23876543210, 'Av. Belgrano', 890, 3),
-    (1, 'Ana', 'Fern�ndez', 20345678901, 'Av. Pueyrred�n', 456, 4),
-    (2, 'Javier', 'Rodr�guez', 30567890123, 'Av. C�rdoba', 789, 5),
+    (1, 'Juan', 'Gonzalez', 20123456789, 'Av. Rivadavia', 1234, 2),
+    (1, 'Maria', 'Lopez', 27987654321, 'Av. San Martin', 567, 2),
+    (2, 'Carlos', 'Martinez', 23876543210, 'Av. Belgrano', 890, 3),
+    (1, 'Ana', 'Fernandez', 20345678901, 'Av. Pueyrredon', 456, 4),
+    (2, 'Javier', 'Rodriguez', 30567890123, 'Av. Cordoba', 789, 5),
     (1, 'Benjamin', 'Lopez', 21123456789, 'Av. Colonial', 1254, 6),
     (1, 'Lautaro', 'Misso', 22987654321, 'Av. La Marinna', 557, 7),
     (2, 'Morena', 'Ledezma', 23476543210, 'Av. Belgrano', 810, 8),
@@ -367,14 +367,14 @@ VALUES
     (1, 'Mirta', 'Gonzalez', 27823456789, 'Av. La Paz', 134, 11),
     (1, 'Simon', 'Folco', 27987698321, 'Av. Echeverry', 967, 12),
     (2, 'Joaquin', 'Brizio', 23854543210, 'Av. Amador', 890, 13),
-    (1, 'Julian', 'Fern�ndez', 20235678901, 'Av. Junin', 246, 14),
-    (2, 'Carlos', 'Rodr�guez', 30567800123, 'Av. Tejelo', 1009, 15);
+    (1, 'Julian', 'Fernandez', 20235678901, 'Av. Junin', 246, 14),
+    (2, 'Carlos', 'Rodreguez', 30567800123, 'Av. Tejelo', 1009, 15);
 
 	--INSERT TIPOS CONTACTOS
 INSERT INTO Tipos_Contactos ([descripcion])
 VALUES
-    ('Correo electr�nico'),
-    ('Tel�fono'),
+    ('Correo electronico'),
+    ('Telefono'),
     ('WhatsApp'),
     ('Redes Sociales');
 
@@ -402,17 +402,17 @@ INSERT INTO Tipos_Productos ([descripcion])
 VALUES
     ('Partes del Motor'),
     ('Filtros de Aceite'),
-    ('Neum�ticos'),
+    ('Neumaticos'),
     ('Frenos'),
-    ('Suspensi�n'),
+    ('Suspension'),
  ('Automovil');
 	
 --INSERT PARA PRODUCTOS
 INSERT INTO Productos ([id_tipo_producto], [descripcion], [precio], [cant_min_por_mayor], [cantidad], [cantidad_min])
 VALUES
-    (1, 'Pist�n', 50.0, 10, 100, 5),
+    (1, 'Piston', 50.0, 10, 100, 5),
     (2, 'Filtro de Aceite', 15.0, 20, 200, 10),
-    (3,'Neum�tico 225/55R17', 120.01, 5, 50, 2),
+    (3,'Neumatico 225/55R17', 120.01, 5, 50, 2),
     (4, 'Pastillas de Freno', 25.0, 15, 150, 10),
     (5, 'Amortiguador Trasero', 40.0, 8, 80, 4),
     (6, 'Uri Electrico', 9000000, 10, 200, 50),
@@ -448,8 +448,8 @@ VALUES
 INSERT INTO Formas_Pago([descripcion], [id_tarjeta], [id_cuota] )
 VALUES
     ('Efectivo', NULL, null),
-    ('Tarjeta de Cr�dito', 1, 3),
-    ('Tarjeta de D�bito', 2, 1),
+    ('Tarjeta de Credito', 1, 3),
+    ('Tarjeta de Debito', 2, 1),
     ('Transferencia Bancaria', null, null),
     ('Cheque', NULL, null);
 
