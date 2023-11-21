@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\y0303\\Documents\\GitHub\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj": {}
   },
   "projects": {
@@ -13,31 +12,12 @@
         "projectPath": "C:\\Users\\y0303\\Documents\\GitHub\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj",
         "packagesPath": "C:\\Users\\y0303\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\y0303\\Documents\\GitHub\\tpAutomotriz\\TpAutomotrizBack\\obj\\",
-=======
-    "C:\\Users\\Andres\\Repo\\TpAutomotriz\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Andres\\Repo\\TpAutomotriz\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Andres\\Repo\\TpAutomotriz\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj",
-        "projectName": "TpAutomotrizBack",
-        "projectPath": "C:\\Users\\Andres\\Repo\\TpAutomotriz\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj",
-        "packagesPath": "C:\\Users\\Andres\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andres\\Repo\\TpAutomotriz\\tpAutomotriz\\TpAutomotrizBack\\obj\\",
->>>>>>> b9c569a3e42afc49f001d452c5b2567b8d1118a2
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\y0303\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\Andres\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.1.config",
->>>>>>> b9c569a3e42afc49f001d452c5b2567b8d1118a2
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -46,11 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-<<<<<<< HEAD
           "C:\\Program Files\\dotnet\\library-packs": {},
-=======
-          "C:\\Program Files\\DevExpress 23.1\\Components\\System\\Components\\Packages": {},
->>>>>>> b9c569a3e42afc49f001d452c5b2567b8d1118a2
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -94,11 +70,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
->>>>>>> b9c569a3e42afc49f001d452c5b2567b8d1118a2
         }
       }
     }

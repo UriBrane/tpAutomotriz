@@ -16,14 +16,8 @@
       }
     ],
     "additionalProbingPaths": [
-<<<<<<< HEAD
       "C:\\Users\\y0303\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\y0303\\.nuget\\packages",
-=======
-      "C:\\Users\\Andres\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Andres\\.nuget\\packages",
-      "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages",
->>>>>>> b9c569a3e42afc49f001d452c5b2567b8d1118a2
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {

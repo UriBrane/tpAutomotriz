@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevoProducto));
             lblDescripcion = new Label();
             lblPrecio = new Label();
             lblTipoProductos = new Label();
@@ -48,54 +49,60 @@
             // lblDescripcion
             // 
             lblDescripcion.AutoSize = true;
-            lblDescripcion.Location = new Point(57, 21);
+            lblDescripcion.Location = new Point(44, 15);
+            lblDescripcion.Margin = new Padding(2, 0, 2, 0);
             lblDescripcion.Name = "lblDescripcion";
-            lblDescripcion.Size = new Size(94, 21);
+            lblDescripcion.Size = new Size(72, 15);
             lblDescripcion.TabIndex = 0;
             lblDescripcion.Text = "Descripción:";
             // 
             // lblPrecio
             // 
             lblPrecio.AutoSize = true;
-            lblPrecio.Location = new Point(94, 83);
+            lblPrecio.Location = new Point(73, 59);
+            lblPrecio.Margin = new Padding(2, 0, 2, 0);
             lblPrecio.Name = "lblPrecio";
-            lblPrecio.Size = new Size(56, 21);
+            lblPrecio.Size = new Size(43, 15);
             lblPrecio.TabIndex = 1;
             lblPrecio.Text = "Precio:";
             // 
             // lblTipoProductos
             // 
             lblTipoProductos.AutoSize = true;
-            lblTipoProductos.Location = new Point(12, 143);
+            lblTipoProductos.Location = new Point(9, 102);
+            lblTipoProductos.Margin = new Padding(2, 0, 2, 0);
             lblTipoProductos.Name = "lblTipoProductos";
-            lblTipoProductos.Size = new Size(138, 21);
+            lblTipoProductos.Size = new Size(106, 15);
             lblTipoProductos.TabIndex = 2;
             lblTipoProductos.Text = "Tipo de Productos:";
             // 
             // lblCantidad
             // 
             lblCantidad.AutoSize = true;
-            lblCantidad.Location = new Point(581, 22);
+            lblCantidad.Location = new Point(452, 16);
+            lblCantidad.Margin = new Padding(2, 0, 2, 0);
             lblCantidad.Name = "lblCantidad";
-            lblCantidad.Size = new Size(75, 21);
+            lblCantidad.Size = new Size(58, 15);
             lblCantidad.TabIndex = 3;
             lblCantidad.Text = "Cantidad:";
             // 
             // lblCantMinPorMayor
             // 
             lblCantMinPorMayor.AutoSize = true;
-            lblCantMinPorMayor.Location = new Point(447, 83);
+            lblCantMinPorMayor.Location = new Point(348, 59);
+            lblCantMinPorMayor.Margin = new Padding(2, 0, 2, 0);
             lblCantMinPorMayor.Name = "lblCantMinPorMayor";
-            lblCantMinPorMayor.Size = new Size(209, 21);
+            lblCantMinPorMayor.Size = new Size(160, 15);
             lblCantMinPorMayor.TabIndex = 4;
             lblCantMinPorMayor.Text = "Cantidad minima por mayor:";
             // 
             // lblCantMin
             // 
             lblCantMin.AutoSize = true;
-            lblCantMin.Location = new Point(525, 144);
+            lblCantMin.Location = new Point(408, 103);
+            lblCantMin.Margin = new Padding(2, 0, 2, 0);
             lblCantMin.Name = "lblCantMin";
-            lblCantMin.Size = new Size(132, 21);
+            lblCantMin.Size = new Size(102, 15);
             lblCantMin.TabIndex = 5;
             lblCantMin.Text = "Cantidad Minima:";
             // 
@@ -103,51 +110,58 @@
             // 
             cboTipoProductos.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTipoProductos.FormattingEnabled = true;
-            cboTipoProductos.Location = new Point(156, 139);
+            cboTipoProductos.Location = new Point(121, 99);
+            cboTipoProductos.Margin = new Padding(2, 2, 2, 2);
             cboTipoProductos.Name = "cboTipoProductos";
-            cboTipoProductos.Size = new Size(286, 29);
+            cboTipoProductos.Size = new Size(223, 23);
             cboTipoProductos.TabIndex = 2;
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(156, 17);
+            txtDescripcion.Location = new Point(121, 12);
+            txtDescripcion.Margin = new Padding(2, 2, 2, 2);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(392, 29);
+            txtDescripcion.Size = new Size(306, 23);
             txtDescripcion.TabIndex = 0;
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(156, 78);
+            txtPrecio.Location = new Point(121, 56);
+            txtPrecio.Margin = new Padding(2, 2, 2, 2);
             txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(286, 29);
+            txtPrecio.Size = new Size(223, 23);
             txtPrecio.TabIndex = 1;
             // 
             // txtCantMin
             // 
-            txtCantMin.Location = new Point(662, 140);
+            txtCantMin.Location = new Point(515, 100);
+            txtCantMin.Margin = new Padding(2, 2, 2, 2);
             txtCantMin.Name = "txtCantMin";
-            txtCantMin.Size = new Size(190, 29);
+            txtCantMin.Size = new Size(149, 23);
             txtCantMin.TabIndex = 5;
             // 
             // txtCantidad
             // 
-            txtCantidad.Location = new Point(662, 18);
+            txtCantidad.Location = new Point(515, 13);
+            txtCantidad.Margin = new Padding(2, 2, 2, 2);
             txtCantidad.Name = "txtCantidad";
-            txtCantidad.Size = new Size(190, 29);
+            txtCantidad.Size = new Size(149, 23);
             txtCantidad.TabIndex = 3;
             // 
             // txtCantMinPorMayor
             // 
-            txtCantMinPorMayor.Location = new Point(662, 78);
+            txtCantMinPorMayor.Location = new Point(515, 56);
+            txtCantMinPorMayor.Margin = new Padding(2, 2, 2, 2);
             txtCantMinPorMayor.Name = "txtCantMinPorMayor";
-            txtCantMinPorMayor.Size = new Size(190, 29);
+            txtCantMinPorMayor.Size = new Size(149, 23);
             txtCantMinPorMayor.TabIndex = 4;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(319, 211);
+            btnGuardar.Location = new Point(248, 151);
+            btnGuardar.Margin = new Padding(2, 2, 2, 2);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(94, 29);
+            btnGuardar.Size = new Size(73, 21);
             btnGuardar.TabIndex = 6;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -155,9 +169,10 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(454, 211);
+            btnEditar.Location = new Point(353, 151);
+            btnEditar.Margin = new Padding(2, 2, 2, 2);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(94, 29);
+            btnEditar.Size = new Size(73, 21);
             btnEditar.TabIndex = 8;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
@@ -165,9 +180,10 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(588, 211);
+            btnCancelar.Location = new Point(457, 151);
+            btnCancelar.Margin = new Padding(2, 2, 2, 2);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(94, 29);
+            btnCancelar.Size = new Size(73, 21);
             btnCancelar.TabIndex = 9;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -175,9 +191,10 @@
             // 
             // FrmNuevoProducto
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(864, 265);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(672, 189);
             Controls.Add(btnCancelar);
             Controls.Add(btnEditar);
             Controls.Add(btnGuardar);
@@ -193,6 +210,7 @@
             Controls.Add(lblTipoProductos);
             Controls.Add(lblPrecio);
             Controls.Add(lblDescripcion);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "FrmNuevoProducto";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Producto";

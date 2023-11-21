@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultarProducto));
             btnBuscar = new Button();
             cboTipoProducto = new ComboBox();
             lblTipoPersona = new Label();
@@ -45,9 +46,10 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(353, 22);
+            btnBuscar.Location = new Point(275, 16);
+            btnBuscar.Margin = new Padding(2, 2, 2, 2);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(94, 29);
+            btnBuscar.Size = new Size(73, 21);
             btnBuscar.TabIndex = 13;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -57,17 +59,19 @@
             // 
             cboTipoProducto.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTipoProducto.FormattingEnabled = true;
-            cboTipoProducto.Location = new Point(147, 21);
+            cboTipoProducto.Location = new Point(114, 15);
+            cboTipoProducto.Margin = new Padding(2, 2, 2, 2);
             cboTipoProducto.Name = "cboTipoProducto";
-            cboTipoProducto.Size = new Size(151, 29);
+            cboTipoProducto.Size = new Size(118, 23);
             cboTipoProducto.TabIndex = 10;
             // 
             // lblTipoPersona
             // 
             lblTipoPersona.AutoSize = true;
-            lblTipoPersona.Location = new Point(12, 27);
+            lblTipoPersona.Location = new Point(9, 19);
+            lblTipoPersona.Margin = new Padding(2, 0, 2, 0);
             lblTipoPersona.Name = "lblTipoPersona";
-            lblTipoPersona.Size = new Size(131, 21);
+            lblTipoPersona.Size = new Size(101, 15);
             lblTipoPersona.TabIndex = 9;
             lblTipoPersona.Text = "Tipo de Producto:";
             // 
@@ -77,12 +81,13 @@
             dgvProductos.AllowUserToDeleteRows = false;
             dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProductos.Columns.AddRange(new DataGridViewColumn[] { ColID, ColTipo, ColPrecio, ColNombre, ColCantMin, ColCant, ColCantMinMayor, ColVer });
-            dgvProductos.Location = new Point(12, 59);
+            dgvProductos.Location = new Point(9, 42);
+            dgvProductos.Margin = new Padding(2, 2, 2, 2);
             dgvProductos.Name = "dgvProductos";
             dgvProductos.ReadOnly = true;
             dgvProductos.RowHeadersWidth = 51;
             dgvProductos.RowTemplate.Height = 31;
-            dgvProductos.Size = new Size(991, 406);
+            dgvProductos.Size = new Size(771, 290);
             dgvProductos.TabIndex = 8;
             dgvProductos.CellContentClick += dgvProductos_CellContentClick;
             // 
@@ -152,14 +157,14 @@
             // 
             // FrmConsultarProducto
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1020, 491);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(793, 351);
             Controls.Add(btnBuscar);
             Controls.Add(cboTipoProducto);
             Controls.Add(lblTipoPersona);
             Controls.Add(dgvProductos);
-            Margin = new Padding(4);
             Name = "FrmConsultarProducto";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Consultar Producto";

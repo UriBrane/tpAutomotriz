@@ -41,7 +41,7 @@ namespace TpAutomotrizFront.Presentacion
             nuevo = false;
             CargarControles(idPersona);
         }
-        
+
         private void FrmNuevaPersona_Load(object sender, EventArgs e)
         {
             val = Validador.GetInstance();
