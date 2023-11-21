@@ -25,15 +25,44 @@ namespace Reports.Presentacion
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            List<Parametro> lst = new List<Parametro>
+            bool a = false;
+            while (true)
             {
-                new Parametro("@año",txtAnio.Text),
-                new Parametro("@mes", txtMes.Text)
-            };
+                if (!ValidarNumeros(txtMes)) break;
+                if (!ValidarNumeros(txtAnio)) break;
+                a = true;
+                break;
+            }
 
-            DataTable dt = HelperDAO.GetInstance().ConsultarTabla("SP_CONSULTA_ESTADO_PRODUCTOS", lst);
-            this.dTEstadoProductosBindingSource.DataSource = dt;
-            this.rpvEstadoProductos.RefreshReport();
+            if (a)
+            {
+                List<Parametro> lst = new List<Parametro>
+                {
+                    new Parametro("@año",txtAnio.Text),
+                    new Parametro("@mes", txtMes.Text)
+                };
+
+                DataTable dt = HelperDAO.GetInstance().ConsultarTabla("SP_CONSULTA_ESTADO_PRODUCTOS", lst);
+                this.dTEstadoProductosBindingSource.DataSource = dt;
+                this.rpvEstadoProductos.RefreshReport();
+            }
         }
+
+        public bool ValidarNumeros(TextBox textBox)
+        {
+            string texto = textBox.Text;
+
+            bool esNumero = int.TryParse(texto, out _);
+
+            if (!esNumero)
+            {
+                MessageBox.Show("Error: El texto ingresado no es un número.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                textBox.Focus();
+            }
+
+            return esNumero;
+        }
+
+
     }
 }

@@ -22,7 +22,8 @@ namespace TpAutomotrizFront
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
-            //EnableMenu(false);
+            txtContrasenia.PasswordChar = '*';
+            EnableMenu(false);
         }
         private void EnableMenu(bool estado) //Habilita ó deshabilita el menu principal, según si se logeo con exito o no
         {

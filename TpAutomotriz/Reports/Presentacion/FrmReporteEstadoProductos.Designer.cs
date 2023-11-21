@@ -28,104 +28,120 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.rpvEstadoProductos = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dSReportes = new Reports.DataSets.DSReportes();
-            this.dTEstadoProductosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtMes = new System.Windows.Forms.TextBox();
-            this.txtAnio = new System.Windows.Forms.TextBox();
-            this.lblAnio = new System.Windows.Forms.Label();
-            this.lblMes = new System.Windows.Forms.Label();
-            this.btnCargar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dSReportes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTEstadoProductosBindingSource)).BeginInit();
-            this.SuspendLayout();
+            dTEstadoProductosBindingSource = new System.Windows.Forms.BindingSource(components);
+            dSReportes = new DataSets.DSReportes();
+            rpvEstadoProductos = new Microsoft.Reporting.WinForms.ReportViewer();
+            txtMes = new System.Windows.Forms.TextBox();
+            txtAnio = new System.Windows.Forms.TextBox();
+            lblAnio = new System.Windows.Forms.Label();
+            lblMes = new System.Windows.Forms.Label();
+            btnCargar = new System.Windows.Forms.Button();
+            lblFiltro = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)dTEstadoProductosBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dSReportes).BeginInit();
+            SuspendLayout();
+            // 
+            // dTEstadoProductosBindingSource
+            // 
+            dTEstadoProductosBindingSource.DataMember = "DTEstadoProductos";
+            dTEstadoProductosBindingSource.DataSource = dSReportes;
+            // 
+            // dSReportes
+            // 
+            dSReportes.DataSetName = "DSReportes";
+            dSReportes.Namespace = "http://tempuri.org/DSReportes.xsd";
+            dSReportes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // rpvEstadoProductos
             // 
             reportDataSource2.Name = "dsEstadoProducto";
-            reportDataSource2.Value = this.dTEstadoProductosBindingSource;
-            this.rpvEstadoProductos.LocalReport.DataSources.Add(reportDataSource2);
-            this.rpvEstadoProductos.LocalReport.ReportEmbeddedResource = "Reports.Reportes.RptEstadoProductos.rdlc";
-            this.rpvEstadoProductos.Location = new System.Drawing.Point(12, 79);
-            this.rpvEstadoProductos.Name = "rpvEstadoProductos";
-            this.rpvEstadoProductos.ServerReport.BearerToken = null;
-            this.rpvEstadoProductos.Size = new System.Drawing.Size(1514, 862);
-            this.rpvEstadoProductos.TabIndex = 0;
-            // 
-            // dSReportes
-            // 
-            this.dSReportes.DataSetName = "DSReportes";
-            this.dSReportes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dTEstadoProductosBindingSource
-            // 
-            this.dTEstadoProductosBindingSource.DataMember = "DTEstadoProductos";
-            this.dTEstadoProductosBindingSource.DataSource = this.dSReportes;
+            reportDataSource2.Value = dTEstadoProductosBindingSource;
+            rpvEstadoProductos.LocalReport.DataSources.Add(reportDataSource2);
+            rpvEstadoProductos.LocalReport.ReportEmbeddedResource = "Reports.Reportes.RptEstadoProductos.rdlc";
+            rpvEstadoProductos.Location = new System.Drawing.Point(14, 104);
+            rpvEstadoProductos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            rpvEstadoProductos.Name = "rpvEstadoProductos";
+            rpvEstadoProductos.ServerReport.BearerToken = null;
+            rpvEstadoProductos.Size = new System.Drawing.Size(1703, 1131);
+            rpvEstadoProductos.TabIndex = 0;
             // 
             // txtMes
             // 
-            this.txtMes.Location = new System.Drawing.Point(198, 33);
-            this.txtMes.Name = "txtMes";
-            this.txtMes.Size = new System.Drawing.Size(100, 22);
-            this.txtMes.TabIndex = 1;
+            txtMes.Location = new System.Drawing.Point(223, 56);
+            txtMes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtMes.Name = "txtMes";
+            txtMes.Size = new System.Drawing.Size(112, 29);
+            txtMes.TabIndex = 1;
             // 
             // txtAnio
             // 
-            this.txtAnio.Location = new System.Drawing.Point(351, 33);
-            this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(100, 22);
-            this.txtAnio.TabIndex = 2;
+            txtAnio.Location = new System.Drawing.Point(395, 56);
+            txtAnio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtAnio.Name = "txtAnio";
+            txtAnio.Size = new System.Drawing.Size(112, 29);
+            txtAnio.TabIndex = 2;
             // 
             // lblAnio
             // 
-            this.lblAnio.AutoSize = true;
-            this.lblAnio.Location = new System.Drawing.Point(311, 36);
-            this.lblAnio.Name = "lblAnio";
-            this.lblAnio.Size = new System.Drawing.Size(34, 16);
-            this.lblAnio.TabIndex = 3;
-            this.lblAnio.Text = "Año:";
+            lblAnio.AutoSize = true;
+            lblAnio.Location = new System.Drawing.Point(350, 60);
+            lblAnio.Name = "lblAnio";
+            lblAnio.Size = new System.Drawing.Size(41, 21);
+            lblAnio.TabIndex = 3;
+            lblAnio.Text = "Año:";
             // 
             // lblMes
             // 
-            this.lblMes.AutoSize = true;
-            this.lblMes.Location = new System.Drawing.Point(156, 36);
-            this.lblMes.Name = "lblMes";
-            this.lblMes.Size = new System.Drawing.Size(36, 16);
-            this.lblMes.TabIndex = 4;
-            this.lblMes.Text = "Mes:";
+            lblMes.AutoSize = true;
+            lblMes.Location = new System.Drawing.Point(176, 60);
+            lblMes.Name = "lblMes";
+            lblMes.Size = new System.Drawing.Size(42, 21);
+            lblMes.TabIndex = 4;
+            lblMes.Text = "Mes:";
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(539, 31);
-            this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(75, 27);
-            this.btnCargar.TabIndex = 5;
-            this.btnCargar.Text = "Cargar";
-            this.btnCargar.UseVisualStyleBackColor = true;
-            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
+            btnCargar.Location = new System.Drawing.Point(552, 53);
+            btnCargar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnCargar.Name = "btnCargar";
+            btnCargar.Size = new System.Drawing.Size(84, 35);
+            btnCargar.TabIndex = 5;
+            btnCargar.Text = "Cargar";
+            btnCargar.UseVisualStyleBackColor = true;
+            btnCargar.Click += btnCargar_Click;
+            // 
+            // lblFiltro
+            // 
+            lblFiltro.AutoSize = true;
+            lblFiltro.Location = new System.Drawing.Point(59, 19);
+            lblFiltro.Name = "lblFiltro";
+            lblFiltro.Size = new System.Drawing.Size(159, 21);
+            lblFiltro.TabIndex = 6;
+            lblFiltro.Text = "Filtrar por Mes y Año:";
             // 
             // FrmReporteEstadoProductos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1538, 953);
-            this.Controls.Add(this.btnCargar);
-            this.Controls.Add(this.lblMes);
-            this.Controls.Add(this.lblAnio);
-            this.Controls.Add(this.txtAnio);
-            this.Controls.Add(this.txtMes);
-            this.Controls.Add(this.rpvEstadoProductos);
-            this.Name = "FrmReporteEstadoProductos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Estado Productos";
-            this.Load += new System.EventHandler(this.FrmEstadoProductos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dSReportes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTEstadoProductosBindingSource)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1730, 1251);
+            Controls.Add(lblFiltro);
+            Controls.Add(btnCargar);
+            Controls.Add(lblMes);
+            Controls.Add(lblAnio);
+            Controls.Add(txtAnio);
+            Controls.Add(txtMes);
+            Controls.Add(rpvEstadoProductos);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "FrmReporteEstadoProductos";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Estado Productos";
+            Load += FrmEstadoProductos_Load;
+            ((System.ComponentModel.ISupportInitialize)dTEstadoProductosBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dSReportes).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -138,5 +154,6 @@
         private System.Windows.Forms.Label lblAnio;
         private System.Windows.Forms.Label lblMes;
         private System.Windows.Forms.Button btnCargar;
+        private System.Windows.Forms.Label lblFiltro;
     }
 }

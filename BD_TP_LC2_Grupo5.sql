@@ -1,6 +1,6 @@
-CREATE DATABASE TP_Autos_19_11
+CREATE DATABASE TP_Autos
 GO
-USE TP_Autos_19_11
+USE TP_Autos
 GO
 
 CREATE TABLE Provincias
@@ -269,9 +269,13 @@ VALUES
     ('Representante de Ventas');	
 
 --INSERT PARA VENDEDORES
+
+INSERT INTO Vendedores([id_categoria], [apellido], [nombre], [CUIT], [fecha_ingreso], [contrasenia])
+VALUES (1, 'Andres', 'Martinez', 20123456789, '2022-01-15', '2b5d8a6e0dc10e069f64bf4d17452a2ce17b02634692dd090f5936e9f9520984');
+GO
+
 INSERT INTO Vendedores([id_categoria], [apellido], [nombre], [CUIT], [fecha_ingreso])
-VALUES
-    (1, 'Gomez', 'Juan', 20123456789, '2022-01-15'),
+VALUES    
     (2, 'Martinez', 'Maria', 27987654321, '2021-05-10'),
     (1, 'Lopez', 'Carlos', 23876543210, '2023-03-20'),
     (2, 'Rodriguez', 'Ana', 20345678901, '2020-12-05'),

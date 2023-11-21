@@ -28,84 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.rpvEstadisticasVendedores = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.btnCargar = new System.Windows.Forms.Button();
-            this.dTEstadisticasVendedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dSReportes = new Reports.DataSets.DSReportes();
-            ((System.ComponentModel.ISupportInitialize)(this.dTEstadisticasVendedoresBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSReportes)).BeginInit();
-            this.SuspendLayout();
+            dTEstadisticasVendedoresBindingSource = new System.Windows.Forms.BindingSource(components);
+            dSReportes = new DataSets.DSReportes();
+            rpvEstadisticasVendedores = new Microsoft.Reporting.WinForms.ReportViewer();
+            txtTotal = new System.Windows.Forms.TextBox();
+            lblTotal = new System.Windows.Forms.Label();
+            btnCargar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)dTEstadisticasVendedoresBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dSReportes).BeginInit();
+            SuspendLayout();
+            // 
+            // dTEstadisticasVendedoresBindingSource
+            // 
+            dTEstadisticasVendedoresBindingSource.DataMember = "DTEstadisticasVendedores";
+            dTEstadisticasVendedoresBindingSource.DataSource = dSReportes;
+            // 
+            // dSReportes
+            // 
+            dSReportes.DataSetName = "DSReportes";
+            dSReportes.Namespace = "http://tempuri.org/DSReportes.xsd";
+            dSReportes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // rpvEstadisticasVendedores
             // 
             reportDataSource1.Name = "dsEstVendedores";
-            reportDataSource1.Value = this.dTEstadisticasVendedoresBindingSource;
-            this.rpvEstadisticasVendedores.LocalReport.DataSources.Add(reportDataSource1);
-            this.rpvEstadisticasVendedores.LocalReport.ReportEmbeddedResource = "Reports.Reportes.RptEstVendedores.rdlc";
-            this.rpvEstadisticasVendedores.Location = new System.Drawing.Point(12, 72);
-            this.rpvEstadisticasVendedores.Name = "rpvEstadisticasVendedores";
-            this.rpvEstadisticasVendedores.ServerReport.BearerToken = null;
-            this.rpvEstadisticasVendedores.Size = new System.Drawing.Size(1514, 869);
-            this.rpvEstadisticasVendedores.TabIndex = 0;
+            reportDataSource1.Value = dTEstadisticasVendedoresBindingSource;
+            rpvEstadisticasVendedores.LocalReport.DataSources.Add(reportDataSource1);
+            rpvEstadisticasVendedores.LocalReport.ReportEmbeddedResource = "Reports.Reportes.RptEstVendedores.rdlc";
+            rpvEstadisticasVendedores.Location = new System.Drawing.Point(14, 94);
+            rpvEstadisticasVendedores.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            rpvEstadisticasVendedores.Name = "rpvEstadisticasVendedores";
+            rpvEstadisticasVendedores.ServerReport.BearerToken = null;
+            rpvEstadisticasVendedores.Size = new System.Drawing.Size(1703, 1140);
+            rpvEstadisticasVendedores.TabIndex = 0;
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(142, 25);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(178, 22);
-            this.txtTotal.TabIndex = 1;
+            txtTotal.Location = new System.Drawing.Point(137, 40);
+            txtTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtTotal.Name = "txtTotal";
+            txtTotal.Size = new System.Drawing.Size(200, 29);
+            txtTotal.TabIndex = 1;
             // 
             // lblTotal
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(31, 28);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(105, 16);
-            this.lblTotal.TabIndex = 2;
-            this.lblTotal.Text = "Total Facturado:";
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new System.Drawing.Point(12, 44);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new System.Drawing.Size(117, 21);
+            lblTotal.TabIndex = 2;
+            lblTotal.Text = "Total Facturado:";
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(353, 23);
-            this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(75, 27);
-            this.btnCargar.TabIndex = 3;
-            this.btnCargar.Text = "Cargar";
-            this.btnCargar.UseVisualStyleBackColor = true;
-            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
-            // 
-            // dTEstadisticasVendedoresBindingSource
-            // 
-            this.dTEstadisticasVendedoresBindingSource.DataMember = "DTEstadisticasVendedores";
-            this.dTEstadisticasVendedoresBindingSource.DataSource = this.dSReportes;
-            // 
-            // dSReportes
-            // 
-            this.dSReportes.DataSetName = "DSReportes";
-            this.dSReportes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            btnCargar.Location = new System.Drawing.Point(374, 37);
+            btnCargar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnCargar.Name = "btnCargar";
+            btnCargar.Size = new System.Drawing.Size(84, 35);
+            btnCargar.TabIndex = 3;
+            btnCargar.Text = "Cargar";
+            btnCargar.UseVisualStyleBackColor = true;
+            btnCargar.Click += btnCargar_Click;
             // 
             // FrmReporteEstadisticasVendedores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1538, 953);
-            this.Controls.Add(this.btnCargar);
-            this.Controls.Add(this.lblTotal);
-            this.Controls.Add(this.txtTotal);
-            this.Controls.Add(this.rpvEstadisticasVendedores);
-            this.Name = "FrmReporteEstadisticasVendedores";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmReporteEstadisticasVendedores";
-            this.Load += new System.EventHandler(this.FrmReporteEstadisticasVendedores_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dTEstadisticasVendedoresBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSReportes)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1730, 1251);
+            Controls.Add(btnCargar);
+            Controls.Add(lblTotal);
+            Controls.Add(txtTotal);
+            Controls.Add(rpvEstadisticasVendedores);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "FrmReporteEstadisticasVendedores";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "FrmReporteEstadisticasVendedores";
+            Load += FrmReporteEstadisticasVendedores_Load;
+            ((System.ComponentModel.ISupportInitialize)dTEstadisticasVendedoresBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dSReportes).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

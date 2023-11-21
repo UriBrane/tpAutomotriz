@@ -17,9 +17,5 @@ namespace TpAutomotrizFront.Presentacion
             InitializeComponent();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

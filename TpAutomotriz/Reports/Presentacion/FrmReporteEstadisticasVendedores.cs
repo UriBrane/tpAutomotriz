@@ -20,19 +20,45 @@ namespace Reports.Presentacion
 
         private void FrmReporteEstadisticasVendedores_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            List<Parametro> lst = new List<Parametro>
+            bool a = false;
+            while (true)
             {
-                new Parametro("@total_facturado",txtTotal.Text)
-            };
+                if (!ValidarNumeros(txtTotal)) break;
+                a = true;
+                break;
+            }
+            if (a)
+            {
 
-            DataTable dt = HelperDAO.GetInstance().ConsultarTabla("SP_CONSULTA_ESTADISTICAS_VENDEDORES", lst);
-            this.dTEstadisticasVendedoresBindingSource.DataSource = dt;
-            this.rpvEstadisticasVendedores.RefreshReport();
+                List<Parametro> lst = new List<Parametro>
+                {
+                    new Parametro("@total_facturado",txtTotal.Text)
+                };
+
+                DataTable dt = HelperDAO.GetInstance().ConsultarTabla("SP_CONSULTA_ESTADISTICAS_VENDEDORES", lst);
+                this.dTEstadisticasVendedoresBindingSource.DataSource = dt;
+                this.rpvEstadisticasVendedores.RefreshReport();
+            }
+        }
+
+        public bool ValidarNumeros(TextBox textBox)
+        {
+            string texto = textBox.Text;
+
+            bool esNumero = int.TryParse(texto, out _);
+
+            if (!esNumero)
+            {
+                MessageBox.Show("Error: El texto ingresado no es un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox.Focus();
+            }
+
+            return esNumero;
         }
     }
 }

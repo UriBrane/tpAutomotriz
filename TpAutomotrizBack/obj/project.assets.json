@@ -514,23 +514,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Benja\\.nuget\\packages\\": {},
+    "C:\\Users\\Andres\\.nuget\\packages\\": {},
+    "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj",
+      "projectUniqueName": "C:\\Users\\Andres\\Repo\\TpAutomotriz\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj",
       "projectName": "TpAutomotrizBack",
-      "projectPath": "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj",
-      "packagesPath": "C:\\Users\\Benja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Benja\\Desktop\\tpAutomotriz\\TpAutomotrizBack\\obj\\",
+      "projectPath": "C:\\Users\\Andres\\Repo\\TpAutomotriz\\tpAutomotriz\\TpAutomotrizBack\\TpAutomotrizBack.csproj",
+      "packagesPath": "C:\\Users\\Andres\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Andres\\Repo\\TpAutomotriz\\tpAutomotriz\\TpAutomotrizBack\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Benja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Andres\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -539,6 +542,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\DevExpress 23.1\\Components\\System\\Components\\Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -582,7 +586,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
