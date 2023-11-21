@@ -1,5 +1,7 @@
 Sistema de Venta y Control de Stock de una Automotriz
+
 ❖ Número de grupo: 5
+
 ❖ Integrante/s:
 ⬥ Brane, Uri Tevye - 405513.
 ⬥ Brunelli, Jazmín - 405318.
