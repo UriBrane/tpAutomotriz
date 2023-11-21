@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using TpAutomotrizBack.Datos;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizFront.Servicios;
-using TpAutomotrizFront.Servicios.Client;
 
 namespace TpAutomotrizFront.Presentacion
 {
@@ -19,6 +18,7 @@ namespace TpAutomotrizFront.Presentacion
     {
         string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
         private Validador val;
+        private CargarCombo cargarCbo;
         TextBox txtId;
         enum Tipo
         {
@@ -84,16 +84,8 @@ namespace TpAutomotrizFront.Presentacion
 
         private void FrmNuevoProducto_Load(object sender, EventArgs e)
         {
-            CargarCbo("SP_SELECT_TIPO_PRODUCTOS", cboTipoProductos);
-        }
-        private void CargarCbo(string nombreSP, ComboBox combo)
-        {
-            DataTable dt = HelperDAO.GetInstance().ConsultarTabla(nombreSP);
-
-            combo.DataSource = dt;
-            combo.ValueMember = dt.Columns[0].ColumnName;
-            combo.DisplayMember = dt.Columns[1].ColumnName;
-            combo.SelectedIndex = -1;
+            cargarCbo = CargarCombo.GetInstance();
+            cargarCbo.CargarCbo("SP_SELECT_TIPO_PRODUCTOS", cboTipoProductos);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -129,11 +121,16 @@ namespace TpAutomotrizFront.Presentacion
                 int cantMinPorMayor = Convert.ToInt32(txtCantMinPorMayor.Text);
                 int cantMin = Convert.ToInt32(txtCantMin.Text);
                 int idTipoProd = Convert.ToInt32(cboTipoProductos.SelectedValue);
-                int id = Convert.ToInt32(txtId.Text);
+                int id = 0;
+                if (tipo == Tipo.Editar)
+                {
+                    id = Convert.ToInt32(txtId.Text);
+                    p = new Producto(id, desc, precio, cantidad, cantMinPorMayor, cantMin, idTipoProd);
+                }
+                else
+                    p = new Producto(desc, precio, cantidad, cantMinPorMayor, cantMin, idTipoProd);
 
-                p = new Producto(id, desc, precio, cantidad, cantMinPorMayor, cantMin, idTipoProd);
-
-                if(tipo == Tipo.Crear)
+                if (tipo == Tipo.Crear)
                 {
                     if (await GrabarProducto(p))
                     {

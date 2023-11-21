@@ -37,5 +37,8 @@ namespace TpAutomotrizBack.Servicios.Interfaz
         // ORDEN PEDIDIO
         OrdenPedido MapearOrdenPedido(DataTable dt);
         List<OrdenPedido> MapearOrdenesPedido(DataTable dt);
+
+        // Extras
+        Descuento MapearDescuento(DataTable dt);
     }
 }

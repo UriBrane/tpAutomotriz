@@ -34,30 +34,32 @@
             cboProducto = new ComboBox();
             nudCantidad = new NumericUpDown();
             dgvDetallesFac = new DataGridView();
-            clmDescripcion = new DataGridViewTextBoxColumn();
-            clmCantidad = new DataGridViewTextBoxColumn();
-            clmSubtotal = new DataGridViewTextBoxColumn();
-            clmDescuento = new DataGridViewTextBoxColumn();
-            clmEliminar = new DataGridViewButtonColumn();
+            ColID = new DataGridViewTextBoxColumn();
+            colDescripcion = new DataGridViewTextBoxColumn();
+            colCantidad = new DataGridViewTextBoxColumn();
+            colSubtotal = new DataGridViewTextBoxColumn();
+            colDescuento = new DataGridViewTextBoxColumn();
+            colTipoVenta = new DataGridViewTextBoxColumn();
+            colEliminar = new DataGridViewButtonColumn();
             btnGuardar = new Button();
             btnCancelar = new Button();
             dtpFecha = new DateTimePicker();
             lblNFactura = new Label();
-            lblDetalleCliente = new Label();
             lblTotal = new Label();
             btnAgregar = new Button();
             lblVendedor = new Label();
             lblCliente = new Label();
-            lblFormaPago = new Label();
-            cboFormaPago = new ComboBox();
+            cboDescuento = new ComboBox();
             gbxAutoplan = new GroupBox();
             cboCuotas = new ComboBox();
-            cboTargeta = new ComboBox();
-            label1 = new Label();
-            textBox1 = new TextBox();
+            txtInteres = new TextBox();
             lblInteres = new Label();
             lblCuotas = new Label();
             cbxAutoplan = new CheckBox();
+            label2 = new Label();
+            cboFormaPago = new ComboBox();
+            label3 = new Label();
+            cboTipoVenta = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)nudCantidad).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDetallesFac).BeginInit();
             gbxAutoplan.SuspendLayout();
@@ -67,100 +69,121 @@
             // 
             cboVendedor.DropDownStyle = ComboBoxStyle.DropDownList;
             cboVendedor.FormattingEnabled = true;
-            cboVendedor.Location = new Point(110, 122);
+            cboVendedor.Location = new Point(111, 122);
             cboVendedor.Margin = new Padding(4);
             cboVendedor.Name = "cboVendedor";
-            cboVendedor.Size = new Size(227, 29);
+            cboVendedor.Size = new Size(226, 29);
             cboVendedor.TabIndex = 4;
             // 
             // cboCliente
             // 
             cboCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCliente.FormattingEnabled = true;
-            cboCliente.Location = new Point(110, 166);
+            cboCliente.Location = new Point(111, 167);
             cboCliente.Margin = new Padding(4);
             cboCliente.Name = "cboCliente";
-            cboCliente.Size = new Size(227, 29);
+            cboCliente.Size = new Size(226, 29);
             cboCliente.TabIndex = 5;
             // 
             // cboProducto
             // 
             cboProducto.DropDownStyle = ComboBoxStyle.DropDownList;
             cboProducto.FormattingEnabled = true;
-            cboProducto.Location = new Point(46, 256);
+            cboProducto.Location = new Point(46, 263);
             cboProducto.Margin = new Padding(4);
             cboProducto.Name = "cboProducto";
-            cboProducto.Size = new Size(367, 29);
+            cboProducto.Size = new Size(266, 29);
             cboProducto.TabIndex = 1;
             // 
             // nudCantidad
             // 
-            nudCantidad.Location = new Point(421, 256);
+            nudCantidad.Location = new Point(321, 263);
             nudCantidad.Margin = new Padding(4);
             nudCantidad.Name = "nudCantidad";
             nudCantidad.Size = new Size(95, 29);
             nudCantidad.TabIndex = 2;
+            nudCantidad.ValueChanged += nudCantidad_ValueChanged;
             // 
             // dgvDetallesFac
             // 
             dgvDetallesFac.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDetallesFac.Columns.AddRange(new DataGridViewColumn[] { clmDescripcion, clmCantidad, clmSubtotal, clmDescuento, clmEliminar });
+            dgvDetallesFac.Columns.AddRange(new DataGridViewColumn[] { ColID, colDescripcion, colCantidad, colSubtotal, colDescuento, colTipoVenta, colEliminar });
             dgvDetallesFac.Location = new Point(46, 314);
             dgvDetallesFac.Margin = new Padding(4);
             dgvDetallesFac.Name = "dgvDetallesFac";
             dgvDetallesFac.ReadOnly = true;
             dgvDetallesFac.RowHeadersWidth = 51;
             dgvDetallesFac.RowTemplate.Height = 25;
-            dgvDetallesFac.Size = new Size(703, 417);
+            dgvDetallesFac.Size = new Size(954, 417);
             dgvDetallesFac.TabIndex = 5;
+            dgvDetallesFac.CellContentClick += dgvDetallesFac_CellContentClick;
             // 
-            // clmDescripcion
+            // ColID
             // 
-            clmDescripcion.HeaderText = "Descripción";
-            clmDescripcion.MinimumWidth = 6;
-            clmDescripcion.Name = "clmDescripcion";
-            clmDescripcion.ReadOnly = true;
-            clmDescripcion.Width = 200;
+            ColID.FillWeight = 120F;
+            ColID.HeaderText = "id";
+            ColID.MinimumWidth = 6;
+            ColID.Name = "ColID";
+            ColID.ReadOnly = true;
+            ColID.Visible = false;
+            ColID.Width = 125;
             // 
-            // clmCantidad
+            // colDescripcion
             // 
-            clmCantidad.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            clmCantidad.HeaderText = "Cantidad";
-            clmCantidad.MinimumWidth = 6;
-            clmCantidad.Name = "clmCantidad";
-            clmCantidad.ReadOnly = true;
-            clmCantidad.Width = 101;
+            colDescripcion.HeaderText = "Descripción";
+            colDescripcion.MinimumWidth = 6;
+            colDescripcion.Name = "colDescripcion";
+            colDescripcion.ReadOnly = true;
+            colDescripcion.Width = 200;
             // 
-            // clmSubtotal
+            // colCantidad
             // 
-            clmSubtotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            clmSubtotal.HeaderText = "SubTotal";
-            clmSubtotal.MinimumWidth = 6;
-            clmSubtotal.Name = "clmSubtotal";
-            clmSubtotal.ReadOnly = true;
-            clmSubtotal.Width = 98;
+            colCantidad.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            colCantidad.HeaderText = "Cantidad";
+            colCantidad.MinimumWidth = 6;
+            colCantidad.Name = "colCantidad";
+            colCantidad.ReadOnly = true;
+            colCantidad.Width = 101;
             // 
-            // clmDescuento
+            // colSubtotal
             // 
-            clmDescuento.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            clmDescuento.HeaderText = "Descuento";
-            clmDescuento.MinimumWidth = 6;
-            clmDescuento.Name = "clmDescuento";
-            clmDescuento.ReadOnly = true;
-            clmDescuento.Width = 112;
+            colSubtotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            colSubtotal.HeaderText = "SubTotal";
+            colSubtotal.MinimumWidth = 6;
+            colSubtotal.Name = "colSubtotal";
+            colSubtotal.ReadOnly = true;
+            colSubtotal.Width = 98;
             // 
-            // clmEliminar
+            // colDescuento
             // 
-            clmEliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            clmEliminar.HeaderText = "Eliminar";
-            clmEliminar.MinimumWidth = 6;
-            clmEliminar.Name = "clmEliminar";
-            clmEliminar.ReadOnly = true;
-            clmEliminar.Width = 73;
+            colDescuento.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            colDescuento.HeaderText = "Descuento";
+            colDescuento.MinimumWidth = 6;
+            colDescuento.Name = "colDescuento";
+            colDescuento.ReadOnly = true;
+            colDescuento.Width = 112;
+            // 
+            // colTipoVenta
+            // 
+            colTipoVenta.FillWeight = 150F;
+            colTipoVenta.HeaderText = "Tipo de Venta";
+            colTipoVenta.MinimumWidth = 6;
+            colTipoVenta.Name = "colTipoVenta";
+            colTipoVenta.ReadOnly = true;
+            colTipoVenta.Width = 150;
+            // 
+            // colEliminar
+            // 
+            colEliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            colEliminar.HeaderText = "Eliminar";
+            colEliminar.MinimumWidth = 6;
+            colEliminar.Name = "colEliminar";
+            colEliminar.ReadOnly = true;
+            colEliminar.Width = 73;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(861, 732);
+            btnGuardar.Location = new Point(1070, 759);
             btnGuardar.Margin = new Padding(4);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(121, 49);
@@ -171,13 +194,14 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(990, 732);
+            btnCancelar.Location = new Point(1218, 759);
             btnCancelar.Margin = new Padding(4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(121, 49);
             btnCancelar.TabIndex = 7;
             btnCancelar.Text = "CANCELAR";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // dtpFecha
             // 
@@ -191,25 +215,12 @@
             // lblNFactura
             // 
             lblNFactura.AutoSize = true;
-            lblNFactura.Location = new Point(299, 29);
+            lblNFactura.Location = new Point(300, 29);
             lblNFactura.Margin = new Padding(4, 0, 4, 0);
             lblNFactura.Name = "lblNFactura";
             lblNFactura.Size = new Size(114, 21);
             lblNFactura.TabIndex = 10;
             lblNFactura.Text = "FACTURA NRO";
-            // 
-            // lblDetalleCliente
-            // 
-            lblDetalleCliente.AutoSize = true;
-            lblDetalleCliente.BackColor = Color.Transparent;
-            lblDetalleCliente.BorderStyle = BorderStyle.Fixed3D;
-            lblDetalleCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDetalleCliente.Location = new Point(393, 106);
-            lblDetalleCliente.Margin = new Padding(4, 0, 4, 0);
-            lblDetalleCliente.Name = "lblDetalleCliente";
-            lblDetalleCliente.Size = new Size(123, 114);
-            lblDetalleCliente.TabIndex = 11;
-            lblDetalleCliente.Text = "CUIT:\r\nDOMICILIO:\r\nTELEFONO:\r\nMAIL:\r\n";
             // 
             // lblTotal
             // 
@@ -223,9 +234,9 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(523, 253);
+            btnAgregar.Location = new Point(891, 263);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(75, 32);
+            btnAgregar.Size = new Size(95, 32);
             btnAgregar.TabIndex = 13;
             btnAgregar.Text = "Agregar";
             btnAgregar.Click += btnAgregar_Click;
@@ -248,35 +259,24 @@
             lblCliente.TabIndex = 15;
             lblCliente.Text = "Cliente:";
             // 
-            // lblFormaPago
+            // cboDescuento
             // 
-            lblFormaPago.AutoSize = true;
-            lblFormaPago.Location = new Point(770, 244);
-            lblFormaPago.Name = "lblFormaPago";
-            lblFormaPago.Size = new Size(117, 21);
-            lblFormaPago.TabIndex = 16;
-            lblFormaPago.Text = "Forma de Pago:";
-            // 
-            // cboFormaPago
-            // 
-            cboFormaPago.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboFormaPago.FormattingEnabled = true;
-            cboFormaPago.Location = new Point(893, 241);
-            cboFormaPago.Name = "cboFormaPago";
-            cboFormaPago.Size = new Size(211, 29);
-            cboFormaPago.TabIndex = 18;
+            cboDescuento.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboDescuento.FormattingEnabled = true;
+            cboDescuento.Location = new Point(527, 263);
+            cboDescuento.Name = "cboDescuento";
+            cboDescuento.Size = new Size(158, 29);
+            cboDescuento.TabIndex = 18;
             // 
             // gbxAutoplan
             // 
             gbxAutoplan.Controls.Add(cboCuotas);
-            gbxAutoplan.Controls.Add(cboTargeta);
-            gbxAutoplan.Controls.Add(label1);
-            gbxAutoplan.Controls.Add(textBox1);
+            gbxAutoplan.Controls.Add(txtInteres);
             gbxAutoplan.Controls.Add(lblInteres);
             gbxAutoplan.Controls.Add(lblCuotas);
-            gbxAutoplan.Location = new Point(770, 335);
+            gbxAutoplan.Location = new Point(1047, 405);
             gbxAutoplan.Name = "gbxAutoplan";
-            gbxAutoplan.Size = new Size(334, 216);
+            gbxAutoplan.Size = new Size(334, 158);
             gbxAutoplan.TabIndex = 20;
             gbxAutoplan.TabStop = false;
             gbxAutoplan.Text = "Datos del AutoPlan";
@@ -285,40 +285,22 @@
             // 
             cboCuotas.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCuotas.FormattingEnabled = true;
-            cboCuotas.Location = new Point(73, 90);
+            cboCuotas.Location = new Point(85, 45);
             cboCuotas.Name = "cboCuotas";
             cboCuotas.Size = new Size(151, 29);
             cboCuotas.TabIndex = 23;
             // 
-            // cboTargeta
+            // txtInteres
             // 
-            cboTargeta.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTargeta.FormattingEnabled = true;
-            cboTargeta.Location = new Point(73, 37);
-            cboTargeta.Name = "cboTargeta";
-            cboTargeta.Size = new Size(151, 29);
-            cboTargeta.TabIndex = 26;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(9, 41);
-            label1.Name = "label1";
-            label1.Size = new Size(58, 21);
-            label1.TabIndex = 25;
-            label1.Text = "Tarjeta:";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(73, 143);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 29);
-            textBox1.TabIndex = 22;
+            txtInteres.Location = new Point(85, 98);
+            txtInteres.Name = "txtInteres";
+            txtInteres.Size = new Size(125, 29);
+            txtInteres.TabIndex = 22;
             // 
             // lblInteres
             // 
             lblInteres.AutoSize = true;
-            lblInteres.Location = new Point(7, 147);
+            lblInteres.Location = new Point(18, 102);
             lblInteres.Name = "lblInteres";
             lblInteres.Size = new Size(60, 21);
             lblInteres.TabIndex = 24;
@@ -327,7 +309,7 @@
             // lblCuotas
             // 
             lblCuotas.AutoSize = true;
-            lblCuotas.Location = new Point(6, 94);
+            lblCuotas.Location = new Point(18, 49);
             lblCuotas.Name = "lblCuotas";
             lblCuotas.Size = new Size(61, 21);
             lblCuotas.TabIndex = 23;
@@ -336,12 +318,49 @@
             // cbxAutoplan
             // 
             cbxAutoplan.AutoSize = true;
-            cbxAutoplan.Location = new Point(770, 304);
+            cbxAutoplan.Location = new Point(1047, 374);
             cbxAutoplan.Name = "cbxAutoplan";
             cbxAutoplan.Size = new Size(95, 25);
             cbxAutoplan.TabIndex = 21;
             cbxAutoplan.Text = "AutoPlan";
             cbxAutoplan.UseVisualStyleBackColor = true;
+            cbxAutoplan.CheckedChanged += cbxAutoplan_CheckedChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(437, 269);
+            label2.Name = "label2";
+            label2.Size = new Size(86, 21);
+            label2.TabIndex = 22;
+            label2.Text = "Descuento:";
+            // 
+            // cboFormaPago
+            // 
+            cboFormaPago.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboFormaPago.FormattingEnabled = true;
+            cboFormaPago.Location = new Point(1170, 273);
+            cboFormaPago.Name = "cboFormaPago";
+            cboFormaPago.Size = new Size(211, 29);
+            cboFormaPago.TabIndex = 29;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(1047, 279);
+            label3.Name = "label3";
+            label3.Size = new Size(117, 21);
+            label3.TabIndex = 28;
+            label3.Text = "Forma de Pago:";
+            // 
+            // cboTipoVenta
+            // 
+            cboTipoVenta.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboTipoVenta.FormattingEnabled = true;
+            cboTipoVenta.Location = new Point(726, 263);
+            cboTipoVenta.Name = "cboTipoVenta";
+            cboTipoVenta.Size = new Size(158, 29);
+            cboTipoVenta.TabIndex = 30;
             // 
             // FrmNuevaFactura
             // 
@@ -349,15 +368,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1121, 794);
+            ClientSize = new Size(1383, 846);
+            Controls.Add(cboTipoVenta);
+            Controls.Add(cboFormaPago);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(cbxAutoplan);
             Controls.Add(gbxAutoplan);
-            Controls.Add(cboFormaPago);
-            Controls.Add(lblFormaPago);
+            Controls.Add(cboDescuento);
             Controls.Add(lblCliente);
             Controls.Add(lblVendedor);
             Controls.Add(lblTotal);
-            Controls.Add(lblDetalleCliente);
             Controls.Add(lblNFactura);
             Controls.Add(dtpFecha);
             Controls.Add(btnCancelar);
@@ -392,7 +413,6 @@
         private Button btnCancelar;
         private DateTimePicker dtpFecha;
         private Label lblNFactura;
-        private Label lblDetalleCliente;
         private Label lblTotal;
         private DataGridViewTextBoxColumn clmDescripcion;
         private DataGridViewTextBoxColumn clmCantidad;
@@ -402,15 +422,23 @@
         private Button btnAgregar;
         private Label lblVendedor;
         private Label lblCliente;
-        private Label lblFormaPago;
-        private ComboBox cboFormaPago;
+        private ComboBox cboDescuento;
         private GroupBox gbxAutoplan;
         private Label lblInteres;
         private Label lblCuotas;
         private CheckBox cbxAutoplan;
-        private TextBox textBox1;
-        private ComboBox cboTargeta;
-        private Label label1;
+        private TextBox txtInteres;
         private ComboBox cboCuotas;
+        private Label label2;
+        private ComboBox cboFormaPago;
+        private Label label3;
+        private DataGridViewTextBoxColumn ColID;
+        private DataGridViewTextBoxColumn colDescripcion;
+        private DataGridViewTextBoxColumn colCantidad;
+        private DataGridViewTextBoxColumn colSubtotal;
+        private DataGridViewTextBoxColumn colDescuento;
+        private DataGridViewTextBoxColumn colTipoVenta;
+        private DataGridViewButtonColumn colEliminar;
+        private ComboBox cboTipoVenta;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,19 +33,23 @@ namespace TpAutomotrizBack.Entidades
             TipoCliente = 0;
             IdBarrio = 0;
         }
-        public Cliente(string nombre, string apellido, long cuit, string calle, int nro, int idTipo, int idBarrio) : base(nombre, apellido, cuit)
+        public Cliente(string nombre, string apellido, long cuit, string calle, int nro, int idTipo
+                        , int idBarrio) : base(nombre, apellido, cuit)
         {
             Calle = calle;
             CalleNro = nro;
             TipoCliente = idTipo;
             IdBarrio = idBarrio;
         }
-        public Cliente(int idCli, string nombre, string apellido, long cuit, string calle, int nro, int idTipo, int idBarrio) : base(nombre, apellido, cuit)
+
+        [JsonConstructor]
+        public Cliente(int idCliente, string nombre, string apellido, long cuit, string calle, int calleNro
+                        , int tipoCliente, int idBarrio) : base(nombre, apellido, cuit)
         {
-            IdCliente = idCli;
+            IdCliente = idCliente;
             Calle = calle;
-            CalleNro = nro;
-            TipoCliente = idTipo;
+            CalleNro = calleNro;
+            TipoCliente = tipoCliente;
             IdBarrio = idBarrio;
         }
         public override string ToString()

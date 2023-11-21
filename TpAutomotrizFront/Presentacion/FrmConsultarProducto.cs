@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpAutomotrizBack.Datos;
 using TpAutomotrizBack.Entidades;
-using TpAutomotrizFront.Servicios.Client;
+using TpAutomotrizFront.Servicios;
 
 namespace TpAutomotrizFront.Presentacion
 {
     public partial class FrmConsultarProducto : Form
     {
         private string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
+        private CargarCombo cargarCbo;
         public FrmConsultarProducto()
         {
             InitializeComponent();
@@ -25,17 +26,8 @@ namespace TpAutomotrizFront.Presentacion
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CargarCbo("SP_SELECT_TIPO_PRODUCTOS", cboTipoProducto);
-        }
-
-        private void CargarCbo(string nombreSP, ComboBox combo)
-        {
-            DataTable dt = HelperDAO.GetInstance().ConsultarTabla(nombreSP);
-
-            combo.DataSource = dt;
-            combo.ValueMember = dt.Columns[0].ColumnName;
-            combo.DisplayMember = dt.Columns[1].ColumnName;
-            combo.SelectedIndex = -1;
+            cargarCbo = CargarCombo.GetInstance();
+            cargarCbo.CargarCbo("SP_SELECT_TIPO_PRODUCTOS", cboTipoProducto);
         }
 
         private async void btnBuscar_Click(object sender, EventArgs e)

@@ -18,6 +18,7 @@ namespace TpAutomotrizBack.Entidades
         [JsonProperty("cuit")]
         public long Cuit { get; set; }
 
+        [JsonIgnore]
         public string NombreCompleto { get { return Apellido + ", " + Nombre; } }
 
         public Persona()
@@ -27,6 +28,7 @@ namespace TpAutomotrizBack.Entidades
             Cuit = 0;
         }
 
+        [JsonConstructor]
         public Persona(string nom, string ape, long cuit)
         {
             Nombre = nom;

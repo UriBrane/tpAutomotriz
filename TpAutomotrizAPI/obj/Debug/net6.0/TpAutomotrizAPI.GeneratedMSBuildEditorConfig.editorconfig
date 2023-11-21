@@ -9,9 +9,17 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TpAutomotrizAPI
 build_property.RootNamespace = TpAutomotrizAPI
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotrizAPI\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\y0303\Documents\GitHub\tpAutomotriz\TpAutomotrizAPI
+=======
+build_property.ProjectDir = C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizAPI\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Andres\Repo\TpAutomotriz\tpAutomotriz\TpAutomotrizAPI
+>>>>>>> b9c569a3e42afc49f001d452c5b2567b8d1118a2
 build_property._RazorSourceGeneratorDebug = 

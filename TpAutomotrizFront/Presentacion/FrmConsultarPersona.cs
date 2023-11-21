@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizFront.Servicios;
-using TpAutomotrizFront.Servicios.Client;
 
 namespace TpAutomotrizFront.Presentacion
 {
@@ -19,6 +18,7 @@ namespace TpAutomotrizFront.Presentacion
     {
         private string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
         private Validador val;
+        private CargarCombo? cargarCbo;
         public FrmConsultarPersona()
         {
             InitializeComponent();
@@ -27,7 +27,8 @@ namespace TpAutomotrizFront.Presentacion
 
         private void FrmConsultarPersona_Load(object sender, EventArgs e)
         {
-            CargarCboTipo();
+            cargarCbo = CargarCombo.GetInstance();
+            cargarCbo.CargarCboTipoPersona(cboTipoPersona);
             gbxFiltro.Enabled = false;
         }
 
@@ -108,13 +109,6 @@ namespace TpAutomotrizFront.Presentacion
             {
                 dgvPersonas.Rows.Add(c.IdCliente, c.NombreCompleto, c.Cuit, "Ver", "c");
             }
-        }
-
-        private void CargarCboTipo()
-        {
-            string[] tipo = { "Cliente", "Vendedor" };
-            cboTipoPersona.DataSource = tipo;
-            cboTipoPersona.SelectedIndex = -1;
         }
 
         private async void dgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -14,7 +14,7 @@ namespace TpAutomotrizBack.Entidades
         public DateTime Fecha { get; set; }
         public Vendedor Vendedor { get; set; }
         public OrdenPedido OrdenPedido { get; set; }
-        public int IdAutoPlan { get; set; }
+        public AutoPlan AutoPlan { get; set; }
         public int IdFormaPago { get; set; }
         public List<DetalleFactura> DetallesFactura { get; set; }
 
@@ -25,30 +25,30 @@ namespace TpAutomotrizBack.Entidades
             Fecha = DateTime.Today;
             Vendedor = new Vendedor();
             OrdenPedido = new OrdenPedido();
-            IdAutoPlan = 0;
+            AutoPlan = new AutoPlan();
             IdFormaPago = 0;
             DetallesFactura = new List<DetalleFactura>();
         }
         public Factura(Cliente cliente, DateTime fecha, Vendedor vendedor, OrdenPedido ordenPedido
-                       , int idAutoPlan, int idFormaPago, List<DetalleFactura> detallesFac)
+                       , AutoPlan idAutoPlan, int idFormaPago, List<DetalleFactura> detallesFac)
         {
             Cliente = cliente;
             Fecha = fecha;
             Vendedor = vendedor;
             OrdenPedido = ordenPedido;
-            IdAutoPlan = idAutoPlan;
+            AutoPlan = idAutoPlan;
             IdFormaPago = idFormaPago;
             DetallesFactura = detallesFac;
         }
         public Factura(int idFactura, Cliente cliente, DateTime fecha, Vendedor vendedor, OrdenPedido ordenPedido
-                       , int idAutoPlan, int idFormaPago, List<DetalleFactura> detallesFac)
+                       , AutoPlan idAutoPlan, int idFormaPago, List<DetalleFactura> detallesFac)
         {
             IdFactura = idFactura;
             Cliente = cliente;
             Fecha = fecha;
             Vendedor = vendedor;
             OrdenPedido = ordenPedido;
-            IdAutoPlan = idAutoPlan;
+            AutoPlan = idAutoPlan;
             IdFormaPago = idFormaPago;
             DetallesFactura = detallesFac;
         }

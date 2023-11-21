@@ -142,5 +142,10 @@ namespace TpAutomotrizFront.Presentacion
                 dgvConsulta.DataSource = dt;
             }
         }
+
+        private void FrmConsulta_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

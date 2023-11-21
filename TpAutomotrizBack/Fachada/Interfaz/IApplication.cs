@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpAutomotrizBack.Datos.Implementacion;
 using TpAutomotrizBack.Entidades;
 
 namespace TpAutomotrizBack.Fachada.Interfaz
@@ -35,5 +36,12 @@ namespace TpAutomotrizBack.Fachada.Interfaz
 
         // ORDEN PEDIDO
         bool PostOrden(OrdenPedido op);
+        OrdenPedido GetOrden(int id);
+        List<OrdenPedido> GetOrdenes();
+
+        // Factura
+        bool PostFactura(Factura fac);
+        Factura GetFactura(int id);
+        List<Factura> GetFacturas();
     }
 }

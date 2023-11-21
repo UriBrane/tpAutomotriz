@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TpAutomotrizAPI\TpAutomotrizAPI.csproj" />
     <ProjectReference Include="..\TpAutomotrizBack\TpAutomotrizBack.csproj" />
+    <ProjectReference Include="..\TpAutomotriz\Reports\Reports.csproj" />
   </ItemGroup>
 
   <ItemGroup>

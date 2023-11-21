@@ -2,15 +2,47 @@
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizBack.Fachada.Implementacion;
 using TpAutomotrizBack.Fachada.Interfaz;
+using TpAutomotrizBack.Servicios;
 
 namespace TpAutomotrizAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class OrdenPedidoController : Controller
     {
         private IApplication app;
-        public OrdenPedidoController()
+        public OrdenPedidoController(AbstractFactoryDAO factory)
         {
-            app = new Application();
+            app = new Application(factory);
+        }
+
+        [HttpGet("/ordenpedido")]
+        public IActionResult GetOrdenes()
+        {
+            List<OrdenPedido> lst;
+            try
+            {
+                lst = app.GetOrdenes();
+                return Ok(lst);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
+        }
+
+        [HttpGet("/ordenpedido/{id}")]
+        public IActionResult GetOrden(int id)
+        {
+            try
+            {
+                OrdenPedido op = app.GetOrden(id);
+                return Ok(op);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error !!! " + ex.Message);
+            }
         }
 
         [HttpGet("/ordenpedido/consultarid")]
@@ -19,7 +51,7 @@ namespace TpAutomotrizAPI.Controllers
             try
             {
                 int id = 0;
-                id = app.ConsultarEscalar("SP_GET_NEXT_ORDEN_PEDIDO", "@next_orden_pedido");
+                id = app.ConsultarEscalar("SP_GET_NEXT_ORDEN_PEDIDO", "@nro");
                 if (id == 0)
                     return NotFound();
                 return Ok(id);

@@ -8,10 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using TpAutomotrizBack.Datos;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizFront.Servicios;
-using TpAutomotrizFront.Servicios.Client;
 using System.Security.Cryptography;
 using System.ComponentModel.DataAnnotations;
 
@@ -21,20 +19,20 @@ namespace TpAutomotrizFront.Presentacion
     {
         private string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
         private Validador val;
+        private CargarCombo? cargarCbo;
         private bool nuevo;
         private string tipoPersona;
         private int idPersona = 0;
+
         public FrmNuevaPersona() // Constructor default
         {
             InitializeComponent();
-            val = Validador.GetInstance();
             nuevo = true;
             btnEditar.Enabled = false;
         }
         public FrmNuevaPersona(int id, string tipo) // Constructor para editar una persona
         {
             InitializeComponent();
-            val = Validador.GetInstance();
             idPersona = id;
             tipoPersona = tipo;
             btnGuardar.Enabled = false;
@@ -46,10 +44,12 @@ namespace TpAutomotrizFront.Presentacion
         
         private void FrmNuevaPersona_Load(object sender, EventArgs e)
         {
-            CargarCboTipo();
-            CargarCbo("SP_SELECT_CATEGORIAS", cboCategoria);
-            CargarCbo("SP_SELECT_TIPO_CLIENTES", cboTipoCliente);
-            CargarCbo("SP_SELECT_BARRIOS", cboBarrio);
+            val = Validador.GetInstance();
+            cargarCbo = CargarCombo.GetInstance();
+            cargarCbo.CargarCboTipoPersona(cboTipoPersona);
+            cargarCbo.CargarCbo("SP_SELECT_CATEGORIAS", cboCategoria);
+            cargarCbo.CargarCbo("SP_SELECT_TIPO_CLIENTES", cboTipoCliente);
+            cargarCbo.CargarCbo("SP_SELECT_BARRIOS", cboBarrio);
             gbxCliente.Enabled = false;
             gbxVendedor.Enabled = false;
             dtpFecIngreso.MaxDate = DateTime.Today;
@@ -111,23 +111,6 @@ namespace TpAutomotrizFront.Presentacion
             txtApellido.Enabled = e;
             dtpFecIngreso.Enabled = e;
             cboCategoria.Enabled = e;
-        }        
-
-        private void CargarCbo(string nombreSP, ComboBox combo)
-        {
-            DataTable dt = HelperDAO.GetInstance().ConsultarTabla(nombreSP);
-
-            combo.DataSource = dt;
-            combo.ValueMember = dt.Columns[0].ColumnName;
-            combo.DisplayMember = dt.Columns[1].ColumnName;
-            combo.SelectedIndex = -1;
-        }
-
-        private void CargarCboTipo()
-        {
-            string[] tipo = { "Cliente", "Vendedor" };
-            cboTipoPersona.DataSource = tipo;
-            cboTipoPersona.SelectedIndex = -1;
         }
 
         private void cboTipoPersona_SelectedIndexChanged(object sender, EventArgs e)

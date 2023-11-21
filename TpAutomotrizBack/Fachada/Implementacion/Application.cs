@@ -8,6 +8,7 @@ using TpAutomotrizBack.Datos.Implementacion;
 using TpAutomotrizBack.Datos.Interfaz;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizBack.Fachada.Interfaz;
+using TpAutomotrizBack.Servicios;
 
 namespace TpAutomotrizBack.Fachada.Implementacion
 {
@@ -17,12 +18,14 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         private IVendedorDAO vendedorDAO;
         private IProductoDAO productoDAO;
         private IOrdenPedidoDAO ordenDAO;
-        public Application()
+        private IFacturaDAO facturaDAO;
+        public Application(AbstractFactoryDAO factory)
         {
-            clienteDAO = new ClienteDAO();
-            vendedorDAO = new VendedorDAO();
-            productoDAO = new ProductoDAO();
-            ordenDAO = new OrdenPedidoDAO();
+            clienteDAO = factory.CrearClienteDAO();
+            vendedorDAO = factory.CrearVendedorDAO();
+            productoDAO = factory.CrearProductoDAO();
+            ordenDAO = factory.CrearOrdenPedidoDAO();
+            facturaDAO = factory.CrearFacturaDAO();
         }
         public int ConsultarEscalar(string nombreSP, string nombreParamOut)
         {
@@ -96,5 +99,33 @@ namespace TpAutomotrizBack.Fachada.Implementacion
         {
             return ordenDAO.PostOrdenPedido(op);
         }
+
+        public OrdenPedido GetOrden(int id)
+        {
+            return ordenDAO.GetOrdenPedido(id);
+        }
+
+        public List<OrdenPedido> GetOrdenes()
+        {
+            return ordenDAO.GetOrdenesPedido();
+        }
+
+        // Facturas
+
+        public bool PostFactura(Factura fac)
+        {
+            return facturaDAO.PostFactura(fac);
+        }
+
+        public Factura GetFactura(int id)
+        {
+            return facturaDAO.GetFactura(id);
+        }
+
+        public List<Factura> GetFacturas()
+        {
+            return facturaDAO.GetFacturas();
+        }
+
     }
 }

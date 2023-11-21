@@ -5,9 +5,10 @@ using TpAutomotrizFront.Servicios;
 using TpAutomotrizBack.Entidades;
 using Newtonsoft.Json;
 using System.Security.Policy;
-using TpAutomotrizFront.Servicios.Client;
 using System;
 using System.Windows.Forms;
+using Reports.Presentacion;
+using Reports;
 
 namespace TpAutomotrizFront
 {
@@ -21,7 +22,8 @@ namespace TpAutomotrizFront
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
-            //EnableMenu(false);
+            txtContrasenia.PasswordChar = '*';
+            EnableMenu(false);
         }
         private void EnableMenu(bool estado) //Habilita ó deshabilita el menu principal, según si se logeo con exito o no
         {
@@ -150,8 +152,52 @@ namespace TpAutomotrizFront
         {
             FrmConsultarProducto frmConsultarProducto = new FrmConsultarProducto();
             frmConsultarProducto.ShowDialog();
-            FrmConsultaProductos frmConsultaProductos = new FrmConsultaProductos();
-            frmConsultaProductos.ShowDialog();
+        }
+
+        private void consultarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmConsultarOrden frm = new FrmConsultarOrden();
+            frm.ShowDialog();
+        }
+
+        private void informaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAcercaDe frm = new FrmAcercaDe();
+        }
+        private void descuentosPromedioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReporteDescuentos frm = new FrmReporteDescuentos();
+            frm.ShowDialog();
+        }
+
+        private void estadisticasDeVendedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReporteEstadisticasVendedores frm = new FrmReporteEstadisticasVendedores();
+            frm.ShowDialog();
+        }
+
+        private void estadoDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReporteEstadoProductos frm = new FrmReporteEstadoProductos();
+            frm.ShowDialog();
+        }
+
+        private void ventasTotalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReporteVentasTotales frm = new FrmReporteVentasTotales();
+            frm.ShowDialog();
+        }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAcercaDe frm = new FrmAcercaDe();
+            frm.ShowDialog();
+        }
+
+        private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmConsultarFactura frm = new FrmConsultarFactura();
+            frm.ShowDialog();
         }
     }
 }

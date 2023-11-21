@@ -10,43 +10,25 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using TpAutomotrizBack.Entidades;
 using TpAutomotrizFront.Servicios;
-using TpAutomotrizFront.Servicios.Client;
 
 namespace TpAutomotrizFront.Presentacion
 {
     public partial class FrmConsultarFactura : Form
     {
-        string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
-        Validador val;
+        private string url = TpAutomotrizAPI.Properties.Resources.UrlAndres;
+        private Validador? val;
+        private CargarCombo? cargarCbo;
         public FrmConsultarFactura()
         {
             InitializeComponent();
+        }
+
+        private async void FrmConsultarFactura_Load(object sender, EventArgs e)
+        {
+            cargarCbo = CargarCombo.GetInstance();
             val = Validador.GetInstance();
-        }
-        private async void FrmNuevaOrden_LoadAsync(object sender, EventArgs e)
-        {
-            await CargarComboAsync<Vendedor>(cboVendedor, url + "/vendedor", "IdVendedor", "NombreCompleto");
-            await CargarComboAsync<Cliente>(cboCliente, url + "/cliente", "IdCliente", "NombreCompleto");
-        }
-
-        private void FrmBusqueda_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FrmConsultarFactura_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private async Task CargarComboAsync<T>(ComboBox cbo, string url, string valueMember, string displayMember)
-        {
-            var dataJson = await ClientSingleton.GetInstance().GetAsync(url);
-            List<T> lst = JsonConvert.DeserializeObject<List<T>>(dataJson);
-            cbo.DataSource = lst;
-            cbo.ValueMember = valueMember;
-            cbo.DisplayMember = displayMember;
-            cbo.SelectedIndex = -1;
+            await cargarCbo.CargarComboAsync<Vendedor>(cboVendedor, url + "/vendedor", "IdVendedor", "NombreCompleto");
+            await cargarCbo.CargarComboAsync<Cliente>(cboCliente, url + "/cliente", "IdCliente", "NombreCompleto");
         }
     }
 }

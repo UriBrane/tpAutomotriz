@@ -35,27 +35,24 @@
             dtpFecha = new DateTimePicker();
             btnCancelar = new Button();
             btnGuardar = new Button();
-            btnAgregar = new Button();
-            dgvDetallesPed = new DataGridView();
-            ColId = new DataGridViewTextBoxColumn();
-            ColDescripcion = new DataGridViewTextBoxColumn();
-            ColCantidad = new DataGridViewTextBoxColumn();
-            ColSActual = new DataGridViewTextBoxColumn();
-            ColSMinimo = new DataGridViewTextBoxColumn();
-            ColEliminar = new DataGridViewButtonColumn();
-            nudCantidad = new NumericUpDown();
-            cboProducto = new ComboBox();
-            cboCliente = new ComboBox();
-            cboVendedor = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dgvDetallesPed).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nudCantidad).BeginInit();
+            txtVendedor = new TextBox();
+            txtCliente = new TextBox();
+            lblTotal = new Label();
+            dgvDetallesFac = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            colSubtotal = new DataGridViewTextBoxColumn();
+            colDescuento = new DataGridViewTextBoxColumn();
+            colTipoVenta = new DataGridViewTextBoxColumn();
+            dataGridViewButtonColumn1 = new DataGridViewButtonColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvDetallesFac).BeginInit();
             SuspendLayout();
             // 
             // lblCliente
             // 
             lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(72, 185);
-            lblCliente.Margin = new Padding(2, 0, 2, 0);
+            lblCliente.Location = new Point(72, 200);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(61, 21);
             lblCliente.TabIndex = 35;
@@ -64,8 +61,7 @@
             // lblVendedor
             // 
             lblVendedor.AutoSize = true;
-            lblVendedor.Location = new Point(53, 140);
-            lblVendedor.Margin = new Padding(2, 0, 2, 0);
+            lblVendedor.Location = new Point(53, 155);
             lblVendedor.Name = "lblVendedor";
             lblVendedor.Size = new Size(80, 21);
             lblVendedor.TabIndex = 34;
@@ -74,7 +70,7 @@
             // lblNOrden
             // 
             lblNOrden.AutoSize = true;
-            lblNOrden.Location = new Point(267, 54);
+            lblNOrden.Location = new Point(30, 116);
             lblNOrden.Name = "lblNOrden";
             lblNOrden.Size = new Size(104, 21);
             lblNOrden.TabIndex = 30;
@@ -83,15 +79,15 @@
             // dtpFecha
             // 
             dtpFecha.Enabled = false;
-            dtpFecha.Location = new Point(42, 223);
+            dtpFecha.Location = new Point(42, 238);
             dtpFecha.Margin = new Padding(3, 4, 3, 4);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(200, 29);
+            dtpFecha.Size = new Size(199, 29);
             dtpFecha.TabIndex = 22;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(682, 742);
+            btnCancelar.Location = new Point(527, 741);
             btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(120, 49);
@@ -102,7 +98,7 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(548, 742);
+            btnGuardar.Location = new Point(361, 741);
             btnGuardar.Margin = new Padding(3, 4, 3, 4);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(120, 49);
@@ -111,124 +107,105 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
-            // btnAgregar
+            // txtVendedor
             // 
-            btnAgregar.Location = new Point(519, 262);
-            btnAgregar.Margin = new Padding(2, 3, 2, 3);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(74, 33);
-            btnAgregar.TabIndex = 33;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.Click += btnAgregar_Click;
+            txtVendedor.Location = new Point(152, 151);
+            txtVendedor.Name = "txtVendedor";
+            txtVendedor.Size = new Size(125, 29);
+            txtVendedor.TabIndex = 36;
             // 
-            // dgvDetallesPed
+            // txtCliente
             // 
-            dgvDetallesPed.AllowUserToAddRows = false;
-            dgvDetallesPed.AllowUserToDeleteRows = false;
-            dgvDetallesPed.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDetallesPed.Columns.AddRange(new DataGridViewColumn[] { ColId, ColDescripcion, ColCantidad, ColSActual, ColSMinimo, ColEliminar });
-            dgvDetallesPed.Location = new Point(42, 316);
-            dgvDetallesPed.Margin = new Padding(3, 4, 3, 4);
-            dgvDetallesPed.Name = "dgvDetallesPed";
-            dgvDetallesPed.ReadOnly = true;
-            dgvDetallesPed.RowHeadersWidth = 51;
-            dgvDetallesPed.RowTemplate.Height = 25;
-            dgvDetallesPed.Size = new Size(762, 417);
-            dgvDetallesPed.TabIndex = 26;
-            dgvDetallesPed.CellContentClick += dgvDetallesPed_CellContentClick;
+            txtCliente.Location = new Point(152, 196);
+            txtCliente.Name = "txtCliente";
+            txtCliente.Size = new Size(125, 29);
+            txtCliente.TabIndex = 37;
             // 
-            // ColId
+            // lblTotal
             // 
-            ColId.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            ColId.HeaderText = "ID";
-            ColId.MinimumWidth = 6;
-            ColId.Name = "ColId";
-            ColId.ReadOnly = true;
-            ColId.Visible = false;
-            ColId.Width = 125;
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new Point(30, 714);
+            lblTotal.Margin = new Padding(4, 0, 4, 0);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(53, 21);
+            lblTotal.TabIndex = 39;
+            lblTotal.Text = "TOTAL";
             // 
-            // ColDescripcion
+            // dgvDetallesFac
             // 
-            ColDescripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            ColDescripcion.HeaderText = "Descripción";
-            ColDescripcion.MinimumWidth = 6;
-            ColDescripcion.Name = "ColDescripcion";
-            ColDescripcion.ReadOnly = true;
-            ColDescripcion.Width = 120;
+            dgvDetallesFac.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDetallesFac.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, colSubtotal, colDescuento, colTipoVenta, dataGridViewButtonColumn1 });
+            dgvDetallesFac.Location = new Point(30, 293);
+            dgvDetallesFac.Margin = new Padding(4, 4, 4, 4);
+            dgvDetallesFac.Name = "dgvDetallesFac";
+            dgvDetallesFac.ReadOnly = true;
+            dgvDetallesFac.RowHeadersWidth = 51;
+            dgvDetallesFac.RowTemplate.Height = 25;
+            dgvDetallesFac.Size = new Size(954, 417);
+            dgvDetallesFac.TabIndex = 38;
             // 
-            // ColCantidad
+            // dataGridViewTextBoxColumn1
             // 
-            ColCantidad.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            ColCantidad.HeaderText = "Cantidad";
-            ColCantidad.MinimumWidth = 6;
-            ColCantidad.Name = "ColCantidad";
-            ColCantidad.ReadOnly = true;
-            ColCantidad.Width = 101;
+            dataGridViewTextBoxColumn1.FillWeight = 120F;
+            dataGridViewTextBoxColumn1.HeaderText = "id";
+            dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            dataGridViewTextBoxColumn1.Visible = false;
+            dataGridViewTextBoxColumn1.Width = 125;
             // 
-            // ColSActual
+            // dataGridViewTextBoxColumn2
             // 
-            ColSActual.HeaderText = "Stock Actual";
-            ColSActual.MinimumWidth = 6;
-            ColSActual.Name = "ColSActual";
-            ColSActual.ReadOnly = true;
-            ColSActual.Width = 125;
+            dataGridViewTextBoxColumn2.HeaderText = "Descripción";
+            dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            dataGridViewTextBoxColumn2.Width = 200;
             // 
-            // ColSMinimo
+            // dataGridViewTextBoxColumn3
             // 
-            ColSMinimo.HeaderText = "Stock Minimo";
-            ColSMinimo.MinimumWidth = 6;
-            ColSMinimo.Name = "ColSMinimo";
-            ColSMinimo.ReadOnly = true;
-            ColSMinimo.Width = 125;
+            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewTextBoxColumn3.HeaderText = "Cantidad";
+            dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            dataGridViewTextBoxColumn3.Width = 101;
             // 
-            // ColEliminar
+            // colSubtotal
             // 
-            ColEliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            ColEliminar.HeaderText = "Eliminar";
-            ColEliminar.MinimumWidth = 6;
-            ColEliminar.Name = "ColEliminar";
-            ColEliminar.ReadOnly = true;
-            ColEliminar.Width = 73;
+            colSubtotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            colSubtotal.HeaderText = "SubTotal";
+            colSubtotal.MinimumWidth = 6;
+            colSubtotal.Name = "colSubtotal";
+            colSubtotal.ReadOnly = true;
+            colSubtotal.Width = 98;
             // 
-            // nudCantidad
+            // colDescuento
             // 
-            nudCantidad.Location = new Point(415, 264);
-            nudCantidad.Margin = new Padding(3, 4, 3, 4);
-            nudCantidad.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
-            nudCantidad.Name = "nudCantidad";
-            nudCantidad.Size = new Size(96, 29);
-            nudCantidad.TabIndex = 24;
-            nudCantidad.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            colDescuento.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            colDescuento.HeaderText = "Descuento";
+            colDescuento.MinimumWidth = 6;
+            colDescuento.Name = "colDescuento";
+            colDescuento.ReadOnly = true;
+            colDescuento.Width = 112;
             // 
-            // cboProducto
+            // colTipoVenta
             // 
-            cboProducto.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboProducto.FormattingEnabled = true;
-            cboProducto.Location = new Point(42, 264);
-            cboProducto.Margin = new Padding(3, 4, 3, 4);
-            cboProducto.Name = "cboProducto";
-            cboProducto.Size = new Size(366, 29);
-            cboProducto.TabIndex = 23;
+            colTipoVenta.FillWeight = 150F;
+            colTipoVenta.HeaderText = "Tipo de Venta";
+            colTipoVenta.MinimumWidth = 6;
+            colTipoVenta.Name = "colTipoVenta";
+            colTipoVenta.ReadOnly = true;
+            colTipoVenta.Width = 150;
             // 
-            // cboCliente
+            // dataGridViewButtonColumn1
             // 
-            cboCliente.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboCliente.FormattingEnabled = true;
-            cboCliente.Location = new Point(141, 182);
-            cboCliente.Margin = new Padding(3, 4, 3, 4);
-            cboCliente.Name = "cboCliente";
-            cboCliente.Size = new Size(227, 29);
-            cboCliente.TabIndex = 27;
-            // 
-            // cboVendedor
-            // 
-            cboVendedor.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboVendedor.FormattingEnabled = true;
-            cboVendedor.Location = new Point(141, 138);
-            cboVendedor.Margin = new Padding(3, 4, 3, 4);
-            cboVendedor.Name = "cboVendedor";
-            cboVendedor.Size = new Size(227, 29);
-            cboVendedor.TabIndex = 25;
+            dataGridViewButtonColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewButtonColumn1.HeaderText = "Eliminar";
+            dataGridViewButtonColumn1.MinimumWidth = 6;
+            dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            dataGridViewButtonColumn1.ReadOnly = true;
+            dataGridViewButtonColumn1.Width = 73;
             // 
             // FrmNuevaOrden
             // 
@@ -236,27 +213,24 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(828, 807);
+            ClientSize = new Size(1021, 806);
+            Controls.Add(lblTotal);
+            Controls.Add(dgvDetallesFac);
+            Controls.Add(txtCliente);
+            Controls.Add(txtVendedor);
             Controls.Add(lblCliente);
             Controls.Add(lblVendedor);
             Controls.Add(lblNOrden);
             Controls.Add(dtpFecha);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
-            Controls.Add(btnAgregar);
-            Controls.Add(dgvDetallesPed);
-            Controls.Add(nudCantidad);
-            Controls.Add(cboProducto);
-            Controls.Add(cboCliente);
-            Controls.Add(cboVendedor);
             DoubleBuffered = true;
             Margin = new Padding(3, 4, 3, 4);
             Name = "FrmNuevaOrden";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmNuevaOrden";
+            Text = "Orden de Pedido";
             Load += FrmNuevaOrden_LoadAsync;
-            ((System.ComponentModel.ISupportInitialize)dgvDetallesPed).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDetallesFac).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -269,16 +243,28 @@
         private Button btnCancelar;
         private Button btnGuardar;
         private Button btnAgregar;
-        private DataGridView dgvDetallesPed;
         private NumericUpDown nudCantidad;
         private ComboBox cboProducto;
         private ComboBox cboCliente;
         private ComboBox cboVendedor;
-        private DataGridViewTextBoxColumn ColId;
-        private DataGridViewTextBoxColumn ColDescripcion;
-        private DataGridViewTextBoxColumn ColCantidad;
-        private DataGridViewTextBoxColumn ColSActual;
-        private DataGridViewTextBoxColumn ColSMinimo;
+        private TextBox txtVendedor;
+        private TextBox txtCliente;
+        private Label lblTotal;
+        private DataGridView dgvDetallesFac;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn colSubtotal;
+        private DataGridViewTextBoxColumn colDescuento;
+        private DataGridViewTextBoxColumn colTipoVenta;
+        private DataGridViewButtonColumn dataGridViewButtonColumn1;
         private DataGridViewButtonColumn ColEliminar;
+        private DataGridViewTextBoxColumn ColSMinimo;
+        private DataGridViewTextBoxColumn ColSActual;
+        private DataGridViewTextBoxColumn ColCantidad;
+        private DataGridViewTextBoxColumn ColDescripcion;
+        private DataGridViewTextBoxColumn ColId;
+        private DataGridView dgvDetallesPed;
+        private Label label1;
     }
 }
