@@ -101,15 +101,16 @@
             // nuevaToolStripMenuItem
             // 
             nuevaToolStripMenuItem.Name = "nuevaToolStripMenuItem";
-            nuevaToolStripMenuItem.Size = new Size(161, 26);
+            nuevaToolStripMenuItem.Size = new Size(224, 26);
             nuevaToolStripMenuItem.Text = "Nueva";
             nuevaToolStripMenuItem.Click += nuevaToolStripMenuItem_Click;
             // 
             // consultarToolStripMenuItem1
             // 
             consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
-            consultarToolStripMenuItem1.Size = new Size(161, 26);
+            consultarToolStripMenuItem1.Size = new Size(224, 26);
             consultarToolStripMenuItem1.Text = "Consultar";
+            consultarToolStripMenuItem1.Click += consultarToolStripMenuItem1_Click;
             // 
             // ordenDePedidoToolStripMenuItem
             // 
@@ -121,7 +122,7 @@
             // consultarToolStripMenuItem2
             // 
             consultarToolStripMenuItem2.Name = "consultarToolStripMenuItem2";
-            consultarToolStripMenuItem2.Size = new Size(224, 26);
+            consultarToolStripMenuItem2.Size = new Size(161, 26);
             consultarToolStripMenuItem2.Text = "Consultar";
             consultarToolStripMenuItem2.Click += consultarToolStripMenuItem2_Click;
             // 
@@ -247,7 +248,7 @@
             // btnIngresar
             // 
             btnIngresar.Location = new Point(490, 421);
-            btnIngresar.Margin = new Padding(4, 4, 4, 4);
+            btnIngresar.Margin = new Padding(4);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(96, 32);
             btnIngresar.TabIndex = 10;
@@ -258,7 +259,7 @@
             // txtUsuario
             // 
             txtUsuario.Location = new Point(428, 293);
-            txtUsuario.Margin = new Padding(4, 4, 4, 4);
+            txtUsuario.Margin = new Padding(4);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(228, 29);
             txtUsuario.TabIndex = 11;
@@ -266,7 +267,7 @@
             // txtContrasenia
             // 
             txtContrasenia.Location = new Point(428, 354);
-            txtContrasenia.Margin = new Padding(4, 4, 4, 4);
+            txtContrasenia.Margin = new Padding(4);
             txtContrasenia.Name = "txtContrasenia";
             txtContrasenia.Size = new Size(228, 29);
             txtContrasenia.TabIndex = 12;

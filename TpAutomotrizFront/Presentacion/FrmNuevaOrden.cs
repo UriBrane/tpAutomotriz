@@ -58,7 +58,8 @@ namespace TpAutomotrizFront.Presentacion
                                                        df.Cantidad,
                                                        df.CalcularSubtotal(),
                                                        df.Descuento.CantDescuento,
-                                                       df.TipoVenta.Tipo});
+                                                       df.TipoVenta.Tipo,
+                                                        "Eliminar"});
                 total = total + df.CalcularSubtotal();
             }
 

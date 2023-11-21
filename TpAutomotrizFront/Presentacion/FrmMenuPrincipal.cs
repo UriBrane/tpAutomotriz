@@ -193,5 +193,11 @@ namespace TpAutomotrizFront
             FrmAcercaDe frm = new FrmAcercaDe();
             frm.ShowDialog();
         }
+
+        private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmConsultarFactura frm = new FrmConsultarFactura();
+            frm.ShowDialog();
+        }
     }
 }

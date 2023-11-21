@@ -52,48 +52,45 @@
             // lblCliente
             // 
             lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(56, 143);
-            lblCliente.Margin = new Padding(2, 0, 2, 0);
+            lblCliente.Location = new Point(72, 200);
             lblCliente.Name = "lblCliente";
-            lblCliente.Size = new Size(47, 15);
+            lblCliente.Size = new Size(61, 21);
             lblCliente.TabIndex = 35;
             lblCliente.Text = "Cliente:";
             // 
             // lblVendedor
             // 
             lblVendedor.AutoSize = true;
-            lblVendedor.Location = new Point(41, 111);
-            lblVendedor.Margin = new Padding(2, 0, 2, 0);
+            lblVendedor.Location = new Point(53, 155);
             lblVendedor.Name = "lblVendedor";
-            lblVendedor.Size = new Size(60, 15);
+            lblVendedor.Size = new Size(80, 21);
             lblVendedor.TabIndex = 34;
             lblVendedor.Text = "Vendedor:";
             // 
             // lblNOrden
             // 
             lblNOrden.AutoSize = true;
-            lblNOrden.Location = new Point(23, 83);
-            lblNOrden.Margin = new Padding(2, 0, 2, 0);
+            lblNOrden.Location = new Point(30, 116);
             lblNOrden.Name = "lblNOrden";
-            lblNOrden.Size = new Size(77, 15);
+            lblNOrden.Size = new Size(104, 21);
             lblNOrden.TabIndex = 30;
             lblNOrden.Text = "ORDEN NRO:";
             // 
             // dtpFecha
             // 
             dtpFecha.Enabled = false;
-            dtpFecha.Location = new Point(33, 170);
-            dtpFecha.Margin = new Padding(2, 3, 2, 3);
+            dtpFecha.Location = new Point(42, 238);
+            dtpFecha.Margin = new Padding(3, 4, 3, 4);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(156, 23);
+            dtpFecha.Size = new Size(199, 29);
             dtpFecha.TabIndex = 22;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(410, 529);
-            btnCancelar.Margin = new Padding(2, 3, 2, 3);
+            btnCancelar.Location = new Point(527, 741);
+            btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(93, 35);
+            btnCancelar.Size = new Size(120, 49);
             btnCancelar.TabIndex = 29;
             btnCancelar.Text = "CANCELAR";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -101,10 +98,10 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(281, 529);
-            btnGuardar.Margin = new Padding(2, 3, 2, 3);
+            btnGuardar.Location = new Point(361, 741);
+            btnGuardar.Margin = new Padding(3, 4, 3, 4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(93, 35);
+            btnGuardar.Size = new Size(120, 49);
             btnGuardar.TabIndex = 28;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -112,26 +109,25 @@
             // 
             // txtVendedor
             // 
-            txtVendedor.Location = new Point(118, 108);
-            txtVendedor.Margin = new Padding(2);
+            txtVendedor.Location = new Point(152, 151);
             txtVendedor.Name = "txtVendedor";
-            txtVendedor.Size = new Size(98, 23);
+            txtVendedor.Size = new Size(125, 29);
             txtVendedor.TabIndex = 36;
             // 
             // txtCliente
             // 
-            txtCliente.Location = new Point(118, 140);
-            txtCliente.Margin = new Padding(2);
+            txtCliente.Location = new Point(152, 196);
             txtCliente.Name = "txtCliente";
-            txtCliente.Size = new Size(98, 23);
+            txtCliente.Size = new Size(125, 29);
             txtCliente.TabIndex = 37;
             // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(23, 510);
+            lblTotal.Location = new Point(30, 714);
+            lblTotal.Margin = new Padding(4, 0, 4, 0);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(39, 15);
+            lblTotal.Size = new Size(53, 21);
             lblTotal.TabIndex = 39;
             lblTotal.Text = "TOTAL";
             // 
@@ -139,21 +135,24 @@
             // 
             dgvDetallesFac.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDetallesFac.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, colSubtotal, colDescuento, colTipoVenta, dataGridViewButtonColumn1 });
-            dgvDetallesFac.Location = new Point(23, 209);
+            dgvDetallesFac.Location = new Point(30, 293);
+            dgvDetallesFac.Margin = new Padding(4, 4, 4, 4);
             dgvDetallesFac.Name = "dgvDetallesFac";
             dgvDetallesFac.ReadOnly = true;
             dgvDetallesFac.RowHeadersWidth = 51;
             dgvDetallesFac.RowTemplate.Height = 25;
-            dgvDetallesFac.Size = new Size(742, 298);
+            dgvDetallesFac.Size = new Size(954, 417);
             dgvDetallesFac.TabIndex = 38;
             // 
             // dataGridViewTextBoxColumn1
             // 
             dataGridViewTextBoxColumn1.FillWeight = 120F;
             dataGridViewTextBoxColumn1.HeaderText = "id";
+            dataGridViewTextBoxColumn1.MinimumWidth = 6;
             dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             dataGridViewTextBoxColumn1.ReadOnly = true;
             dataGridViewTextBoxColumn1.Visible = false;
+            dataGridViewTextBoxColumn1.Width = 125;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -170,7 +169,7 @@
             dataGridViewTextBoxColumn3.MinimumWidth = 6;
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 80;
+            dataGridViewTextBoxColumn3.Width = 101;
             // 
             // colSubtotal
             // 
@@ -179,7 +178,7 @@
             colSubtotal.MinimumWidth = 6;
             colSubtotal.Name = "colSubtotal";
             colSubtotal.ReadOnly = true;
-            colSubtotal.Width = 77;
+            colSubtotal.Width = 98;
             // 
             // colDescuento
             // 
@@ -188,12 +187,13 @@
             colDescuento.MinimumWidth = 6;
             colDescuento.Name = "colDescuento";
             colDescuento.ReadOnly = true;
-            colDescuento.Width = 88;
+            colDescuento.Width = 112;
             // 
             // colTipoVenta
             // 
             colTipoVenta.FillWeight = 150F;
             colTipoVenta.HeaderText = "Tipo de Venta";
+            colTipoVenta.MinimumWidth = 6;
             colTipoVenta.Name = "colTipoVenta";
             colTipoVenta.ReadOnly = true;
             colTipoVenta.Width = 150;
@@ -205,15 +205,15 @@
             dataGridViewButtonColumn1.MinimumWidth = 6;
             dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
             dataGridViewButtonColumn1.ReadOnly = true;
-            dataGridViewButtonColumn1.Width = 56;
+            dataGridViewButtonColumn1.Width = 73;
             // 
             // FrmNuevaOrden
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(794, 576);
+            ClientSize = new Size(1021, 806);
             Controls.Add(lblTotal);
             Controls.Add(dgvDetallesFac);
             Controls.Add(txtCliente);
@@ -225,10 +225,10 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
             DoubleBuffered = true;
-            Margin = new Padding(2, 3, 2, 3);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmNuevaOrden";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmNuevaOrden";
+            Text = "Orden de Pedido";
             Load += FrmNuevaOrden_LoadAsync;
             ((System.ComponentModel.ISupportInitialize)dgvDetallesFac).EndInit();
             ResumeLayout(false);

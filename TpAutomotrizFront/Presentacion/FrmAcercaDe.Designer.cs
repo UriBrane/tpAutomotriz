@@ -36,9 +36,10 @@
             // 
             // textBox1
             // 
+            textBox1.Enabled = false;
             textBox1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1.Location = new Point(89, 36);
-            textBox1.Margin = new Padding(4, 4, 4, 4);
+            textBox1.Margin = new Padding(4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(851, 52);
             textBox1.TabIndex = 0;
@@ -46,9 +47,10 @@
             // 
             // textBox2
             // 
+            textBox2.Enabled = false;
             textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             textBox2.Location = new Point(166, 119);
-            textBox2.Margin = new Padding(4, 4, 4, 4);
+            textBox2.Margin = new Padding(4);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(660, 34);
             textBox2.TabIndex = 1;
@@ -56,9 +58,10 @@
             // 
             // textBox3
             // 
+            textBox3.Enabled = false;
             textBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             textBox3.Location = new Point(294, 246);
-            textBox3.Margin = new Padding(4, 4, 4, 4);
+            textBox3.Margin = new Padding(4);
             textBox3.Multiline = true;
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(373, 257);
@@ -73,7 +76,7 @@
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "FrmAcercaDe";
             Text = "Acerca De";
             ResumeLayout(false);

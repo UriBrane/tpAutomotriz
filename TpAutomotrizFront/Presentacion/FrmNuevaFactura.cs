@@ -252,7 +252,8 @@ namespace TpAutomotrizFront.Presentacion
                                                        df.Cantidad,
                                                        df.CalcularSubtotal(),
                                                        df.Descuento.CantDescuento,
-                                                       df.TipoVenta.Tipo});
+                                                       df.TipoVenta.Tipo,
+                                                        "Eliminar"});
                 total = total + df.CalcularSubtotal();
             }
 
@@ -286,7 +287,12 @@ namespace TpAutomotrizFront.Presentacion
                 cboFormaPago.SelectedIndex = -1;
                 cboFormaPago.Enabled = true;
             }
-            
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
