@@ -15,7 +15,7 @@ namespace TpAutomotrizBack.Datos
 
         private HelperDAO()
         {
-            cnn = new SqlConnection(Properties.Resources.CadenaConexionAndres);
+            cnn = new SqlConnection(Properties.Resources.CadenaConexion);
         }
 
         public static HelperDAO GetInstance()
